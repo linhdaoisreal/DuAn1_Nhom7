@@ -8,3 +8,267 @@
 .hover:hover .overlay {
     opacity: 0.7;
 }
+/* Menu */
+.menu {
+    position: relative;
+    display: block;
+    padding: 5px 0px;
+}
+
+.menu:hover {
+    color: #FBAF3B;
+}
+
+.menu::after {
+    content: "";
+    height: 3px;
+    width: 100%;
+    background-color: #165371;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+
+}
+
+.menu:hover::after {
+    transform: scaleX(1);
+}
+
+/* Đăng nhập, đăng ký */
+.background {
+    width: 100%;
+    height: 100vh;
+    background: url('img/banner1.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-form {
+    position: absolute;
+    width: 75%;
+    height: 550px;
+    top: 50%;
+    left: 50%;
+    background: url('img/banner1.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* transform: translate(-50%, -30%); */
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.login-form .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58%;
+    height: 100%;
+    background: transparent;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.content img {
+    width: 170px;
+    height: 170px;
+}
+
+.text-sci h2 {
+    font-size: 35px;
+    color: white;
+    line-height: 1;
+}
+
+.text-sci p {
+    font-size: 15px;
+    color: white;
+    margin: 20px 0;
+}
+
+.social-icon a i {
+    font-size: 22px;
+    color: #FBAF3B;
+    margin-right: 12px;
+    transition: 0.5s ease;
+}
+
+.social-icon a:hover i {
+    transform: scale(1.2);
+}
+
+.login-form .login-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - 58%);
+    height: 100%;
+    overflow: hidden;
+
+}
+
+.login-box .form-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    position: absolute;
+}
+
+.login-box .form-box.login {
+    transform: translateX(0);
+    transition: transform 0.6s ease;
+    transition-delay: 0.7s;
+}
+
+.login-box.active .form-box.login {
+    transform: translateX(430px);
+    transition-delay: 0s;
+}
+
+/* Đăng ký */
+.login-box .form-box.register {
+    transform: translateX(430px);
+    transition: transform 0.5s ease;
+    transition-delay: 0s;
+}
+
+.login-box.active .form-box.register {
+    transform: translateX(0);
+    transition-delay: 0.7s;
+}
+
+.form-box h2 {
+    font-size: 25px;
+    text-align: center;
+
+}
+
+.form-box .input-box {
+    width: 350px;
+    height: 50px;
+    border-bottom: 2px solid white;
+    margin: 30px 0;
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.5s ease;
+}
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+
+.input-box .icon {
+    position: absolute;
+    top: 13px;
+    right: 0;
+    font-size: 19px;
+}
+
+.form-box .remember {
+    font-size: 14.5px;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.remember a {
+    text-decoration: underline;
+    transition: 0.5s ease;
+}
+
+.remember a:hover {
+    color: #FBAF3B;
+}
+
+.remember label input {
+    accent-color: #FBAF3B;
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+}
+
+.btn {
+    background: none;
+    width: 100%;
+    height: 45px;
+    border-radius: 15px;
+    border: 1.5px solid #165371;
+    outline: none;
+    transition: color 0.4s linear;
+    position: relative;
+}
+
+.btn:hover {
+    color: #FBAF3B;
+}
+
+.btn::before {
+    content: "";
+    background: #165371;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    border-radius: 10px;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+
+.btn1::before {
+    transform: scaleX(0);
+}
+
+.btn1:hover::before {
+    transform: scaleX(1);
+}
+
+.login-register {
+    font-size: 14.5px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.login-register p a {
+    color: #FBAF3B;
+    text-decoration: underline;
+    transition: 0.3s ease;
+    font-weight: 600;
+}
+
+.login-register p a:hover {
+    color: #165371;
+}
