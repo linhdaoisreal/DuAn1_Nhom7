@@ -37,26 +37,26 @@
 }
 
 /* Đăng nhập, đăng ký */
-.background {
+.background-login {
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     background: url('img/banner1.png') no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .login-form {
-    position: absolute;
-    width: 75%;
+    /* position: absolute; */
+    width: 700px;
     height: 550px;
-    top: 50%;
-    left: 50%;
+    /* top: 50%; */
+    /* left: 50%; */
     background: url('img/banner1.png') no-repeat;
     background-size: cover;
     background-position: center;
     /* transform: translate(-50%, -30%); */
     border-radius: 10px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .login-form .content {
@@ -158,7 +158,7 @@
     height: 50px;
     border-bottom: 2px solid white;
     margin: 30px 0;
-    position: relative;
+    /* position: relative; */
 }
 
 .input-box input {
@@ -170,10 +170,10 @@
 }
 
 .input-box label {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 0;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
     font-size: 16px;
     font-weight: 500;
     pointer-events: none;
@@ -272,3 +272,5 @@
 .login-register p a:hover {
     color: #165371;
 }
+
+/* Drop down menu */
