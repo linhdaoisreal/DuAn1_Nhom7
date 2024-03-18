@@ -1,0 +1,1 @@
+<h1 class="text-3xl font-bold mx-auto text-center py-9">Control panel</h1>

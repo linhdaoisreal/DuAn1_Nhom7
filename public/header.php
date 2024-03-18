@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./src/style.css">
     <link rel="stylesheet" href="./fontawesome-free/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Similesve Travel - Trang chủ</title>
+    <title>Similesve Travel</title>
 </head>
 <body>
     <!-- MENU/HEADER -->
@@ -16,7 +16,9 @@
             <nav class="flex grid grid-cols-4 items-center justify-center">
                 <!-- Logo -->
                 <div class="w-32 z-10">
-                    <img src="./src/img/LogoDA1_final.png" alt="website logo">
+                    <a href="index.php">
+                        <img src="./src/img/LogoDA1_final.png" alt="website logo">
+                    </a>
                 </div>
 
                 <!-- Menu -->
@@ -26,33 +28,26 @@
                     md:bg-transparent md:h-auto md:flex-row md:justify-end md:static z-10 md:visible md:gap-6">
 
                         <div class="relative ">
-                        <a id="dropdownButton" class="m-7 md:m-0 text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in">Địa điểm</a>
+                            <p id="dropdownButton"><a class="m-7 md:m-0 text-orange-500 menu">Địa điểm</a></p>
 
-                        <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
-                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a></li>
-                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a></li>
-                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a></li>
-                        </ul>
+                            <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
+                                <li><a href="index.php?act=add_danh_muc_mua" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a></li>
+                            </ul>
                         </div>
 
-                        <!-- <li class="m-7 md:m-0">
-                            <a class="text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in hover:block" href="#">Địa điểm
-                                <ul class="hidden absolute shadow-lg shadow-cyan-500/50 z-1 block">
-                                    <li class=""><a href=""></a></li>
-                                </ul>
-                            </a>
-                        </li> -->
                         <li class="m-7 md:m-0">
-                            <a class="text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in" href="#">Hỗ trợ</a>
+                            <a class="text-orange-500 menu" href="#">Hỗ trợ</a>
                         </li>
                         <li class="m-7 md:m-0">
-                            <a class="text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in" href="#">Hợp tác</a>
+                            <a class="text-orange-500 menu" href="#">Hợp tác</a>
                         </li>
                         <li class="m-7 md:m-0">
-                            <a class="text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in" href="#">Về chúng tôi</a>
+                            <a class="text-orange-500 menu" href="#">Về chúng tôi</a>
                         </li>
                         <li class="m-7 md:m-0">
-                            <a class="text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in" href="#">Tour của tôi</a>
+                            <a class="text-orange-500 menu" href="#">Tour của tôi</a>
                         </li>
                     </ul>
                 </div>
@@ -81,6 +76,3 @@
             </div>
         </div>
     </header>
-    <script src="./src/main.js"></script>
-</body>
-</html>
