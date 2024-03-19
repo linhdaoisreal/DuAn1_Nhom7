@@ -25,17 +25,17 @@
                 <div class="col-span-2 mx-auto">
                     <ul id="menu" class="invisible fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center 
                     bg-gray-900 bg-opacity-90 font-bold 
-                    md:bg-transparent md:h-auto md:flex-row md:justify-end md:static z-10 md:visible md:gap-6">
+                    md:bg-transparent md:h-auto md:flex-row md:justify-end md:static z-10 md:visible md:gap-2">
 
                         <div class="relative ">
                             <a id="dropdownButton" class="m-7 md:m-0 menu text-orange-500">Danh mục</a>
 
-                            <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
-                                <li><a href="index.php?act=add_danh_muc_mua" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Danh mục mùa</a></li>
+                            <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-40 bg-white rounded-md shadow-md z-10">
+                                <li><a href="index.php?act=add_danhmuc_mua" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Danh mục mùa</a></li>
                                 <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Danh mục miền</a></li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Biến thể hạng</a></li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Biến thể thời gian</a></li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Biến thể ngày đi</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hạng tuor</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Thời gian</a></li>
+                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ngày đi</a></li>
                             </ul>
                         </div>
 
