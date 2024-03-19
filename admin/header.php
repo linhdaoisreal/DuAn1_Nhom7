@@ -25,7 +25,7 @@
                 <div class="col-span-2 mx-auto">
                     <ul id="menu" class="invisible fixed top-0 left-0 w-full h-screen flex flex-col justify-center items-center 
                     bg-gray-900 bg-opacity-90 font-bold 
-                    md:bg-transparent md:h-auto md:flex-row md:justify-end md:static z-10 md:visible md:gap-6">
+                    md:bg-transparent md:h-auto md:flex-row md:justify-end md:static z-10 md:visible md:gap-2">
 
                         <div class="relative ">
                             <a id="dropdownButton" class="m-7 md:m-0 menu text-orange-500">Danh mục</a>

@@ -31,7 +31,7 @@
                             <p id="dropdownButton"><a class="m-7 md:m-0 text-orange-500 menu">Địa điểm</a></p>
 
                             <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
-                                <li><a href="index.php?act=add_danh_muc_mua" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a></li>
+                                <li><a href="index.php?act=danhsachtour" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a></li>
                                 <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a></li>
                                 <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a></li>
                             </ul>
@@ -52,12 +52,12 @@
                     </ul>
                 </div>
                 <!-- Đăng nhập - Tìm kiếm -->
-                <div class="flex flex-row justify-end items-center gap-4 pr-3">
-                    <div class="m-7 md:m-0">
+                <div class="flex flex-row justify-end items-center gap-2 pr-1">
+                    <div class="m-7 mr-3 md:mr-7 md:m-0">
                         <i class="md:visible text-2xl fa-solid fa-magnifying-glass text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in"></i>                         
                     </div>
                     <!-- Button Đăng Kí Đăng Nhập -->
-                    <div class="m-7 md:m-0 flex ">
+                    <div class="m-7 mr-3 md:mr-7 md:m-0 flex ">
                         <a href="#" class="flex text-2xl text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in place-items-center">
                             <i class="fa-regular fa-user"></i>                            
                         </a>
