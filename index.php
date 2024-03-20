@@ -4,8 +4,8 @@ include "public/header.php";
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
-        case 'value':
-            # code...
+        case 'danhsachtour':
+            include "public/danhsach_tour.php";
             break;
         
         default:
