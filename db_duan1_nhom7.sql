@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 20, 2024 lúc 05:42 AM
+-- Thời gian đã tạo: Th3 20, 2024 lúc 11:05 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -73,7 +73,8 @@ INSERT INTO `danhmuc_mua` (`id_mua`, `ten_mua`) VALUES
 (7, 'Mùa xuân'),
 (8, 'Mùa thu'),
 (11, 'Mùa đông '),
-(16, 'Mùa hè');
+(16, 'Mùa hè'),
+(19, 'Siu');
 
 -- --------------------------------------------------------
 
@@ -163,6 +164,14 @@ CREATE TABLE `tuor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Đang đổ dữ liệu cho bảng `tuor`
+--
+
+INSERT INTO `tuor` (`id_tuor`, `ten_tuor`, `gia`, `tong_quan`, `hanh_trinh`, `so_luong`, `dia_diem`, `phuong_tien`, `id_mien`, `id_mua`) VALUES
+(6, 'abcdef', 500000, '                    abc                    ', 'ảo ma     ', 14, 'Ninh Bình', 'Ô tô', 5, 16),
+(7, 'Ninh Bình', 500000, 'abc', 'abc', 4, 'Ninh Bình', 'Ô tô', 2, 11);
+
+--
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -242,13 +251,13 @@ ALTER TABLE `binh_luan`
 -- AUTO_INCREMENT cho bảng `danhmuc_mien`
 --
 ALTER TABLE `danhmuc_mien`
-  MODIFY `id_mien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mien` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `danhmuc_mua`
 --
 ALTER TABLE `danhmuc_mua`
-  MODIFY `id_mua` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_mua` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `hang_tuor`
@@ -284,7 +293,7 @@ ALTER TABLE `thoi_gian`
 -- AUTO_INCREMENT cho bảng `tuor`
 --
 ALTER TABLE `tuor`
-  MODIFY `id_tuor` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tuor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
