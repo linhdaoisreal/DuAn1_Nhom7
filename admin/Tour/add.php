@@ -1,6 +1,6 @@
 <div class="row">
     <div class="">
-        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm mới miền</h1>
+        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm mới Tour</h1>
     </div>
     <!-- Form nhập thêm mùa -->
     <div class="ml-10 mt-8">

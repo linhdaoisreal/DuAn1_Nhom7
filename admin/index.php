@@ -128,8 +128,44 @@ if (isset ($_GET['act'])) {
             }
             include_once "Tour/add.php";
             break;
-
         
+        case 'sua_tour':
+            $list_danhmuc_mien = all_danhmuc_mien();
+            $list_danhmuc_mua = all_danhmuc_mua();
+            if(isset ($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)){
+                $load_one_tour = load_one_tour($_GET['id_tuor']);
+            }
+            include "tour/update.php";
+            break;
+        
+        case 'update_tour':
+            // kiểm tra xem người dùng có click vào nút cập nhật hay không
+            if (isset ($_POST['update_tour']) && ($_POST['update_tour'])) {
+                $ten_tuor = $_POST['ten_tour'];
+                $gia = $_POST['gia'];
+                $tong_quan = $_POST['tong_quan'];
+                $hanh_trinh = $_POST['hanh_trinh'];
+                $so_luong = $_POST['so_luong'];
+                $dia_diem = $_POST['dia_diem'];
+                $phuong_tien = $_POST['phuong_tien'];
+                $id_mien = $_POST['ma_mien'];
+                $id_mua = $_POST['ma_mua'];
+                $id_tuor = $_POST['id_tuor'];
+                update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $id_mien, $id_mua, $id_tuor);
+                $thongbao = "Cập nhật thành công";
+            }
+            $load_all_tour = load_all_tour();
+            include "tour/list.php";
+            break;
+
+        case 'xoa_tour';
+            if (isset ($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)) {
+                delete_tour($_GET['id_tuor']);
+            }
+            $load_all_tour = load_all_tour();
+            include "tour/list.php";
+            break;
+
         default:
             # code...
             break;

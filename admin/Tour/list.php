@@ -24,12 +24,12 @@
                 foreach ($load_all_tour as $checkTour) {
                     extract($checkTour);
                     $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
-                    $suaTour = "index.php?act=sua_tour&id_tour=" . $id_tour;
-                    $xoaTour = "index.php?act=xoa_tour&id_tour=" . $id_tour;
+                    $suaTour = "index.php?act=sua_tour&id_tuor=" . $id_tuor;
+                    $xoaTour = "index.php?act=xoa_tour&id_tuor=" . $id_tuor;                    
                     echo '
                         <tr>
                             <td><input type="checkbox" name="" id=""></td>
-                            <td>' . $id_tour . '</td>
+                            <td>' . $id_tuor . '</td>
                             <td>' . $ten_tuor . '</td>
                             <td>' . $gia . '</td>  
                             <td>' . $tong_quan . '</td>  
