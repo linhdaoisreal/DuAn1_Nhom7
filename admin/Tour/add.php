@@ -4,14 +4,14 @@
     </div>
     <!-- Form nhập thêm mùa -->
     <div class="ml-10 mt-8">
-        <form action="index.php?act=add_danhmuc_mien" method="post">
+        <form action="index.php?act=add_tour" method="post">
             <!-- Mã tour -->
             <div class="row mb">
                 <label for="" class="text-lg font-semibold text-orange-300">ID tour</label><br>
                 <input type="text" name="id_tour" disabled class="border-orange-300 w-96 border-2 rounded-lg h-9">
             </div>
 
-            <!-- Tên miền -->
+            <!-- Tên tour -->
             <div class="mt-8">
                 <label for="" class="text-lg font-semibold text-orange-300">Tên Tuor</label><br>
                 <input type="text" name="ten_tour" id="ten_tour" class="border-orange-300 w-96 border-2 rounded-lg h-9">
@@ -97,14 +97,94 @@
             <!-- Script JavaScript -->
             <script>
                 document.querySelector('form').addEventListener('submit', function (event) {
-                    var tenMuaInput = document.getElementById('ten_mien');
-                    var tenMuaError = document.getElementById('ten_mien_error');
+                    var tenTourInput = document.getElementById('ten_tour');
+                    var tenTourError = document.getElementById('ten_tour_error');
 
-                    if (tenMuaInput.value.trim() === '') {
-                        tenMuaError.textContent = "Không để trống tên miền";
+                    var giaInput = document.getElementById('gia');
+                    var giaError = document.getElementById('gia_error');
+
+                    var tongQuanInput = document.getElementById('tong_quan');
+                    var tongQuanError = document.getElementById('tong_quan_error');
+
+                    var hanhTrinhInput = document.getElementById('hanh_trinh');
+                    var hanhTrinhError = document.getElementById('hanh_trinh_error');
+
+                    var soLuongInput = document.getElementById('so_luong');
+                    var soLuongError = document.getElementById('so_luong_error');
+
+                    var diaDiemInput = document.getElementById('dia_diem');
+                    var diaDiemError = document.getElementById('dia_diem_error');
+
+                    var phuongTienInput = document.getElementById('phuong_tien');
+                    var phuongTienError = document.getElementById('phuong_tien_error');
+
+                    var maMienInput = document.getElementById('ma_mien');
+                    var maMienError = document.getElementById('ma_mien_error');
+
+                    var maMuaInput = document.getElementById('ma_mua');
+                    var maMuaError = document.getElementById('ma_mua_error');
+
+                    if (tenTourInput.value.trim() === '') {
+                        tenTourError.textContent = "Không để trống";
                         event.preventDefault(); // Ngăn chặn gửi form
                     } else {
-                        tenMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
+                        tenTourError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (giaInput.value.trim() === '') {
+                        giaError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        giaError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (tongQuanInput.value.trim() === '') {
+                        tongQuanError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        tongQuanError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (hanhTrinhInput.value.trim() === '') {
+                        hanhTrinhError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        hanhTrinhError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (soLuongInput.value.trim() === '') {
+                        soLuongError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        soLuongError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (diaDiemInput.value.trim() === '') {
+                        diaDiemError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        diaDiemError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (phuongTienInput.value.trim() === '') {
+                        phuongTienError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        phuongTienError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (maMienInput.value.trim() === '') {
+                        maMienError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        maMienError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (maMuaInput.value.trim() === '') {
+                        maMuaError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        maMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
                 });
             </script>

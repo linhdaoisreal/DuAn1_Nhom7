@@ -105,6 +105,7 @@ if (isset ($_GET['act'])) {
         
         // Danh sách tour
         case 'list_tour':
+            $load_all_tour = load_all_tour();
             include "tour/list.php";
             break;
         
@@ -120,9 +121,9 @@ if (isset ($_GET['act'])) {
                 $so_luong = $_POST['so_luong'];
                 $dia_diem = $_POST['dia_diem'];
                 $phuong_tien = $_POST['phuong_tien'];
-                $id_mien = $_POST['id_mien'];
-                $id_mua = $_POST['id_mua'];
-                add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $id_mien, $id_mua);
+                $id_mien = $_POST['ma_mien'];
+                $id_mua = $_POST['ma_mua'];
+                add_new_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $id_mien, $id_mua);
                 $thongbao = "Thêm thành công";
             }
             include_once "Tour/add.php";

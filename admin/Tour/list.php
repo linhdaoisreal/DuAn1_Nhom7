@@ -10,6 +10,7 @@
                     <th></th>
                     <th>Mã Tour</th>
                     <th>Tên Tour</th>
+                    <th>Giá</th>
                     <th>Tổng quan</th>
                     <th>Hành trình</th>
                     <th>Số lượng</th>
@@ -20,22 +21,30 @@
                 </tr>
 
                 <?php
-                // foreach ($list_danhmuc_mien as $danhmuc_mien) {
-                //     extract($danhmuc_mien);
-                //     $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
-                //     $suaMien = "index.php?act=sua_tour&id_mien=" . $id_mien;
-                //     $xoaMien = "index.php?act=xoa_tour&id_mien=" . $id_mien;
-                //     echo '
-                //         <tr>
-                //             <td><input type="checkbox" name="" id=""></td>
-                //             <td>' . $a . '</td>
-                //             <td>' . $a . '</td>  
-                //             <td><a href="' . $a . '"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="' . $a . '" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
+                foreach ($load_all_tour as $checkTour) {
+                    extract($checkTour);
+                    $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
+                    $suaTour = "index.php?act=sua_tour&id_tour=" . $id_tour;
+                    $xoaTour = "index.php?act=xoa_tour&id_tour=" . $id_tour;
+                    echo '
+                        <tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>' . $id_tour . '</td>
+                            <td>' . $ten_tuor . '</td>
+                            <td>' . $gia . '</td>  
+                            <td>' . $tong_quan . '</td>  
+                            <td>' . $hanh_trinh . '</td>  
+                            <td>' . $so_luong . '</td>  
+                            <td>' . $dia_diem . '</td> 
+                            <td>' . $phuong_tien . '</td> 
+                            <td>' . $id_mien . '/' . $id_mua . '</td>     
+                            <td><a href="' . $suaTour . '"><i class="fa-solid fa-pen-to-square m-2"></i></a> 
+                            <a href="' . $xoaTour . '" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
                                         
-                //         </tr>
+                        </tr>
 
-                //     ';
-                // }
+                    ';
+                }
 
                 ?>
 
