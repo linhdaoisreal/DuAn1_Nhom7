@@ -40,7 +40,7 @@
                         </div>
 
                         <li class="m-7 md:m-0 text-orange-500">
-                            <a class="menu text-orange-500" href="#">Tour</a>
+                            <a href="index.php?act=list_tour" class="menu text-orange-500" href="#">Tour</a>
                         </li>
 
                         <li class="m-7 md:m-0 text-orange-500">
