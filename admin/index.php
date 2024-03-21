@@ -4,11 +4,8 @@ include "../model/pdo.php";
 include "../model/danhmuc_mua.php";
 include "../model/danhmuc_mien.php";
 include "../model/tour.php";
-<<<<<<< HEAD
 include "../model/hinh_anh.php";
-=======
 include "../model/hang_tour.php";
->>>>>>> 7e7b5a7b7574ddb5f34ad29d2b0ed727ee190ad2
 
 if (isset ($_GET['act'])) {
     $act = $_GET['act'];
@@ -296,7 +293,15 @@ if (isset ($_GET['act'])) {
              include_once("hinh_anh/list.php");
              break;
  
-
+        case 'list_ngay_xuat_phat':
+            
+            include_once("ngay_xuat_phat/list.php");
+            break;
+        
+        case 'addNgayXuatPhat':
+            
+            include_once("ngay_xuat_phat/add.php");
+            break;
 
         default:
             # code...
