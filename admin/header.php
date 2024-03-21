@@ -33,7 +33,7 @@
                             <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-40 bg-white rounded-md shadow-md z-10">
                                 <li><a href="index.php?act=list_danhmuc_mua" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Danh mục mùa</a></li>
                                 <li><a href="index.php?act=list_danhmuc_mien" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Danh mục miền</a></li>
-                                <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hạng tuor</a></li>
+                                <li><a href="index.php?act=list_hang_tuor" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Hạng tuor</a></li>
                                 <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Thời gian</a></li>
                                 <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ngày đi</a></li>
                             </ul>

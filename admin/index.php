@@ -4,7 +4,11 @@ include "../model/pdo.php";
 include "../model/danhmuc_mua.php";
 include "../model/danhmuc_mien.php";
 include "../model/tour.php";
+<<<<<<< HEAD
 include "../model/hinh_anh.php";
+=======
+include "../model/hang_tour.php";
+>>>>>>> 7e7b5a7b7574ddb5f34ad29d2b0ed727ee190ad2
 
 if (isset ($_GET['act'])) {
     $act = $_GET['act'];
@@ -166,6 +170,60 @@ if (isset ($_GET['act'])) {
             $load_all_tour = load_all_tour();
             include "tour/list.php";
             break;
+        
+        
+        //Hiển thi danh sách hạng tour
+        case 'list_hang_tuor':
+            $list_hang_tuor = all_hang_tuor();
+            include_once ("hang_tour/list.php");
+            break;
+        
+        // Thêm hạng Tuor
+        case 'add_hang_tuor':
+            $load_all_tour = load_all_tour();
+            if (isset ($_POST['add_hang_tuor']) && ($_POST['add_hang_tuor'])) {
+                $ten_hang_tuor = $_POST['ten_hang_tuor'];
+                $muc_tang = $_POST['muc_tang'];
+                $id_tuor = $_POST['id_tuor'];
+                add_hang_tour($ten_hang_tuor,$muc_tang,$id_tuor);
+                $thongbao = "Thêm thành công";
+            }
+            include_once "hang_tour/add.php";
+            break;
+        
+        // Xóa Hạng Tour
+        case 'xoa_hang_tour';
+        if (isset ($_GET['id_hang_tuor']) && ($_GET['id_hang_tuor'] > 0)) {
+            delete_hang_tour($_GET['id_hang_tuor']);
+        }
+        $list_hang_tuor = all_hang_tuor();
+        include "hang_tour/list.php";
+        break;
+
+        // Sửa Hạng tour
+        case 'sua_hang_tour':
+            $load_all_tour = load_all_tour();
+            if(isset ($_GET['id_hang_tuor']) && ($_GET['id_hang_tuor'] > 0)){
+                $load_one_hang_tour = load_one_hang_tour($_GET['id_hang_tuor']);
+            }
+            include "hang_tour/update.php";
+            break;
+        // Update hạng tour
+        case 'update_hang_tour':
+            // kiểm tra xem người dùng có click vào nút cập nhật hay không
+            if (isset ($_POST['update_hang_tour']) && ($_POST['update_hang_tour'])) {
+                $ten_hang_tuor = $_POST['ten_hang_tuor'];
+                $muc_tang = $_POST['muc_tang'];
+                $id_tuor = $_POST['id_tuor'];
+                $id_hang_tuor = $_POST['id_hang_tuor'];
+                update_hang_tour($ten_hang_tuor,$muc_tang,$id_tuor,$id_hang_tuor);
+                $thongbao = "Cập nhật thành công";
+            }
+            $list_hang_tuor = all_hang_tuor();
+            include "hang_tour/list.php";
+            break;
+
+
 
 
         //Thêm hình ảnh
