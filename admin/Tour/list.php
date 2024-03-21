@@ -16,7 +16,7 @@
                     <th>Số lượng</th>
                     <th>Địa điểm</th>
                     <th>Phương tiện</th>
-                    <th>Mã Miền/Mùa</th>
+                    <th>Miền/Mùa</th>
                     <th>Thao tác</th>
                 </tr>
 

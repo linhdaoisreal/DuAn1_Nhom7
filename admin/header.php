@@ -52,7 +52,7 @@
                         </li>
 
                         <li class="m-7 md:m-0">
-                            <a class="menu text-orange-500" href="#">Ảnh</a>
+                            <a class="menu text-orange-500" href="index.php?act=list_hinh_anh">Ảnh</a>
                         </li>
 
                         <li class="m-7 md:m-0">

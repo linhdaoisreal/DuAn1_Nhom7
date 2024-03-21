@@ -4,6 +4,7 @@ include "../model/pdo.php";
 include "../model/danhmuc_mua.php";
 include "../model/danhmuc_mien.php";
 include "../model/tour.php";
+include "../model/hinh_anh.php";
 
 if (isset ($_GET['act'])) {
     $act = $_GET['act'];
@@ -165,6 +166,79 @@ if (isset ($_GET['act'])) {
             $load_all_tour = load_all_tour();
             include "tour/list.php";
             break;
+
+
+        //Thêm hình ảnh
+        case 'add_hinh_anh':
+            // kiểm tra xem người dùng có click vào nút add hay không
+            if (isset ($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $ten_hinh_anh = $_FILES['ten_hinh_anh']['name'];
+                $target_dir = "../gallery/";
+                $target_file = $target_dir . basename($_FILES["ten_hinh_anh"]["name"]);
+                    if (move_uploaded_file($_FILES["ten_hinh_anh"]["tmp_name"], $target_file)) {             
+                      } else {                  
+                      }
+                $id_tour = $_POST['id_tour'];
+                insert_hinh_anh($ten_hinh_anh,$id_tour);
+                $thongbao = "Thêm thành công";
+            }
+            $load_ten_tour = ten_tour();
+            include_once ("hinh_anh/add.php");
+            break;
+
+        // Danh sách hình ảnh
+        case 'list_hinh_anh':
+                //Tìm kiếm hình ảnh theo tour
+                if(isset($_POST['listsearch']) && ($_POST['listsearch'])){
+                    // $keyword=$_POST['keyword'];
+                    $id_tour=$_POST['id_tour'];
+                }else{
+                    // $keyword='';
+                    $id_tour=0;
+                }
+            $load_ten_tour = ten_tour();
+            // Load danh sách ảnh
+            $list_hinh_anh=all_hinh_anh($id_tour);
+            include_once("hinh_anh/list.php");
+            break;
+
+         // Sửa hình ảnh
+        case 'suaHinhAnh';
+            if (isset ($_GET['id_hinh_anh']) && ($_GET['id_hinh_anh'] > 0)) {
+            $hinh_anh = load_mot_hinh_anh($_GET['id_hinh_anh']);
+        }
+            $load_ten_tour = ten_tour();
+            include_once ("hinh_anh/update.php");
+            break;
+
+        // Cập nhật hình ảnh
+        case'update_hinh_anh':
+            // kiểm tra xem người dùng có click vào nút cập nhật hay không
+             if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                $id_hinh_anh = $_POST['id_hinh_anh'];
+                $ten_hinh_anh = $_FILES['ten_hinh_anh']['name'];
+                $target_dir = "../gallery/";
+                $target_file = $target_dir . basename($_FILES["ten_hinh_anh"]["name"]);
+                    if (move_uploaded_file($_FILES["ten_hinh_anh"]["tmp_name"], $target_file)) {             
+                      } else {                  
+                      }
+                $id_tour = $_POST['id_tour'];
+                 update_hinh_anh($id_hinh_anh,$ten_hinh_anh,$id_tour);
+                 $thongbao="Cập nhật thành công";
+             }                
+             $list_hinh_anh=all_hinh_anh($id_tour);
+             include_once("hinh_anh/list.php");
+             break;
+
+        case 'xoaHinhAnh';
+             if (isset ($_GET['id_hinh_anh']) && ($_GET['id_hinh_anh'] > 0)) {
+                 delete_hinh_anh($_GET['id_hinh_anh']);
+             }
+             $list_hinh_anh=all_hinh_anh();
+             include_once("hinh_anh/list.php");
+             break;
+ 
+
 
         default:
             # code...
