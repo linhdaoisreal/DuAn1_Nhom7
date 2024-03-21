@@ -82,10 +82,12 @@ if (is_array($load_one_tour)) {
                     <option value="">-None-</option>
                     <?php
                         foreach ($list_danhmuc_mien as $checkdmMien) {
-                            extract($checkdmMien);
-                            echo '
-                            <option value='.$id_mien.'>'.$ten_mien.'</option>
-                            ';
+                            if($checkdmMien['id_mien'] == $id_mien){
+                                $check = "selected";
+                            }else{
+                                $check = "";
+                            }
+                            echo '<option value="'.$checkdmMien['id_mien'].'" '.$check.'> '.$checkdmMien['ten_mien'].' </option>';
                         }
                     ?>
                 </select>
@@ -96,13 +98,14 @@ if (is_array($load_one_tour)) {
             <div class="mt-8">
                 <label for="" class="text-lg font-semibold text-orange-300">Mã mùa</label><br>
                 <select name="ma_mua" id="ma_mua" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
                     <?php
                         foreach ($list_danhmuc_mua as $checkdmMua) {
-                            extract($checkdmMua);
-                            echo '
-                            <option value='.$id_mua.'>'.$ten_mua.'</option>
-                            ';
+                            if($checkdmMua['id_mua'] == $id_mua){
+                                $check = "selected";
+                            }else{
+                                $check = "";
+                            }
+                            echo '<option value="'.$checkdmMua['id_mua'].'" '.$check.'> '.$checkdmMua['ten_mua'].' </option>';
                         }
                     ?>
                 </select>
