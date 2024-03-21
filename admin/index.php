@@ -6,10 +6,15 @@ include "../model/danhmuc_mien.php";
 include "../model/tour.php";
 include "../model/hinh_anh.php";
 include "../model/hang_tour.php";
+include "../model/ngay_xuat_phat.php";
 
 if (isset ($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
+        //Trung gian
+        case 'trunggian':
+            include ("quanly_trung_gian/trunggian.php");
+            break;
         // Danh sách các mùa
         case 'list_danhmuc_mua':
             $list_danhmuc_mua = all_danhmuc_mua();
@@ -292,15 +297,95 @@ if (isset ($_GET['act'])) {
              $list_hinh_anh=all_hinh_anh();
              include_once("hinh_anh/list.php");
              break;
- 
+        
+        //Ngày xuất phát
         case 'list_ngay_xuat_phat':
-            
+            $listNgayXuatPhat = all_ngay_xuat_phat();
             include_once("ngay_xuat_phat/list.php");
             break;
         
-        case 'addNgayXuatPhat':
-            
+        case 'add_ngay_xuat_phat':
+            if (isset ($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $ngay = $_POST['ngay'];
+                insert_ngay_xuat_phat($ngay);
+                $thongbao = "Thêm thành công";
+            }
             include_once("ngay_xuat_phat/add.php");
+            break;
+
+        case 'suaNgayXuatPhat':
+            if(isset($_GET['id_ngay']) && $_GET['id_ngay'] > 0){
+                $ngayXuatPhat = load_mot_ngay_xuat_phat($_GET['id_ngay']);
+            }
+            include_once("ngay_xuat_phat/update.php");
+            break;
+
+        case 'update_ngay_xuat_phat':
+            // kiểm tra xem người dùng có click vào nút cập nhật hay không
+            if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                $id_ngay = $_POST['id_ngay'];
+                $ngay = $_POST['ngay'];
+                update_ngay_xuat_phat($id_ngay,$ngay);
+                $thongbao="Cập nhật thành công";
+             }                
+             $listNgayXuatPhat = all_ngay_xuat_phat();
+             include_once("ngay_xuat_phat/list.php");
+            break;
+
+        case 'xoaNgayXuatPhat':
+            if (isset ($_GET['id_ngay']) && ($_GET['id_ngay'] > 0)) {
+                delete_ngay_xuat_phat($_GET['id_ngay']);
+            }
+            $listNgayXuatPhat = all_ngay_xuat_phat();
+             include_once("ngay_xuat_phat/list.php");
+            break;
+
+        //Trung gian ngày xuất phát
+        case 'list_trung_gian_nxp':
+            $listTrungGianNXP=load_all_trunggian_nxp();
+            include ("quanly_trung_gian/trunggian_nxp/list.php");
+            break;
+
+        case 'add_trung_gian_nxp':
+            $tuor = load_all_tour();
+            $nxp = all_ngay_xuat_phat();
+            if (isset ($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $id_tuor = $_POST['id_tuor'];
+                $id_ngay = $_POST['id_ngay'];
+                insert_trunggian_nxp($id_tuor,$id_ngay);
+                $thongbao = "Thêm thành công";
+            }
+
+            include ("quanly_trung_gian/trunggian_nxp/add.php");
+            break;
+
+        case 'suaTrungGianNXP':
+            $tuor = load_all_tour();
+            $nxp = all_ngay_xuat_phat();
+            if (isset($_GET['id_trunggian_nxp']) && $_GET['id_trunggian_nxp'] > 0){
+                $TrungGianNXP=load_one_trunggian_nxp($_GET['id_trunggian_nxp']);
+            }
+            include("quanly_trung_gian/trunggian_nxp/update.php");
+            break;
+
+        case 'update_trunggian_nxp':
+            if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                $id_ngay = $_POST['id_ngay'];
+                $id_tuor = $_POST['id_tuor'];
+                $id_trunggian_nxp = $_POST['id_trunggian_nxp'];
+                update_trunggian_nxp($id_ngay,$id_tuor,$id_trunggian_nxp);
+                $thongbao="Cập nhật thành công";
+            }                
+            $listTrungGianNXP=load_all_trunggian_nxp();
+            include ("quanly_trung_gian/trunggian_nxp/list.php");
+            break;
+
+        case 'xoaTrungGianNXP':
+            if (isset ($_GET['id_trunggian_nxp']) && ($_GET['id_trunggian_nxp'] > 0)) {
+                delete_trunggian_nxp($_GET['id_trunggian_nxp']);
+            }
+            $listTrungGianNXP=load_all_trunggian_nxp();
+            include ("quanly_trung_gian/trunggian_nxp/list.php");
             break;
 
         default:

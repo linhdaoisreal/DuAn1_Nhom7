@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 20, 2024 lúc 11:05 AM
+-- Thời gian đã tạo: Th3 21, 2024 lúc 05:25 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -110,8 +110,17 @@ CREATE TABLE `hinh_anh` (
 CREATE TABLE `ngay_xuat_phat` (
   `id_ngay` int(10) NOT NULL,
   `ngay` varchar(100) NOT NULL,
-  `id_tour` int(10) NOT NULL
+  `id_tour` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ngay_xuat_phat`
+--
+
+INSERT INTO `ngay_xuat_phat` (`id_ngay`, `ngay`, `id_tour`) VALUES
+(3, '2222-02-22', NULL),
+(4, '3333-03-31', NULL),
+(5, '1111-11-11', NULL);
 
 -- --------------------------------------------------------
 
@@ -213,8 +222,7 @@ ALTER TABLE `hinh_anh`
 -- Chỉ mục cho bảng `ngay_xuat_phat`
 --
 ALTER TABLE `ngay_xuat_phat`
-  ADD PRIMARY KEY (`id_ngay`),
-  ADD KEY `fk_ngayxuatphat_tuor` (`id_tour`);
+  ADD PRIMARY KEY (`id_ngay`);
 
 --
 -- Chỉ mục cho bảng `nguoi_dung`
@@ -275,7 +283,7 @@ ALTER TABLE `hinh_anh`
 -- AUTO_INCREMENT cho bảng `ngay_xuat_phat`
 --
 ALTER TABLE `ngay_xuat_phat`
-  MODIFY `id_ngay` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ngay` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `nguoi_dung`
@@ -317,12 +325,6 @@ ALTER TABLE `hang_tuor`
 --
 ALTER TABLE `hinh_anh`
   ADD CONSTRAINT `fk_hinhanh_tuor` FOREIGN KEY (`id_tour`) REFERENCES `tuor` (`id_tuor`);
-
---
--- Các ràng buộc cho bảng `ngay_xuat_phat`
---
-ALTER TABLE `ngay_xuat_phat`
-  ADD CONSTRAINT `fk_ngayxuatphat_tuor` FOREIGN KEY (`id_tour`) REFERENCES `tuor` (`id_tuor`);
 
 --
 -- Các ràng buộc cho bảng `thoi_gian`

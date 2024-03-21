@@ -42,6 +42,7 @@
 
                                     <div class="grid-cols-1">
                                         <li><a href="index.php?act=list_ngay_xuat_phat" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Ngày xuất phát</a></li>
+                                        <li><a href="index.php?act=trunggian" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Trung gian</a></li>
                                     </div>
                                 </div>
                             </ul>
