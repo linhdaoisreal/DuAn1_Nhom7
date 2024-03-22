@@ -13,6 +13,10 @@
         </li>
 
         <li class="m-7 md:m-0 text-orange-500">
+            <a href="index.php?act=list_trunggian_tg" class="menu text-orange-500" href="#">Tour và Thời Gian</a>
+        </li>
+
+        <li class="m-7 md:m-0 text-orange-500">
             <a class="menu text-orange-500" href="#">Người dùng</a>
         </li>
 

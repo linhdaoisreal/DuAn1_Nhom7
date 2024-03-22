@@ -7,6 +7,7 @@ include "../model/tour.php";
 include "../model/hinh_anh.php";
 include "../model/hang_tour.php";
 include "../model/ngay_xuat_phat.php";
+include "../model/thoi_gian.php";
 
 if (isset ($_GET['act'])) {
     $act = $_GET['act'];
@@ -254,7 +255,7 @@ if (isset ($_GET['act'])) {
             include("quanly_trung_gian/trunggian_ht/update.php");
             break;
 
-        // update Trung gian TUor hạng Tuor
+        // update Trung gian Tuor hạng Tuor
         case 'update_trunggian_ht':
             if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
                 $id_hang_tuor = $_POST['id_hang_tuor'];
@@ -438,6 +439,102 @@ if (isset ($_GET['act'])) {
             $listTrungGianNXP=load_all_trunggian_nxp();
             include ("quanly_trung_gian/trunggian_nxp/list.php");
             break;
+
+        
+        // in ra list thời gian
+        case 'list_thoi_gian':
+            $listThoiGian = all_thoi_gian();
+            include_once ("thoi_gian/list.php");
+            break;
+
+        
+        case 'add_thoi_gian':
+            $listThoiGian = all_thoi_gian();
+            if (isset ($_POST['add_thoi_gian']) && ($_POST['add_thoi_gian'])) {
+                $so_ngay_dem = $_POST['so_ngay_dem'];
+                $muc_tang = $_POST['muc_tang'];
+                add_thoi_gian($so_ngay_dem,$muc_tang);
+                $thongbao = "Thêm thành công";
+            }
+            include_once "thoi_gian/add.php";
+            break;
+        
+        // Sửa Thời Gian
+        case 'sua_thoi_gian':
+            $listThoiGian = all_thoi_gian();
+            if(isset ($_GET['id_thoi_gian']) && ($_GET['id_thoi_gian'] > 0)){
+                $load_one_thoi_gian = load_one_thoi_gian($_GET['id_thoi_gian']);
+            }
+            include "thoi_gian/update.php";
+            break;
+
+        // Update Thời Gian
+        case 'update_thoi_gian':
+            // kiểm tra xem người dùng có click vào nút cập nhật hay không
+            if (isset ($_POST['update_thoi_gian']) && ($_POST['update_thoi_gian'])) {
+                $so_ngay_dem = $_POST['so_ngay_dem'];
+                $muc_tang = $_POST['muc_tang'];
+                $id_thoi_gian = $_POST['id_thoi_gian'];
+                update_thoi_gian($so_ngay_dem,$muc_tang,$id_thoi_gian);
+                $thongbao = "Cập nhật thành công";
+            }
+            $listThoiGian = all_thoi_gian();
+            include "thoi_gian/list.php";
+            break;
+
+        
+        // TRUNG GIAN GIỮA TUOR BÀ THƠI GIAN
+        // hiển thị danh sách
+        case 'list_trunggian_tg':
+            $listTrungGianTG = all_trunggian_tg();
+            include_once ("quanly_trung_gian/trunggian_tg/list.php");
+            break;
+
+        // thên trung gian thời gian
+        case 'add_trunggian_tg':
+            $tuor = load_all_tour();
+            $listThoiGian = all_thoi_gian();
+            if (isset ($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $id_tuor = $_POST['id_tuor'];
+                $id_thoi_gian = $_POST['id_thoi_gian'];
+                insert_trunggian_tg($id_tuor,$id_thoi_gian);
+                $thongbao = "Thêm thành công";
+            }
+        include ("quanly_trung_gian/trunggian_tg/add.php");
+        break;
+
+        // Hiển thị 1 trung gian tuor thời gian
+        case 'suaTrungGianTG':
+            $tuor = load_all_tour();
+            $listThoiGian = all_thoi_gian();
+            if (isset($_GET['id_trunggian_tg']) && $_GET['id_trunggian_tg'] > 0){
+                $TrungGianTG=load_one_trunggian_tg($_GET['id_trunggian_tg']);
+            }
+            include("quanly_trung_gian/trunggian_tg/update.php");
+            break;
+
+        // update Trung gian tuor thời gian
+        case 'update_trunggian_tg':
+            if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                $id_tuor = $_POST['id_tuor'];
+                $id_thoi_gian = $_POST['id_thoi_gian'];
+                $id_trunggian_tg = $_POST['id_trunggian_tg'];
+                update_trunggian_tg($id_thoi_gian,$id_tuor,$id_trunggian_tg);
+                $thongbao="Cập nhật thành công";
+            }                
+            $listTrungGianTG = all_trunggian_tg();
+            include ("quanly_trung_gian/trunggian_tg/list.php");
+            break;
+        
+        // xóa Trung gian hạng Tuor
+        case 'xoaTrungGianTG':
+            if (isset ($_GET['id_trunggian_tg']) && ($_GET['id_trunggian_tg'] > 0)) {
+                delete_trunggian_tg($_GET['id_trunggian_tg']);
+            }
+            $listTrungGianTG = all_trunggian_tg();
+            include ("quanly_trung_gian/trunggian_tg/list.php");
+            break;
+
 
         default:
             # code...
