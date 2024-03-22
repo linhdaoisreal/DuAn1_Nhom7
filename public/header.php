@@ -68,10 +68,6 @@
                         </div>
 
                         <li class="m-7 md:m-0">
-                            <a class="text-orange-500 menu" href="index.php?act=lien_he">Hợp tác</a>
-                        </li>
-
-                        <li class="m-7 md:m-0">
                             <a class="text-orange-500 menu" href="index.php?act=lien_he">Hỗ trợ</a>
                         </li>
                         <li class="m-7 md:m-0">

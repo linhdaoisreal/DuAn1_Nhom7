@@ -59,5 +59,6 @@
 </footer>
 
 <script src="./src/main.js"></script>
+<script src="./src/slider.js"></script>
 </body>
 </html>

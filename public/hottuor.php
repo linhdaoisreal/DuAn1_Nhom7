@@ -28,9 +28,10 @@
                                     <p class="text-center text-orange-500 font-semibold text-2xl">'.$checkHotTuor['gia'].'đ</p>
                                     <p class="line-through text-white">'.$checkHotTuor['gia'].'đ</p>
                                 </div>
-                                <button
-                                    class="text-center font-semibold text-white hover:font-bold p-3 bg-cyan-500 rounded-lg">Xem
-                                    ngay</button>
+                                <a href="index.php?act=chitiet_tuor&id_tuor='.$id_tuor.'">
+                                    <button class="text-center font-semibold text-white hover:font-bold p-3 bg-cyan-500 rounded-lg">
+                                    Xem ngay</button>
+                                </a>
                             </div>
                         </div>
                     </div>
