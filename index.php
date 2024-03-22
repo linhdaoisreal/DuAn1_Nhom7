@@ -1,10 +1,19 @@
 <?php
+include "model/pdo.php";
+include "global.php";
 include "public/header.php";
+include "model/tour.php";
+include "model/danhmuc_mien.php";
+include "model/danhmuc_mua.php";
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
         case 'danhsachtour':
+            $mien = all_danhmuc_mien();
+            $mua = all_danhmuc_mua();
+            $load_hot_tuor = load_top3_hot_tuor();
+            include "public/hottuor.php";
             include "public/danhsach_tour.php";
             break;
 

@@ -36,15 +36,25 @@
                             <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-60 bg-white rounded-md shadow-md z-10">
                                 <div class = "grid grid-cols-2">
                                     <div class = "grid-cols-1">
-                                        <li><a href="#r" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 4</a></li>
+                                        <?php
+                                            foreach ($mua as $checkMua) {
+                                                extract($checkMua);
+                                                var_dump($checkMua);
+                                                $loadTheoMua = "index.php?act=danhsachtour&id_mua=".$id_mua;
+                                                echo '
+                                                <li><a href="'.$loadTheoMua.'" 
+                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mua.'</a></li>
+                                                ';
+                                            }
+                                        ?>
+                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Mùa Hạ</a></li>
+                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Mùa Thu</a></li>
+                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Mùa Đông</a></li>
                                     </div>
                                     <div class = "grid-cols-1">
-                                        <li><a href="#r" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 1</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 2</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Option 3</a></li>
+                                        <li><a href="#r" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Miền Bắc</a></li>
+                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Miền Trung</a></li>
+                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Miền Nam</a></li>
                                     </div>
                                 </div>
                             </ul>
