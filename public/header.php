@@ -10,6 +10,9 @@
     <title>Similesve Travel</title>
 </head>
 <body>
+    <?php
+
+    ?>
     <!-- MENU/HEADER -->
     <header class="bg-zinc-100">
         <div class="container mx-auto px-4 ">
@@ -27,19 +30,18 @@
                     bg-gray-900 bg-opacity-90 font-bold 
                     md:bg-transparent md:h-auto md:flex-row md:justify-end md:static z-10 md:visible md:gap-6">
 
-                        <div class="relative">
+                        <div class="relative ">
                             <div class="flex">
-                                <a href="index.php?act=danhsachtour" class="m-7 md:m-0 text-orange-500 menu">4 Mùa</a>
-                                <p id="dropdownButton"><i class="fa-solid fa-caret-down mt-7 md:p-2 md:m-0 text-orange-500 menu"></i></p>
+                                <a href="index.php?act=danhsachtour&id_mien=&id_mua=" class="m-7 md:m-0 text-orange-500 menu">4 Mùa</a>
+                                <p id="dropdownButton"><i class="fa-solid fa-caret-down mt-7 md:p-2 md:m-0 text-orange-500 "></i></p>
                             </div>
 
                             <ul id="dropdownMenu" class="absolute hidden mt-2 py-2 w-60 bg-white rounded-md shadow-md z-10">
                                 <div class = "grid grid-cols-2">
                                     <div class = "grid-cols-1">
-                                        <?php
+                                        <?php 
                                             foreach ($mua as $checkMua) {
                                                 extract($checkMua);
-                                                var_dump($checkMua);
                                                 $loadTheoMua = "index.php?act=danhsachtour&id_mua=".$id_mua;
                                                 echo '
                                                 <li><a href="'.$loadTheoMua.'" 
@@ -47,14 +49,19 @@
                                                 ';
                                             }
                                         ?>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Mùa Hạ</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Mùa Thu</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Mùa Đông</a></li>
                                     </div>
+
                                     <div class = "grid-cols-1">
-                                        <li><a href="#r" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Miền Bắc</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Miền Trung</a></li>
-                                        <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Miền Nam</a></li>
+                                        <?php 
+                                            foreach ($mien as $checkMien) {
+                                                extract($checkMien);
+                                                $loadTheoMien = "index.php?act=danhsachtour&id_mien=".$id_mien;
+                                                echo '
+                                                    <li><a href="'.$loadTheoMien.'" 
+                                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mien.'</a></li>
+                                                ';
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </ul>

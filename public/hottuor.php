@@ -11,7 +11,6 @@
             <?php
             foreach ($load_hot_tuor as $checkHotTuor) {
                 extract($checkHotTuor);
-                // var_dump($checkHotTuor['id_tuor']);
                 echo '
                 <!-- Content1 -->
                 <div class=" md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex hover:shadow-lg 
