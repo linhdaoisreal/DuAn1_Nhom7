@@ -26,27 +26,10 @@ if (is_array($load_one_hang_tour)) {
 
             <!-- mức tăng -->
             <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Mức Giá</label><br>
+                <label for="" class="text-lg font-semibold text-orange-300">Mức Tăng</label><br>
                 <input type="text" name="muc_tang" id="gia" class="border-orange-300 w-96 border-2 rounded-lg h-9"
                 value="<?php if (isset($muc_tang) && ($muc_tang != "")) echo $muc_tang ?>">
                 <span id="gia_error" class="text-red-500"></span>
-            </div>
-
-            <!-- ID mùa -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Tên Tour</label><br>
-                <select name="id_tuor" id="ma_mua" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
-                    <?php
-                        foreach ($load_all_tour as $checkdmMua) {
-                            extract($checkdmMua);
-                            echo '
-                            <option value='.$id_tuor.'>'.$ten_tuor.'</option>
-                            ';
-                        }
-                    ?>
-                </select>
-                <span id="ma_mua_error" class="text-red-500"></span>
             </div>
 
             <!-- Script JavaScript -->
@@ -58,8 +41,6 @@ if (is_array($load_one_hang_tour)) {
                     var giaInput = document.getElementById('gia');
                     var giaError = document.getElementById('gia_error');
 
-                    var maMuaInput = document.getElementById('ma_mua');
-                    var maMuaError = document.getElementById('ma_mua_error');
 
                     if (tenTourInput.value.trim() === '') {
                         tenTourError.textContent = "Không để trống";
@@ -74,13 +55,6 @@ if (is_array($load_one_hang_tour)) {
                     } else {
                         giaError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
-
-                    if (maMuaInput.value.trim() === '') {
-                        maMuaError.textContent = "Không để trống";
-                        event.preventDefault(); // Ngăn chặn gửi form
-                    } else {
-                        maMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
-                    }
                 });
             </script>
 
@@ -90,7 +64,7 @@ if (is_array($load_one_hang_tour)) {
                     class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
                 <input type="reset" name="" value="Nhập lại"
                     class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
-                <a href="index.php?act=list_tour">
+                <a href="index.php?act=list_hang_tuor">
                     <input type="button" name="" value="Danh sách"
                 class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
             </div>

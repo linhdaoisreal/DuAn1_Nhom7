@@ -25,23 +25,6 @@
                 <span id="gia_error" class="text-red-500"></span>
             </div>
 
-            <!-- ID mùa -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Tên Tour</label><br>
-                <select name="id_tuor" id="ma_mua" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
-                    <?php
-                        foreach ($load_all_tour as $checkdmMua) {
-                            extract($checkdmMua);
-                            echo '
-                            <option value='.$id_tuor.'>'.$ten_tuor.'</option>
-                            ';
-                        }
-                    ?>
-                </select>
-                <span id="ma_mua_error" class="text-red-500"></span>
-            </div>
-
             <!-- Script JavaScript -->
             <script>
                 document.querySelector('form').addEventListener('submit', function (event) {
@@ -51,8 +34,6 @@
                     var giaInput = document.getElementById('gia');
                     var giaError = document.getElementById('gia_error');
 
-                    var maMuaInput = document.getElementById('ma_mua');
-                    var maMuaError = document.getElementById('ma_mua_error');
 
                     if (tenTourInput.value.trim() === '') {
                         tenTourError.textContent = "Không để trống";
@@ -68,12 +49,6 @@
                         giaError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
 
-                    if (maMuaInput.value.trim() === '') {
-                        maMuaError.textContent = "Không để trống";
-                        event.preventDefault(); // Ngăn chặn gửi form
-                    } else {
-                        maMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
-                    }
                 });
             </script>
 

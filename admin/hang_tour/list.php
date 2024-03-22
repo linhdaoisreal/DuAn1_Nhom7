@@ -11,7 +11,6 @@
                     <th>Mã Hạng</th>
                     <th>Mức Tăng</th>
                     <th>Tên Hạng</th>
-                    <th>Tên Tour</th>
                     <th>Thao tác</th>
                 </tr>
 
@@ -27,7 +26,6 @@ foreach($list_hang_tuor as $hang_tuor){
     <td>'.$id_hang_tuor.'</td>
     <td>'.$muc_tang.'</td>
     <td>'.$ten_hang_tuor.'</td> 
-    <td>'.$ten_tuor.'</td>
     <td><a href="'.$suaHang.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="'.$xoaHang.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
                 
 </tr>
