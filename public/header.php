@@ -39,6 +39,7 @@
                                         <?php
                                             foreach ($mua as $checkMua) {
                                                 extract($checkMua);
+                                                var_dump($checkMua);
                                                 $loadTheoMua = "index.php?act=danhsachtour&id_mua=".$id_mua;
                                                 echo '
                                                 <li><a href="'.$loadTheoMua.'" 
