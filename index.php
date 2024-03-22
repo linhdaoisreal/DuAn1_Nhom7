@@ -1,9 +1,11 @@
 <?php
+session_start();
 include "model/pdo.php";
 include "global.php";
 include "model/tour.php";
 include "model/danhmuc_mien.php";
 include "model/danhmuc_mua.php";
+include "model/taikhoan.php";
 
 $mien = all_danhmuc_mien();
 $mua = all_danhmuc_mua();
@@ -31,14 +33,6 @@ if (isset ($_GET['act'])) {
             include "public/danhsach_tour.php";
             break;
 
-        case 'dang_nhap':
-            include "public/dangki_dangnhap/dangnhap.php";
-            break;
-
-        case 'dang_ki':
-            include "public/dangki_dangnhap/dangki.php";
-            break;
-
         case 'lien_he':
             include "public/lienhe.php";
             break;
@@ -50,6 +44,62 @@ if (isset ($_GET['act'])) {
         case 'taiKhoan_Tourcuatoi':
             include "public/taiKhoanvatourcuatoi.php";
             break;
+
+             // Đăng ký
+        case 'dang_ky':
+            if (isset($_POST['dangky'])) {
+                $ho_ten = isset($_POST['ho_ten']) ? $_POST['ho_ten'] : '';
+                $mat_khau = isset($_POST['mat_khau']) ? $_POST['mat_khau'] : '';
+                $email = isset($_POST['email']) ? $_POST['email'] : '';
+        
+                if (!empty($ho_ten) && !empty($mat_khau) && !empty($email)) {
+                    insert_taikhoan($ho_ten, $mat_khau, $email);
+                    $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập";
+                } else {
+                    $thongbao = "Vui lòng điền đầy đủ thông tin đăng ký.";
+                }
+            }
+            include "public/dangki_dangnhap/dangki.php";
+            break;
+
+        // Đăng nhập
+        case 'dang_nhap':
+            if (isset($_POST['dangnhap']) && !empty($_POST['ho_ten']) && !empty($_POST['mat_khau'])) {
+                $ho_ten = $_POST['ho_ten'];
+                $mat_khau = $_POST['mat_khau'];
+                $checkuser = check_user($ho_ten, $mat_khau);
+                if ($checkuser !== false) {
+                $_SESSION['ho_ten'] = $checkuser;
+                 $thongbao = "Đăng nhập thành công!";
+            header('Location:public/trangchu.php');
+                exit;
+                } else {
+            $thongbao = "Tài khoản không tồn tại hoặc mật khẩu không đúng!";
+                }
+            }
+         include "public/dangki_dangnhap/dangnhap.php";
+         break;
+
+       // Tìm tour
+        case 'tim_tour':
+            if(isset($_POST['word']) && ($_POST['word']!="")){
+                $word = $_POST['word'];
+            } else {
+                $word = "";
+            }
+                if(isset($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)){
+                    $id_tuor = $_GET['id_tuor'];
+                } else {
+                    $id_tuor = 0;
+                 }
+
+            $load_all_tour = load_all_tour($word, $id_tuor);
+
+            if(empty($load_all_tour)){
+            $error_message = "Không tìm thấy tour phù hợp.";
+            }
+        include "public/timkiem_tour.php";
+        break;
 
         default:
             # code...

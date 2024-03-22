@@ -68,10 +68,6 @@
                         </div>
 
                         <li class="m-7 md:m-0">
-                            <a class="text-orange-500 menu" href="index.php?act=lien_he">Hợp tác</a>
-                        </li>
-
-                        <li class="m-7 md:m-0">
                             <a class="text-orange-500 menu" href="index.php?act=lien_he">Hỗ trợ</a>
                         </li>
                         <li class="m-7 md:m-0">
@@ -85,14 +81,17 @@
                 <!-- Đăng nhập - Tìm kiếm -->
                 <div class="flex flex-row justify-end items-center gap-2 pr-1">
                     <!-- Tìm kiếm -->
-                    <div class="m-7 mr-3 md:mr-7 md:m-0">
-                        <i class="md:visible text-2xl fa-solid fa-magnifying-glass text-orange-500 hover:text-cyan-400 hover:underline transition duration-400 ease-in"></i>                         
+                    <div class="m-7 mr-3 md:mr-7 md:m-0 flex"> 
+                        <form action="index.php?act=tim_tour" id="search_form" method="post">
+                        <input type="text" name="word" id="word" placeholder=" Tìm tour..." class="w-64 mt-16 rounded-lg border-orange-400 border-2 outline-none hidden">
+                        </form>      
+                        <i id="search_icon" class="md:visible text-2xl fas fa-search text-orange-500 cursor-pointer"></i>                                   
                     </div>
 
                     <!-- Button Đăng Kí Đăng Nhập -->
                     <div class="m-7 mr-3 md:mr-7 md:m-0 flex ">
                         <a href="index.php?act=dang_nhap" class="flex text-2xl text-orange-500 
-                        hover:text-cyan-400 hover:underline transition duration-400 ease-in place-items-center">
+                        hover:text-cyan-400 hover:underline transition duration-400 ease-in place-items-center cursor-pointer">
                             <i class="fa-regular fa-user"></i>                            
                         </a>
                     </div>

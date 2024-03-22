@@ -278,8 +278,6 @@ if (isset ($_GET['act'])) {
             break;
 
 
-
-
         //Thêm hình ảnh
         case 'add_hinh_anh':
             // kiểm tra xem người dùng có click vào nút add hay không
@@ -535,6 +533,9 @@ if (isset ($_GET['act'])) {
             include ("quanly_trung_gian/trunggian_tg/list.php");
             break;
 
+
+        // Đăng nhập - Đăng ký
+            
 
         default:
             # code...

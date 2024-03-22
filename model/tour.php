@@ -8,12 +8,28 @@ function add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_
     pdo_execute($sql);
 }
 
-function load_all_tour()
+function load_all_tour($word="",$id_tuor=0)
 {
-    $sql = "SELECT * FROM tuor ";
+    $sql = "SELECT tuor.id_tuor, tuor.gia, tuor.ten_tuor, hinh_anh.ten_hinh_anh
+    FROM tuor
+    JOIN (
+        SELECT hinh_anh.id_tour, MIN(ten_hinh_anh) AS ten_hinh_anh 
+        FROM hinh_anh 
+        GROUP BY hinh_anh.id_tour 
+    ) hinh_anh ON hinh_anh.id_tour = tuor.id_tuor WHERE 1";
+    //Tìm kiếm tour
+    if($word!=""){
+        $sql.=" and ten_tuor like '%".$word."%'";
+    }
+    if($id_tuor>0){
+        $sql.=" and id_mien = '".$id_mien."'";
+    }
+    $sql.=" ORDER BY id_tuor desc";
     $load_all_tour = pdo_query($sql);
     return $load_all_tour;
 }
+
+
 
 function load_one_tour($id_tuor)
 {
@@ -60,7 +76,7 @@ function load_tuor_theo_danhmuc($id_mua, $id_mien)
         ) hinh_anh ON hinh_anh.id_tour = tuor.id_tuor 
         JOIN danhmuc_mien ON danhmuc_mien.id_mien = tuor.id_mien 
         JOIN danhmuc_mua ON danhmuc_mua.id_mua = tuor.id_mua 
-        WHERE 1 ";
+        WHERE 1";
 
     if ($id_mua != "" || $id_mien != "") {
         if ($id_mua > 0 && $id_mien == "") {
@@ -75,4 +91,4 @@ function load_tuor_theo_danhmuc($id_mua, $id_mien)
     return $load_tuor_theo_danhmuc;
 }
 
-?>
+

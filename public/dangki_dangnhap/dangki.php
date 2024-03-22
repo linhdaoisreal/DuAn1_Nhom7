@@ -1,9 +1,9 @@
 <!-- ĐĂNG KÍ -->
 <main class="">
     <div class="bg-no-repeat bg-cover w-full flex justify-center items-center "
-        style="background-image: url(./src/img/banner1.png);">
+        style="background-image: url(./gallery/Vinh-Ha-Long-1.jpg);">
         <div class="bg-no-repeat bg-cover grid grid-rows-1 md:grid-cols-2 w-10/12 border-none rounded my-4"
-            style="background-image: url(./src/img/banner1.png);">
+            style="background-image: url(./gallery/Vinh-Ha-Long-1.jpg);">
             <!-- Text giới thiệu -->
             <div class="flex items-center flex-col h-screen justify-center grid-rows-1 md:grid-cols-1 text-white ">
                 <div class="float-none w-60">
@@ -28,18 +28,10 @@
             <!-- Form đăng ký -->
             <div class="grid-rows-1 md:grid-cols-1 backdrop-blur-sm ">
                 <div class="flex items-center h-screen justify-evenly w-full text-white">
-                    <form action="#" class="leading-7 space-y-4">
-                        <h2 class="text-center font-bold text-3xl mb-7">Đăng kí</h2>
+
+                    <form action="index.php?act=dang_ky" class="leading-7 space-y-4" method="post">
+                        <h2 class="text-center font-bold text-3xl mb-7">Đăng ký</h2>
                         <!-- Tên đăng nhập -->
-                        <!-- Email -->
-                        <div class="">
-                            <label class="font-semibold">Email</label>
-                            <div class="inline">
-                                <span class=""><i class="fa-regular fa-evelope"></i></span>
-                                <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="email" required>
-                            </div>
-                        </div>
 
                         <!-- Tên đăng nhập -->
                         <div class="">
@@ -47,7 +39,17 @@
                             <div class="inline">
                                 <span class=""><i class="fa-solid fa-user"></i></span>
                                 <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="text" required>
+                                    type="text" name="ho_ten">
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="">
+                            <label class="font-semibold">Email</label>
+                            <div class="inline">
+                                <span class=""><i class="fa-solid fa-envelope"></i></span>
+                                <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
+                                    type="email" name="email">
                             </div>
                         </div>
 
@@ -57,29 +59,32 @@
                             <div class="inline">
                                 <span class=""><i class="fa-solid fa-lock"></i></span>
                                 <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="password" required>
+                                    type="password" name="mat_khau">
                             </div>
                         </div>
 
-                        <!--Ghi nhớ tài khoản  -->
-                        <!-- <div class="remember">
-                            <label for=""><input type="checkbox">Ghi nhớ tài khoản</label>
-                            
-                            <a href="#">Quên mật khẩu?</a>
-                        </div> -->
-
-                        <!-- Đăng nhập submit -->
+                        <!-- Đăng ký submit -->
                         <div>
-                            <a href="#"><button type="submit" class="btn btn1">Đăng kí</button></a>
+                            <input type="submit" name="dangky" value="Đăng ký" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
                         </div>
 
                         <!-- Không có tài khoản -->
                         <div class="">
-                            <p>Không có tài khoản? <a href="index.php?act=dang_nhap"
-                                    class="hover:text-orange-500 transition duration-500 ease-in "> Đăng nhập</a></p>
+                            <p>Có tài khoản? <a href="index.php?act=dang_nhap"
+                                    class="hover:text-orange-500 transition duration-500 ease-in"> Đăng nhập</a></p>
                         </div>
-                    </form>
+                        <!--Thông báo  -->
+                        <h2 class="text-orange-500 font-semibold">
+                            <?php
+                
+                  if(isset($thongbao)&&($thongbao!="")){
+                        echo $thongbao;
+                    }                             
+                ?>
+                        </h2>
                 </div>
+                </form>
+
             </div>
         </div>
     </div>
