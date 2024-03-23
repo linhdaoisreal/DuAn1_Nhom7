@@ -5,7 +5,6 @@ include "global.php";
 include "model/tour.php";
 include "model/danhmuc_mien.php";
 include "model/danhmuc_mua.php";
-include "model/taikhoan.php";
 
 $mien = all_danhmuc_mien();
 $mua = all_danhmuc_mua();
@@ -31,6 +30,14 @@ if (isset ($_GET['act'])) {
 
             include "public/hottuor.php";
             include "public/danhsach_tour.php";
+            break;
+
+        case 'dang_nhap':
+            include "public/dangki_dangnhap/dangnhap.php";
+            break;
+
+        case 'dang_ki':
+            include "public/dangki_dangnhap/dangki.php";
             break;
 
         case 'lien_he':

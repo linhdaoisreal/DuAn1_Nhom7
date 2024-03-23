@@ -7,8 +7,10 @@
             <div class="h-28 hover:h-96 bg-cover bg-no-repeat md:grid-cols-1 md:h-96 my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner1.png);">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">XUÂN</p>
+                    <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
                     transition-all">ĐẶT NGAY</button>
+                    </a>
                 </div>
             </div>
 
@@ -16,8 +18,10 @@
             <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner2.png); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">HẠ</p>
+                    <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
                     transition-all">ĐẶT NGAY</button>
+                    </a>
                 </div>
             </div>
 
@@ -25,8 +29,10 @@
             <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner3.png); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">THU</p>
+                    <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
                     transition-all">ĐẶT NGAY</button>
+                    </a>
                 </div>
             </div>
 
@@ -34,8 +40,10 @@
             <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner4.png); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">ĐÔNG</p>
+                    <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
                     transition-all">ĐẶT NGAY</button>
+                    </a>
                 </div>
             </div>
 

@@ -33,7 +33,10 @@ function load_all_tour($word="",$id_tuor=0)
 
 function load_one_tour($id_tuor)
 {
-    $sql = "SELECT * FROM `tuor` WHERE id_tuor =" . $id_tuor;
+    $sql = "SELECT * , tuor.id_mien, tuor.id_mua, ten_mien, ten_mua FROM tuor 
+    JOIN danhmuc_mien ON danhmuc_mien.id_mien = tuor.id_mien 
+    JOIN danhmuc_mua ON danhmuc_mua.id_mua = tuor.id_mua
+    WHERE id_tuor =" . $id_tuor;
     $load_one_tour = pdo_query_one($sql);
     return $load_one_tour;
 }
@@ -91,4 +94,4 @@ function load_tuor_theo_danhmuc($id_mua, $id_mien)
     return $load_tuor_theo_danhmuc;
 }
 
-
+?>
