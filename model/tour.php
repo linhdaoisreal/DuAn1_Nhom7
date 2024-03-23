@@ -8,7 +8,14 @@ function add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_
     pdo_execute($sql);
 }
 
-function load_all_tour($word="",$id_tuor=0)
+function load_all_tour()
+{
+    $sql = "SELECT * FROM tuor ";
+    $load_all_tour = pdo_query($sql);
+    return $load_all_tour;
+}
+
+function load_all_tour_tim_kiem($word="",$id_tuor=0)
 {
     $sql = "SELECT tuor.id_tuor, tuor.gia, tuor.ten_tuor, hinh_anh.ten_hinh_anh
     FROM tuor
@@ -92,6 +99,33 @@ function load_tuor_theo_danhmuc($id_mua, $id_mien)
 
     $load_tuor_theo_danhmuc = pdo_query($sql);
     return $load_tuor_theo_danhmuc;
+}
+
+function trunggian_hang_tuor_tuor($id_tuor){
+    $sql = "SELECT tuor.id_tuor, hang_tuor.id_hang_tuor, ten_hang_tuor, muc_tang FROM tuor 
+    JOIN tuor_hang_tuor ON tuor_hang_tuor.id_tuor = tuor.id_tuor 
+    JOIN hang_tuor ON tuor_hang_tuor.id_hang_tuor = hang_tuor.id_hang_tuor
+    WHERE tuor.id_tuor = ".$id_tuor;
+    $trunggian_hang_tuor = pdo_query($sql);
+    return $trunggian_hang_tuor;
+}
+
+function trunggian_thoi_gian_tuor($id_tuor){
+    $sql = "SELECT tuor.id_tuor, thoi_gian.id_thoi_gian, so_ngay_dem, muc_tang FROM tuor 
+    JOIN tuor_thoi_gian ON tuor_thoi_gian.id_tuor = tuor.id_tuor 
+    JOIN thoi_gian ON tuor_thoi_gian.id_thoi_gian = thoi_gian.id_thoi_gian
+    WHERE tuor.id_tuor = ".$id_tuor;
+    $trunggian_thoi_gian_tuor = pdo_query($sql);
+    return $trunggian_thoi_gian_tuor;
+}
+
+function trunggian_ngay_xuat_phat_tuor($id_tuor){
+    $sql = "SELECT tuor.id_tuor, ngay_xuat_phat.id_ngay, ngay FROM tuor 
+    JOIN tuor_ngay_xuat_phat ON tuor_ngay_xuat_phat.id_tuor = tuor.id_tuor 
+    JOIN ngay_xuat_phat ON tuor_ngay_xuat_phat.id_ngay = ngay_xuat_phat.id_ngay
+    WHERE tuor.id_tuor = ".$id_tuor;
+    $trunggian_ngay_xuat_phat_tuor = pdo_query($sql);
+    return $trunggian_ngay_xuat_phat_tuor;
 }
 
 ?>
