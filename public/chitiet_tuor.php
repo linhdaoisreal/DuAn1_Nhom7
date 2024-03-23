@@ -122,7 +122,8 @@ if (is_array($load_one_tour)) {
                             extract($checkTG);
                             echo '
                                     <div>
-                                        <input type="checkbox" name="" id=""><span> ' . $ten_hang_tuor . ' </span>
+                                        <input type="radio" name="option" id="hang_tuor">
+                                        <span> ' . $ten_hang_tuor . ' </span>
                                     </div>
                                 ';
                         }
@@ -135,7 +136,7 @@ if (is_array($load_one_tour)) {
                             extract($checkTG);
                             echo '
                                         <div>
-                                            <input type="checkbox" name="" id=""><span> ' . $so_ngay_dem . ' </span>
+                                            <input type="radio" name="option" id="thoi_gian"><span> ' . $so_ngay_dem . ' </span>
                                         </div>
                                     ';
                         }
