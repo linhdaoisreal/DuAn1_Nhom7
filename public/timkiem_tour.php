@@ -10,7 +10,7 @@
         <div class="grid grid-cols-1 gap-6 py-5 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 md:gap-10">
             <?php
             if(empty($load_all_tour)){
-                echo '<p class="text-orange-500 text-xl font-semibold">'.$error_message.'</p>';
+                echo '<p class="text-orange-500 text-xl font-semibold">'.$thongbao.'</p>';
             } else {
                 foreach ($load_all_tour as $checkTuor) {
                     extract($checkTuor);
@@ -31,9 +31,10 @@
                                         <p class="text-center text-orange-500 font-semibold text-2xl">'.$checkTuor['gia'].'đ</p>
                                         <p class="line-through text-white">'.$checkTuor['gia'].'đ</p>
                                     </div>
-                                    <button
-                                        class="text-center font-semibold text-white hover:font-bold p-3 bg-cyan-500 rounded-lg">Xem
-                                        ngay</button>
+                                     <a href="index.php?act=chitiet_tuor&id_tuor='.$id_tuor.'">
+                                    <button class="text-center font-semibold text-white hover:font-bold p-3 bg-cyan-500 rounded-lg">
+                                    Xem ngay</button>
+                                </a>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +43,7 @@
                 }
             }
             ?>
-           
+
         </div>
     </div>
 </section>

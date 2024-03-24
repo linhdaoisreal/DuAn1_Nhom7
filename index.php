@@ -67,10 +67,8 @@ if (isset ($_GET['act'])) {
 
                 if (!empty($ho_ten) && !empty($mat_khau) && !empty($email)) {
                     // Kiểm tra tên đăng nhập và email đã tồn tại hay chưa
-                    $check_login = check_login($ho_ten, $email);
-                    $isCheck = true;
-                    if ($check_login && check_login($ho_ten, $email)) {      
-                        $isCheck=false;                
+                    $check_login = check_login($ho_ten, $email);                 
+                    if ($check_login) {                                          
                         $thongbao = "Tên đăng nhập hoặc email đã tồn tại.";
                     } else {
                         // Nếu tên đăng nhập và email chưa tồn tại, thực hiện thêm vào cơ sở dữ liệu
@@ -84,7 +82,7 @@ if (isset ($_GET['act'])) {
         include "public/dangki_dangnhap/dangki.php";
         break;
 
-        
+
         // Đăng nhập
         case 'dang_nhap':
             if (isset($_POST['dangnhap']) && !empty($_POST['ho_ten']) && !empty($_POST['mat_khau'])) {
@@ -119,7 +117,7 @@ if (isset ($_GET['act'])) {
             $load_all_tour = load_all_tour_tim_kiem($word, $id_tuor);
 
             if(empty($load_all_tour)){
-            $error_message = "Không tìm thấy tour phù hợp.";
+            $thongbao = "Không tìm thấy tour phù hợp.";
             }
         include "public/timkiem_tour.php";
         break;
