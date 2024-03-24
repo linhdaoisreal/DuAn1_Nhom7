@@ -59,5 +59,8 @@
 </footer>
 
 <script src="./src/main.js"></script>
+<script src="./src/search.js"></script>
+<script src="./src/slider.js"></script>
+<script src="./src/bienthe.js"></script>
 </body>
 </html>

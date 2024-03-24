@@ -6,6 +6,7 @@ include "model/tour.php";
 include "model/danhmuc_mien.php";
 include "model/danhmuc_mua.php";
 include "model/hinh_anh.php";
+include "model/taikhoan.php";
 
 $mien = all_danhmuc_mien();
 $mua = all_danhmuc_mua();

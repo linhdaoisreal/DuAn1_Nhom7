@@ -33,3 +33,4 @@ document.addEventListener('click', function(event) {
     dropdownMenu.classList.add('hidden');
   }
 });
+

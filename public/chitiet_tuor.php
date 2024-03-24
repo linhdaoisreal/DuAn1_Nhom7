@@ -114,8 +114,14 @@ if (is_array($load_one_tour)) {
 
             <!-- Thông tin đặt tour -->
             <div class="md:grid-cols-2 md:col-span-2">
+                <div class="py-3">
+                    <h1 class="text-[1.7rem] font-semibold text-center">
+                        Thông tin cơ bản
+                    </h1>
+                </div>
+
                 <form class="md:ml-10" action="" method="post">
-                    <div class="flex justify-between py-3">
+                    <!-- <div class="flex justify-between py-3">
                         <h3 class="text-[1.1rem] text-sky-500">Hạng Tour: </h3>
                         <?php
                         foreach ($trunggian_hang_tuor as $checkTG) {
@@ -128,38 +134,45 @@ if (is_array($load_one_tour)) {
                                 ';
                         }
                         ?>
-                    </div>
+                    </div> -->
                     <div class="flex justify-between py-3">
                         <h3 class="text-[1.1rem] text-sky-500">Thời gian: </h3>
+                        <div class="grid grid-cols-2 ">
                         <?php
                         foreach ($trunggian_thoi_gian_tuor as $checkTG) {
                             extract($checkTG);
-                            echo '
-                                        <div>
-                                            <input type="radio" name="option" id="thoi_gian"><span> ' . $so_ngay_dem . ' </span>
-                                        </div>
-                                    ';
+                            echo '                           
+                                    <div class="mr-6 sm:mr-12 md:mr-10">
+                                        <input type="radio" name="thoi_gian" value="'.$muc_tang.'" onchange="bienThe(this)">
+                                        <label for="thoi_gian">' . $so_ngay_dem . '</label>
+                                    </div>
+                                
+                            ';
                         }
                         ?>
+                        </div>
                     </div>
                     <div class="py-3 flex ">
                         <h3 class="text-[1.1rem] text-sky-500">Ngày khởi hành: </h3>
                         <div class="pl-4">
                             <select name="" id="" class="w-full">
                                 <?php
-                                    foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
-                                        extract($checkTG);
-                                        echo '
+                                foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
+                                    extract($checkTG);
+                                    echo '
                                             <option value="">' . $ngay . '</option>
                                         ';
-                                    }
+                                }
                                 ?>
                             </select>
                         </div>
                     </div>
                     <div class="py-3 flex leading-normal ">
-                        <p class="text-[1.5rem] text-sky-500 ">Giá: </p><span
-                            class="text-[1.5rem] text-orange-500 pl-4 "> <?= $gia ?>đ</span>
+                        <p class="text-[1.5rem] text-sky-500 ">Giá: </p>
+                        <input type="hidden" id="gia_goc" value="<?= $gia ?>">
+                        <span class="text-[1.5rem] text-orange-500 pl-4 " id="gia">
+                            <?= $gia ?> đ
+                        </span>
                     </div>
                     <div class="flex mx-auto item-center justify-center py-8">
                         <input
