@@ -13,4 +13,11 @@ function check_user($ho_ten, $mat_khau){
     return $tk;
 }
 
+// Check đã tồn tại tên đăng nhập và email
+function check_login($ho_ten,$email){
+    $sql = "SELECT * FROM nguoi_dung WHERE ho_ten='$ho_ten' OR email='$email'";
+    $tk=pdo_query_one($sql);
+    return $tk;
+}
+
 ?>

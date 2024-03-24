@@ -58,22 +58,30 @@ if (isset ($_GET['act'])) {
             include "public/taiKhoanvatourcuatoi.php";
             break;
 
-             // Đăng ký
+       // Đăng ký
         case 'dang_ky':
             if (isset($_POST['dangky'])) {
                 $ho_ten = isset($_POST['ho_ten']) ? $_POST['ho_ten'] : '';
                 $mat_khau = isset($_POST['mat_khau']) ? $_POST['mat_khau'] : '';
                 $email = isset($_POST['email']) ? $_POST['email'] : '';
-        
+
                 if (!empty($ho_ten) && !empty($mat_khau) && !empty($email)) {
-                    insert_taikhoan($ho_ten, $mat_khau, $email);
-                    $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập";
+                    // Kiểm tra tên đăng nhập và email đã tồn tại hay chưa
+                    $check_login = check_login($ho_ten, $email);                 
+                    if ($check_login) {                                          
+                        $thongbao = "Tên đăng nhập hoặc email đã tồn tại.";
+                    } else {
+                        // Nếu tên đăng nhập và email chưa tồn tại, thực hiện thêm vào cơ sở dữ liệu
+                        insert_taikhoan($ho_ten, $mat_khau, $email);
+                        $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập.";
+                    }
                 } else {
                     $thongbao = "Vui lòng điền đầy đủ thông tin đăng ký.";
                 }
-            }
-            include "public/dangki_dangnhap/dangki.php";
-            break;
+            }                                 
+        include "public/dangki_dangnhap/dangki.php";
+        break;
+
 
         // Đăng nhập
         case 'dang_nhap':
@@ -109,7 +117,7 @@ if (isset ($_GET['act'])) {
             $load_all_tour = load_all_tour_tim_kiem($word, $id_tuor);
 
             if(empty($load_all_tour)){
-            $error_message = "Không tìm thấy tour phù hợp.";
+            $thongbao = "Không tìm thấy tour phù hợp.";
             }
         include "public/timkiem_tour.php";
         break;
@@ -118,9 +126,11 @@ if (isset ($_GET['act'])) {
             # code...
             break;
     }
+
 } else {
     include "public/trangchu.php";
 }
+
 
 include "public/footer.php";
 ?>
