@@ -20,4 +20,17 @@ function check_login($ho_ten,$email){
     return $tk;
 }
 
+// Cập nhật tài khoản
+function  update_taikhoan($id_nguoi_dung,$ho_ten,$email,$so_dien_thoai,$dia_chi,$anh_dai_dien){
+    if($anh_dai_dien!=""){
+         $sql="UPDATE nguoi_dung SET id_nguoi_dung='".$id_nguoi_dung."',ho_ten='".$ho_ten."',email='".$email."',so_dien_thoai='".$so_dien_thoai."',dia_chi='".$dia_chi."',anh_dai_dien='".$anh_dai_dien."'
+     WHERE id_nguoi_dung=".$id_nguoi_dung;
+    }else{  
+        $sql="UPDATE nguoi_dung SET id_nguoi_dung='".$id_nguoi_dung."',ho_ten='".$ho_ten."',email='".$email."',so_dien_thoai='".$so_dien_thoai."',dia_chi='".$dia_chi."'
+        WHERE id_nguoi_dung=".$id_nguoi_dung;
+    }
+    
+    pdo_execute($sql);
+}
+
 ?>

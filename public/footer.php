@@ -62,6 +62,7 @@
 <script src="./src/search.js"></script>
 <script src="./src/slider.js"></script>
 <script src="./src/bienthe.js"></script>
+<script src="./src/taikhoan.js"></script>
 
 </body>
 </html>

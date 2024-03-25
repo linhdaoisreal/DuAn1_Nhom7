@@ -90,16 +90,54 @@ if (isset ($_GET['act'])) {
                 $mat_khau = $_POST['mat_khau'];
                 $checkuser = check_user($ho_ten, $mat_khau);
                 if ($checkuser !== false) {
-                $_SESSION['ho_ten'] = $checkuser;
-                 $thongbao = "Đăng nhập thành công!";
-            header('Location:public/trangchu.php');
-                exit;
+                    $_SESSION['ho_ten'] = $checkuser;
+                    $thongbao = "Đăng nhập thành công!";
+                    header('Location:public/trangchu.php');
+
+                    exit;
                 } else {
-            $thongbao = "Tài khoản không tồn tại hoặc mật khẩu không đúng!";
+                    $thongbao = "Tài khoản không tồn tại hoặc mật khẩu không đúng!";
                 }
             }
-         include "public/dangki_dangnhap/dangnhap.php";
-         break;
+            include "public/dangki_dangnhap/dangnhap.php";
+            break;
+
+
+        // Đăng xuất
+        case 'dang_xuat':
+            session_unset();
+            header('Location:public/trangchu.php');
+            break;
+
+        // Chỉnh sửa tài khoản
+        case 'edit_taikhoan':
+            if(isset($_POST['capnhat'])&&($_POST['capnhat'])){
+                if(isset($_POST['id_nguoi_dung'], $_POST['ho_ten'], $_POST['email'], $_POST['so_dien_thoai'], $_POST['dia_chi'])) {
+                $id_nguoi_dung = $_POST['id_nguoi_dung'];
+                $ho_ten = isset($_POST['ho_ten']) ? $_POST['ho_ten'] : '';
+                $email = isset($_POST['email']) ? $_POST['email'] : '';
+                $so_dien_thoai = isset($_POST['so_dien_thoai']) ? $_POST['so_dien_thoai'] : '';
+                $dia_chi = isset($_POST['dia_chi']) ? $_POST['dia_chi'] : ''; 
+                $anh_dai_dien = $_FILES['anh_dai_dien']['name'];
+                $target_dir="./gallery/";
+                $target_file = $target_dir . basename($_FILES["anh_dai_dien"]["name"]);
+                      if (move_uploaded_file($_FILES["anh_dai_dien"]["tmp_name"], $target_file)) {
+                         // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " đã Uploads.";
+                        } else {
+                          //echo "Không Uploads được file";
+                        }                   
+                        update_taikhoan($id_nguoi_dung,$ho_ten,$email,$so_dien_thoai,$dia_chi,$anh_dai_dien);
+                        $_SESSION['ho_ten'] = check_user($ho_ten,$mat_khau);
+                        $thongbao = "Chỉnh sửa tài khoản thành công!";
+                        header('Location:index.php?act=edit_taikhoan');           
+               }else{
+                    echo 'Không update được';
+               }
+            }      
+                include "public/taikhoan/edit_taikhoan.php";
+                break;
+
+
 
        // Tìm tour
         case 'tim_tour':
