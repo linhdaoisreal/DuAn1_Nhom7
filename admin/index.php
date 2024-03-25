@@ -396,9 +396,18 @@ if (isset ($_GET['act'])) {
             include ("quanly_trung_gian/trunggian_nxp/list.php");
             break;
 
-        case 'add_trung_gian_nxp':
+        case 'load_trung_gian_nxp':
             $tuor = load_all_tour();
             $nxp = all_ngay_xuat_phat();
+            if(isset ($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)){
+                $load_one_tour = load_one_tour($_GET['id_tuor']);
+            }
+            include ("quanly_trung_gian/trunggian_nxp/add.php");
+            break;
+
+        case 'add_trung_gian_nxp':
+            
+            
             if (isset ($_POST['themmoi']) && ($_POST['themmoi'])) {
                 $id_tuor = $_POST['id_tuor'];
                 $id_ngay = $_POST['id_ngay'];
@@ -481,14 +490,23 @@ if (isset ($_GET['act'])) {
             break;
 
         
-        // TRUNG GIAN GIỮA TUOR BÀ THƠI GIAN
+        // TRUNG GIAN GIỮA TUOR VÀ THƠI GIAN
         // hiển thị danh sách
         case 'list_trunggian_tg':
             $listTrungGianTG = all_trunggian_tg();
             include_once ("quanly_trung_gian/trunggian_tg/list.php");
             break;
 
-        // thên trung gian thời gian
+        // thêm trung gian thời gian
+        case 'load_trung_gian_tg':
+            $tuor = load_all_tour();
+            $nxp = all_ngay_xuat_phat();
+            if(isset ($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)){
+                $load_one_tour = load_one_tour($_GET['id_tuor']);
+            }
+            include ("quanly_trung_gian/trunggian_tg/add.php");
+            break;
+
         case 'add_trunggian_tg':
             $tuor = load_all_tour();
             $listThoiGian = all_thoi_gian();

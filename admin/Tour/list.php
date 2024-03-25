@@ -11,8 +11,6 @@
                     <th>Mã Tour</th>
                     <th>Tên Tour</th>
                     <th>Giá</th>
-                    <th>Tổng quan</th>
-                    <th>Hành trình</th>
                     <th>Số lượng</th>
                     <th>Địa điểm</th>
                     <th>Phương tiện</th>
@@ -31,15 +29,24 @@
                             <td><input type="checkbox" name="" id=""></td>
                             <td>' . $id_tuor . '</td>
                             <td>' . $ten_tuor . '</td>
-                            <td>' . $gia . '</td>  
-                            <td>' . $tong_quan . '</td>  
-                            <td>' . $hanh_trinh . '</td>  
+                            <td>' . $gia . '</td>   
                             <td>' . $so_luong . '</td>  
                             <td>' . $dia_diem . '</td> 
                             <td>' . $phuong_tien . '</td> 
-                            <td>' . $id_mien . '/' . $id_mua . '</td>     
-                            <td><a href="' . $suaTour . '"><i class="fa-solid fa-pen-to-square m-2"></i></a> 
-                            <a href="' . $xoaTour . '" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
+                            <td>' . $ten_mien . '/' . $ten_mua . '</td>     
+                            <td>
+                                <a href="' . $suaTour . '"><i class="fa-solid fa-pen-to-square m-2"></i></a> 
+                                <a href="' . $xoaTour . '" onclick="return confirm(' . $thongbaoxoa . ');">
+                                    <i class="fa-solid fa-trash m-4"></i>
+                                </a>
+
+                                <div class="cursor-pointer">
+                                    <a href="index.php?act=load_trung_gian_nxp&id_tuor='.$id_tuor.'">Thêm ngày xuất phát</a>
+                                </div>
+                                <div class="cursor-pointer">
+                                    <a href="index.php?act=load_trung_gian_tg&id_tuor='.$id_tuor.'">Thêm thời gian tuor</a>
+                                </div>
+                            </td>                      
                                         
                         </tr>
 

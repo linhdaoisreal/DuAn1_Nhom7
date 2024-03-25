@@ -10,7 +10,9 @@ function add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_
 
 function load_all_tour()
 {
-    $sql = "SELECT * FROM tuor ";
+    $sql = "SELECT *, ten_mien, ten_mua FROM tuor 
+    JOIN danhmuc_mien ON danhmuc_mien.id_mien = tuor.id_mien 
+    JOIN danhmuc_mua ON danhmuc_mua.id_mua = tuor.id_mua";
     $load_all_tour = pdo_query($sql);
     return $load_all_tour;
 }

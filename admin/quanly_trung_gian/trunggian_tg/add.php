@@ -1,6 +1,11 @@
+<?php
+if (is_array($load_one_tour)) {
+    extract($load_one_tour);
+}
+?>
 <div class="row flex flex-col flex-1 overflow-y-auto">
     <div class="">
-        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm mới Trung gian Thời Gian</h1>
+        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm mới Biến thể Thời Gian</h1>
     </div>
     <!-- Form nhập thêm mùa -->
     <div class="ml-10 mt-8">
@@ -13,10 +18,12 @@
                     <option value="">-None-</option>
                     <?php
                         foreach ($tuor as $checkTuor) {
-                            extract($checkTuor);
-                            echo '
-                            <option value='.$id_tuor.'>'.$ten_tuor.'</option>
-                            ';
+                            if($checkTuor['id_tuor'] == $id_tuor){
+                                $check = "selected";
+                            }else{
+                                $check = "";
+                            }
+                            echo '<option value="'.$checkTuor['id_tuor'].'" '.$check.'> '.$checkTuor['ten_tuor'].' </option>';
                         }
                     ?>
                 </select>
@@ -72,7 +79,7 @@
                     class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
                 <input type="reset" name="" value="Nhập lại"
                     class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
-                <a href="index.php?act=list_trunggian_tg">
+                <a href="index.php?act=list_tour">
                     <input type="button" name="" value="Danh sách"
                 class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
             </div>
