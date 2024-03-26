@@ -14,7 +14,7 @@ function all_binhluan($idpro) {
     FROM binh_luan
     INNER JOIN tuor ON tuor.id_tuor = binh_luan.id_tuor
     INNER JOIN nguoi_dung ON nguoi_dung.id_nguoi_dung = binh_luan.id_nguoi_dung
-    WHERE id_tuor
+    WHERE 1";
     
 
     if ($idpro > 0) {

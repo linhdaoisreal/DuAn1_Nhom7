@@ -29,39 +29,23 @@
             <div class="grid-rows-1 md:grid-cols-1 backdrop-blur-sm ">
                 <div class="flex items-center h-screen justify-evenly w-full text-white">
 
-                    <form action="index.php?act=dang_nhap" class="leading-9 space-y-4" method="post">
-                        <h2 class="text-center font-bold text-3xl mb-7">Đăng nhập</h2>
-                        <!-- Tên đăng nhập -->
+                    <form action="index.php?act=quenmk" class="leading-9 space-y-4" method="post">
+                        <h2 class="text-center font-bold text-3xl mb-7">Quên mật khẩu</h2>
+                       
+                        <!-- Email -->
                         <div class="">
-                            <label class="font-semibold">Tên đăng nhập </label>
+                            <label class="font-semibold">Email</label>
                             <div class="inline">
-                                <span class=""><i class="fa-solid fa-user"></i></span>
+                                <span class=""><i class="fa-solid fa-envelope"></i></span>
                                 <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="text" name="ho_ten">
+                                    type="email" name="email">
                             </div>
                         </div>
 
-                        <!-- Mật khẩu -->
-                        <div class="">
-                            <label class="font-semibold">Mật khẩu</label>
-                            <div class="inline">
-                                <span class=""><i class="fa-solid fa-lock"></i></span>
-                                <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="password" name="mat_khau">
-                            </div>
-                        </div>
-
-                        <!--Ghi nhớ tài khoản  -->
-                        <div class="remember">
-                            <label for=""><input type="checkbox">Ghi nhớ tài khoản</label>
-                            <!-- Quên mật khẩu -->
-                            <a href="index.php?act=quenmk" class="m-4">Quên mật khẩu?</a>
-                        </div>
 
                         <!-- Đăng nhập submit -->
-                        <div class="">
-                           
-                            <input type="submit" name="dangnhap" value="Đăng nhập" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
+                        <div class="">                         
+                            <input type="submit" name="guiemail" value="Xác nhận" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
                         </div>
 
                         <!-- Không có tài khoản -->
@@ -73,7 +57,7 @@
                         
                         <!-- Thông báo -->
                         <?php if (isset($thongbao) && !empty($thongbao)): ?>
-                        <div class="text-orange-500 font-semibold"><?php echo $thongbao; ?></div>
+                        <div class="text-orange-500 font-semibold text-lg"><?php echo $thongbao; ?></div>
                         <?php endif; ?>
                     </form>
                 </div>

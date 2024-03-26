@@ -33,4 +33,11 @@ function  update_taikhoan($id_nguoi_dung,$ho_ten,$email,$so_dien_thoai,$dia_chi,
     pdo_execute($sql);
 }
 
+//Quên mật khẩu
+function check_email($email){
+    $sql="SELECT * FROM nguoi_dung WHERE email='".$email."'";
+    $hh=pdo_query_one($sql);
+    return $hh;
+}
+
 ?>

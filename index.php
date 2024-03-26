@@ -137,8 +137,22 @@ if (isset ($_GET['act'])) {
                     echo 'Không update được';
                }
             }      
-                include "public/taikhoan/edit_taikhoan.php";
-                break;
+            include "public/taikhoan/edit_taikhoan.php";
+            break;
+
+        // Quên mật khẩu
+        case 'quenmk':
+            if(isset($_POST['guiemail'])&&($_POST['guiemail'])){
+             $email = isset($_POST['email']) ? $_POST['email'] : '';
+                    $checkemail=check_email($email);
+                    if(is_array($checkemail)){
+                        $thongbao="Mật khẩu của bạn là: ".$checkemail['mat_khau'];
+                    }else{
+                        $thongbao="Email không tồn lại!";
+                    }      
+            }
+            include "public/dangki_dangnhap/quenmk.php";
+            break;
 
 
 
