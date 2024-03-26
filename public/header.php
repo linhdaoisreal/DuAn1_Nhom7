@@ -106,7 +106,7 @@
                 ?>
                 <div class="relative" onclick="toggleDropdown()">
                 <div class="flex items-center">
-                    <img class="mr-3" style="width:30px;height:30px;border-radius: 50%" src="./gallery/<?= $anh_dai_dien?>" alt="">
+                    <img class="mr-3" style="width:35px;height:35px;border-radius: 50%" src="./gallery/<?= $anh_dai_dien?>" alt="">
                      <p id="userDropdownButton" class="font-semibold text-orange-400 cursor-pointer"><?= $ho_ten ?></p>
                 </div>
                      <ul id="userDropdownMenu" class="absolute hidden mt-2 py-2 w-28 bg-white rounded-md shadow-md z-10">

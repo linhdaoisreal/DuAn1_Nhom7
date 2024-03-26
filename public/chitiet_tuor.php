@@ -138,7 +138,7 @@ if (is_array($load_one_tour)) {
                     <div class="flex justify-between py-3">
                         <h3 class="text-[1.1rem] text-sky-500">Thời gian: </h3>
                         <div class="grid grid-cols-2 ">
-                        <?php
+                            <?php
                         foreach ($trunggian_thoi_gian_tuor as $checkTG) {
                             extract($checkTG);
                             echo '                           
@@ -186,23 +186,75 @@ if (is_array($load_one_tour)) {
 
         <!-- Bình luận -->
         <div class="p-4 md:px-12">
-            <iframe allowfullscreen="" style="border: 1px solid #df912a;border-radius: 4px;" frameborder="0"
+            <iframe src="" allowfullscreen="" style="border: 1px solid #df912a;border-radius: 4px;" frameborder="0"
                 class="w-full"></iframe>
         </div>
 
-        <!-- Form nhập bình luận -->
+        <?php
+    $idpro = isset($_REQUEST['idpro']) ? $_REQUEST['idpro'] : '';
+    // Lấy dữ liệu về
+    $dsbinhluan = all_binhluan($idpro);
+    ?>
+        <!--  From Bình luận -->
         <div class="p-4 md:px-12">
-            <form class="w-full bg-white rounded-lg border mx-auto h-36">
-                <div class="px-3 mb-2 mt-2">
-                    <textarea placeholder="comment"
-                        class="w-full bg-gray-100 rounded border border-gray-400 
-                            leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
+            <div class="boxcontent2 binhluan">
+                <table>
+                    <ul>
+                        <?php if ($dsbinhluan): ?>
+                        <?php foreach($dsbinhluan as $binhluan): ?>
+                        <tr>
+                            <td><img class="mr-3" style="width:40px;height:40px;border-radius: 50%"
+                                    src="./gallery/<?= $anh_dai_dien?>" alt=""></td>
+                            <td><?= $binhluan['ho_ten'] ?></td>
+                            <td><?= $binhluan['noi_dung'] ?></td>
+                            <td><?= $binhluan['ngay_binh_luan'] ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                        <?php else: ?>
+                        <p>Không có bình luận nào.</p>
+                        <?php endif; ?>
+                    </ul>
+                </table>
+            </div>
+
+            <div>
+                <div class="boxfooter searchbox">
+                    <!-- Check đăng nhập -->
+                    <?php if (isset($_SESSION['ho_ten'])): ?>
+                    <form class="w-full bg-white rounded-lg border mx-auto h-36" action="<?=$_SERVER['PHP_SELF'];?>"
+                        method="post">
+                        <input type="hidden" name="idpro" value="<?=$idpro?>"> <!-- Thêm trường ẩn -->
+                        <div class="px-3 mb-2 mt-2">
+                            <textarea placeholder="comment" name="noi_dung"
+                                class="w-full bg-gray-100 rounded border border-gray-400 
+                                leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
+                        </div>
+                        <div class="flex justify-end px-4">
+                            <input type="submit" name="gui_binh_luan"
+                                class="px-2.5 py-1.5 rounded-md text-white text-sm bg-cyan-500 cursor-pointer"
+                                value="Comment">
+                        </div>
+                    </form>
+                    <?php else: ?>
+                    <h3 class="text-orange-500 font-semibold text-xl mt-10">Vui lòng đăng nhập để bình luận!</h3>
+                    <?php endif; ?>
                 </div>
-                <div class="flex justify-end px-4">
-                    <input type="submit" class="px-2.5 py-1.5 rounded-md text-white text-sm bg-cyan-500 cursor-pointer"
-                        value="Comment">
-                </div>
-            </form>
+            </div>
+
+            <?php
+            if(isset($_POST['gui_binh_luan']) && isset($_POST['noi_dung']) && isset($_POST['idpro']) && isset($_SESSION['ho_ten'])){
+                $idpro = $_POST['idpro'];
+                $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
+                $noi_dung = $_POST['noi_dung'];    
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                $ngay_binh_luan = date("h:i:sa d/m/Y");
+                insert_binhluan($id_nguoi_dung, $idpro, $noi_dung, $ngay_binh_luan);
+                
+                // Sau khi thêm bình luận thành công, chuyển hướng người dùng đến trang hiện tại để tải lại trang đầy đủ
+                header("Location: ".$_SERVER['PHP_SELF']);
+                exit; // Dừng thực thi mã PHP tiếp theo
+            }           
+            ?>
         </div>
     </div>
 </section>

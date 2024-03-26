@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include "model/pdo.php";
 include "global.php";
@@ -7,6 +8,8 @@ include "model/danhmuc_mien.php";
 include "model/danhmuc_mua.php";
 include "model/hinh_anh.php";
 include "model/taikhoan.php";
+include "model/binhluan.php";
+
 
 $mien = all_danhmuc_mien();
 $mua = all_danhmuc_mua();
@@ -92,7 +95,7 @@ if (isset ($_GET['act'])) {
                 if ($checkuser !== false) {
                     $_SESSION['ho_ten'] = $checkuser;
                     $thongbao = "Đăng nhập thành công!";
-                    header('Location:public/trangchu.php');
+                    header("Location: index.php");
 
                     exit;
                 } else {
@@ -106,7 +109,7 @@ if (isset ($_GET['act'])) {
         // Đăng xuất
         case 'dang_xuat':
             session_unset();
-            header('Location:public/trangchu.php');
+            header("Location: index.php");
             break;
 
         // Chỉnh sửa tài khoản
