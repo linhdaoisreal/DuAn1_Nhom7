@@ -136,7 +136,7 @@
                     Tuor
                 </a>
                 <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                    Người dùng
+                    Tài khoản
                 </a>
                 <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Bình luận

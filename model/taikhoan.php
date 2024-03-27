@@ -40,4 +40,18 @@ function check_email($email){
     return $hh;
 }
 
+// Đổi mật khẩu
+function check_mat_khau($id_nguoi_dung, $mat_khau){
+    $sql = "SELECT * FROM nguoi_dung WHERE id_nguoi_dung='$id_nguoi_dung' AND mat_khau='$mat_khau'";
+    $tk = pdo_query_one($sql);
+    return $tk;
+}
+
+
+// Thực hiện đổi mật khẩu
+function doi_matkhau($id_nguoi_dung, $mat_khau_moi){
+    $sql = "UPDATE nguoi_dung SET mat_khau='$mat_khau_moi' WHERE id_nguoi_dung=".$id_nguoi_dung;
+    pdo_execute($sql);
+}
+
 ?>

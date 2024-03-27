@@ -111,11 +111,13 @@
                                 <?= $ho_ten ?></p>
                         </div>
                         <ul id="userDropdownMenu"
-                            class="absolute hidden mt-2 py-2 w-28 bg-white rounded-md shadow-md z-10">
+                            class="absolute hidden mt-2 py-2 w-32 bg-white rounded-md shadow-md z-10">
                             <div class="grid-cols-1">
-                                <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200 text-sm"
+                                <a class="block px-4 py-2 text-gray-800 hover:bg-orange-200 text-sm"
                                     href="index.php?act=edit_taikhoan">Chỉnh sửa</a>
-                                <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200 text-sm"
+                                <a class="block px-4 py-2 text-gray-800 hover:bg-orange-200 text-sm"
+                                    href="index.php?act=doi_matkhau">Đổi mật khẩu</a>
+                                <a class="block px-4 py-2 text-gray-800 hover:bg-orange-200 text-sm"
                                     href="index.php?act=dang_xuat">Đăng xuất</a>
                             </div>
                         </ul>

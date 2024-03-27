@@ -154,6 +154,37 @@ if (isset ($_GET['act'])) {
             include "public/dangki_dangnhap/quenmk.php";
             break;
 
+        // Đổi mật khẩu
+        case 'doi_matkhau':
+            if(isset($_POST['doimatkhau'])){
+                $id_nguoi_dung = isset($_POST['id_nguoi_dung']) ? $_POST['id_nguoi_dung'] : '';
+                $mat_khau = isset($_POST['mat_khau']) ? $_POST['mat_khau'] : '';
+                $mat_khau_moi = isset($_POST['mat_khau_moi']) ? $_POST['mat_khau_moi'] : '';
+                $xacnhan_mat_khau = isset($_POST['xacnhan_mat_khau']) ? $_POST['xacnhan_mat_khau'] : '';
+        
+                // Kiểm tra mật khẩu cũ
+                $check_mat_khau = check_mat_khau($id_nguoi_dung, $mat_khau);
+                if($check_mat_khau) {
+                    // Kiểm tra mật khẩu mới và xác nhận mật khẩu mới
+                    if($mat_khau_moi !== $xacnhan_mat_khau) {
+                        $thongbao = "Mật khẩu mới và xác nhận mật khẩu mới không khớp! Vui lòng nhập lại.";
+                    } else {
+                        // Thực hiện đổi mật khẩu
+                        $doi_matkhau = doi_matkhau($id_nguoi_dung, $mat_khau_moi);
+                        if($doi_matkhau) {
+                            $thongbao = "Lỗi đổi mật khẩu";
+                        } else {
+                            $thongbao = "Đổi mật khẩu thành công!";
+                        }
+                    }
+                } else {
+                    $thongbao = "Mật khẩu cũ không đúng! Vui lòng thử lại.";
+                }
+            }
+            include "public/taikhoan/doi_matkhau.php";
+            break;
+        
+
 
 
        // Tìm tour
