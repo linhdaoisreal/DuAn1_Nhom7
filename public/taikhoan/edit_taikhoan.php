@@ -15,7 +15,7 @@
                 <form action="index.php?act=edit_taikhoan" method="post" enctype="multipart/form-data">
                     <div class="flex mb-10">
                         <div class="mr-10">
-                            <img style="width:100px;height:100px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt=""><br>
+                            <img style="width:120px;height:120px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt=""><br>
                             <input type="file" name="anh_dai_dien">
                         </div>
                         <div>
@@ -47,7 +47,7 @@
                         <input  type="hidden" name="id_nguoi_dung" value="<?=$id_nguoi_dung ?>">
                         <input class="border-2 border-orange-400 rounded-3xl px-2 py-2 w-40 bg-orange-400 text-white mr-10 cursor-pointer" type="submit" value="Cập nhật" name="capnhat">
                         <input class="border-2 border-orange-400 rounded-3xl px-2 py-2 w-40 bg-orange-400 text-white cursor-pointer mr-10" type="reset" value="Nhập lại">
-                        <input class="border-2 border-orange-400 rounded-3xl px-2 py-2 w-40 bg-orange-400 text-white cursor-pointer" type="reset" value="Đổi mật khẩu">
+                       
                     </div>
                 </form>
 

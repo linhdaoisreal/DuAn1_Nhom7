@@ -124,49 +124,46 @@
             </div>
         </div>
     </header> -->
-    <div class="flex h-screen ">
-        <!-- sidebar -->
-        <div class="hidden md:flex flex-col w-1/6 bg-gray-800">
-            <div class="flex items-center justify-center h-16 bg-gray-900">
-                <span class="text-white font-bold uppercase">Admin</span>
-            </div>
-            <div class="flex flex-col flex-1 overflow-y-auto">
-                <nav class="flex-1 px-2 py-4 bg-gray-800">
-                    <a href="index.php?act=list_danhmuc_mua"
-                        class="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700">
-                        Danh mục mùa
-                    </a>
-                    <a href="index.php?act=list_danhmuc_mien"
-                        class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Danh mục miền
-                    </a>
-                    <a href="index.php?act=list_ngay_xuat_phat"
-                        class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Ngày xuất phát
-                    </a>
-                    <a href="index.php?act=list_thoi_gian"
-                        class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Thời gian
-                    </a>
-                    <a href="index.php?act=list_tour"
-                        class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Tuor
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Người dùng
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Bình luận
-                    </a>
-                    <a href="index.php?act=list_hinh_anh" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Ảnh
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Đơn hàng
-                    </a>
-                    <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                        Thống kê
-                    </a>
-                </nav>
-            </div>
+<div class="flex h-screen ">
+    <!-- sidebar -->
+    <div class="hidden md:flex flex-col w-1/6 bg-gray-800">
+        <div class="flex items-center justify-center h-16 bg-gray-900">
+            <span class="text-white font-bold uppercase">Admin</span>
         </div>
+        <div class="flex flex-col flex-1 overflow-y-auto">
+            <nav class="flex-1 px-2 py-4 bg-gray-800">
+                <a href="index.php?act=list_danhmuc_mua" class="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700">
+                    Danh mục mùa
+                </a>
+                <a href="index.php?act=list_danhmuc_mien" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Danh mục miền
+                </a>
+                <a href="index.php?act=list_ngay_xuat_phat" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Ngày xuất phát
+                </a>
+                <a href="index.php?act=list_thoi_gian" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Thời gian
+                </a>
+                <a href="index.php?act=list_tour" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Tuor
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Người dùng
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Bình luận
+                </a>
+                <a href="index.php?act=list_hinh_anh" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Ảnh
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Đơn hàng
+                </a>
+                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                    Thống kê
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    
