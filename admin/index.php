@@ -8,6 +8,7 @@ include "../model/hinh_anh.php";
 include "../model/hang_tour.php";
 include "../model/ngay_xuat_phat.php";
 include "../model/thoi_gian.php";
+include "../model/taikhoan.php";
 
 if (isset ($_GET['act'])) {
     $act = $_GET['act'];
@@ -552,7 +553,20 @@ if (isset ($_GET['act'])) {
             break;
 
 
-        // Đăng nhập - Đăng ký
+        // Danh sách tài khoản
+        case 'list_taikhoan':
+            $listtaikhoan=all_taikhoan("",0);
+            include ("taikhoan/list.php");
+            break;
+
+        // Xóa tài khoản người dùng
+        case 'xoaTaiKhoan';
+        if (isset ($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung'] > 0)) {
+            delete_taikhoan($_GET['id_nguoi_dung']);
+        }
+        $listtaikhoan=all_taikhoan();
+        include ("taikhoan/list.php");
+        break;
             
 
         default:

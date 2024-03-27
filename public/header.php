@@ -74,7 +74,7 @@
                         </div>
 
                         <li class="m-7 md:m-0">
-                            <a class="text-orange-500 menu" href="index.php?act=lien_he">Hỗ trợ</a>
+                            <a class="text-orange-500 menu" href="index.php?act=lien_he">Liên hệ</a>
                         </li>
                         <li class="m-7 md:m-0">
                             <a class="text-orange-500 menu" href="index.php?act=gioi_thieu">Về chúng tôi</a>

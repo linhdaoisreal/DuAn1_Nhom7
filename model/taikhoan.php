@@ -54,4 +54,18 @@ function doi_matkhau($id_nguoi_dung, $mat_khau_moi){
     pdo_execute($sql);
 }
 
+
+// Load danh sách tài khoản
+function all_taikhoan(){
+    $sql="SELECT * FROM nguoi_dung ORDER BY id_nguoi_dung desc";
+    $listtaikhoan=pdo_query($sql);
+    return $listtaikhoan;
+}
+
+// Xóa tài khoản
+function delete_taikhoan($id_nguoi_dung){
+    $sql="DELETE FROM nguoi_dung WHERE id_nguoi_dung=".$id_nguoi_dung;
+    pdo_execute($sql);
+}
+
 ?>
