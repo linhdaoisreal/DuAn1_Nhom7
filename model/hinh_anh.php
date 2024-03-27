@@ -54,4 +54,9 @@ function  delete_hinh_anh($id_hinh_anh){
     pdo_execute($sql);
 }
 
+function  delete_hinh_anh_tuor($id_tuor){
+    $sql="DELETE FROM hinh_anh WHERE id_tour=".$id_tuor;
+    pdo_execute($sql);
+}
+
 ?>

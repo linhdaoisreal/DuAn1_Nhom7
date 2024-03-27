@@ -68,7 +68,7 @@ if (is_array($load_one_tour)) {
                                 lượng</span>
                             <div>
                                 <p class="text-gray-500">
-                                    <?= $so_luong ?></span>
+                                    <?php ?></span>
                                 </p>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ if (is_array($load_one_tour)) {
                                 điểm</span>
                             <div>
                                 <p class="text-gray-500">
-                                    <?= $dia_diem ?>
+                                    <?php ?>
                                 </p>
                             </div>
                         </div>
@@ -121,52 +121,36 @@ if (is_array($load_one_tour)) {
                 </div>
 
                 <form class="md:ml-10" action="" method="post">
-                    <!-- <div class="flex justify-between py-3">
-                        <h3 class="text-[1.1rem] text-sky-500">Hạng Tour: </h3>
-                        <?php
-                        foreach ($trunggian_hang_tuor as $checkTG) {
-                            extract($checkTG);
-                            echo '
-                                    <div>
-                                        <input type="radio" name="option" id="hang_tuor">
-                                        <span> ' . $ten_hang_tuor . ' </span>
-                                    </div>
-                                ';
-                        }
-                        ?>
-                    </div> -->
-                    <div class="flex justify-between py-3">
-                        <h3 class="text-[1.1rem] text-sky-500">Thời gian: </h3>
-                        <div class="grid grid-cols-2 ">
-                            <?php
-                        foreach ($trunggian_thoi_gian_tuor as $checkTG) {
-                            extract($checkTG);
-                            echo '                           
-                                    <div class="mr-6 sm:mr-12 md:mr-10">
-                                        <input type="radio" name="thoi_gian" value="'.$muc_tang.'" onchange="bienThe(this)">
-                                        <label for="thoi_gian">' . $so_ngay_dem . '</label>
-                                    </div>
-                                
-                            ';
-                        }
-                        ?>
+                    <div class="grid grid-cols-2">
+                        <div class="flex">
+                            <h3 class="text-[1.1rem] text-sky-500">Thời gian: </h3>
+                            <p class="m-4"> <?php if (is_array($load_snd)) {extract($load_snd);} echo $so_ngay_dem ?> </p>
                         </div>
+
+
                     </div>
+
                     <div class="py-3 flex ">
                         <h3 class="text-[1.1rem] text-sky-500">Ngày khởi hành: </h3>
                         <div class="pl-4">
                             <select name="" id="" class="w-full">
                                 <?php
-                                foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
-                                    extract($checkTG);
-                                    echo '
-                                            <option value="">' . $ngay . '</option>
-                                        ';
-                                }
-                                ?>
+                                    foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
+                                        extract($checkTG);
+                                        echo '
+                                                <option value="">' . $ngay . '</option>
+                                            ';
+                                    }
+                                    ?>
                             </select>
                         </div>
                     </div>
+
+
+
+
+
+
                     <div class="py-3 flex leading-normal ">
                         <p class="text-[1.5rem] text-sky-500 ">Giá: </p>
                         <input type="hidden" id="gia_goc" value="<?= $gia ?>">

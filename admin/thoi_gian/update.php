@@ -24,38 +24,17 @@ if (is_array($load_one_thoi_gian)) {
                 <span id="ten_tour_error" class="text-red-500"></span>
             </div>
 
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Mức Tăng</label><br>
-                <input type="text" name="muc_tang" id="gia" class="border-orange-300 w-96 border-2 rounded-lg h-9"
-                value="<?php if (isset($muc_tang) && ($muc_tang != "")) echo $muc_tang ?>">
-                <span id="gia_error" class="text-red-500"></span>
-            </div>
-
             <!-- Script JavaScript -->
             <script>
                 document.querySelector('form').addEventListener('submit', function (event) {
                     var tenTourInput = document.getElementById('ten_tour');
                     var tenTourError = document.getElementById('ten_tour_error');
 
-                   
-
-                    var muctangInput = document.getElementById('muc_tang');
-                    var muctangError = document.getElementById('muc_tang_error');
-
-
                     if (tenTourInput.value.trim() === '') {
                         tenTourError.textContent = "Không để trống";
                         event.preventDefault(); // Ngăn chặn gửi form
                     } else {
                         tenTourError.textContent = ""; // Xóa thông báo lỗi nếu có
-                    }
-                  
-
-                    if (muctangInput.value.trim() === '') {
-                        muctangError.textContent = "Không để trống";
-                        event.preventDefault(); // Ngăn chặn gửi form
-                    } else {
-                        muctangError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
 
                 });

@@ -1,13 +1,12 @@
 <?php
-
 function all_thoi_gian(){
     $sql="SELECT * FROM thoi_gian ORDER BY id_thoi_gian DESC";
     $list_thoi_gian=pdo_query($sql);
     return  $list_thoi_gian;
 }
 // Thêm mới thoi gian
-function add_thoi_gian($so_ngay_dem,$muc_tang){
-    $sql = "INSERT INTO thoi_gian(so_ngay_dem,muc_tang) VALUES ('$so_ngay_dem','$muc_tang')";
+function add_thoi_gian($so_ngay_dem){
+    $sql = "INSERT INTO thoi_gian(so_ngay_dem) VALUES ('$so_ngay_dem')";
     pdo_execute($sql);
 }
 
@@ -18,11 +17,17 @@ function load_one_thoi_gian($id_thoi_gian){
     return $load_one_thoi_gian;
 }
 
-function update_thoi_gian($so_ngay_dem,$muc_tang,$id_thoi_gian){
-    $sql = "UPDATE thoi_gian SET so_ngay_dem='$so_ngay_dem',muc_tang='$muc_tang' WHERE id_thoi_gian=".$id_thoi_gian;
+function update_thoi_gian($so_ngay_dem,$id_thoi_gian){
+    $sql = "UPDATE thoi_gian SET so_ngay_dem='$so_ngay_dem' WHERE id_thoi_gian=".$id_thoi_gian;
     pdo_execute($sql);
 }
-// TRUNG GIAN GIWUAX TUOR VÀ THỜI GIAN
+
+function delete_thoi_gian($id_thoi_gian){
+    $sql = "DELETE FROM thoi_gian WHERE id_thoi_gian = ".$id_thoi_gian;
+    pdo_execute($sql);
+}
+
+// TRUNG GIAN GIỮA TUOR VÀ THỜI GIAN
 // hiển thi danh sách trung gian
 function all_trunggian_tg(){
     $sql = "SELECT id_trunggian_tg, tuor_thoi_gian.id_tuor, tuor_thoi_gian.id_thoi_gian, ten_tuor, so_ngay_dem FROM tuor_thoi_gian 

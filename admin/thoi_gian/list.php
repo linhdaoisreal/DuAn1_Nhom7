@@ -10,31 +10,28 @@
                     <th></th>
                     <th>Mã Thời Gian</th>
                     <th>Số Ngày Đêm</th>
-                    <th>Mức Tăng</th>
                     <th>Thao Tác</th>
 
                 </tr>
 
                 <?php
-foreach($listThoiGian as $thoi_gian){
-    extract($thoi_gian);
-    $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
-    $suaThoiGian="index.php?act=sua_thoi_gian&id_thoi_gian=".$id_thoi_gian;
-    $xoaThoiGian="index.php?act=xoa_thoi_gian&id_thoi_gian=".$id_thoi_gian;
-    echo'
-<tr>
-    <td><input type="checkbox" name="" id=""></td>
-    <td>'.$id_thoi_gian.'</td>
-    <td>'.$so_ngay_dem.'</td>
-    <td>'.$muc_tang.'</td>
-    <td><a href="'.$suaThoiGian.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="'.$xoaThoiGian.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
-                
-</tr>
+                    foreach($listThoiGian as $thoi_gian){
+                        extract($thoi_gian);
+                        $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
+                        $suaThoiGian="index.php?act=sua_thoi_gian&id_thoi_gian=".$id_thoi_gian;
+                        $xoaThoiGian="index.php?act=xoa_thoi_gian&id_thoi_gian=".$id_thoi_gian;
+                        echo'
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>'.$id_thoi_gian.'</td>
+                        <td>'.$so_ngay_dem.'</td>
+                        <td><a href="'.$suaThoiGian.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="'.$xoaThoiGian.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
+                                    
+                    </tr>
+                    ';
+                    }
 
-    ';
-}
-
-?>
+                ?>
 
             </table>
         </div>

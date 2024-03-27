@@ -1,10 +1,10 @@
 <?php
 
 // Thêm mới tour
-function add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $id_mien, $id_mua)
+function add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $xuat_phat ,$id_mien, $id_mua, $id_thoi_gian)
 {
-    $sql = "INSERT INTO `tuor`(ten_tuor, gia, tong_quan, hanh_trinh, so_luong, dia_diem, phuong_tien, id_mien, id_mua) 
-    VALUES ('$ten_tour','$gia','$tong_quan','$hanh_trinh','$so_luong','$dia_diem','$phuong_tien','$id_mien','$id_mua');";
+    $sql = "INSERT INTO `tuor`(ten_tuor, gia, tong_quan, hanh_trinh, so_luong, dia_diem, phuong_tien, xuat_phat ,id_mien, id_mua, id_thoi_gian) 
+    VALUES ('$ten_tour','$gia','$tong_quan','$hanh_trinh','$so_luong','$dia_diem','$phuong_tien','$xuat_phat','$id_mien','$id_mua','$id_thoi_gian');";
     pdo_execute($sql);
 }
 
@@ -38,22 +38,30 @@ function load_all_tour_tim_kiem($word="",$id_tuor=0)
     return $load_all_tour;
 }
 
-
-
 function load_one_tour($id_tuor)
 {
-    $sql = "SELECT * , tuor.id_mien, tuor.id_mua, ten_mien, ten_mua FROM tuor 
+    $sql = "SELECT ten_tuor, gia, tong_quan, hanh_trinh, so_luong, dia_diem, phuong_tien, 
+    xuat_phat, tuor.id_mien, tuor.id_mua, ten_mien, ten_mua FROM tuor 
     JOIN danhmuc_mien ON danhmuc_mien.id_mien = tuor.id_mien 
-    JOIN danhmuc_mua ON danhmuc_mua.id_mua = tuor.id_mua
+    JOIN danhmuc_mua ON danhmuc_mua.id_mua = tuor.id_mua 
     WHERE id_tuor =" . $id_tuor;
     $load_one_tour = pdo_query_one($sql);
     return $load_one_tour;
 }
 
-function update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $id_mien, $id_mua, $id_tuor)
+function load_so_ngay_dem($id_tuor){
+    $SQL = "SELECT tuor.id_thoi_gian, so_ngay_dem FROM tuor 
+    JOIN thoi_gian ON thoi_gian.id_thoi_gian = tuor.id_thoi_gian WHERE id_tuor=".$id_tuor;
+    $load_so_ngay_dem = pdo_query_one($SQL);
+    return $load_so_ngay_dem;
+}
+
+function update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien,
+ $id_mien, $id_mua, $id_thoi_gian, $xuat_phat, $id_tuor)
 {
-    $sql = "UPDATE tuor SET ten_tuor='$ten_tuor' ,gia='$gia', tong_quan='$tong_quan', hanh_trinh='$hanh_trinh', so_luong='$so_luong',
-    dia_diem='$dia_diem', phuong_tien='$phuong_tien', id_mien='$id_mien', id_mua='$id_mua' WHERE id_tuor=" . $id_tuor;
+    $sql = "UPDATE `tuor` SET ten_tuor='$ten_tuor', gia='$gia', tong_quan='$tong_quan', hanh_trinh='$hanh_trinh', so_luong='$so_luong',
+    dia_diem='$dia_diem', phuong_tien='$phuong_tien', id_mien='$id_mien', id_mua='$id_mua', id_thoi_gian='$id_thoi_gian', xuat_phat='$xuat_phat' 
+    WHERE id_tuor = '$id_tuor'";
     pdo_execute($sql);
 }
 

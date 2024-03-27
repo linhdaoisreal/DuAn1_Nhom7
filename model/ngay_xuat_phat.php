@@ -66,4 +66,9 @@ function delete_trunggian_nxp($id_trunggian_nxp){
     pdo_execute($sql);
 }
 
+function delete_tuor_nxp($id_tuor){
+    $sql="DELETE FROM tuor_ngay_xuat_phat WHERE id_tuor=".$id_tuor;
+    pdo_execute($sql);
+}
+
 ?>
