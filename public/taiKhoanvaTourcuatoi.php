@@ -7,21 +7,35 @@
         </div>
         <!-- Nội dung chính -->
         <div class="grid grid-rows-1 gap-6 py-5 md:grid-cols-6 md:gap-10">
+            <!-- Check đăng nhập của người dùng -->
+            <?php
+                $login=false;
+                if(isset($_SESSION['ho_ten'])){
+                    $login=true;
+                }
+            ?>
+
+            <?php if ($login): ?>
             <!-- Thông tin tài khoản -->
             <div class="flex-row md:col-span-2 leading-9">
                 <h1 class="font-semibold text-2xl py-3 text-orange-400">Thông tin tài khoản</h1><br>
                 <!-- avarta -->
                 <div class="items-center flex justify-center mt-4">
-                <img style="width:200px;height:200px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt=""><br>
+                    <img style="width:200px;height:200px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt=""><br>
+                    </div>
+                    <p class="font-medium mt-6 text-lg text-cyan-900">Tên người dùng: <span class="font-normal"><?=$ho_ten ?></span></p>
+                    <p class="font-medium text-lg text-cyan-900">Email: <span class="font-normal"><?=$email ?></span></p>
+                    <p class="font-medium text-lg text-cyan-900">Số điện thoại: <span class="font-normal"><?=$so_dien_thoai?></span></p>
+                    <p class="font-medium text-lg text-cyan-900">Địa chỉ: <span class="font-normal"><?=$dia_chi?></span></p>                  
                 </div>
-                <p class="font-medium mt-6 text-lg">Tên người dùng: <span class="font-normal"><?=$ho_ten ?></span></p>
-                <p class="font-medium text-lg">Email: <span class="font-normal"><?=$email ?></span></p>
-                <p class="font-medium text-lg">Số điện thoại: <span class="font-normal"><?=$so_dien_thoai?></span></p>
-                <p class="font-medium text-lg">Địa chỉ: <span class="font-normal"><?=$dia_chi?></span>
-                </p>
-                
-
-            </div>
+               
+                <?php else: ?>
+                    <div class="flex-row md:col-span-2 leading-9">
+                    <h1 class="font-semibold text-2xl py-3 text-orange-400">Thông báo</h1>
+                    <p class="font-medium text-lg text-cyan-900">Bạn chưa đăng nhập!</p>
+                    </div>
+                <?php endif; ?>
+               
 
             <!-- Thông tin các tour đã đặt -->
             <div class="md:col-span-4">
