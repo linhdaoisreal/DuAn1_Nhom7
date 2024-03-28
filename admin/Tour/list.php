@@ -43,9 +43,6 @@
                                 <div class="cursor-pointer">
                                     <a href="index.php?act=load_trung_gian_nxp&id_tuor='.$id_tuor.'">Thêm ngày xuất phát</a>
                                 </div>
-                                <div class="cursor-pointer">
-                                    <a href="index.php?act=load_trung_gian_tg&id_tuor='.$id_tuor.'">Thêm thời gian tuor</a>
-                                </div>
                             </td>                      
                                         
                         </tr>

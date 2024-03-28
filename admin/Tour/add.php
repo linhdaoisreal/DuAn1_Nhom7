@@ -59,6 +59,13 @@
                 <input type="text" name="phuong_tien" id="phuong_tien" class="border-orange-300 w-96 border-2 rounded-lg h-9">
                 <span id="phuong_tien_error" class="text-red-500"></span>
             </div>
+
+            <!-- Phương tiện -->
+            <div class="mt-8">
+                <label for="" class="text-lg font-semibold text-orange-300">Phương tiện</label><br>
+                <input type="text" name="xuat_phat" id="xuat_phat" class="border-orange-300 w-96 border-2 rounded-lg h-9">
+                <span id="xuat_phat_error" class="text-red-500"></span>
+            </div>
             
             <!-- ID miền -->
             <div class="mt-8">
@@ -94,6 +101,23 @@
                 <span id="ma_mua_error" class="text-red-500"></span>
             </div>
 
+            <!-- ID thời gian -->
+            <div class="mt-8">
+                <label for="" class="text-lg font-semibold text-orange-300">Mã Thời Gian</label><br>
+                <select name="ma_thoi_gian" id="ma_thoi_gian" class="border-orange-300 w-96 border-2 rounded-lg h-9">
+                    <option value="">-None-</option>
+                    <?php
+                        foreach ($listThoiGian as $checkThoiGian) {
+                            extract($checkThoiGian);
+                            echo '
+                            <option value='.$id_thoi_gian.'>'.$so_ngay_dem.'</option>
+                            ';
+                        }
+                    ?>
+                </select>
+                <span id="ma_thoi_gian_error" class="text-red-500"></span>
+            </div>
+
             <!-- Script JavaScript -->
             <script>
                 document.querySelector('form').addEventListener('submit', function (event) {
@@ -118,11 +142,17 @@
                     var phuongTienInput = document.getElementById('phuong_tien');
                     var phuongTienError = document.getElementById('phuong_tien_error');
 
+                    var xuatPhatInput = document.getElementById('xuat_phat');
+                    var xuatPhatError = document.getElementById('xuat_phat_error');
+
                     var maMienInput = document.getElementById('ma_mien');
                     var maMienError = document.getElementById('ma_mien_error');
 
                     var maMuaInput = document.getElementById('ma_mua');
                     var maMuaError = document.getElementById('ma_mua_error');
+
+                    var maThoiGianInput = document.getElementById('ma_thoi_gian');
+                    var maThoiGianError = document.getElementById('ma_thoi_gian_error');
 
                     if (tenTourInput.value.trim() === '') {
                         tenTourError.textContent = "Không để trống";
@@ -173,6 +203,13 @@
                         phuongTienError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
 
+                    if (xuatPhatInput.value.trim() === '') {
+                        xuatPhatError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        xuatPhatError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
                     if (maMienInput.value.trim() === '') {
                         maMienError.textContent = "Không để trống";
                         event.preventDefault(); // Ngăn chặn gửi form
@@ -185,6 +222,13 @@
                         event.preventDefault(); // Ngăn chặn gửi form
                     } else {
                         maMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (ma_Thoi_GianInput.value.trim() === '') {
+                        ma_Thoi_GianError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        ma_Thoi_GianError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
                 });
             </script>

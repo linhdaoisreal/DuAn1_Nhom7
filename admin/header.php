@@ -10,6 +10,18 @@
     <link rel="stylesheet" href="../fontawesome-free/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Similesve Travel - Trang chủ</title>
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            /* Editing area */
+            min-height: 200px;
+        }
+
+        .ck-content .image {
+            /* Block images */
+            max-width: 80%;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -141,7 +153,7 @@
                 <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Bình luận
                 </a>
-                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                <a href="index.php?act=list_hinh_anh" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Ảnh
                 </a>
                 <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">

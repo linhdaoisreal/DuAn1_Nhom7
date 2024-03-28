@@ -74,6 +74,14 @@ if (is_array($load_one_tour)) {
                 value="<?php if (isset($phuong_tien) && ($phuong_tien != "")) echo $phuong_tien ?>">
                 <span id="phuong_tien_error" class="text-red-500"></span>
             </div>
+
+            <!-- Xuất phát -->
+            <div class="mt-8">
+                <label for="" class="text-lg font-semibold text-orange-300">Xuất phát</label><br>
+                <input type="text" name="xuat_phat" id="xuat_phat" class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                value="<?php if (isset($xuat_phat) && ($xuat_phat != "")) echo $xuat_phat ?>">
+                <span id="xuat_phat_error" class="text-red-500"></span>
+            </div>
             
             <!-- ID miền -->
             <div class="mt-8">
@@ -112,6 +120,25 @@ if (is_array($load_one_tour)) {
                 <span id="ma_mua_error" class="text-red-500"></span>
             </div>
 
+            <!-- ID thời gian -->
+            <div class="mt-8">
+                <label for="" class="text-lg font-semibold text-orange-300">Mã Thời Gian</label><br>
+                <select name="ma_thoi_gian" id="ma_thoi_gian" class="border-orange-300 w-96 border-2 rounded-lg h-9">
+                    <option value="">-None-</option>
+                    <?php
+                        foreach ($listThoiGian as $checkTG) {
+                            if($checkTG['id_thoi_gian'] == $id_thoi_gian){
+                                $check = "selected";
+                            }else{
+                                $check = "";
+                            }
+                            echo '<option value="'.$checkTG['id_thoi_gian'].'" '.$check.'> '.$checkTG['so_ngay_dem'].' </option>';
+                        }
+                    ?>
+                </select>
+                <span id="ma_thoi_gian_error" class="text-red-500"></span>
+            </div>
+
             <!-- Script JavaScript -->
             <script>
                 document.querySelector('form').addEventListener('submit', function (event) {
@@ -136,11 +163,17 @@ if (is_array($load_one_tour)) {
                     var phuongTienInput = document.getElementById('phuong_tien');
                     var phuongTienError = document.getElementById('phuong_tien_error');
 
+                    var xuatPhatInput = document.getElementById('xuat_phat');
+                    var xuatPhatError = document.getElementById('xuat_phat_error');
+
                     var maMienInput = document.getElementById('ma_mien');
                     var maMienError = document.getElementById('ma_mien_error');
 
                     var maMuaInput = document.getElementById('ma_mua');
                     var maMuaError = document.getElementById('ma_mua_error');
+
+                    var maThoiGianInput = document.getElementById('ma_thoi_gian');
+                    var maThoiGianError = document.getElementById('ma_thoi_gian_error');
 
                     if (tenTourInput.value.trim() === '') {
                         tenTourError.textContent = "Không để trống";
@@ -191,6 +224,13 @@ if (is_array($load_one_tour)) {
                         phuongTienError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
 
+                    if (xuatPhatInput.value.trim() === '') {
+                        xuatPhatError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        xuatPhatError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
                     if (maMienInput.value.trim() === '') {
                         maMienError.textContent = "Không để trống";
                         event.preventDefault(); // Ngăn chặn gửi form
@@ -203,6 +243,13 @@ if (is_array($load_one_tour)) {
                         event.preventDefault(); // Ngăn chặn gửi form
                     } else {
                         maMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (maThoiGianInput.value.trim() === '') {
+                        maThoiGianError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        maThoiGianError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
                 });
             </script>

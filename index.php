@@ -41,9 +41,8 @@ if (isset ($_GET['act'])) {
             if(isset($_GET['id_tuor']) && $_GET['id_tuor'] > 0){
                 $id_tuor = $_GET['id_tuor'];
                 $loadAnhTuor = all_hinh_anh($id_tuor);
+                $load_snd=load_so_ngay_dem($id_tuor);
                 $load_one_tour = load_one_tour($id_tuor);
-                $trunggian_hang_tuor = trunggian_hang_tuor_tuor($id_tuor);
-                $trunggian_thoi_gian_tuor = trunggian_thoi_gian_tuor($id_tuor);
                 $trunggian_ngay_xuat_phat_tuor = trunggian_ngay_xuat_phat_tuor($id_tuor);
             }
             include "public/chitiet_tuor.php";

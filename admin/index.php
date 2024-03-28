@@ -13,10 +13,7 @@ include "../model/taikhoan.php";
 if (isset ($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
-        //Trung gian
-        case 'trunggian':
-            include ("quanly_trung_gian/trunggian.php");
-            break;
+
         // Danh sách các mùa
         case 'list_danhmuc_mua':
             $list_danhmuc_mua = all_danhmuc_mua();
@@ -122,6 +119,7 @@ if (isset ($_GET['act'])) {
         case 'add_tour':
             $list_danhmuc_mien = all_danhmuc_mien();
             $list_danhmuc_mua = all_danhmuc_mua();
+            $listThoiGian = all_thoi_gian();
             if (isset ($_POST['add_new_tour']) && ($_POST['add_new_tour'])) {
                 $ten_tuor = $_POST['ten_tour'];
                 $gia = $_POST['gia'];
@@ -130,9 +128,11 @@ if (isset ($_GET['act'])) {
                 $so_luong = $_POST['so_luong'];
                 $dia_diem = $_POST['dia_diem'];
                 $phuong_tien = $_POST['phuong_tien'];
+                $xuat_phat = $_POST['xuat_phat'];
                 $id_mien = $_POST['ma_mien'];
                 $id_mua = $_POST['ma_mua'];
-                add_new_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $id_mien, $id_mua);
+                $id_thoi_gian = $_POST['ma_thoi_gian'];
+                add_new_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $xuat_phat ,$id_mien, $id_mua, $id_thoi_gian);
                 $thongbao = "Thêm thành công";
             }
             include_once "Tour/add.php";
@@ -141,6 +141,7 @@ if (isset ($_GET['act'])) {
         case 'sua_tour':
             $list_danhmuc_mien = all_danhmuc_mien();
             $list_danhmuc_mua = all_danhmuc_mua();
+            $listThoiGian = all_thoi_gian();
             if(isset ($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)){
                 $load_one_tour = load_one_tour($_GET['id_tuor']);
             }
@@ -157,10 +158,13 @@ if (isset ($_GET['act'])) {
                 $so_luong = $_POST['so_luong'];
                 $dia_diem = $_POST['dia_diem'];
                 $phuong_tien = $_POST['phuong_tien'];
+                $xuat_phat = $_POST['xuat_phat'];
                 $id_mien = $_POST['ma_mien'];
                 $id_mua = $_POST['ma_mua'];
+                $id_thoi_gian = $_POST['ma_thoi_gian'];
                 $id_tuor = $_POST['id_tuor'];
-                update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $id_mien, $id_mua, $id_tuor);
+                update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien,
+                $id_mien, $id_mua, $id_thoi_gian, $xuat_phat, $id_tuor);
                 $thongbao = "Cập nhật thành công";
             }
             $load_all_tour = load_all_tour();
@@ -169,7 +173,10 @@ if (isset ($_GET['act'])) {
 
         case 'xoa_tour';
             if (isset ($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)) {
+                delete_hinh_anh_tuor($_GET['id_tuor']);
+                delete_tuor_nxp($_GET['id_tuor']);
                 delete_tour($_GET['id_tuor']);
+
             }
             $load_all_tour = load_all_tour();
             include "tour/list.php";
@@ -403,7 +410,7 @@ if (isset ($_GET['act'])) {
             if(isset ($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)){
                 $load_one_tour = load_one_tour($_GET['id_tuor']);
             }
-            include ("quanly_trung_gian/trunggian_nxp/add.php");
+            include ("trunggian_nxp/add.php");
             break;
 
         case 'add_trung_gian_nxp':
@@ -460,8 +467,7 @@ if (isset ($_GET['act'])) {
             $listThoiGian = all_thoi_gian();
             if (isset ($_POST['add_thoi_gian']) && ($_POST['add_thoi_gian'])) {
                 $so_ngay_dem = $_POST['so_ngay_dem'];
-                $muc_tang = $_POST['muc_tang'];
-                add_thoi_gian($so_ngay_dem,$muc_tang);
+                add_thoi_gian($so_ngay_dem);
                 $thongbao = "Thêm thành công";
             }
             include_once "thoi_gian/add.php";
@@ -481,15 +487,21 @@ if (isset ($_GET['act'])) {
             // kiểm tra xem người dùng có click vào nút cập nhật hay không
             if (isset ($_POST['update_thoi_gian']) && ($_POST['update_thoi_gian'])) {
                 $so_ngay_dem = $_POST['so_ngay_dem'];
-                $muc_tang = $_POST['muc_tang'];
                 $id_thoi_gian = $_POST['id_thoi_gian'];
-                update_thoi_gian($so_ngay_dem,$muc_tang,$id_thoi_gian);
+                update_thoi_gian($so_ngay_dem,$id_thoi_gian);
                 $thongbao = "Cập nhật thành công";
             }
             $listThoiGian = all_thoi_gian();
             include "thoi_gian/list.php";
             break;
 
+        case 'xoa_thoi_gian':
+            if (isset ($_GET['id_thoi_gian']) && ($_GET['id_thoi_gian'] > 0)) {
+                delete_thoi_gian($_GET['id_thoi_gian']);
+            }
+            $listThoiGian = all_thoi_gian();
+            include "thoi_gian/list.php";
+            break;
         
         // TRUNG GIAN GIỮA TUOR VÀ THƠI GIAN
         // hiển thị danh sách
