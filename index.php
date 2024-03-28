@@ -43,6 +43,7 @@ if (isset ($_GET['act'])) {
                 $loadAnhTuor = all_hinh_anh($id_tuor);
                 $load_snd=load_so_ngay_dem($id_tuor);
                 $load_one_tour = load_one_tour($id_tuor);
+                
                 $trunggian_ngay_xuat_phat_tuor = trunggian_ngay_xuat_phat_tuor($id_tuor);
             }
             include "public/chitiet_tuor.php";

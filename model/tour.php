@@ -40,7 +40,7 @@ function load_all_tour_tim_kiem($word="",$id_tuor=0)
 
 function load_one_tour($id_tuor)
 {
-    $sql = "SELECT ten_tuor, gia, tong_quan, hanh_trinh, so_luong, dia_diem, phuong_tien, 
+    $sql = "SELECT tuor.id_tuor, ten_tuor, gia, tong_quan, hanh_trinh, so_luong, dia_diem, phuong_tien, 
     xuat_phat, tuor.id_mien, tuor.id_mua, ten_mien, ten_mua FROM tuor 
     JOIN danhmuc_mien ON danhmuc_mien.id_mien = tuor.id_mien 
     JOIN danhmuc_mua ON danhmuc_mua.id_mua = tuor.id_mua 
@@ -62,6 +62,8 @@ function update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_d
     $sql = "UPDATE `tuor` SET ten_tuor='$ten_tuor', gia='$gia', tong_quan='$tong_quan', hanh_trinh='$hanh_trinh', so_luong='$so_luong',
     dia_diem='$dia_diem', phuong_tien='$phuong_tien', id_mien='$id_mien', id_mua='$id_mua', id_thoi_gian='$id_thoi_gian', xuat_phat='$xuat_phat' 
     WHERE id_tuor = '$id_tuor'";
+    // echo $sql;
+    // die;
     pdo_execute($sql);
 }
 

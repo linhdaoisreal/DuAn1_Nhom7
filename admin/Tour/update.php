@@ -2,6 +2,11 @@
 if (is_array($load_one_tour)) {
     extract($load_one_tour);
 }
+// $load_one_tour['id_tuor'];
+// die;
+// echo '<pre>';
+// var_dump($listThoiGian);
+// die;
 ?>
 <div class="row flex flex-col flex-1 overflow-y-auto">
     <div class="">
@@ -13,90 +18,104 @@ if (is_array($load_one_tour)) {
             <!-- Mã tour -->
             <div class="row mb">
                 <label for="" class="text-lg font-semibold text-orange-300">ID tour</label><br>
-                <input type="text" name="" disabled class="border-orange-300 w-96 border-2 rounded-lg h-9" 
-                value="<?php if (isset($id_tuor) && ($id_tuor != "")) echo $id_tuor ?>">
-            </div>
+                <input type="text" name="" disabled class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                    value="<?php if (isset($id_tuor) && ($id_tuor != ""))
+                        echo $id_tuor ?>">
+                </div>
 
-            <!-- Tên tour -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Tên Tuor</label><br>
-                <input type="text" name="ten_tour" id="ten_tour" class="border-orange-300 w-96 border-2 rounded-lg h-9"
-                value="<?php if (isset($ten_tuor) && ($ten_tuor != "")) echo $ten_tuor ?>">
-                <span id="ten_tour_error" class="text-red-500"></span>
-            </div>
+                <!-- Tên tour -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Tên Tuor</label><br>
+                    <input type="text" name="ten_tour" id="ten_tour" class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                        value="<?php if (isset($ten_tuor) && ($ten_tuor != ""))
+                        echo $ten_tuor ?>">
+                    <span id="ten_tour_error" class="text-red-500"></span>
+                </div>
 
-            <!-- Giá -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Giá</label><br>
-                <input type="number" name="gia" id="gia" class="border-orange-300 w-96 border-2 rounded-lg h-9"
-                value="<?php if (isset($gia) && ($gia != "")) echo $gia ?>">
-                <span id="gia_error" class="text-red-500"></span>
-            </div>
+                <!-- Giá -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Giá</label><br>
+                    <input type="number" name="gia" id="gia" class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                        value="<?php if (isset($gia) && ($gia != ""))
+                        echo $gia ?>">
+                    <span id="gia_error" class="text-red-500"></span>
+                </div>
 
-            <!-- Tổng quan -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Tổng quan</label><br>
-                <textarea name="tong_quan" id="tong_quan" cols="50" rows="25" class="border-orange-300 w-96 border-2 rounded-lg h-24">
-                    <?php if (isset($tong_quan) && ($tong_quan != "")) echo $tong_quan ?>
-                </textarea>
-                <span id="tong_quan_error" class="text-red-500"></span>
-            </div>
+                <!-- Tổng quan -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Tổng quan</label><br>
+                    <textarea name="tong_quan" id="tong_quan" cols="50" rows="25"
+                        class="border-orange-300 w-96 border-2 rounded-lg h-24">
+                    <?php if (isset($tong_quan) && ($tong_quan != ""))
+                        echo $tong_quan ?>
+                    </textarea>
+                    <span id="tong_quan_error" class="text-red-500"></span>
+                </div>
 
-            <!-- Hành trình -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Hành trình</label><br>
-                <textarea name="hanh_trinh" id="hanh_trinh" cols="50" rows="25" class="border-orange-300 w-96 border-2 rounded-lg h-24">
-                    <?php if (isset($hanh_trinh) && ($hanh_trinh != "")) echo $hanh_trinh ?>
-                </textarea>
-                <span id="hanh_trinh_error" class="text-red-500"></span>
-            </div>
+                <!-- Hành trình -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Hành trình</label><br>
+                    <textarea name="hanh_trinh" id="hanh_trinh" cols="50" rows="25"
+                        class="border-orange-300 w-96 border-2 rounded-lg h-24">
+                    <?php if (isset($hanh_trinh) && ($hanh_trinh != ""))
+                        echo $hanh_trinh ?>
+                    </textarea>
+                    <span id="hanh_trinh_error" class="text-red-500"></span>
+                </div>
 
-            <!-- Số lượng -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Số lượng tối đa</label><br>
-                <input type="number" name="so_luong" id="so_luong" class="border-orange-300 w-96 border-2 rounded-lg h-9"
-                value="<?php if (isset($so_luong) && ($so_luong != "")) echo $so_luong ?>">
-                <span id="so_luong_error" class="text-red-500"></span>
-            </div>
+                <!-- Số lượng -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Số lượng tối đa</label><br>
+                    <input type="number" name="so_luong" id="so_luong"
+                        class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                        value="<?php if (isset($so_luong) && ($so_luong != ""))
+                        echo $so_luong ?>">
+                    <span id="so_luong_error" class="text-red-500"></span>
+                </div>
 
-            <!-- Địa điểm -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Địa điểm</label><br>
-                <input type="text" name="dia_diem" id="dia_diem" class="border-orange-300 w-96 border-2 rounded-lg h-9"
-                value="<?php if (isset($dia_diem) && ($dia_diem != "")) echo $dia_diem ?>">
-                <span id="dia_diem_error" class="text-red-500"></span>
-            </div>
+                <!-- Địa điểm -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Địa điểm</label><br>
+                    <input type="text" name="dia_diem" id="dia_diem" class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                        value="<?php if (isset($dia_diem) && ($dia_diem != ""))
+                        echo $dia_diem ?>">
+                    <span id="dia_diem_error" class="text-red-500"></span>
+                </div>
 
-            <!-- Phương tiện -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Phương tiện</label><br>
-                <input type="text" name="phuong_tien" id="phuong_tien" class="border-orange-300 w-96 border-2 rounded-lg h-9"
-                value="<?php if (isset($phuong_tien) && ($phuong_tien != "")) echo $phuong_tien ?>">
-                <span id="phuong_tien_error" class="text-red-500"></span>
-            </div>
+                <!-- Phương tiện -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Phương tiện</label><br>
+                    <input type="text" name="phuong_tien" id="phuong_tien"
+                        class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                        value="<?php if (isset($phuong_tien) && ($phuong_tien != ""))
+                        echo $phuong_tien ?>">
+                    <span id="phuong_tien_error" class="text-red-500"></span>
+                </div>
 
-            <!-- Xuất phát -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Xuất phát</label><br>
-                <input type="text" name="xuat_phat" id="xuat_phat" class="border-orange-300 w-96 border-2 rounded-lg h-9"
-                value="<?php if (isset($xuat_phat) && ($xuat_phat != "")) echo $xuat_phat ?>">
-                <span id="xuat_phat_error" class="text-red-500"></span>
-            </div>
-            
-            <!-- ID miền -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Mã miền</label><br>
-                <select name="ma_mien" id="ma_mien" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
-                    <?php
-                        foreach ($list_danhmuc_mien as $checkdmMien) {
-                            if($checkdmMien['id_mien'] == $id_mien){
-                                $check = "selected";
-                            }else{
-                                $check = "";
-                            }
-                            echo '<option value="'.$checkdmMien['id_mien'].'" '.$check.'> '.$checkdmMien['ten_mien'].' </option>';
+                <!-- Xuất phát -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Xuất phát</label><br>
+                    <input type="text" name="xuat_phat" id="xuat_phat"
+                        class="border-orange-300 w-96 border-2 rounded-lg h-9"
+                        value="<?php if (isset($xuat_phat) && ($xuat_phat != ""))
+                        echo $xuat_phat ?>">
+                    <span id="xuat_phat_error" class="text-red-500"></span>
+                </div>
+
+                <!-- ID miền -->
+                <div class="mt-8">
+                    <label for="" class="text-lg font-semibold text-orange-300">Mã miền</label><br>
+                    <select name="ma_mien" id="ma_mien" class="border-orange-300 w-96 border-2 rounded-lg h-9">
+                        <option value="">-None-</option>
+                        <?php
+                    foreach ($list_danhmuc_mien as $checkdmMien) {
+                        if ($checkdmMien['id_mien'] == $id_mien) {
+                            $check = "selected";
+                        } else {
+                            $check = "";
                         }
+                        echo '<option value="' . $checkdmMien['id_mien'] . '" ' . $check . '> ' . $checkdmMien['ten_mien'] . ' </option>';
+                    }
                     ?>
                 </select>
                 <span id="ma_mien_error" class="text-red-500"></span>
@@ -107,33 +126,36 @@ if (is_array($load_one_tour)) {
                 <label for="" class="text-lg font-semibold text-orange-300">Mã mùa</label><br>
                 <select name="ma_mua" id="ma_mua" class="border-orange-300 w-96 border-2 rounded-lg h-9">
                     <?php
-                        foreach ($list_danhmuc_mua as $checkdmMua) {
-                            if($checkdmMua['id_mua'] == $id_mua){
-                                $check = "selected";
-                            }else{
-                                $check = "";
-                            }
-                            echo '<option value="'.$checkdmMua['id_mua'].'" '.$check.'> '.$checkdmMua['ten_mua'].' </option>';
+                    foreach ($list_danhmuc_mua as $checkdmMua) {
+                        if ($checkdmMua['id_mua'] == $id_mua) {
+                            $check = "selected";
+                        } else {
+                            $check = "";
                         }
+                        echo '<option value="' . $checkdmMua['id_mua'] . '" ' . $check . '> ' . $checkdmMua['ten_mua'] . ' </option>';
+                    }
                     ?>
                 </select>
                 <span id="ma_mua_error" class="text-red-500"></span>
             </div>
-
+           
             <!-- ID thời gian -->
             <div class="mt-8">
                 <label for="" class="text-lg font-semibold text-orange-300">Mã Thời Gian</label><br>
                 <select name="ma_thoi_gian" id="ma_thoi_gian" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
+                    <!-- <option value="">-None-</option> -->
                     <?php
-                        foreach ($listThoiGian as $checkTG) {
-                            if($checkTG['id_thoi_gian'] == $id_thoi_gian){
-                                $check = "selected";
-                            }else{
-                                $check = "";
-                            }
-                            echo '<option value="'.$checkTG['id_thoi_gian'].'" '.$check.'> '.$checkTG['so_ngay_dem'].' </option>';
+                    // echo '<pre>';
+                    // print_r($listThoiGian);
+                    // die;
+                    foreach ($listThoiGian as $checkTG) {
+                        if ($checkTG['id_thoi_gian'] == $id_thoi_gian) {
+                            $check = "selected";
+                        } else {
+                            $check = "";
                         }
+                        echo '<option value="' . $checkTG['id_thoi_gian'] . '" ' . $check . '> ' . $checkTG['so_ngay_dem'] . ' </option>';
+                    }
                     ?>
                 </select>
                 <span id="ma_thoi_gian_error" class="text-red-500"></span>
@@ -255,18 +277,18 @@ if (is_array($load_one_tour)) {
             </script>
 
             <div class="mt-8">
-                <input type="hidden" name="id_tuor" value="<?php if (isset($id_tuor) && ($id_tuor > 0)) echo $id_tuor ?>">
+                <input type="hidden" name="id_tuor" value="<?php echo $load_one_tour['id_tuor']; ?>">
                 <input type="submit" name="update_tour" value="Cập nhật"
                     class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
                 <input type="reset" name="" value="Nhập lại"
                     class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
                 <a href="index.php?act=list_tour">
                     <input type="button" name="" value="Danh sách"
-                class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
+                        class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
             </div>
 
             <div class="mt-8">
-                <?php if (!empty ($thongbao)): ?>
+                <?php if (!empty($thongbao)): ?>
                     <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
                         <?php echo $thongbao; ?>
                     </div>
