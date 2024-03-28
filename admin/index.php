@@ -609,18 +609,18 @@ if (isset($_GET['act'])) {
         // Đăng nhập - Đăng ký
         // Danh sách tài khoản
         case 'list_taikhoan':
-            $listtaikhoan=all_taikhoan("",0);
+            $listtaikhoan = all_taikhoan("", 0);
             include ("taikhoan/list.php");
             break;
 
         // Xóa tài khoản người dùng
         case 'xoaTaiKhoan';
-        if (isset ($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung'] > 0)) {
-            delete_taikhoan($_GET['id_nguoi_dung']);
-        }
-        $listtaikhoan=all_taikhoan();
-        include ("taikhoan/list.php");
-        break;
+            if (isset($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung'] > 0)) {
+                delete_taikhoan($_GET['id_nguoi_dung']);
+            }
+            $listtaikhoan = all_taikhoan();
+            include ("taikhoan/list.php");
+            break;
 
         default:
             # code...
