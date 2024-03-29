@@ -68,4 +68,18 @@ function delete_taikhoan($id_nguoi_dung){
     pdo_execute($sql);
 }
 
+// Hiển thị 1 tài khoản
+function load_mot_taikhoan($id_nguoi_dung){
+    $sql="SELECT * FROM nguoi_dung WHERE id_nguoi_dung=".$id_nguoi_dung;
+    $hh=pdo_query_one($sql);
+    return $hh;
+}
+
+// Cập nhật vai trò
+function  update_vai_tro($id_nguoi_dung, $vai_tro){
+    $sql="UPDATE nguoi_dung SET vai_tro='".$vai_tro."' WHERE id_nguoi_dung=".$id_nguoi_dung;
+    pdo_execute($sql);
+}
+
+
 ?>

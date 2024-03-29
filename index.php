@@ -95,8 +95,14 @@ if (isset ($_GET['act'])) {
                 if ($checkuser !== false) {
                     $_SESSION['ho_ten'] = $checkuser;
                     $thongbao = "Đăng nhập thành công!";
-                    header("Location: index.php");
-
+                    // Kiểm tra nếu vai trò của người dùng là 1 (admin)
+                    if ($checkuser['vai_tro'] == 1) {
+                        // Chuyển hướng người dùng vào trang admin
+                        header("Location: admin/index.php");
+                    } else {
+                        // Nếu không phải admin, chuyển hướng về trang index.php
+                        header("Location: index.php");
+                    }
                     exit;
                 } else {
                     $thongbao = "Tài khoản không tồn tại hoặc mật khẩu không đúng!";
@@ -167,7 +173,7 @@ if (isset ($_GET['act'])) {
                 if($check_mat_khau) {
                     // Kiểm tra mật khẩu mới và xác nhận mật khẩu mới
                     if($mat_khau_moi !== $xacnhan_mat_khau) {
-                        $thongbao = "Mật khẩu mới và xác nhận mật khẩu mới không khớp! Vui lòng nhập lại.";
+                        $thongbao = "Mật khẩu mới không trùng khớp! Hãy nhập lại.";
                     } else {
                         // Thực hiện đổi mật khẩu
                         $doi_matkhau = doi_matkhau($id_nguoi_dung, $mat_khau_moi);
