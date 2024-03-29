@@ -5,117 +5,133 @@
     <!-- Form nhập thêm mùa -->
     <div class="ml-10 mt-8">
         <form action="index.php?act=add_tour" method="post">
-            <!-- Mã tour -->
-            <div class="row mb">
-                <label for="" class="text-lg font-semibold text-orange-300">ID tour</label><br>
-                <input type="text" name="id_tour" disabled class="border-orange-300 w-96 border-2 rounded-lg h-9">
+            <div class="grid grid-cols-2">
+                <div class="">
+                    <!-- Mã tour -->
+                    <div class="row mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">ID tour</label><br>
+                        <input type="text" name="id_tour" disabled
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                    </div>
+
+                    <!-- Tên tour -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Tên Tuor</label><br>
+                        <input type="text" name="ten_tour" id="ten_tour"
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <span id="ten_tour_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- Giá -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Giá</label><br>
+                        <input type="number" name="gia" id="gia" class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <span id="gia_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- Số lượng -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Số lượng tối đa</label><br>
+                        <input type="number" name="so_luong" id="so_luong"
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <span id="so_luong_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- Địa điểm -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Địa điểm</label><br>
+                        <input type="text" name="dia_diem" id="dia_diem"
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <span id="dia_diem_error" class="text-red-500"></span>
+                    </div>
+                </div>
+
+                <div class="">
+                    <!-- Phương tiện -->
+                    <div class="mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Phương tiện</label><br>
+                        <input type="text" name="phuong_tien" id="phuong_tien"
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <span id="phuong_tien_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- Xuất phát -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Xuất phát</label><br>
+                        <input type="text" name="xuat_phat" id="xuat_phat"
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <span id="xuat_phat_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- ID miền -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Mã miền</label><br>
+                        <select name="ma_mien" id="ma_mien" class="border-orange-300 w-full border-2 rounded-lg h-9">
+                            <option value="">-None-</option>
+                            <?php
+                            foreach ($list_danhmuc_mien as $checkdmMien) {
+                                extract($checkdmMien);
+                                echo '
+                            <option value=' . $id_mien . '>' . $ten_mien . '</option>
+                            ';
+                            }
+                            ?>
+                        </select>
+                        <span id="ma_mien_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- ID mùa -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Mã mùa</label><br>
+                        <select name="ma_mua" id="ma_mua" class="border-orange-300 w-full border-2 rounded-lg h-9">
+                            <option value="">-None-</option>
+                            <?php
+                            foreach ($list_danhmuc_mua as $checkdmMua) {
+                                extract($checkdmMua);
+                                echo '
+                            <option value=' . $id_mua . '>' . $ten_mua . '</option>
+                            ';
+                            }
+                            ?>
+                        </select>
+                        <span id="ma_mua_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- ID thời gian -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Mã Thời Gian</label><br>
+                        <select name="ma_thoi_gian" id="ma_thoi_gian"
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                            <option value="">-None-</option>
+                            <?php
+                            foreach ($listThoiGian as $checkThoiGian) {
+                                extract($checkThoiGian);
+                                echo '
+                            <option value=' . $id_thoi_gian . '>' . $so_ngay_dem . '</option>
+                            ';
+                            }
+                            ?>
+                        </select>
+                        <span id="ma_thoi_gian_error" class="text-red-500"></span>
+                    </div>
+                </div>
             </div>
 
-            <!-- Tên tour -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Tên Tuor</label><br>
-                <input type="text" name="ten_tour" id="ten_tour" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                <span id="ten_tour_error" class="text-red-500"></span>
-            </div>
 
-            <!-- Giá -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Giá</label><br>
-                <input type="number" name="gia" id="gia" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                <span id="gia_error" class="text-red-500"></span>
-            </div>
-
-            <!-- Tổng quan -->
-            <div class="mt-8">
+            <!-- Tổng quan *-->
+            <div class="mt-8 mr-12">
                 <label for="" class="text-lg font-semibold text-orange-300">Tổng quan</label><br>
-                <textarea name="tong_quan" id="tong_quan" cols="50" rows="25" class="border-orange-300 w-96 border-2 rounded-lg h-24"></textarea>
+                <textarea name="tong_quan" id="tong_quan" cols="50" rows="25"
+                    class="border-orange-300 w-full border-2 rounded-lg h-24"></textarea>
                 <span id="tong_quan_error" class="text-red-500"></span>
             </div>
 
-            <!-- Hành trình -->
-            <div class="mt-8">
+            <!-- Hành trình *-->
+            <div class="mt-8 mr-12">
                 <label for="" class="text-lg font-semibold text-orange-300">Hành trình</label><br>
-                <textarea name="hanh_trinh" id="hanh_trinh" cols="50" rows="25" class="border-orange-300 w-96 border-2 rounded-lg h-24"></textarea>
+                <textarea name="hanh_trinh" id="hanh_trinh" cols="50" rows="25"
+                    class="border-orange-300 w-full border-2 rounded-lg h-24"></textarea>
                 <span id="hanh_trinh_error" class="text-red-500"></span>
-            </div>
-
-            <!-- Số lượng -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Số lượng tối đa</label><br>
-                <input type="number" name="so_luong" id="so_luong" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                <span id="so_luong_error" class="text-red-500"></span>
-            </div>
-
-            <!-- Địa điểm -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Địa điểm</label><br>
-                <input type="text" name="dia_diem" id="dia_diem" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                <span id="dia_diem_error" class="text-red-500"></span>
-            </div>
-
-            <!-- Phương tiện -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Phương tiện</label><br>
-                <input type="text" name="phuong_tien" id="phuong_tien" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                <span id="phuong_tien_error" class="text-red-500"></span>
-            </div>
-
-            <!-- Phương tiện -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Phương tiện</label><br>
-                <input type="text" name="xuat_phat" id="xuat_phat" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                <span id="xuat_phat_error" class="text-red-500"></span>
-            </div>
-            
-            <!-- ID miền -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Mã miền</label><br>
-                <select name="ma_mien" id="ma_mien" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
-                    <?php
-                        foreach ($list_danhmuc_mien as $checkdmMien) {
-                            extract($checkdmMien);
-                            echo '
-                            <option value='.$id_mien.'>'.$ten_mien.'</option>
-                            ';
-                        }
-                    ?>
-                </select>
-                <span id="ma_mien_error" class="text-red-500"></span>
-            </div>
-
-            <!-- ID mùa -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Mã mùa</label><br>
-                <select name="ma_mua" id="ma_mua" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
-                    <?php
-                        foreach ($list_danhmuc_mua as $checkdmMua) {
-                            extract($checkdmMua);
-                            echo '
-                            <option value='.$id_mua.'>'.$ten_mua.'</option>
-                            ';
-                        }
-                    ?>
-                </select>
-                <span id="ma_mua_error" class="text-red-500"></span>
-            </div>
-
-            <!-- ID thời gian -->
-            <div class="mt-8">
-                <label for="" class="text-lg font-semibold text-orange-300">Mã Thời Gian</label><br>
-                <select name="ma_thoi_gian" id="ma_thoi_gian" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="">-None-</option>
-                    <?php
-                        foreach ($listThoiGian as $checkThoiGian) {
-                            extract($checkThoiGian);
-                            echo '
-                            <option value='.$id_thoi_gian.'>'.$so_ngay_dem.'</option>
-                            ';
-                        }
-                    ?>
-                </select>
-                <span id="ma_thoi_gian_error" class="text-red-500"></span>
             </div>
 
             <!-- Script JavaScript -->
@@ -240,11 +256,11 @@
                     class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
                 <a href="index.php?act=list_tour">
                     <input type="button" name="" value="Danh sách"
-                class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
+                        class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
             </div>
 
             <div class="mt-8">
-                <?php if (!empty ($thongbao)): ?>
+                <?php if (!empty($thongbao)): ?>
                     <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
                         <?php echo $thongbao; ?>
                     </div>
