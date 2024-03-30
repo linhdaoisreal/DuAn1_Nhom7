@@ -150,9 +150,11 @@ if (is_array($load_one_tour)) {
                         </span>
                     </div>
                     <div class="flex mx-auto item-center justify-center py-8">
-                        <input
-                            class="bg-orange-500 w-[70%] h-12 text-xl rounded-lg text-white hover:scale-110 transition cursor-pointer"
-                            type="button" value="ĐẶT NGAY">
+                        <a href="index.php?act=dat_tuor" 
+                        class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center
+                         rounded-lg text-white hover:scale-110 transition cursor-pointer">
+                        <input type="button" value="ĐẶT NGAY">
+                        </a>
                     </div>
                 </form>
             </div>
@@ -160,14 +162,14 @@ if (is_array($load_one_tour)) {
         </div>
 
         <!-- Bình luận -->
-         <!-- JQuery -->
-         <div class="border-2 w-full rounded-lg border-orange-300 mb-6">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){           
-                    $("#binhluan").load("public/binhluan/form_binhluan.php", {idpro: <?= $id_tuor?>});
-            });
-        </script>
+        <!-- JQuery -->
+        <div class="border-2 rounded-lg border-orange-300 mb-6 md:mx-12">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){           
+                        $("#binhluan").load("public/binhluan/form_binhluan.php", {idpro: <?= $id_tuor?>});
+                });
+            </script>
         <div class="row" id="binhluan"></div>
         </div>
 </section>

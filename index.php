@@ -49,6 +49,10 @@ if (isset ($_GET['act'])) {
             include "public/chitiet_tuor.php";
             break;
 
+        case 'dat_tuor':
+            include "public/dat_tuor.php";
+            break;
+
         case 'lien_he':
             include "public/lienhe.php";
             break;
