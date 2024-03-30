@@ -456,15 +456,14 @@ if (isset($_GET['act'])) {
 
         case 'add_trung_gian_nxp':
 
-
             if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
                 $id_tuor = $_POST['id_tuor'];
                 $id_ngay = $_POST['id_ngay'];
                 insert_trunggian_nxp($id_tuor, $id_ngay);
                 $thongbao = "Thêm thành công";
             }
-
-            include ("quanly_trung_gian/trunggian_nxp/add.php");
+            $load_all_tour = load_all_tour();
+            include ("Tour/list.php");
             break;
 
         case 'suaTrungGianNXP':
