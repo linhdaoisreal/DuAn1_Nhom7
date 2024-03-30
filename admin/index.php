@@ -1,4 +1,6 @@
 <?php
+ob_start();
+session_start();
 include "header.php";
 include "../model/pdo.php";
 include "../model/danhmuc_mua.php";
@@ -9,6 +11,8 @@ include "../model/hang_tour.php";
 include "../model/ngay_xuat_phat.php";
 include "../model/thoi_gian.php";
 include "../model/taikhoan.php";
+include "../model/binhluan.php";
+
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -462,6 +466,7 @@ if (isset($_GET['act'])) {
                 insert_trunggian_nxp($id_tuor, $id_ngay);
                 $thongbao = "Thêm thành công";
             }
+
             $load_all_tour = load_all_tour();
             include ("Tour/list.php");
             break;
@@ -621,6 +626,49 @@ if (isset($_GET['act'])) {
             include ("taikhoan/list.php");
             break;
 
+        // Chỉnh vai trò
+        case 'suaTaiKhoan':
+            if(isset($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung']>0)){
+                $taikhoan=load_mot_taikhoan($_GET['id_nguoi_dung']);
+            }
+            $listtaikhoan = all_taikhoan();
+            include ("taikhoan/update.php");
+            break;
+
+         // Cập vai trò
+        case 'update_vai_tro':
+            // kiểm tra xem người dùng có click vào nút cập nhật hay không
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $vai_tro = $_POST['vai_tro'];
+                $id_nguoi_dung = $_POST['id_nguoi_dung'];
+                update_vai_tro($id_nguoi_dung, $vai_tro);
+                $thongbao = "Cập nhật thành công";
+            }
+            $listtaikhoan = all_taikhoan();
+            include ("taikhoan/list.php");
+            break;
+
+         // Đăng xuất
+        case 'dang_xuat':
+            session_unset();
+            header("Location: ../index.php");
+            break;
+
+
+        // Danh sách bình luận
+        case 'list_binhluan':
+            $list_binhluan = all_binhluan("", 0);
+            include ("binhluan/list.php");
+            break;
+
+        // Xóa bình luận
+        case'xoaBinhLuan'; 
+            if(isset($_GET['id_binh_luan']) && ($_GET['id_binh_luan']>0)){
+                delete_binhluan($_GET['id_binh_luan']);
+            }
+            $list_binhluan = all_binhluan("", 0);
+            include_once("binhluan/list.php");
+            break;
         default:
             # code...
             break;
@@ -628,6 +676,8 @@ if (isset($_GET['act'])) {
 } else {
     include "home.php";
 }
+
+
 
 include "footer.php";
 ?>

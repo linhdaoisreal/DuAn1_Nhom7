@@ -128,7 +128,7 @@
     <!-- sidebar -->
     <div class="hidden md:flex flex-col w-1/6 bg-gray-800">
         <div class="flex items-center justify-center h-16 bg-gray-900">
-            <span class="text-white font-bold uppercase">Admin</span>
+            <a href="index.php"><span class="text-white font-bold uppercase">Quản lý</span></a>
         </div>
         <div class="flex flex-col flex-1 overflow-y-auto">
             <nav class="flex-1 px-2 py-4 bg-gray-800">
@@ -150,7 +150,7 @@
                 <a href="index.php?act=list_taikhoan" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Tài khoản
                 </a>
-                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                <a href="index.php?act=list_binhluan" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Bình luận
                 </a>
                 <a href="index.php?act=list_hinh_anh" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">

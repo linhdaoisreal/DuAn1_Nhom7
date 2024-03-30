@@ -21,6 +21,7 @@
 foreach($listtaikhoan as $taikhoan){
     extract($taikhoan);
     $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
+    $suaTaiKhoan="index.php?act=suaTaiKhoan&id_nguoi_dung=".$id_nguoi_dung;
     $xoaTaiKhoan="index.php?act=xoaTaiKhoan&id_nguoi_dung=".$id_nguoi_dung;
     echo'
 <tr>
@@ -31,7 +32,7 @@ foreach($listtaikhoan as $taikhoan){
     <td>'.$so_dien_thoai.'</td>  
     <td>'.$dia_chi.'</td>  
     <td>'.$vai_tro.'</td>    
-    <td><a href="'.$xoaTaiKhoan.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
+    <td><a href="'.$suaTaiKhoan.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="'.$xoaTaiKhoan.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
                 
 </tr>
 
