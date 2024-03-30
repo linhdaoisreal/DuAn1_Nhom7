@@ -128,7 +128,7 @@ if (is_array($load_one_tour)) {
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Ngày Khởi Hành: </h3>
                             <div class="ml-4">
-                                <select name="" id="" class="w-full">
+                                <select name="" id="" class="border-b-2 border-gray-500">
                                     <?php
                                     foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
                                         extract($checkTG);
@@ -140,13 +140,29 @@ if (is_array($load_one_tour)) {
                                 </select>
                             </div>
                         </div>
+
+                        <div class="flex ">
+                            <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
+                            <h3 class="text-[1.1rem] text-sky-500">Số người lớn: </h3>
+                            <div class="ml-4">
+                                <input type="number" min="0" value="" class="border-b-2 border-gray-500">
+                            </div>
+                        </div>
+
+                        <div class="flex ">
+                            <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
+                            <h3 class="text-[1.1rem] text-sky-500">Số trẻ em: </h3>
+                            <div class="ml-4">
+                                <input type="number" min="0" value="" class="border-b-2 border-gray-500">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="py-3 flex leading-normal ">
-                        <p class="text-[1.5rem] text-sky-500 ">Giá: </p>
+                        <p class="text-[1.5rem] text-sky-500 ">Giá từ: </p>
                         <input type="hidden" id="gia_goc" value="<?= $gia ?>">
                         <span class="text-[1.5rem] text-orange-500 pl-4 " id="gia">
-                            <?= $gia ?> đ
+                            <?= $gia ?> đ/Người
                         </span>
                     </div>
                     <div class="flex mx-auto item-center justify-center py-8">
