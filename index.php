@@ -220,6 +220,8 @@ if (isset ($_GET['act'])) {
     }
 
 } else {
+    $load_hot_tuor = load_top6_hot_tuor();
+    //var_dump($load_hot_tuor);
     include "public/trangchu.php";
 }
 

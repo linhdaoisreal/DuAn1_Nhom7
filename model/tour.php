@@ -73,6 +73,20 @@ function delete_tour($id_tuor)
     pdo_execute($sql);
 }
 
+function load_top6_hot_tuor()
+{
+    $sql = "SELECT tuor.id_tuor, tuor.gia, tuor.ten_tuor, hinh_anh.ten_hinh_anh
+    FROM tuor
+    JOIN (
+        SELECT hinh_anh.id_tour, MIN(ten_hinh_anh) AS ten_hinh_anh
+        FROM hinh_anh
+        GROUP BY hinh_anh.id_tour
+        LIMIT 6
+    ) hinh_anh ON hinh_anh.id_tour = tuor.id_tuor;";
+    $load_hot_tuor = pdo_query($sql);
+    return $load_hot_tuor;
+}
+
 function load_top3_hot_tuor()
 {
     $sql = "SELECT tuor.id_tuor, tuor.gia, tuor.ten_tuor, hinh_anh.ten_hinh_anh

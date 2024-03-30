@@ -3,11 +3,18 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
-        .create( document.querySelector( '#hanh_trinh' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+        .create(document.querySelector('#hanh_trinh'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#tong_quan'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>
 
 </body>
+
 </html>

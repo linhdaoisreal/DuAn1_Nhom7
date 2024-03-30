@@ -64,19 +64,19 @@
                 <!-- Content1 -->
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content1.png);">
-                    <h2 class="text-white text-2xl font-bold m-3 mt-auto">Thanh tịnh tâm hồn tìm về chốn bình yên</h2>
+                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Thanh tịnh tâm hồn tìm về chốn bình yên</h2>
                 </div>
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content2.png);">
-                    <h2 class="text-white text-2xl font-bold m-3 mt-auto">Xây dựng tinh thần đồng đội gắn kết</h2>
+                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Xây dựng tinh thần đồng đội gắn kết</h2>
                 </div> 
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content3.png);">
-                    <h2 class="text-white text-2xl font-bold m-3 mt-auto">Hoà mình với thiên nhiên hùng vĩ</h2>
+                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Hoà mình với thiên nhiên hùng vĩ</h2>
                 </div>
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content4.png);">
-                    <h2 class="text-white text-2xl font-bold m-3 mt-auto">Giảm giá cực khủng ngại gì đi xa</h2>
+                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Giảm giá cực khủng ngại gì đi xa</h2>
                 </div>
             </div>
         </div>
@@ -90,38 +90,68 @@
                 <h1 class="text-4xl font-semibold underline">Địa điểm yêu thích</h1>
                 <p>Khám phá những vẻ đẹp Việt Nam mà bạn chưa biểt</p>
             </div>
+            
             <!-- Nội dung -->
             <div class="grid grid-cols-6 grid-row-3 gap-6 py-5 md:gap-10">
-                <!-- Content 1 -->
-                <div class="col-span-4 h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
+                <?php
+                    $i=0;
+                    foreach ($load_hot_tuor as $checkHotTuor) {
+                        extract($checkHotTuor);
+                        if ($i == 0 || $i == 3) {
+                            $GridPosClass1 = "col-span-4";
+                            $GridPosClass2 = "";
+                        } elseif ($i == 1) {
+                            $GridPosClass1 = "col-span-2";
+                            $GridPosClass2 = "";
+                        } elseif ($i == 2 ) {
+                            $GridPosClass1 = "col-span-2 ";
+                            $GridPosClass2 = "";
+                        } elseif ($i == 4 || $i == 5) {
+                            $GridPosClass1 = "col-span-3 ";
+                            $GridPosClass2 = "";
+                        }
+                        echo '
+                            <div class="'.$GridPosClass1.' '.$GridPosClass2.' h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
+                            transition duration-400 ease-in" style="background-image: url(./gallery/'.$ten_hinh_anh.');">
+                            <a href="index.php?act=chitiet_tuor&id_tuor='.$id_tuor.'" class="text-white text-2xl font-bold m-3 mt-auto">
+                                <h2>'.$ten_tuor.'</h2>
+                            </a>
+                            </div>
+                        ';
+                        $i+=1;
+                        $GridPosClass2 = "";
+                    }
+                ?>
+                
+                <!-- <div class="col-span-4 h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content1.png);">
                     <h2 class="text-white text-2xl font-bold m-3 mt-auto">Phú Quốc</h2>
                 </div>
-                <!-- Content 2 -->
+                
                 <div class="col-span-2 row-span-2 rounded-lg bg-cover bg-no-repeat flex content-end 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content2.png);">
                     <h2 class="text-white text-2xl font-bold m-3 mt-auto">Sapa</h2>
                 </div> 
-                <!-- Content 3 -->
+                
                 <div class="col-span-2 h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content3.png);">
                     <h2 class="text-white text-2xl font-bold m-3 mt-auto">Bến Tre</h2>
                 </div>
-                <!-- Content 4 -->
+                
                 <div class="col-span-2 h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content4.png);">
                     <h2 class="text-white text-2xl font-bold m-3 mt-auto">Đà Nẵng</h2>
                 </div>
-                <!-- Content 5 -->
+                
                 <div class="col-span-3 h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content4.png);">
                     <h2 class="text-white text-2xl font-bold m-3 mt-auto">Đà Lạt</h2>
                 </div>
-                <!-- Content 6 -->
+                
                 <div class="col-span-3 h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
                 transition duration-400 ease-in" style="background-image: url(./src/img/content4.png);">
                     <h2 class="text-white text-2xl font-bold m-3 mt-auto">Quảng Ninh</h2>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
