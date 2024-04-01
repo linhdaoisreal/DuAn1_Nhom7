@@ -43,12 +43,13 @@ if (is_array($load_one_tour)) {
                 <!-- Tiêu dề -->
                 <div class="py-3">
                     <h1 class="text-[1.7rem] font-semibold ">
-                        Tuor <?= $ten_tuor ?>
+                        Tuor
+                        <?= $ten_tuor ?>
                     </h1>
                 </div>
 
                 <!-- Nội dung -->
-                <div class="">                    
+                <div class="">
                     <!-- Tổng quan -->
                     <div class="pb-3">
                         <h2 class="text-2xl text-sky-500">Tổng Quan:</h2>
@@ -75,7 +76,7 @@ if (is_array($load_one_tour)) {
                     </h1>
                 </div>
 
-                <form class="md:ml-10" action="" method="post">
+                <form class="md:ml-10" action="index.php?act=dat_tuor&id_tuor=<?= $id_tuor ?>" method="post">
 
                     <div class="grid grid-cols-1 gap-4">
 
@@ -91,6 +92,7 @@ if (is_array($load_one_tour)) {
 
                         <div class="flex">
                             <i class="fa-solid fa-location-dot text-xl text-sky-500 pr-1"></i>
+                            <input type="hidden" id="so_luong_toi_da" value="<?= $so_luong ?>">
                             <h3 class="text-[1.1rem] text-sky-500">Số Lượng Tối Đa: </h3>
                             <p class="ml-4 text-gray-500">
                                 <?= $so_luong ?>
@@ -128,12 +130,12 @@ if (is_array($load_one_tour)) {
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Ngày Khởi Hành: </h3>
                             <div class="ml-4">
-                                <select name="" id="" class="border-b-2 border-gray-500">
+                                <select name="ngay_khoi_hanh" id="" class="border-b-2 border-gray-500">
                                     <?php
                                     foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
                                         extract($checkTG);
                                         echo '
-                                                <option value="">' . $ngay . '</option>
+                                                <option value="' . $ngay . '">' . $ngay . '</option>
                                             ';
                                     }
                                     ?>
@@ -145,7 +147,8 @@ if (is_array($load_one_tour)) {
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Số người lớn: </h3>
                             <div class="ml-4">
-                                <input type="number" min="0" value="" class="border-b-2 border-gray-500">
+                                <input type="number" id="so_nguoi_lon" min="0" value="0" name="so_nguoi_lon"
+                                    class="border-b-2 border-gray-500">
                             </div>
                         </div>
 
@@ -153,26 +156,44 @@ if (is_array($load_one_tour)) {
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Số trẻ em: </h3>
                             <div class="ml-4">
-                                <input type="number" min="0" value="" class="border-b-2 border-gray-500">
+                                <input type="number" id="so_nguoi_lon" min="0" value="0" name="so_tre_em"
+                                    class="border-b-2 border-gray-500">
                             </div>
                         </div>
                     </div>
 
                     <div class="py-3 flex leading-normal ">
                         <p class="text-[1.5rem] text-sky-500 ">Giá từ: </p>
-                        <input type="hidden" id="gia_goc" value="<?= $gia ?>">
+                        <input type="hidden" id="gia_goc" name="gia" value="<?= $gia ?>">
                         <span class="text-[1.5rem] text-orange-500 pl-4 " id="gia">
                             <?= $gia ?> đ/Người
                         </span>
                     </div>
+
                     <div class="flex mx-auto item-center justify-center py-8">
-                        <a href="index.php?act=dat_tuor" 
-                        class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center
-                         rounded-lg text-white hover:scale-110 transition cursor-pointer">
-                        <input type="button" value="ĐẶT NGAY">
-                        </a>
+                        <input type="hidden" name="id_tuor" value="<?= $id_tuor ?>">
+                        <input class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center
+                         rounded-lg text-white hover:scale-110 transition cursor-pointer" type="submit" name="dattuor"
+                            value="ĐẶT NGAY">
                     </div>
+                    
+                    <script>
+                        document.querySelector('form').addEventListener('submit', function (event) {
+                            var SLToiDaInput = parseInt(document.getElementById('so_luong_toi_da').value);
+                            var SoNguoiLonInput = parseInt(document.getElementById('so_nguoi_lon').value);
+                            var SoTreEmInput = parseInt(document.getElementById('so_tre_em').value);
+
+                            if (SoNguoiLonInput <= 0) {
+                                alert("Ít nhất cần 1 người lớn để tiến hành đặt tour. Xin quý khách vui lòng nhập lại thông tin!")
+                                event.preventDefault();
+                            }else if(SoNguoiLonInput+SoTreEmInput > SLToiDaInput){
+                                alert("Tuor này chỉ có thể đặt tối đa cho <?= $so_luong?> người. Xin lỗi quý khách vì sự bất tiện này!")
+                                event.preventDefault();
+                            }
+                        });
+                    </script>
                 </form>
+
             </div>
 
         </div>
@@ -180,12 +201,12 @@ if (is_array($load_one_tour)) {
         <!-- Bình luận -->
         <!-- JQuery -->
         <div class="border-2 rounded-lg border-orange-300 mb-6 md:mx-12">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
             <script>
-                $(document).ready(function(){           
-                        $("#binhluan").load("public/binhluan/form_binhluan.php", {idpro: <?= $id_tuor?>});
+                $(document).ready(function () {
+                    $("#binhluan").load("public/binhluan/form_binhluan.php", { idpro: <?= $id_tuor ?> });
                 });
             </script>
-        <div class="row" id="binhluan"></div>
+            <div class="row" id="binhluan"></div>
         </div>
 </section>

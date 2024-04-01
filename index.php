@@ -50,6 +50,25 @@ if (isset ($_GET['act'])) {
             break;
 
         case 'dat_tuor':
+            if(isset($_POST['dattuor']) && isset($_GET['id_tuor'])){
+                $ngay_khoi_hanh = $_POST['ngay_khoi_hanh'];
+                $so_nguoi_lon = $_POST['so_nguoi_lon'];
+                $so_tre_em = $_POST['so_tre_em'];
+                $mang_dat_tuor = [$ngay_khoi_hanh,$so_nguoi_lon,$so_tre_em];
+                $id_tuor = $_GET['id_tuor'];
+
+                if(!isset($_SESSION['dat_tuor']) ){
+                    $_SESSION['dat_tuor'][]=$mang_dat_tuor; 
+                }elseif (isset($_SESSION['dat_tuor'])){
+                    unset($_SESSION['dat_tuor']);
+                    $_SESSION['dat_tuor'][]=$mang_dat_tuor;
+                }
+                
+                $load_snd=load_so_ngay_dem($id_tuor);
+                $load_one_tour = load_one_tour($id_tuor);
+            }else {
+                echo"Post không tồn tại";
+            }
             include "public/dat_tuor.php";
             break;
 
