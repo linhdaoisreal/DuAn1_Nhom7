@@ -1,7 +1,70 @@
 <!-- ĐẶT TUOR -->
 <section>
     <form action="" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
-        <div class="col-span-12 md:col-span-8">
+        <?php  if(isset($_SESSION['ho_ten'])) {
+                $user = $_SESSION['ho_ten']?>
+            <div class="col-span-12 md:col-span-8">
+                <h1 class="text-3xl font-semibold mb-6">Booking Submission</h1>
+                <hr class="text-gray-500">
+
+                <div class="grid grid-cols-8 my-4 gap-6 leading-8">
+                    <!-- Cột 1 -->
+                    <div class="col-span-8 md:col-span-4">
+                        <div>
+                            <div class="flex">
+                                <h3>Họ và Tên </h3><span class="text-red-500"> *</span>
+                            </div>
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="hoten" value="<?=$user['ho_ten'] ?>">
+                        </div>
+
+                        <div>
+                            <div class="flex">
+                                <h3>Địa chỉ </h3><span class="text-red-500"> *</span>
+                            </div>
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" value="<?=$user['dia_chi']?>" name="diachi" >
+                        </div>
+
+                        <div>
+                            <div class="flex">
+                                <h3>Mã bưu chính </h3>
+                            </div>
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                        </div>
+                    </div>
+
+                    <!-- Cột 2 -->
+                    <div class="col-span-8 md:col-span-4">
+                        <div>
+                            <div class="flex">
+                                <h3>Email </h3><span class="text-red-500"> *</span>
+                            </div>
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" value="<?=$user['email']?>" name="email">
+                        </div>
+
+                        <div>
+                            <div class="flex">
+                                <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
+                            </div>
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" value="<?=$user['so_dien_thoai']?>" name="sdt">
+                        </div>
+
+                        <div>
+                            <h3>Tỉnh/Thành Phố</h3>
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p>Các điều kiện đặt thêm</p>
+                    <textarea name="" id="" cols="30" rows="10"
+                        class="w-full border border-zinc-400 rounded-md my-2"></textarea>
+                </div>
+            </div>
+       
+        <?php } else { ?>
+             <!-- đặt hàng không cần đăng nhập -->
+            <div class="col-span-12 md:col-span-8">
             <h1 class="text-3xl font-semibold mb-6">Booking Submission</h1>
             <hr class="text-gray-500">
 
@@ -59,6 +122,7 @@
                     class="w-full border border-zinc-400 rounded-md my-2"></textarea>
             </div>
         </div>
+        <?php } ?>
 
 
         <!-- Cột 3 -->
