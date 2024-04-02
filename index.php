@@ -9,7 +9,7 @@ include "model/danhmuc_mua.php";
 include "model/hinh_anh.php";
 include "model/taikhoan.php";
 include "model/binhluan.php";
-
+include "model/don_hang.php";
 
 $mien = all_danhmuc_mien();
 $mua = all_danhmuc_mua();
@@ -70,6 +70,30 @@ if (isset ($_GET['act'])) {
                 echo"Post không tồn tại";
             }
             include "public/dat_tuor.php";
+            break;
+
+        case 'show_don_hang':
+            if(isset($_POST['dat']) && ($_POST['dat'] && isset($_GET['id_tuor']))){
+                $id_tuor = $_GET['id_tuor'];
+                $ho_va_ten = $_POST['ho_va_ten'];
+                $dia_chi = $_POST['address'];
+                $email = $_POST['email'];
+                $sdt = $_POST['sdt'];
+                $ma_buu_chinh = $_POST['ma_buu_chinh'];
+                $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
+                $dk_them = $_POST['dk_them'];
+                $tong_gia = $_POST['tong_gia'];
+                $tong_nguoi = $_POST['tong_nguoi'];
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                $ngay_dat_hang = date("H:i:s d/m/Y"); // Thay đổi định dạng ngày
+                $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor);
+
+              
+                
+                $load_snd=load_so_ngay_dem($id_tuor);
+                $load_one_tour = load_one_tour($id_tuor);
+            }
+            include "public/don_hang.php";
             break;
 
         case 'lien_he':
@@ -236,6 +260,8 @@ if (isset ($_GET['act'])) {
             }
         include "public/timkiem_tour.php";
         break;
+
+        
 
         default:
             # code...

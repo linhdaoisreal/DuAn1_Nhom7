@@ -1,12 +1,12 @@
 <?php
 if (is_array($load_one_tour)) {
     extract($load_one_tour);
-    $hinhAnh = $img_path . $ten_hinh_anh;
+    $hinhAnh = $img_path . $hinh_anh_mau;
 }
 ?>
 <!-- ĐẶT TUOR -->
 <section>
-    <form action="" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
+    <form action="index.php?act=show_don_hang&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
         <?php if (isset($_SESSION['ho_ten'])) {
             $user = $_SESSION['ho_ten'] ?>
             <div class="col-span-12 md:col-span-8">
@@ -20,7 +20,7 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Họ và Tên </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="hoten"
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name='ho_va_ten'
                                 value="<?= $user['ho_ten'] ?>">
                         </div>
 
@@ -28,7 +28,7 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Địa chỉ </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2"
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="address"
                                 value="<?= $user['dia_chi'] ?>" name="diachi">
                         </div>
 
@@ -36,7 +36,7 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Mã bưu chính </h3>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="ma_buu_chinh">
                         </div>
                     </div>
 
@@ -60,14 +60,14 @@ if (is_array($load_one_tour)) {
 
                         <div>
                             <h3>Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
 
                 <div>
                     <p>Các điều kiện đặt thêm</p>
-                    <textarea name="" id="" cols="30" rows="10"
+                    <textarea name="dk_them" id="" cols="30" rows="10"
                         class="w-full border border-zinc-400 rounded-md my-2"></textarea>
                 </div>
             </div>
@@ -85,21 +85,21 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Họ và Tên </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name='ho_va_ten'>
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Địa chỉ </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="address">
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Mã bưu chính </h3>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="ma_buu_chinh">
                         </div>
                     </div>
 
@@ -109,26 +109,26 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Email </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="email">
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="sdt">
                         </div>
 
                         <div>
                             <h3>Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2">
+                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
 
                 <div>
                     <p>Các điều kiện đặt thêm</p>
-                    <textarea name="" id="" cols="30" rows="10"
+                    <textarea name="dk_them" id="" cols="30" rows="10"
                         class="w-full border border-zinc-400 rounded-md my-2"></textarea>
                 </div>
             </div>
@@ -198,19 +198,23 @@ if (is_array($load_one_tour)) {
                         ?></p>
                         <p>0</p>
                         <p>
-                            <input type="hidden" value="<?php $thanh_tien = $gia_nguoi_lon + $gia_tre_em?>">
+                            <input type="hidden" value="<?= $thanh_tien = $gia_nguoi_lon + $gia_tre_em?>" name='tong_gia'>
                             <?php echo($thanh_tien) ?>
                         </p>
+                        <p>
+                            <input type="hidden" value="<?= $tong_nguoi =  $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2]?>" name='tong_nguoi'>
+                        </p>
+                        
                     </div>
                 </div>
 
                 <div class="flex mx-auto item-center justify-center py-8">
-                    <a href="" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center
-                         rounded-lg text-white hover:scale-110 transition cursor-pointer">
-                        <input type="button" value="ĐẶT NGAY">
-                    </a>
+                    <input type="submit" value="ĐẶT NGAY" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
+                        text-white hover:scale-110 transition cursor-pointer">
                 </div>
             <?php } ?>
+
         </div>
+        <div></div>
     </form>
 </section>

@@ -156,7 +156,7 @@
                 <a href="index.php?act=list_hinh_anh" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Ảnh
                 </a>
-                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                <a href="index.php?act=list_don_hang" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Đơn hàng
                 </a>
                 <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">

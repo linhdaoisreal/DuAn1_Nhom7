@@ -12,6 +12,7 @@ include "../model/ngay_xuat_phat.php";
 include "../model/thoi_gian.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
+include "../model/don_hang.php";
 
 
 if (isset($_GET['act'])) {
@@ -669,6 +670,48 @@ if (isset($_GET['act'])) {
             $list_binhluan = all_binhluan("", 0);
             include_once("binhluan/list.php");
             break;
+
+        // QUẢN LÝ ĐƠN HÀNG      
+        // list dơn hàng
+        case 'list_don_hang':
+            $list_don_hang = all_don_hang();
+            include ("donhang/list.php");
+            break;
+    
+        // xóa đơn hàng
+        case'xoa_don_hang'; 
+        if(isset($_GET['id_don_hang']) && ($_GET['id_don_hang']>0)){
+            delete_don_hang($_GET['id_don_hang']);
+        }
+        $list_don_hang = all_don_hang();
+        include("donhang/list.php");
+        break;
+        
+        // hiển thi một đơn hàng 
+        case 'sua_trang_thai';
+        if(isset($_GET['id_don_hang']) && ($_GET['id_don_hang']>0)){
+            $don_hang=load_mot_don_hang($_GET['id_don_hang']);
+        }
+        $list_don_hang = all_don_hang();
+        include ("donhang/update.php");
+        break;
+        
+        case 'update_trang_thai';
+        if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+            $id_don_hang = $_POST['id_don_hang'];
+            $trang_thai = $_POST['trang_thai'];
+            update_don_hang($id_don_hang,$trang_thai);
+            $thongbao = "Cập nhật thành công";
+        }
+        $list_don_hang = all_don_hang();
+        include ("donhang/list.php");
+        break;
+
+
+
+
+            
+
         default:
             # code...
             break;
