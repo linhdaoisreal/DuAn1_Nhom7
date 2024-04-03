@@ -92,7 +92,7 @@ if (isset ($_GET['act'])) {
             break;
 
         case 'show_don_hang':
-            if(isset($_POST['dat']) && ($_POST['dat'] && isset($_GET['id_tuor']))){
+            if(isset($_POST['chi_tiet']) && ($_POST['chi_tiet'] && isset($_GET['id_tuor']))){
                 $id_tuor = $_GET['id_tuor'];
                 $ho_va_ten = $_POST['ho_va_ten'];
                 $dia_chi = $_POST['address'];
@@ -115,27 +115,32 @@ if (isset ($_GET['act'])) {
             include "public/don_hang.php";
             break;
 
+
             // Thanh toán Momo
         case 'check_out_online':
             // Lấy tổng giá tiền của 1 tour
+            // $id_tuor = $_POST['id_tuor'];
             $tong_gia = $_POST['tong_gia'];
+            // echo $id_tuor;
+            // die;
                       
-                if(isset($_POST['payUrl']) && isset($_GET['id_tuor'])){
+                if(isset($_POST['payUrl'])){
+                    // $id_tuor=$_GET['id_tuor'];
                     // echo 'momo';
-                                            
-                    $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+                        // echo $_GET['id_tuor'];   
+                        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
-                    $partnerCode = 'MOMOBKUN20180529';
-                    $accessKey = 'klm05TvNBzhg7h7j';
-                    $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-                   
-                    $orderInfo = "Thanh toán qua MoMo";
-                    $amount = $tong_gia;
-                    $orderId = rand(00,99999);
-                    // Ra trang đơn hàng
-                    $redirectUrl = "http://localhost/DuAn1_Nhom7/public/index.php";
-                    $ipnUrl = "http://localhost/DuAn1_Nhom7/public/index.php";
-                    $extraData = "";
+
+                        $partnerCode = 'MOMOBKUN20180529';
+                        $accessKey = 'klm05TvNBzhg7h7j';
+                        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+                        $orderInfo = "Thanh toán qua MoMo";
+                        $amount = $tong_gia;
+                        $orderId = rand(1,99999);
+                        $redirectUrl = "http://localhost/DuAn1_Nhom7/public/thanks.php";
+                        $ipnUrl = "http://localhost/DuAn1_Nhom7/public/thanks.php";
+                        $extraData = "";
+                        
 
 
                     
@@ -348,6 +353,8 @@ if (isset ($_GET['act'])) {
             }
         include "public/timkiem_tour.php";
         break;
+
+
 
         
 

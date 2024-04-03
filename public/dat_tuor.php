@@ -204,7 +204,7 @@ if (is_array($load_one_tour)) {
                         <p>
                             <input type="hidden" value="<?= $tong_nguoi =  $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2]?>" name='tong_nguoi'>
                         </p>
-                        
+                       
                     </div>
                 </div>
 
@@ -223,7 +223,5 @@ if (is_array($load_one_tour)) {
         <div></div>
     </form>
 
-    <form action="index.php?act=check_out_online" method="post">
-        
-    </form>
+   
 </section>
