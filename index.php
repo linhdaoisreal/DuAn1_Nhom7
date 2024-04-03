@@ -128,22 +128,18 @@ if (isset ($_GET['act'])) {
                     $trang_thai = 0;
 
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$$trang_thai);
-                        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
+                    $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
-
-                        $partnerCode = 'MOMOBKUN20180529';
-                        $accessKey = 'klm05TvNBzhg7h7j';
-                        $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
-                        $orderInfo = "Thanh toán qua MoMo";
+                    $partnerCode = 'MOMOBKUN20180529';
+                    $accessKey = 'klm05TvNBzhg7h7j';
+                    $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+                    $orderInfo = "Thanh toán qua MoMo";
                         $amount = $tong_gia;
                         $orderId = rand(1,99999);
                         $redirectUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
                         $ipnUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
                         $extraData = "";
-                        
-
-
-                    
+                                        
                         $partnerCode = $partnerCode;
                         $accessKey = $accessKey;
                         $serectkey = $secretKey;
@@ -179,9 +175,24 @@ if (isset ($_GET['act'])) {
                         //Just a example, please check more in there
 
                         header('Location: ' . $jsonResult['payUrl']);
-                    
-                }elseif(isset($_POST['vnpay'])){
-                    echo 'vnpay';
+                   
+
+                //VNPAY 
+                }elseif(isset($_POST['redirect'])){
+                    // echo 'vnpay';
+                    $id_tuor = $_POST['id_tuor'];
+                    $ho_va_ten = $_POST['ho_va_ten'];
+                    $dia_chi = $_POST['address'];
+                    $email = $_POST['email'];
+                    $sdt = $_POST['sdt'];
+                    $ma_buu_chinh = $_POST['ma_buu_chinh'];
+                    $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
+                    $dk_them = $_POST['dk_them'];
+                    $trang_thai = 0;  
+                    $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$$trang_thai);    
+                    include './vnpay_php/vnpay_create_payment.php';
+                    // vui lòng tham khảo thêm tại code demo
+
                 }elseif(isset($_POST['visa'])){
                     echo 'visa';
                 }

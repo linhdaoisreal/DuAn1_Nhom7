@@ -21,7 +21,7 @@
                 <h1 class="font-semibold text-2xl py-3 text-orange-400">Thông tin tài khoản</h1><br>
                 <!-- avarta -->
                 <div class="items-center flex justify-center mt-4">
-                    <img style="width:200px;height:200px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt=""><br>
+                    <img style="width:200px;height:200px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt="" class="object-cover"><br>
                     </div>
                     <p class="font-medium mt-6 text-lg text-cyan-900">Tên người dùng: <span class="font-normal"><?=$ho_ten ?></span></p>
                     <p class="font-medium text-lg text-cyan-900">Email: <span class="font-normal"><?=$email ?></span></p>

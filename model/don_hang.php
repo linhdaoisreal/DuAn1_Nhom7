@@ -27,7 +27,9 @@ function load_mot_don_hang($id_don_hang){
 // cập nhâth
 function update_don_hang($id_don_hang,$trang_thai){
     $sql="UPDATE don_hang SET trang_thai='".$trang_thai."' WHERE id_don_hang=".$id_don_hang;
+   
     pdo_execute($sql);
+    
 }
 function delete_don_hang_theoTour($id_tuor){
     $sql = "DELETE FROM don_hang WHERE id_tuor=".$id_tuor;

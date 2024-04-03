@@ -18,25 +18,25 @@ if (is_array($load_one_tour)) {
                     <div class="col-span-8 md:col-span-4">
                         <div>
                             <div class="flex">
-                                <h3>Họ và Tên </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Tên người dùng </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name='ho_va_ten'
-                                value="<?= $user['ho_ten'] ?>">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'
+                                value=" <?= $user['ho_ten'] ?>">
                         </div>
 
                         <div>
                             <div class="flex">
-                                <h3>Địa chỉ </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Địa chỉ </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="address"
-                                value="<?= $user['dia_chi'] ?>" name="diachi">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="address"
+                                value=" <?= $user['dia_chi'] ?>" name="diachi">
                         </div>
 
                         <div>
                             <div class="flex">
-                                <h3>Mã bưu chính </h3>
+                                <h3 class="text-orange-400 font-semibold">Mã bưu chính </h3>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="ma_buu_chinh">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="ma_buu_chinh">
                         </div>
                     </div>
 
@@ -44,31 +44,31 @@ if (is_array($load_one_tour)) {
                     <div class="col-span-8 md:col-span-4">
                         <div>
                             <div class="flex">
-                                <h3>Email </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Email </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2"
-                                value="<?= $user['email'] ?>" name="email">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2"
+                                value=" <?= $user['email'] ?>" name="email">
                         </div>
 
                         <div>
                             <div class="flex">
-                                <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Số điện thoại </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2"
-                                value="<?= $user['so_dien_thoai'] ?>" name="sdt">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2"
+                                value=" <?= $user['so_dien_thoai'] ?>" name="sdt">
                         </div>
 
                         <div>
-                            <h3>Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="tinh_thanh_pho">
+                            <h3 class="text-orange-400 font-semibold">Tỉnh/Thành Phố</h3>
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <p>Ghi chú</p>
+                    <p class="text-orange-400 font-semibold">Ghi chú</p>
                     <textarea name="dk_them" id="" cols="30" rows="10"
-                        class="w-full border border-zinc-400 rounded-md my-2"></textarea>
+                        class="w-full border border-orange-400 rounded-md my-2"></textarea>
                 </div>
             </div>
 
@@ -85,21 +85,21 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name='ho_va_ten'>
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'>
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Địa chỉ </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="address">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="address">
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Mã bưu chính </h3>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="ma_buu_chinh">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="ma_buu_chinh">
                         </div>
                     </div>
 
@@ -109,19 +109,19 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Email </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="email">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="email">
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="sdt">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="sdt">
                         </div>
 
                         <div>
                             <h3>Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name="tinh_thanh_pho">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ if (is_array($load_one_tour)) {
                 <div>
                     <p>Ghi chú</p>
                     <textarea name="dk_them" id="" cols="30" rows="10"
-                        class="w-full border border-zinc-400 rounded-md my-2"></textarea>
+                        class="w-full border border-orange-400 rounded-md my-2"></textarea>
                 </div>
             </div>
         <?php } ?>
@@ -221,7 +221,7 @@ if (is_array($load_one_tour)) {
                             <button class="font-semibold" type="submit" name="payUrl">Thanh toán với Momo</button>
                         </div>
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="vnpay">Thanh toán với VNPAY</button>
+                            <button class="font-semibold" type="submit" name="redirect">Thanh toán với VNPAY</button>
                         </div>
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
                             <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
