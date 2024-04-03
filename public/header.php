@@ -88,13 +88,15 @@
                 <!-- Đăng nhập - Tìm kiếm -->
                 <div class="flex flex-row justify-end items-center gap-2 pr-1">
                     <!-- Tìm kiếm -->
-                    <div class="m-7 mr-3 md:mr-7 md:m-0 flex">
+                    <div class="m-7 mr-3 md:mr-7 md:m-0 flex flex-col-reverse">
                         <form action="index.php?act=tim_tour" id="search_form" method="post">
                             <input type="text" name="word" id="word" placeholder=" Tìm tour..."
-                                class="w-64 mt-16 rounded-lg border-orange-400 border-2 outline-none hidden">
+                                class="w-auto mt-10 rounded-lg border-orange-400 border-2 outline-none hidden">
                         </form>
+                        <div class="grid justify-items-end">
                         <i id="search_icon"
-                            class="md:visible text-2xl fas fa-search text-orange-500 cursor-pointer"></i>
+                            class="md:visible text-2xl fas fa-search text-orange-500 cursor-pointer "></i>
+                        </div>
                     </div>
 
 
@@ -104,8 +106,8 @@
                             extract($_SESSION['ho_ten']);
                         ?>
                     <div class="relative" onclick="toggleDropdown()">
-                        <div class="flex items-center">
-                            <img class="mr-3 object-cover" style="width:35px;height:35px;border-radius: 50%"
+                        <div class="flex items-center ">
+                            <img class="mr-3 object-cover " style="width:35px;height:35px;border-radius: 50%"
                                 src="./gallery/<?= $anh_dai_dien?>" alt="">
                             <p id="userDropdownButton" class="font-semibold text-orange-400 cursor-pointer hidden md:block">
                                 <?= $ho_ten ?></p>

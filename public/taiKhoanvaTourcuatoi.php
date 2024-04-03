@@ -1,5 +1,5 @@
 <!-- TÀI KHOẢN VÀ TOUR CỦA TÔI -->
-<section>
+<section class="mb-24">
     <div class="p-4 md:px-14">
         <!-- Tiêu đề -->
         <div class="mr-6">
@@ -40,60 +40,70 @@
             <!-- Thông tin các tour đã đặt -->
             <div class="md:col-span-4">
                 <h1 class="font-semibold text-2xl py-3 text-orange-400">Các tour đã đặt</h1>
-                <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
-                    <div class="w-24 h-auto">
-                        <img class="" src="./src/img/banner1.png" alt="">
-                    </div>
-                    <div class="my-auto text-sm md:text-base">
-                        <h1>Tour Sapa - Trạng thái: <span>Đã hoàn thành</span></h1>
-                        <p>Ngày bắt đầu: <span>11/01/2024</span></p>
-                        <p>Số người đăng kí: <span>4 Người</span></p>
-                    </div>
-                </div>
+                <?php
+                    if(isset($_SESSION['ho_ten'])){
+                        foreach($loadDH as $checkDH){
+                            extract($checkDH);
+                            $hinhAnh= $img_path.$hinh_anh_mau;
+                            echo'
+                            <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
+                                <div class="w-24 h-auto">
+                                    <img class="" src="'.$hinhAnh.'" alt="">
+                                </div>
+                                <div class="my-auto text-sm md:text-base">
+                                    <h1>Tour '.$ten_tuor.' - Trạng thái: <span>';
+                                    if($trang_thai == 1){
+                                        echo'Tuor chưa đến ngày khởi hành';
+                                    }elseif($trang_thai == 2){
+                                        echo'Tuor đã khởi hành';
+                                    }
+                                    echo'</span></h1>
+                                    <p>Ngày khởi hành: <span>'.$ngay_khoi_hanh.'</span></p>
+                                    <p>Số người đăng kí: <span>'.$tong_nguoi.'</span></p>
+                                </div>
+                            </div> 
+                            ';
+                        }
+                    }else{
+                        echo '
+                        <form action="index.php?act=taiKhoan_Tourcuatoi" id="search_form" method="post">
+                            <input type="text" name="id_don_hang" placeholder=" Vui lòng nhập ID của hoá đơn..."
+                                class="w-1/2 p-2 rounded-lg border-orange-400 border-2 outline-none  ">
+                            <input type="submit" name="tim_kiem" value="Tìm kiếm" 
+                            class="p-2 px-4 rounded-lg border-2 border-sky-400 bg-sky-400 text-white font-medium hover:bg-orange-400 hover:text-white transtion-all cursor-pointer">
+                        </form>
+                        ';
+                        if(isset($loadTKDH)){
+                            foreach($loadTKDH as $checkTKDH){
+                                extract($checkTKDH);
+                                $hinhAnh= $img_path.$hinh_anh_mau;
+                                echo'
+                                <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
+                                    <div class="w-24 h-auto">
+                                        <img class="" src="'.$hinhAnh.'" alt="">
+                                    </div>
+                                    <div class="my-auto text-sm md:text-base">
+                                        <h1>Tour '.$ten_tuor.' - Trạng thái: <span>';
+                                        if($trang_thai == 1){
+                                            echo'Tuor chưa đến ngày khởi hành';
+                                        }elseif($trang_thai == 2){
+                                            echo'Tuor đã khởi hành';
+                                        }
+                                        echo'</span></h1>
+                                        <p>Ngày khởi hành: <span>'.$ngay_khoi_hanh.'</span></p>
+                                        <p>Số người đăng kí: <span>'.$tong_nguoi.'</span></p>
+                                    </div>
+                                </div> 
+                                ';
+                            }
+                        }else{
 
-                <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
-                    <div class="w-24 h-auto">
-                        <img class="" src="./src/img/banner1.png" alt="">
-                    </div>
-                    <div class="my-auto text-sm md:text-base">
-                        <h1>Tour Sapa - Trạng thái: <span>Đã hoàn thành</span></h1>
-                        <p>Ngày bắt đầu: <span>11/01/2024</span></p>
-                        <p>Số người đăng kí: <span>4 Người</span></p>
-                    </div>
-                </div>
-
-                <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
-                    <div class="w-24 h-auto">
-                        <img class="" src="./src/img/banner1.png" alt="">
-                    </div>
-                    <div class="my-auto text-sm md:text-base">
-                        <h1>Tour Sapa - Trạng thái: <span>Đã hoàn thành</span></h1>
-                        <p>Ngày bắt đầu: <span>11/01/2024</span></p>
-                        <p>Số người đăng kí: <span>4 Người</span></p>
-                    </div>
-                </div>
-
-                <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
-                    <div class="w-24 h-auto">
-                        <img class="" src="./src/img/banner1.png" alt="">
-                    </div>
-                    <div class="my-auto text-sm md:text-base">
-                        <h1>Tour Sapa - Trạng thái: <span>Đã hoàn thành</span></h1>
-                        <p>Ngày bắt đầu: <span>11/01/2024</span></p>
-                        <p>Số người đăng kí: <span>4 Người</span></p>
-                    </div>
-                </div>
-
-                <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
-                    <div class="w-24 h-auto">
-                        <img class="" src="./src/img/banner1.png" alt="">
-                    </div>
-                    <div class="my-auto text-sm md:text-base">
-                        <h1>Tour Sapa - Trạng thái: <span>Đã hoàn thành</span></h1>
-                        <p>Ngày bắt đầu: <span>11/01/2024</span></p>
-                        <p>Số người đăng kí: <span>4 Người</span></p>
-                    </div>
-                </div>
+                        }
+                        
+                    }
+                    
+                ?>
+                
 
             </div>
         </div>

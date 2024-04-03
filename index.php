@@ -38,6 +38,7 @@ if (isset ($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
         case 'danhsachtour':
+            //echo $_SESSION['ho_ten']['id_nguoi_dung'];
             $load_hot_tuor = load_top3_hot_tuor();
             $id_mua = "";
             $id_mien = "";
@@ -73,7 +74,7 @@ if (isset ($_GET['act'])) {
                 $ngay_khoi_hanh = $_POST['ngay_khoi_hanh'];
                 $so_nguoi_lon = $_POST['so_nguoi_lon'];
                 $so_tre_em = $_POST['so_tre_em'];
-                $mang_dat_tuor = [$ngay_khoi_hanh,$so_nguoi_lon,$so_tre_em];
+                $mang_dat_tuor = [$ngay_khoi_hanh,$so_nguoi_lon,$so_tre_em,$ngay_khoi_hanh];
                 $id_tuor = $_GET['id_tuor'];
 
                 if(!isset($_SESSION['dat_tuor']) ){
@@ -126,8 +127,13 @@ if (isset ($_GET['act'])) {
                     date_default_timezone_set('Asia/Ho_Chi_Minh');
                     $ngay_dat_hang = date("H:i:s d/m/Y"); // Thay đổi định dạng ngày
                     $trang_thai = 0;
-
-                    $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$$trang_thai);
+                    if(isset($_SESSION['ho_ten'])){
+                        $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
+                    }else{
+                        $id_nguoi_dung = "";
+                    }
+                    $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
+                    $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);
                     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
                     $partnerCode = 'MOMOBKUN20180529';
@@ -188,8 +194,17 @@ if (isset ($_GET['act'])) {
                     $ma_buu_chinh = $_POST['ma_buu_chinh'];
                     $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
                     $dk_them = $_POST['dk_them'];
-                    $trang_thai = 0;  
-                    $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$$trang_thai);    
+                    $tong_nguoi = $_POST['tong_nguoi'];
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $ngay_dat_hang = date("H:i:s d/m/Y"); // Thay đổi định dạng ngày
+                    $trang_thai = 0;
+                    if(isset($_SESSION['ho_ten'])){
+                        $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
+                    }else{
+                        $id_nguoi_dung = "";
+                    }
+                    $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
+                    $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
                     include './vnpay_php/vnpay_create_payment.php';
                     // vui lòng tham khảo thêm tại code demo
 
@@ -209,6 +224,18 @@ if (isset ($_GET['act'])) {
             break;
 
         case 'taiKhoan_Tourcuatoi':
+            if(isset($_SESSION['ho_ten'])){
+                $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
+                $loadDH = load_DH_theo_IDNguoiDung($id_nguoi_dung);
+
+            }else{
+                if(isset($_POST['tim_kiem']) && $_POST['id_don_hang']){
+                    $id_don_hang = $_POST['id_don_hang'];
+                    $loadTKDH=load_DH_theo_TimkiemID($id_don_hang);
+                    //var_dump($loadTKDH);
+                }else{
+                }
+            }
             include "public/taiKhoanvatourcuatoi.php";
             break;
 

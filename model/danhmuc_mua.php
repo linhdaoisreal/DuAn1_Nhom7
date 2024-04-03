@@ -33,11 +33,12 @@ function delete_danhmuc_mua($id_mua){
     // JOIN tuor_ngay_xuat_phat ON tuor_ngay_xuat_phat.id_tuor = tuor.id_tuor 
     // JOIN don_hang ON don_hang.id_tuor = tuor.id_tuor
     // WHERE danhmuc_mua.id_mua = ".$id_mua;
-    $sql = "DELETE FROM danhmuc_mua WHERE danhmuc_mua.id_mua 
-    IN (SELECT id_mua FROM tuor 
-    JOIN hinh_anh ON hinh_anh.id_tour = tuor.id_tuor 
-    JOIN tuor_ngay_xuat_phat ON tuor_ngay_xuat_phat.id_tuor = tuor.id_tuor 
-    JOIN don_hang ON don_hang.id_tuor = tuor.id_tuor)=".$id_mua;
+    // $sql = "DELETE FROM danhmuc_mua WHERE danhmuc_mua.id_mua 
+    // IN (SELECT id_mua FROM tuor 
+    // JOIN hinh_anh ON hinh_anh.id_tour = tuor.id_tuor 
+    // JOIN tuor_ngay_xuat_phat ON tuor_ngay_xuat_phat.id_tuor = tuor.id_tuor 
+    // JOIN don_hang ON don_hang.id_tuor = tuor.id_tuor)=".$id_mua;
+    $sql="DELETE FROM danhmuc_mua WHERE id_mua=".$id_mua;
     pdo_execute($sql);
 }
 

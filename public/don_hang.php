@@ -67,7 +67,7 @@ if(is_array($loadOneDH)){
 <section>
    <div class="grid grid-cols-12 mx-12 my-8 gap-6">
             <div class="col-span-12 md:col-span-8">
-                <h1 class="text-3xl font-semibold mb-6">Bạn đã đặt hàng thành công</h1>
+                <h1 class="text-3xl font-semibold mb-6">Bạn đã đặt hàng thành công - Mã hoá đơn của bạn là: <?=$id_don_hang?></h1>
                 <h1 class="text-3xl font-semibold mb-6">Thông Tin Của Bạn</h1>
                 <hr class="text-gray-500">
                 

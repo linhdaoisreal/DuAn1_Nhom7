@@ -1,8 +1,8 @@
 <?php
 // thêm đơn hàng
-function insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor, $trang_thai){
-    $sql="INSERT INTO don_hang(ho_va_ten,dia_chi,email,sdt,ma_buu_chinh,tinh_thanh_pho,dk_them,tong_gia,ngay_dat_hang,tong_nguoi,id_tuor,trang_thai) 
-        VALUES ('$ho_va_ten','$dia_chi','$email','$sdt','$ma_buu_chinh','$tinh_thanh_pho','$dk_them','$tong_gia','$ngay_dat_hang','$tong_nguoi','$id_tuor','$trang_thai')";
+function insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor, $trang_thai,$id_nguoi_dung,$ngay_khoi_hanh){
+    $sql="INSERT INTO don_hang(ho_va_ten,dia_chi,email,sdt,ma_buu_chinh,tinh_thanh_pho,dk_them,tong_gia,ngay_dat_hang,tong_nguoi,id_tuor,trang_thai,id_nguoi_dung,ngay_khoi_hanh) 
+        VALUES ('$ho_va_ten','$dia_chi','$email','$sdt','$ma_buu_chinh','$tinh_thanh_pho','$dk_them','$tong_gia','$ngay_dat_hang','$tong_nguoi','$id_tuor','$trang_thai','$id_nguoi_dung','$ngay_khoi_hanh')";
     $id_don_hang = pdo_execute_return_lastInsertId($sql);
     return $id_don_hang;
 }
@@ -34,5 +34,21 @@ function update_don_hang($id_don_hang,$trang_thai){
 function delete_don_hang_theoTour($id_tuor){
     $sql = "DELETE FROM don_hang WHERE id_tuor=".$id_tuor;
     pdo_execute($sql);
+}
+
+function load_DH_theo_IDNguoiDung($id_nguoi_dung){
+    $sql = "SELECT id_don_hang, ho_va_ten, tong_gia, tong_nguoi, trang_thai, tuor.hinh_anh_mau, ten_tuor, don_hang.ngay_khoi_hanh
+    FROM don_hang JOIN tuor ON tuor.id_tuor = don_hang.id_tuor 
+    WHERE id_nguoi_dung=".$id_nguoi_dung;
+    $loadDH=pdo_query($sql);
+    return $loadDH;
+}
+
+function load_DH_theo_TimkiemID($id_don_hang){
+    $sql = "SELECT id_don_hang, ho_va_ten, tong_gia, tong_nguoi, trang_thai, tuor.hinh_anh_mau, ten_tuor, don_hang.ngay_khoi_hanh
+    FROM don_hang JOIN tuor ON tuor.id_tuor = don_hang.id_tuor 
+    WHERE id_don_hang=".$id_don_hang;
+    $loadDH=pdo_query($sql);
+    return $loadDH;
 }
 ?>
