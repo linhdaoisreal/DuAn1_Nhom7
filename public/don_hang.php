@@ -3,6 +3,9 @@ if (is_array($load_one_tour)) {
     extract($load_one_tour);
     $hinhAnh = $img_path . $hinh_anh_mau;
 }
+if(is_array($loadOneDH)){
+    extract($loadOneDH);
+}
 ?>
 <!-- ĐẶT TUOR -->
 <?php

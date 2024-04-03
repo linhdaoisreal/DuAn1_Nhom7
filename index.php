@@ -92,23 +92,13 @@ if (isset ($_GET['act'])) {
             break;
 
         case 'show_don_hang':
-            if(isset($_POST['chi_tiet']) && ($_POST['chi_tiet'] && isset($_GET['id_tuor']))){
+            if( isset($_GET['id_don_hang'])){
                 $id_tuor = $_GET['id_tuor'];
-                $ho_va_ten = $_POST['ho_va_ten'];
-                $dia_chi = $_POST['address'];
-                $email = $_POST['email'];
-                $sdt = $_POST['sdt'];
-                $ma_buu_chinh = $_POST['ma_buu_chinh'];
-                $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
-                $dk_them = $_POST['dk_them'];
-                $tong_gia = $_POST['tong_gia'];
-                $tong_nguoi = $_POST['tong_nguoi'];
-                date_default_timezone_set('Asia/Ho_Chi_Minh');
-                $ngay_dat_hang = date("H:i:s d/m/Y"); // Thay đổi định dạng ngày
-                $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor);
+                $trang_thai=1;
+                $id_don_hang=$_GET['id_don_hang'];
+                update_don_hang($id_don_hang,$trang_thai);
+                $loadOneDH = load_mot_don_hang($id_don_hang);
 
-              
-                
                 $load_snd=load_so_ngay_dem($id_tuor);
                 $load_one_tour = load_one_tour($id_tuor);
             }
@@ -123,6 +113,21 @@ if (isset ($_GET['act'])) {
             $tong_gia = $_POST['tong_gia'];
                       
                 if(isset($_POST['payUrl'])){ 
+                    $id_tuor = $_POST['id_tuor'];
+                    $ho_va_ten = $_POST['ho_va_ten'];
+                    $dia_chi = $_POST['address'];
+                    $email = $_POST['email'];
+                    $sdt = $_POST['sdt'];
+                    $ma_buu_chinh = $_POST['ma_buu_chinh'];
+                    $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
+                    $dk_them = $_POST['dk_them'];
+                    $tong_gia = $_POST['tong_gia'];
+                    $tong_nguoi = $_POST['tong_nguoi'];
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $ngay_dat_hang = date("H:i:s d/m/Y"); // Thay đổi định dạng ngày
+                    $trang_thai = 0;
+
+                    $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$$trang_thai);
                         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
 
@@ -132,8 +137,8 @@ if (isset ($_GET['act'])) {
                         $orderInfo = "Thanh toán qua MoMo";
                         $amount = $tong_gia;
                         $orderId = rand(1,99999);
-                        $redirectUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang";
-                        $ipnUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang";
+                        $redirectUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
+                        $ipnUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
                         $extraData = "";
                         
 

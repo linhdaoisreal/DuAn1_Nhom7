@@ -204,23 +204,33 @@ if (is_array($load_one_tour)) {
                         <p>
                             <input type="hidden" value="<?= $tong_nguoi =  $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2]?>" name='tong_nguoi'>
                         </p>
+
+                        <p>
+                            <input type="hidden" value="<?= $id_tuor ?>" name='id_tuor'>
+                        </p>
                        
                     </div>
                 </div>
 
                 
 
-                <div class="flex mx-auto item-center justify-center py-8">
-                    <input type="submit" value="ĐẶT TOUR" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
-                        text-white hover:scale-110 transition cursor-pointer">
+                <div class="flex flex-col mx-auto item-center justify-center py-8 leading-loose">
+                    <!-- <input type="submit" value="ĐẶT TOUR" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
+                        text-white hover:scale-110 transition cursor-pointer"> -->
+                        <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                            <button class="font-semibold" type="submit" name="payUrl">Thanh toán với Momo</button>
+                        </div>
+                        <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                            <button class="font-semibold" type="submit" name="vnpay">Thanh toán với VNPAY</button>
+                        </div>
+                        <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                            <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
+                        </div>
                 </div>
             <?php } ?>
 
-        <button type="submit" name="payUrl">Momo</button>
-        <button type="submit" name="vnpay">VNPAY</button>
-        <button type="submit" name="visa">VISA</button>
+        
         </div>
-        <div></div>
     </form>
 
    
