@@ -216,7 +216,7 @@ if (is_array($load_one_tour)) {
                 </div>
             <?php } ?>
 
-            <button type="submit" name="payUrl">Momo</button>
+        <button type="submit" name="payUrl">Momo</button>
         <button type="submit" name="vnpay">VNPAY</button>
         <button type="submit" name="visa">VISA</button>
         </div>

@@ -119,15 +119,10 @@ if (isset ($_GET['act'])) {
             // Thanh toán Momo
         case 'check_out_online':
             // Lấy tổng giá tiền của 1 tour
-            // $id_tuor = $_POST['id_tuor'];
+
             $tong_gia = $_POST['tong_gia'];
-            // echo $id_tuor;
-            // die;
                       
-                if(isset($_POST['payUrl'])){
-                    // $id_tuor=$_GET['id_tuor'];
-                    // echo 'momo';
-                        // echo $_GET['id_tuor'];   
+                if(isset($_POST['payUrl'])){ 
                         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
 
@@ -137,8 +132,8 @@ if (isset ($_GET['act'])) {
                         $orderInfo = "Thanh toán qua MoMo";
                         $amount = $tong_gia;
                         $orderId = rand(1,99999);
-                        $redirectUrl = "http://localhost/DuAn1_Nhom7/public/thanks.php";
-                        $ipnUrl = "http://localhost/DuAn1_Nhom7/public/thanks.php";
+                        $redirectUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang";
+                        $ipnUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang";
                         $extraData = "";
                         
 
