@@ -131,7 +131,7 @@ if (is_array($load_one_tour)) {
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Ngày Khởi Hành: </h3>
                             <div class="ml-4">
-                                <select name="ngay_khoi_hanh" id="" class="border-b-2 border-gray-500">
+                                <select name="ngay_khoi_hanh" id="" class="border-b-2 border-orange-400">
                                     <?php
                                     foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
                                         extract($checkTG);
@@ -144,21 +144,21 @@ if (is_array($load_one_tour)) {
                             </div>
                         </div>
 
-                        <div class="flex ">
+                        <div class="flex">
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Số người lớn: </h3>
                             <div class="ml-4">
-                                <input type="number" id="so_nguoi_lon" min="0" value="0" name="so_nguoi_lon"
-                                    class="border-b-2 border-gray-500">
+                                <input type="number" id="so_nguoi_lon" min="1" value="1" name="so_nguoi_lon"
+                                 class="border-b-2 border-orange-400">
                             </div>
                         </div>
 
-                        <div class="flex ">
+                        <div class="flex">
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Số trẻ em: </h3>
                             <div class="ml-4">
-                                <input type="number" id="so_nguoi_lon" min="0" value="0" name="so_tre_em"
-                                    class="border-b-2 border-gray-500">
+                                <input type="number" id="so_tre_em" min="0" value="0" name="so_tre_em"
+                                 class="border-b-2 border-orange-400">
                             </div>
                         </div>
                     </div>
@@ -174,24 +174,24 @@ if (is_array($load_one_tour)) {
                     <div class="flex mx-auto item-center justify-center py-8">
                         <input type="hidden" name="id_tuor" value="<?= $id_tuor ?>">
                         <input class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center
-                         rounded-lg text-white hover:scale-110 transition cursor-pointer" type="submit" name="dattuor"
-                            value="ĐẶT NGAY">
+                         rounded-lg text-white hover:scale-110 transition cursor-pointer" type="submit" name="dattuor" 
+                         onclick="return validateTotalPeople()"  value="ĐẶT NGAY">
                     </div>
                     
                     <script>
-                        document.querySelector('form').addEventListener('submit', function (event) {
-                            var SLToiDaInput = parseInt(document.getElementById('so_luong_toi_da').value);
-                            var SoNguoiLonInput = parseInt(document.getElementById('so_nguoi_lon').value);
-                            var SoTreEmInput = parseInt(document.getElementById('so_tre_em').value);
+                        // Hàm kiểm tra tổng số người không vượt quá giới hạn
+                        function validateTotalPeople() {
+                            var soNguoiLon = parseInt(document.getElementById('so_nguoi_lon').value);
+                            var soTreEm = parseInt(document.getElementById('so_tre_em').value);
+                            var soLuongToiDa = parseInt(document.getElementById('so_luong_toi_da').value);
 
-                            if (SoNguoiLonInput <= 0) {
-                                alert("Ít nhất cần 1 người lớn để tiến hành đặt tour. Xin quý khách vui lòng nhập lại thông tin!")
-                                event.preventDefault();
-                            }else if(SoNguoiLonInput+SoTreEmInput > SLToiDaInput){
-                                alert("Tuor này chỉ có thể đặt tối đa cho <?= $so_luong?> người. Xin lỗi quý khách vì sự bất tiện này!")
-                                event.preventDefault();
+                            var totalPeople = soNguoiLon + soTreEm;
+                            if (totalPeople > soLuongToiDa) {
+                                alert("Tổng số người tối đa của tour không được phép vượt quá " + soLuongToiDa);
+                                return false; 
                             }
-                        });
+                            return true; 
+                        }
                     </script>
                 </form>
 

@@ -25,7 +25,7 @@ $apiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
 //Config input format
 //Expire
 $startTime = date("YmdHis");
-$expire = date('YmdHis',strtotime('+15 minutes',strtotime($startTime)));
+$expire = date('YmdHis',strtotime('+5 minutes',strtotime($startTime)));
 
 $vnp_TxnRef = rand(00,99999); //Mã giao dịch thanh toán tham chiếu của merchant
 $vnp_Amount = $tong_gia; // Số tiền thanh toán

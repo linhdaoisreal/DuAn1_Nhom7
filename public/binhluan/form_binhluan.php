@@ -54,25 +54,37 @@ $dsbinhluan = all_binhluan($idpro);
 
     <div>
         <div class="boxfooter searchbox">
-            <!-- Check đăng nhập -->
-            <?php if (isset($_SESSION['ho_ten'])): ?>
-                <form class="w-full bg-white rounded-lg border mx-auto h-36"  action="<?=$_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="idpro" value="<?= $idpro ?>"> <!-- Thêm trường ẩn -->
-                    <div class="px-3 mb-2 mt-2">
-                        <textarea placeholder="comment" name="noi_dung"
-                            class="w-full bg-gray-100 rounded border border-gray-400 
-                        leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
-                    </div>
-                    <div class="flex justify-end px-4">
-                        <input type="submit" name="gui_binh_luan"
-                            class="px-2.5 py-1.5 rounded-md text-white text-sm bg-cyan-500 cursor-pointer"
-                            value="Comment">
-                    </div>
-                </form>
-            <?php else: ?>
-                <h3 class="text-orange-500 font-semibold text-xl mt-10">Vui lòng đăng nhập để bình luận!</h3>
-            <?php endif; ?>
-        </div>
+        <!-- Check đăng nhập -->
+        <?php if (isset($_SESSION['ho_ten'])): ?>
+            <form class="w-full bg-white rounded-lg border mx-auto h-36"  action="<?=$_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="idpro" value="<?= $idpro ?>"> <!-- Thêm trường ẩn -->
+                <div class="px-3 mb-2 mt-2">
+                    <textarea placeholder="comment" name="noi_dung"
+                        class="w-full bg-gray-100 rounded border border-gray-400 
+                    leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"></textarea>
+                </div>
+                <div class="flex justify-end px-4">
+                    <input type="submit" name="gui_binh_luan" onclick="return validateComment()"
+                        class="px-2.5 py-1.5 rounded-md text-white text-sm bg-cyan-500 cursor-pointer"
+                        value="Comment">
+                </div>
+            </form>
+        <?php else: ?>
+            <h3 class="text-orange-500 font-semibold text-xl mt-10">Vui lòng đăng nhập để bình luận!</h3>
+        <?php endif; ?>
+    </div>
+
+        <script>
+            function validateComment() {
+                var comment = document.querySelector('textarea[name="noi_dung"]').value;
+                if (comment.trim() === '') {
+                    alert("Vui lòng nhập nội dung comment!");
+                    return false; 
+                }
+                return true; 
+            }
+        </script>
+
         <?php
             // Xử lý gửi bình luận trước khi có bất kỳ đầu ra HTML nào được gửi ra
             if(isset($_POST['gui_binh_luan']) && isset($_POST['noi_dung']) && isset($_SESSION['ho_ten'])) {

@@ -15,21 +15,21 @@ if(is_array($loadOneDH)){
         <div class="col-span-8 md:col-span-4">
             <div>
                 <div class="flex">
-                    <h3>Họ và Tên: </h3>
+                    <h3 class="font-semibold">Họ và Tên: </h3>
                 </div>
                 <div class="w-full text-orange-400 rounded-md my-2">'.$ho_va_ten.'</div>
             </div>
 
             <div>
                 <div class="flex">
-                    <h3>Địa chỉ: </h3>
+                    <h3 class="font-semibold">Địa chỉ: </h3>
                 </div>
                 <div class="w-full text-orange-400 rounded-md my-2">'.$dia_chi.'</div>
             </div>
 
             <div>
                 <div class="flex">
-                    <h3>Mã bưu chính: </h3>
+                    <h3 class="font-semibold">Mã bưu chính: </h3>
                 </div>
                 <div class="w-ful text-orange-400 rounded-md my-2">'.$ma_buu_chinh.'</div>
             </div>
@@ -39,27 +39,27 @@ if(is_array($loadOneDH)){
         <div class="col-span-8 md:col-span-4">
             <div>
                 <div class="flex">
-                    <h3>Email: </h3>
+                    <h3 class="font-semibold">Email: </h3>
                 </div>
                 <div class="w-ful text-orange-400 rounded-md my-2">'.$email.'</div>
             </div>
 
             <div>
                 <div class="flex">
-                    <h3>Số điện thoại: </h3>
+                    <h3 class="font-semibold">Số điện thoại: </h3>
                 </div>
                 <div class="w-full text-orange-400 rounded-md my-2">'.$sdt.'</div>
             </div>
 
             <div>
-                <h3>Tỉnh/Thành Phố</h3>
+                <h3 class="font-semibold">Tỉnh/Thành Phố</h3>
                 <div class="w-full text-orange-400 rounded-md my-2">'.$tinh_thanh_pho.'</div>
             </div>
         </div>
     </div>
 
     <div>
-        <p>Các điều kiện đặt thêm:</p>
+        <p class="font-semibold">Ghi chú:</p>
         <div class="w-full text-orange-400  rounded-md my-2">'.$dk_them.'</div>
     </div>';
 
@@ -67,8 +67,15 @@ if(is_array($loadOneDH)){
 <section>
    <div class="grid grid-cols-12 mx-12 my-8 gap-6">
             <div class="col-span-12 md:col-span-8">
-                <h1 class="text-3xl font-semibold mb-6">Bạn đã đặt hàng thành công - Mã hoá đơn của bạn là: <?=$id_don_hang?></h1>
-                <h1 class="text-3xl font-semibold mb-6">Thông Tin Của Bạn</h1>
+                <div class="flex mb-3">
+                    <h2 class="text-3xl font-semibold">Bạn đã thanh toán thành công</h2>
+                    <div class="flex items-center justify-center rounded-full bg-green-400 h-9 w-9 mt-1 m-2">
+                        <i class="fa-solid fa-check text-white"></i>
+                    </div>
+                </div>
+                 
+                <h2 class="text-xl font-semibold mb-6">Thông Tin Của Bạn</h2>
+                <p class="font-semibold">Mã hoá đơn của bạn là: <?=$id_don_hang?></p>
                 <hr class="text-gray-500">
                 
                 <?php echo $you; ?>
