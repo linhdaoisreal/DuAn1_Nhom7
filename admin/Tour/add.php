@@ -4,7 +4,7 @@
     </div>
     <!-- Form nhập thêm mùa -->
     <div class="ml-10 mt-8">
-        <form action="index.php?act=add_tour" method="post">
+        <form action="index.php?act=add_tour" method="post" enctype="multipart/form-data">
             <div class="grid grid-cols-2">
                 <div class="">
                     <!-- Mã tour -->
@@ -43,6 +43,14 @@
                         <input type="text" name="dia_diem" id="dia_diem"
                             class="border-orange-300 w-full border-2 rounded-lg h-9">
                         <span id="dia_diem_error" class="text-red-500"></span>
+                    </div>
+
+                    <!-- Hình Ảnh -->
+                    <div class="mt-8 mr-12">
+                        <label for="" class="text-lg font-semibold text-orange-300">Địa điểm</label><br>
+                        <input type="file" name="hinh_anh_mau" id="hinh_anh_mau"
+                            class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <span id="hinh_anh_mau_error" class="text-red-500"></span>
                     </div>
                 </div>
 
@@ -170,6 +178,9 @@
                     var maThoiGianInput = document.getElementById('ma_thoi_gian');
                     var maThoiGianError = document.getElementById('ma_thoi_gian_error');
 
+                    var hinhAnhMauInput = document.getElementById('hinh_anh_mau');
+                    var hinhAnhMauError = document.getElementById('hinh_anh_mau_error');
+
                     if (tenTourInput.value.trim() === '') {
                         tenTourError.textContent = "Không để trống";
                         event.preventDefault(); // Ngăn chặn gửi form
@@ -245,6 +256,13 @@
                         event.preventDefault(); // Ngăn chặn gửi form
                     } else {
                         ma_Thoi_GianError.textContent = ""; // Xóa thông báo lỗi nếu có
+                    }
+
+                    if (hinhAnhMauInput.value.trim() === '') {
+                        hinhAnhMauError.textContent = "Không để trống";
+                        event.preventDefault(); // Ngăn chặn gửi form
+                    } else {
+                        hinhAnhMauError.textContent = ""; // Xóa thông báo lỗi nếu có
                     }
                 });
             </script>

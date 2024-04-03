@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 include "header.php";
+include "../global.php";
 include "../model/pdo.php";
 include "../model/danhmuc_mua.php";
 include "../model/danhmuc_mien.php";
@@ -60,6 +61,7 @@ if (isset($_GET['act'])) {
         // Xóa mùa
         case 'xoaMua';
             if (isset($_GET['id_mua']) && ($_GET['id_mua'] > 0)) {
+                // delete_tuor_theo_IDMua($_GET['id_mua']);
                 delete_danhmuc_mua($_GET['id_mua']);
             }
             $list_danhmuc_mua = all_danhmuc_mua();
@@ -137,7 +139,15 @@ if (isset($_GET['act'])) {
                 $id_mien = $_POST['ma_mien'];
                 $id_mua = $_POST['ma_mua'];
                 $id_thoi_gian = $_POST['ma_thoi_gian'];
-                add_new_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $xuat_phat, $id_mien, $id_mua, $id_thoi_gian);
+
+                $hinh_anh_mau = $_FILES['hinh_anh_mau']['name'];
+                $target_dir = "../gallery/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh_mau"]["name"]);
+                if (move_uploaded_file($_FILES["hinh_anh_mau"]["tmp_name"], $target_file)) {
+                } else {
+                }
+                add_new_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $xuat_phat, 
+                $id_mien, $id_mua, $id_thoi_gian, $hinh_anh_mau);
                 $thongbao = "Thêm thành công";
             }
             include_once "Tour/add.php";
@@ -147,14 +157,8 @@ if (isset($_GET['act'])) {
             $list_danhmuc_mien = all_danhmuc_mien();
             $list_danhmuc_mua = all_danhmuc_mua();
             $listThoiGian = all_thoi_gian();
-            //  echo '<pre>';
-            //     var_dump($listThoiGian);
-            //     die;
             if (isset($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)) {
                 $load_one_tour = load_one_tour($_GET['id_tuor']);
-                // echo '<pre>';
-                // var_dump($load_one_tour);
-                // die;
             }
             include "tour/update.php";
             break;
@@ -162,9 +166,6 @@ if (isset($_GET['act'])) {
         case 'update_tour':
             // kiểm tra xem người dùng có click vào nút cập nhật hay không
             if (isset($_POST['update_tour']) && ($_POST['update_tour'])) {
-                // if(isset($_POST['ten_tuor'], $_POST['gia'], $_POST['tong_quan'], $_POST['hanh_trinh'], $_POST['so_luong'], $_POST['dia_diem'], 
-                // $_POST['phuong_tien'], $_POST['xuat_phat'], $_POST['ma_mien'], $_POST['ma_mua'], $_POST['ma_thoi_gian'], $_POST['id_tuor'])){
-
                 $ten_tuor = $_POST['ten_tour'];
                 $gia = $_POST['gia'];
                 $tong_quan = $_POST['tong_quan'];
@@ -177,25 +178,13 @@ if (isset($_GET['act'])) {
                 $id_mua = $_POST['ma_mua'];
                 $id_thoi_gian = $_POST['ma_thoi_gian'];
                 $id_tuor = $_POST['id_tuor'];
-                // echo $id_tuor;
 
-                // echo '<pre>';
-                // var_dump([
-                //     $ten_tuor,
-                //     $gia,
-                //     $tong_quan,
-                //     $hanh_trinh,
-                //     $so_luong,
-                //     $dia_diem,
-                //     $phuong_tien,
-                //     $id_mien,
-                //     $id_mua,
-                //     $id_thoi_gian,
-                //     $xuat_phat,
-                //     $id_tuor
-                // ]);
-
-                // die;
+                $hinh_anh_mau = $_FILES['hinh_anh_mau']['name'];
+                $target_dir = "../gallery/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh_mau"]["name"]);
+                if (move_uploaded_file($_FILES["hinh_anh_mau"]["tmp_name"], $target_file)) {
+                } else {
+                }
                 update_tour(
                     $ten_tuor,
                     $gia,
@@ -208,7 +197,8 @@ if (isset($_GET['act'])) {
                     $id_mua,
                     $id_thoi_gian,
                     $xuat_phat,
-                    $id_tuor
+                    $id_tuor, 
+                    $hinh_anh_mau
                 );
                 $thongbao = "Cập nhật thành công";
                 // }
@@ -221,116 +211,13 @@ if (isset($_GET['act'])) {
             if (isset($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)) {
                 delete_hinh_anh_tuor($_GET['id_tuor']);
                 delete_tuor_nxp($_GET['id_tuor']);
+                delete_don_hang_theoTour($_GET['id_tuor']);
                 delete_tour($_GET['id_tuor']);
 
             }
             $load_all_tour = load_all_tour();
             include "tour/list.php";
             break;
-
-
-        //Hiển thi danh sách hạng tour
-        case 'list_hang_tuor':
-            $list_hang_tuor = all_hang_tuor();
-            include_once ("hang_tour/list.php");
-            break;
-
-        // Thêm hạng Tuor
-        case 'add_hang_tuor':
-            $load_all_tour = load_all_tour();
-            if (isset($_POST['add_hang_tuor']) && ($_POST['add_hang_tuor'])) {
-                $ten_hang_tuor = $_POST['ten_hang_tuor'];
-                $muc_tang = $_POST['muc_tang'];
-                add_hang_tour($ten_hang_tuor, $muc_tang);
-                $thongbao = "Thêm thành công";
-            }
-            include_once "hang_tour/add.php";
-            break;
-
-        // Xóa Hạng Tour
-        case 'xoa_hang_tour';
-            if (isset($_GET['id_hang_tuor']) && ($_GET['id_hang_tuor'] > 0)) {
-                delete_hang_tour($_GET['id_hang_tuor']);
-            }
-            $list_hang_tuor = all_hang_tuor();
-            include "hang_tour/list.php";
-            break;
-
-        // Sửa Hạng tour
-        case 'sua_hang_tour':
-            $load_all_tour = load_all_tour();
-            if (isset($_GET['id_hang_tuor']) && ($_GET['id_hang_tuor'] > 0)) {
-                $load_one_hang_tour = load_one_hang_tour($_GET['id_hang_tuor']);
-            }
-            include "hang_tour/update.php";
-            break;
-        // Update hạng tour
-        case 'update_hang_tour':
-            // kiểm tra xem người dùng có click vào nút cập nhật hay không
-            if (isset($_POST['update_hang_tour']) && ($_POST['update_hang_tour'])) {
-                $ten_hang_tuor = $_POST['ten_hang_tuor'];
-                $muc_tang = $_POST['muc_tang'];
-                $id_hang_tuor = $_POST['id_hang_tuor'];
-                update_hang_tour($ten_hang_tuor, $muc_tang, $id_hang_tuor);
-                $thongbao = "Cập nhật thành công";
-            }
-            $list_hang_tuor = all_hang_tuor();
-            include "hang_tour/list.php";
-            break;
-
-        // TRUNG GIAN HẠNG TUOR
-
-        // hiển thi danh sách trung gian
-        case 'list_trunggian_ht':
-            $listTrungGianHT = all_trunggian_ht();
-            include_once ("quanly_trung_gian/trunggian_ht/list.php");
-            break;
-
-        // thên trung gian hạng tuor
-        case 'add_trunggian_ht':
-            $tuor = load_all_tour();
-            $list_ht = all_hang_tuor();
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                $id_tuor = $_POST['id_tuor'];
-                $id_hang_tuor = $_POST['id_hang_tuor'];
-                insert_trunggian_ht($id_tuor, $id_hang_tuor);
-                $thongbao = "Thêm thành công";
-            }
-            include ("quanly_trung_gian/trunggian_ht/add.php");
-            break;
-
-        // Hiển thị 1 trung gian tuor hạng tuor
-        case 'suaTrungGianHT':
-            $tuor = load_all_tour();
-            $list_ht = all_hang_tuor();
-            if (isset($_GET['id_trunggian_ht']) && $_GET['id_trunggian_ht'] > 0) {
-                $TrungGianHT = load_one_trunggian_ht($_GET['id_trunggian_ht']);
-            }
-            include ("quanly_trung_gian/trunggian_ht/update.php");
-            break;
-
-        // update Trung gian Tuor hạng Tuor
-        case 'update_trunggian_ht':
-            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $id_hang_tuor = $_POST['id_hang_tuor'];
-                $id_tuor = $_POST['id_tuor'];
-                $id_trunggian_ht = $_POST['id_trunggian_ht'];
-                update_trunggian_ht($id_hang_tuor, $id_tuor, $id_trunggian_ht);
-                $thongbao = "Cập nhật thành công";
-            }
-            $listTrungGianHT = all_trunggian_ht();
-            include ("quanly_trung_gian/trunggian_ht/list.php");
-            break;
-
-        // xóa Trung gian hạng Tuor
-        case 'xoaTrungGianHT':
-            if (isset($_GET['id_trunggian_ht']) && ($_GET['id_trunggian_ht'] > 0)) {
-                delete_trunggian_ht($_GET['id_trunggian_ht']);
-            }
-            $listTrungGianHT = all_trunggian_ht();
-            include ("quanly_trung_gian/trunggian_ht/list.php");
-            break;
-
 
         //Thêm hình ảnh
         case 'add_hinh_anh':
@@ -497,8 +384,8 @@ if (isset($_GET['act'])) {
             if (isset($_GET['id_trunggian_nxp']) && ($_GET['id_trunggian_nxp'] > 0)) {
                 delete_trunggian_nxp($_GET['id_trunggian_nxp']);
             }
-            $listTrungGianNXP = load_all_trunggian_nxp();
-            include ("quanly_trung_gian/trunggian_nxp/list.php");
+            $load_all_tour = load_all_tour();
+            include "tour/list.php";
             break;
 
 
@@ -549,66 +436,7 @@ if (isset($_GET['act'])) {
             include "thoi_gian/list.php";
             break;
 
-        // TRUNG GIAN GIỮA TUOR VÀ THƠI GIAN
-        // hiển thị danh sách
-        case 'list_trunggian_tg':
-            $listTrungGianTG = all_trunggian_tg();
-            include_once ("quanly_trung_gian/trunggian_tg/list.php");
-            break;
 
-        // thêm trung gian thời gian
-        case 'load_trung_gian_tg':
-            $tuor = load_all_tour();
-            $nxp = all_ngay_xuat_phat();
-            if (isset($_GET['id_tuor']) && ($_GET['id_tuor'] > 0)) {
-                $load_one_tour = load_one_tour($_GET['id_tuor']);
-            }
-            include ("quanly_trung_gian/trunggian_tg/add.php");
-            break;
-
-        case 'add_trunggian_tg':
-            $tuor = load_all_tour();
-            $listThoiGian = all_thoi_gian();
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                $id_tuor = $_POST['id_tuor'];
-                $id_thoi_gian = $_POST['id_thoi_gian'];
-                insert_trunggian_tg($id_tuor, $id_thoi_gian);
-                $thongbao = "Thêm thành công";
-            }
-            include ("quanly_trung_gian/trunggian_tg/add.php");
-            break;
-
-        // Hiển thị 1 trung gian tuor thời gian
-        case 'suaTrungGianTG':
-            $tuor = load_all_tour();
-            $listThoiGian = all_thoi_gian();
-            if (isset($_GET['id_trunggian_tg']) && $_GET['id_trunggian_tg'] > 0) {
-                $TrungGianTG = load_one_trunggian_tg($_GET['id_trunggian_tg']);
-            }
-            include ("quanly_trung_gian/trunggian_tg/update.php");
-            break;
-
-        // update Trung gian tuor thời gian
-        case 'update_trunggian_tg':
-            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $id_tuor = $_POST['id_tuor'];
-                $id_thoi_gian = $_POST['id_thoi_gian'];
-                $id_trunggian_tg = $_POST['id_trunggian_tg'];
-                update_trunggian_tg($id_thoi_gian, $id_tuor, $id_trunggian_tg);
-                $thongbao = "Cập nhật thành công";
-            }
-            $listTrungGianTG = all_trunggian_tg();
-            include ("quanly_trung_gian/trunggian_tg/list.php");
-            break;
-
-        // xóa Trung gian hạng Tuor
-        case 'xoaTrungGianTG':
-            if (isset($_GET['id_trunggian_tg']) && ($_GET['id_trunggian_tg'] > 0)) {
-                delete_trunggian_tg($_GET['id_trunggian_tg']);
-            }
-            $listTrungGianTG = all_trunggian_tg();
-            include ("quanly_trung_gian/trunggian_tg/list.php");
-            break;
 
 
         // Đăng nhập - Đăng ký
@@ -621,6 +449,7 @@ if (isset($_GET['act'])) {
         // Xóa tài khoản người dùng
         case 'xoaTaiKhoan';
             if (isset($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung'] > 0)) {
+                delete_binhluan_theoTK($_GET['id_nguoi_dung']);
                 delete_taikhoan($_GET['id_nguoi_dung']);
             }
             $listtaikhoan = all_taikhoan();
@@ -629,14 +458,14 @@ if (isset($_GET['act'])) {
 
         // Chỉnh vai trò
         case 'suaTaiKhoan':
-            if(isset($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung']>0)){
-                $taikhoan=load_mot_taikhoan($_GET['id_nguoi_dung']);
+            if (isset($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung'] > 0)) {
+                $taikhoan = load_mot_taikhoan($_GET['id_nguoi_dung']);
             }
             $listtaikhoan = all_taikhoan();
             include ("taikhoan/update.php");
             break;
 
-         // Cập vai trò
+        // Cập vai trò
         case 'update_vai_tro':
             // kiểm tra xem người dùng có click vào nút cập nhật hay không
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
@@ -649,7 +478,7 @@ if (isset($_GET['act'])) {
             include ("taikhoan/list.php");
             break;
 
-         // Đăng xuất
+        // Đăng xuất
         case 'dang_xuat':
             session_unset();
             header("Location: ../index.php");
@@ -663,12 +492,12 @@ if (isset($_GET['act'])) {
             break;
 
         // Xóa bình luận
-        case'xoaBinhLuan'; 
-            if(isset($_GET['id_binh_luan']) && ($_GET['id_binh_luan']>0)){
+        case 'xoaBinhLuan';
+            if (isset($_GET['id_binh_luan']) && ($_GET['id_binh_luan'] > 0)) {
                 delete_binhluan($_GET['id_binh_luan']);
             }
             $list_binhluan = all_binhluan("", 0);
-            include_once("binhluan/list.php");
+            include_once ("binhluan/list.php");
             break;
 
         // QUẢN LÝ ĐƠN HÀNG      
@@ -677,40 +506,35 @@ if (isset($_GET['act'])) {
             $list_don_hang = all_don_hang();
             include ("donhang/list.php");
             break;
-    
+
         // xóa đơn hàng
-        case'xoa_don_hang'; 
-        if(isset($_GET['id_don_hang']) && ($_GET['id_don_hang']>0)){
-            delete_don_hang($_GET['id_don_hang']);
-        }
-        $list_don_hang = all_don_hang();
-        include("donhang/list.php");
-        break;
-        
+        case 'xoa_don_hang';
+            if (isset($_GET['id_don_hang']) && ($_GET['id_don_hang'] > 0)) {
+                delete_don_hang($_GET['id_don_hang']);
+            }
+            $list_don_hang = all_don_hang();
+            include ("donhang/list.php");
+            break;
+
         // hiển thi một đơn hàng 
         case 'sua_trang_thai';
-        if(isset($_GET['id_don_hang']) && ($_GET['id_don_hang']>0)){
-            $don_hang=load_mot_don_hang($_GET['id_don_hang']);
-        }
-        $list_don_hang = all_don_hang();
-        include ("donhang/update.php");
-        break;
-        
+            if (isset($_GET['id_don_hang']) && ($_GET['id_don_hang'] > 0)) {
+                $don_hang = load_mot_don_hang($_GET['id_don_hang']);
+            }
+            $list_don_hang = all_don_hang();
+            include ("donhang/update.php");
+            break;
+
         case 'update_trang_thai';
-        if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-            $id_don_hang = $_POST['id_don_hang'];
-            $trang_thai = $_POST['trang_thai'];
-            update_don_hang($id_don_hang,$trang_thai);
-            $thongbao = "Cập nhật thành công";
-        }
-        $list_don_hang = all_don_hang();
-        include ("donhang/list.php");
-        break;
-
-
-
-
-            
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id_don_hang = $_POST['id_don_hang'];
+                $trang_thai = $_POST['trang_thai'];
+                update_don_hang($id_don_hang, $trang_thai);
+                $thongbao = "Cập nhật thành công";
+            }
+            $list_don_hang = all_don_hang();
+            include ("donhang/list.php");
+            break;
 
         default:
             # code...

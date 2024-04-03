@@ -71,4 +71,13 @@ function delete_tuor_nxp($id_tuor){
     pdo_execute($sql);
 }
 
+function select_ngay_theo_tuor($id_tuor){
+    $sql = "SELECT id_trunggian_nxp, tuor_ngay_xuat_phat.id_tuor, tuor_ngay_xuat_phat.id_ngay, ngay_xuat_phat.ngay FROM tuor_ngay_xuat_phat 
+    JOIN tuor ON tuor.id_tuor = tuor_ngay_xuat_phat.id_tuor 
+    JOIN ngay_xuat_phat ON ngay_xuat_phat.id_ngay = tuor_ngay_xuat_phat.id_ngay
+    WHERE tuor.id_tuor =".$id_tuor;
+    $listNgayTheoTuor=pdo_query($sql);
+    return $listNgayTheoTuor;
+}
+
 ?>

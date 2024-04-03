@@ -28,5 +28,10 @@ function delete_binhluan($id_binh_luan){
     pdo_execute($sql);
 }
 
+function delete_binhluan_theoTK($id_nguoi_dung){
+    $sql="DELETE FROM binh_luan WHERE id_nguoi_dung=".$id_nguoi_dung;
+    pdo_execute($sql);
+}
+
 
 ?>

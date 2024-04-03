@@ -1,6 +1,7 @@
 <?php
 if (is_array($load_one_tour)) {
     extract($load_one_tour);
+    // var_dump($load_one_tour);
 }
 ?>
 <!-- CHI TIẾT TOUR -->

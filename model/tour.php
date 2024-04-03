@@ -1,10 +1,10 @@
 <?php
 
 // Thêm mới tour
-function add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $xuat_phat ,$id_mien, $id_mua, $id_thoi_gian)
+function add_new_tour($ten_tour, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $xuat_phat ,$id_mien, $id_mua, $id_thoi_gian, $hinh_anh_mau)
 {
-    $sql = "INSERT INTO `tuor`(ten_tuor, gia, tong_quan, hanh_trinh, so_luong, dia_diem, phuong_tien, xuat_phat ,id_mien, id_mua, id_thoi_gian) 
-    VALUES ('$ten_tour','$gia','$tong_quan','$hanh_trinh','$so_luong','$dia_diem','$phuong_tien','$xuat_phat','$id_mien','$id_mua','$id_thoi_gian');";
+    $sql = "INSERT INTO `tuor`(ten_tuor, gia, tong_quan, hanh_trinh, so_luong, dia_diem, phuong_tien, xuat_phat ,id_mien, id_mua, id_thoi_gian, hinh_anh_mau) 
+    VALUES ('$ten_tour','$gia','$tong_quan','$hanh_trinh','$so_luong','$dia_diem','$phuong_tien','$xuat_phat','$id_mien','$id_mua','$id_thoi_gian','$hinh_anh_mau');";
     pdo_execute($sql);
 }
 
@@ -57,11 +57,20 @@ function load_so_ngay_dem($id_tuor){
 }
 
 function update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien,
- $id_mien, $id_mua, $id_thoi_gian, $xuat_phat, $id_tuor)
-{
-    $sql = "UPDATE `tuor` SET ten_tuor='$ten_tuor', gia='$gia', tong_quan='$tong_quan', hanh_trinh='$hanh_trinh', so_luong='$so_luong',
-    dia_diem='$dia_diem', phuong_tien='$phuong_tien', id_mien='$id_mien', id_mua='$id_mua', id_thoi_gian='$id_thoi_gian', xuat_phat='$xuat_phat' 
+ $id_mien, $id_mua, $id_thoi_gian, $xuat_phat, $id_tuor, $hinh_anh_mau)
+{   
+    if($hinh_anh_mau!=""){
+        $sql = "UPDATE `tuor` SET ten_tuor='$ten_tuor', gia='$gia', tong_quan='$tong_quan', hanh_trinh='$hanh_trinh', so_luong='$so_luong',
+    dia_diem='$dia_diem', phuong_tien='$phuong_tien', id_mien='$id_mien', id_mua='$id_mua', 
+    id_thoi_gian='$id_thoi_gian', xuat_phat='$xuat_phat', hinh_anh_mau='$hinh_anh_mau' 
     WHERE id_tuor = '$id_tuor'";
+   }else{  
+    $sql = "UPDATE `tuor` SET ten_tuor='$ten_tuor', gia='$gia', tong_quan='$tong_quan', hanh_trinh='$hanh_trinh', so_luong='$so_luong',
+    dia_diem='$dia_diem', phuong_tien='$phuong_tien', id_mien='$id_mien', id_mua='$id_mua', 
+    id_thoi_gian='$id_thoi_gian', xuat_phat='$xuat_phat' 
+    WHERE id_tuor = '$id_tuor'";
+   }
+    
     // echo $sql;
     // die;
     pdo_execute($sql);
@@ -70,6 +79,11 @@ function update_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_d
 function delete_tour($id_tuor)
 {
     $sql = "DELETE FROM tuor WHERE id_tuor=" . $id_tuor;
+    pdo_execute($sql);
+}
+
+function delete_tuor_theo_IDMua($id_mua){
+    $sql = "DELETE FROM tuor WHERE id_mua=" . $id_mua;
     pdo_execute($sql);
 }
 
@@ -127,23 +141,7 @@ function load_tuor_theo_danhmuc($id_mua, $id_mien)
     return $load_tuor_theo_danhmuc;
 }
 
-function trunggian_hang_tuor_tuor($id_tuor){
-    $sql = "SELECT tuor.id_tuor, hang_tuor.id_hang_tuor, ten_hang_tuor, muc_tang FROM tuor 
-    JOIN tuor_hang_tuor ON tuor_hang_tuor.id_tuor = tuor.id_tuor 
-    JOIN hang_tuor ON tuor_hang_tuor.id_hang_tuor = hang_tuor.id_hang_tuor
-    WHERE tuor.id_tuor = ".$id_tuor;
-    $trunggian_hang_tuor = pdo_query($sql);
-    return $trunggian_hang_tuor;
-}
 
-function trunggian_thoi_gian_tuor($id_tuor){
-    $sql = "SELECT tuor.id_tuor, thoi_gian.id_thoi_gian, so_ngay_dem, muc_tang FROM tuor 
-    JOIN tuor_thoi_gian ON tuor_thoi_gian.id_tuor = tuor.id_tuor 
-    JOIN thoi_gian ON tuor_thoi_gian.id_thoi_gian = thoi_gian.id_thoi_gian
-    WHERE tuor.id_tuor = ".$id_tuor;
-    $trunggian_thoi_gian_tuor = pdo_query($sql);
-    return $trunggian_thoi_gian_tuor;
-}
 
 function trunggian_ngay_xuat_phat_tuor($id_tuor){
     $sql = "SELECT tuor.id_tuor, ngay_xuat_phat.id_ngay, ngay FROM tuor 
