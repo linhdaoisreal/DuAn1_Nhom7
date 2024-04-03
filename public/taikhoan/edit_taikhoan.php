@@ -15,7 +15,7 @@
                 <form action="index.php?act=edit_taikhoan" method="post" enctype="multipart/form-data">
                     <div class="flex mb-10">
                         <div class="mr-10">
-                            <img style="width:120px;height:120px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt=""><br>
+                            <img style="width:120px;height:120px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt="" class="object-cover"><br>
                             <input type="file" name="anh_dai_dien">
                         </div>
                         <div>

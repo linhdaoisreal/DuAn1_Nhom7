@@ -105,7 +105,7 @@
                         ?>
                     <div class="relative" onclick="toggleDropdown()">
                         <div class="flex items-center">
-                            <img class="mr-3" style="width:35px;height:35px;border-radius: 50%"
+                            <img class="mr-3 object-cover" style="width:35px;height:35px;border-radius: 50%"
                                 src="./gallery/<?= $anh_dai_dien?>" alt="">
                             <p id="userDropdownButton" class="font-semibold text-orange-400 cursor-pointer hidden md:block">
                                 <?= $ho_ten ?></p>

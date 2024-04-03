@@ -31,7 +31,7 @@ $dsbinhluan = all_binhluan($idpro);
                         <?php foreach ($dsbinhluan as $binhluan): ?>
                             <tr>
                                 <td>
-                                    <img style="width:40px;height:40px;border-radius:50%"  src="./gallery/<?=$binhluan['anh_dai_dien']?>" class="m-2" name="anh_dai_dien">
+                                    <img style="width:40px;height:40px;border-radius:50%"  src="./gallery/<?=$binhluan['anh_dai_dien']?>" class="m-2 object-cover" name="anh_dai_dien">
                                 </td>
                                 <td class="text-orange-400 font-semibold text-lg">
                                     <?= $binhluan['ho_ten'] ?>

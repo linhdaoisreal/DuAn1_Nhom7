@@ -6,7 +6,7 @@ if (is_array($load_one_tour)) {
 ?>
 <!-- ĐẶT TUOR -->
 <section>
-    <form action="index.php?act=show_don_hang&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
+    <form action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
         <?php if (isset($_SESSION['ho_ten'])) {
             $user = $_SESSION['ho_ten'] ?>
             <div class="col-span-12 md:col-span-8">
@@ -66,7 +66,7 @@ if (is_array($load_one_tour)) {
                 </div>
 
                 <div>
-                    <p>Các điều kiện đặt thêm</p>
+                    <p>Ghi chú</p>
                     <textarea name="dk_them" id="" cols="30" rows="10"
                         class="w-full border border-zinc-400 rounded-md my-2"></textarea>
                 </div>
@@ -83,7 +83,7 @@ if (is_array($load_one_tour)) {
                     <div class="col-span-8 md:col-span-4">
                         <div>
                             <div class="flex">
-                                <h3>Họ và Tên </h3><span class="text-red-500"> *</span>
+                                <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                             </div>
                             <input type="text" class="w-full border border-zinc-400 rounded-md my-2" name='ho_va_ten'>
                         </div>
@@ -127,7 +127,7 @@ if (is_array($load_one_tour)) {
                 </div>
 
                 <div>
-                    <p>Các điều kiện đặt thêm</p>
+                    <p>Ghi chú</p>
                     <textarea name="dk_them" id="" cols="30" rows="10"
                         class="w-full border border-zinc-400 rounded-md my-2"></textarea>
                 </div>
@@ -191,15 +191,15 @@ if (is_array($load_one_tour)) {
                         <p><?php 
                             $gia_nguoi_lon = $_SESSION['dat_tuor'][0][1] * $gia;
                             echo($gia_nguoi_lon);
-                        ?></p>
+                        ?> đ</p>
                         <p><?php 
                             $gia_tre_em = $_SESSION['dat_tuor'][0][2] * ($gia-($gia*5/100));
                             echo($gia_tre_em);
-                        ?></p>
-                        <p>0</p>
+                        ?> đ</p>
+                        <p>0 đ</p>
                         <p>
-                            <input type="hidden" value="<?= $thanh_tien = $gia_nguoi_lon + $gia_tre_em?>" name='tong_gia'>
-                            <?php echo($thanh_tien) ?>
+                            <input type="hidden" value="<?= $thanh_tien = $gia_nguoi_lon + $gia_tre_em?>" name='tong_gia'> 
+                            <?php echo($thanh_tien) ?> đ
                         </p>
                         <p>
                             <input type="hidden" value="<?= $tong_nguoi =  $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2]?>" name='tong_nguoi'>
@@ -208,13 +208,22 @@ if (is_array($load_one_tour)) {
                     </div>
                 </div>
 
+                
+
                 <div class="flex mx-auto item-center justify-center py-8">
-                    <input type="submit" value="ĐẶT NGAY" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
+                    <input type="submit" value="ĐẶT TOUR" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
                         text-white hover:scale-110 transition cursor-pointer">
                 </div>
             <?php } ?>
 
+            <button type="submit" name="payUrl">Momo</button>
+        <button type="submit" name="vnpay">VNPAY</button>
+        <button type="submit" name="visa">VISA</button>
         </div>
         <div></div>
+    </form>
+
+    <form action="index.php?act=check_out_online" method="post">
+        
     </form>
 </section>
