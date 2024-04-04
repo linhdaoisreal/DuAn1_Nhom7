@@ -330,11 +330,62 @@ if (isset ($_GET['act'])) {
             if(isset($_POST['guiemail'])&&($_POST['guiemail'])){
              $email = isset($_POST['email']) ? $_POST['email'] : '';
                     $checkemail=check_email($email);
-                    if(is_array($checkemail)){
-                        $thongbao="Mật khẩu của bạn là: ".$checkemail['mat_khau'];
-                    }else{
-                        $thongbao="Email không tồn lại!";
-                    }      
+                    // print_r($_POST);
+                    if(is_array($checkemail)){                       
+                        $random_pass = substr( md5(rand(0,9999)) , 0, 8);
+                        $mk = pass_moi($random_pass,$email);
+                    //Gửi Email
+                    require "PHPMailer-master/src/PHPMailer.php"; 
+                    require "PHPMailer-master/src/SMTP.php"; 
+                    require 'PHPMailer-master/src/Exception.php'; 
+                    
+                    $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
+
+                    try {
+                        
+                        $mail->SMTPDebug = 0; //0,1,2: chế độ debug
+                        $mail->isSMTP();  
+                        $mail->CharSet  = "utf-8";
+                        $mail->Host = 'smtp.gmail.com';  //SMTP servers
+                        $mail->SMTPAuth = true; // Enable authentication
+                        $mail->Username = 'cuongdph44957@fpt.edu.vn'; // SMTP username
+                        $mail->Password = 'ymkyoqkpgbnizlne';   // SMTP password
+                        $mail->SMTPSecure = 'tls';  // encryption TLS/SSL 
+                        $mail->Port = 587;  // port to connect to 
+
+                        $mail->setFrom('cuongdph44957@fpt.edu.vn', 'Admin Cuongneee' ); 
+                        $mail->addAddress($email); 
+                        $mail->isHTML(true);  // Set email format to HTML
+                        $mail->Subject = 'Gửi lại mật khẩu';
+                        $noidungthu = "<p style='font-size: 16px;'>Chúng tôi từ phía quản trị từ website <strong style='color: orange;'>SMILESVE TRAVEL</strong>,
+                        nhận thấy rằng bạn đã quên mật khẩu tài khoản của mình, chúng tôi sẽ cấp lại mật khẩu mới cho bạn.
+                        <br>
+                        Mật khẩu mới của bạn là: <strong>{$random_pass}</strong>
+                        <br>
+                        Hãy sử dụng mật khẩu mới mà cúng tôi cung cấp này và quay trở lại trang đăng nhập để có thể đăng nhập vào
+                        tài khoản của mình.
+                        <br><br>
+                        Đội ngũ quản trị <strong style='color: orange;'>SMILESVE TRAVEL</strong> xin cảm ơn!
+                        </p>"; 
+                       
+                        $mail->Body = $noidungthu;
+                        $mail->smtpConnect( array(
+                            "ssl" => array(
+                                "verify_peer" => false,
+                                "verify_peer_name" => false,
+                                "allow_self_signed" => true
+                            )
+                        ));
+                        $mail->send();
+                       
+                    } catch (Exception $e) {
+                        echo 'Error: ', $mail->ErrorInfo;
+                       
+                    }
+
+                }else{
+                    $thongbao="Email không tồn lại!";
+                }      
             }
             include "public/dangki_dangnhap/quenmk.php";
             break;

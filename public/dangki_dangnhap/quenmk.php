@@ -38,21 +38,38 @@
                             <div class="inline">
                                 <span class=""><i class="fa-solid fa-envelope"></i></span>
                                 <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="email" name="email">
+                                    type="email" name="email" id="emailInput" value="<?php if(isset($email)==true) echo $email?>">
                             </div>
                         </div>
 
 
                         <!-- Đăng nhập submit -->
                         <div class="">                         
-                            <input type="submit" name="guiemail" value="Xác nhận" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
+                            <input type="submit" id="submitButton" name="guiemail" value="Xác nhận" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
                         </div>
+
+                        <!-- Validate -->
+                        <script>
+                             document.getElementById("submitButton").addEventListener("click", function(event) {
+                                var emailInput = document.getElementById("emailInput").value;
+                                if (!emailInput || emailInput.trim() === "") {
+                                    event.preventDefault(); // Ngăn chặn việc submit nếu email không hợp lệ
+                                    alert("Vui lòng nhâp Email!");
+                                }
+                            });
+                        </script>
 
                         <!-- Không có tài khoản -->
                         <div class="">
                             <p>Không có tài khoản? <a href="index.php?act=dang_ky"
                                     class="hover:text-orange-500 transition duration-500 ease-in underline"> Đăng ký</a>
                             </p>
+                        </div>
+
+                         <!--Có tài khoản -->
+                         <div class="">
+                            <p>Quay trở lại trang<a href="index.php?act=dang_nhap"
+                                    class="hover:text-orange-500 transition duration-500 ease-in"> Đăng nhập</a></p>
                         </div>
                         
                         <!-- Thông báo -->

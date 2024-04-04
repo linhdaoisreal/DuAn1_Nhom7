@@ -68,7 +68,7 @@
                             <input type="submit" name="dangky" value="Đăng ký" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
                         </div>
 
-                        <!-- Không có tài khoản -->
+                        <!--Có tài khoản -->
                         <div class="">
                             <p>Có tài khoản? <a href="index.php?act=dang_nhap"
                                     class="hover:text-orange-500 transition duration-500 ease-in"> Đăng nhập</a></p>

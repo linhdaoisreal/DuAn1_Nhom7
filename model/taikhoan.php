@@ -40,6 +40,12 @@ function check_email($email){
     return $hh;
 }
 
+// Mật khẩu random khi user quên mk
+function pass_moi($random_pass,$email){
+    $sql ="UPDATE nguoi_dung SET mat_khau='$random_pass' WHERE email='$email'";
+    pdo_execute($sql);
+}
+
 // Đổi mật khẩu
 function check_mat_khau($id_nguoi_dung, $mat_khau){
     $sql = "SELECT * FROM nguoi_dung WHERE id_nguoi_dung='$id_nguoi_dung' AND mat_khau='$mat_khau'";
