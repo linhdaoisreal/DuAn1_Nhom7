@@ -27,7 +27,15 @@ function update_mien($id_mien,$ten_mien){
 
 // Xóa danh mục miền
 function delete_danhmuc_mien($id_mien){
-    $sql="DELETE FROM danhmuc_mien WHERE id_mien=".$id_mien;
+    $sql="UPDATE danhmuc_mien SET trang_thai = 1 WHERE id_mien=".$id_mien;
+    pdo_execute($sql);
+}
+function move_tuor_theoMien_To_Uncategorize($id_mien){
+    $sql="UPDATE tuor SET id_mien = 0 WHERE id_mien=".$id_mien;
+    pdo_execute($sql);
+}
+function khoiphuc_danhmucmien($id_mien){
+    $sql="UPDATE danhmuc_mien SET trang_thai = 0 WHERE id_mien=".$id_mien;
     pdo_execute($sql);
 }
 ?>

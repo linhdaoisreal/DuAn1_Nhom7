@@ -114,9 +114,12 @@
                             <?php
                             foreach ($listThoiGian as $checkThoiGian) {
                                 extract($checkThoiGian);
-                                echo '
-                            <option value=' . $id_thoi_gian . '>' . $so_ngay_dem . '</option>
-                            ';
+                                if($trang_thai == 1){
+                                    echo '<option class="hidden" value=' . $id_thoi_gian . '>' . $so_ngay_dem . '</option>';
+                                }else{
+                                    echo '<option value=' . $id_thoi_gian . '>' . $so_ngay_dem . '</option>';
+                                }
+                                ;
                             }
                             ?>
                         </select>

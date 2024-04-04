@@ -137,7 +137,11 @@ if (is_array($load_one_tour)) {
                             } else {
                                 $check = "";
                             }
-                            echo '<option value="' . $checkTG['id_thoi_gian'] . '" ' . $check . '> ' . $checkTG['so_ngay_dem'] . ' </option>';
+                            if($trang_thai == 1){
+                                echo '<option class="hidden" value="' . $checkTG['id_thoi_gian'] . '" ' . $check . '> ' . $checkTG['so_ngay_dem'] . ' </option>';
+                            }else{
+                                echo '<option value="' . $checkTG['id_thoi_gian'] . '" ' . $check . '> ' . $checkTG['so_ngay_dem'] . ' </option>';
+                            }
                         }
                         ?>
                         </select>
