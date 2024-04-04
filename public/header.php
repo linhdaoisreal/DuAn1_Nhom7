@@ -49,10 +49,18 @@
                                             foreach ($mua as $checkMua) {
                                                 extract($checkMua);
                                                 $loadTheoMua = "index.php?act=danhsachtour&id_mua=".$id_mua;
-                                                echo '
-                                                <li><a href="'.$loadTheoMua.'" 
-                                                class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mua.'</a></li>
-                                                ';
+                                                if($checkMua['trang_thai'] == 1){
+                                                    echo '
+                                                        <li class="hidden"><a href="'.$loadTheoMua.'" 
+                                                        class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mua.'</a></li>
+                                                    ';
+                                                }else{
+                                                    echo '
+                                                        <li><a href="'.$loadTheoMua.'" 
+                                                        class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mua.'</a></li>
+                                                    ';
+                                                }
+                                                
                                             }
                                         ?>
                                     </div>
@@ -62,10 +70,18 @@
                                             foreach ($mien as $checkMien) {
                                                 extract($checkMien);
                                                 $loadTheoMien = "index.php?act=danhsachtour&id_mien=".$id_mien;
-                                                echo '
-                                                    <li><a href="'.$loadTheoMien.'" 
-                                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mien.'</a></li>
-                                                ';
+                                                if($checkMien['trang_thai'] == 1){
+                                                    echo '
+                                                        <li class="hidden"><a href="'.$loadTheoMien.'" 
+                                                        class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mien.'</a></li>
+                                                    ';
+                                                }else{
+                                                    echo '
+                                                        <li><a href="'.$loadTheoMien.'" 
+                                                        class="block px-4 py-2 text-gray-800 hover:bg-gray-200">'.$ten_mien.'</a></li>
+                                                    ';
+                                                }
+                                                
                                             }
                                         ?>
                                     </div>
