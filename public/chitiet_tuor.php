@@ -145,7 +145,7 @@ if (is_array($load_one_tour)) {
                         </div>
 
                         <div class="flex">
-                            <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
+                            <i class="fa-solid fa-person-half-dress text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Số người lớn: </h3>
                             <div class="ml-4">
                                 <input type="number" id="so_nguoi_lon" min="1" value="1" name="so_nguoi_lon"
@@ -154,7 +154,7 @@ if (is_array($load_one_tour)) {
                         </div>
 
                         <div class="flex">
-                            <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
+                            <i class="fa-solid fa-children text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Số trẻ em: </h3>
                             <div class="ml-4">
                                 <input type="number" id="so_tre_em" min="0" value="0" name="so_tre_em"

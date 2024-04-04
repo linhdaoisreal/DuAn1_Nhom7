@@ -1,8 +1,15 @@
 <?php
 // thêm đơn hàng
 function insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor, $trang_thai,$id_nguoi_dung,$ngay_khoi_hanh){
-    $sql="INSERT INTO don_hang(ho_va_ten,dia_chi,email,sdt,ma_buu_chinh,tinh_thanh_pho,dk_them,tong_gia,ngay_dat_hang,tong_nguoi,id_tuor,trang_thai,id_nguoi_dung,ngay_khoi_hanh) 
+    if(isset($id_nguoi_dung)){
+        $sql="INSERT INTO don_hang(ho_va_ten,dia_chi,email,sdt,ma_buu_chinh,tinh_thanh_pho,dk_them,tong_gia,ngay_dat_hang,tong_nguoi,id_tuor,trang_thai,id_nguoi_dung,ngay_khoi_hanh) 
         VALUES ('$ho_va_ten','$dia_chi','$email','$sdt','$ma_buu_chinh','$tinh_thanh_pho','$dk_them','$tong_gia','$ngay_dat_hang','$tong_nguoi','$id_tuor','$trang_thai','$id_nguoi_dung','$ngay_khoi_hanh')";
+    }else{
+        $sql="INSERT INTO don_hang(ho_va_ten,dia_chi,email,sdt,ma_buu_chinh,tinh_thanh_pho,dk_them,tong_gia,ngay_dat_hang,tong_nguoi,id_tuor,trang_thai,ngay_khoi_hanh) 
+        VALUES ('$ho_va_ten','$dia_chi','$email','$sdt','$ma_buu_chinh','$tinh_thanh_pho','$dk_them','$tong_gia','$ngay_dat_hang','$tong_nguoi','$id_tuor','$trang_thai','$ngay_khoi_hanh')";
+    }
+    
+    echo $sql;
     $id_don_hang = pdo_execute_return_lastInsertId($sql);
     return $id_don_hang;
 }

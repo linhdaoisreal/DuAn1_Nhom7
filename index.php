@@ -201,8 +201,9 @@ if (isset ($_GET['act'])) {
                     if(isset($_SESSION['ho_ten'])){
                         $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
                     }else{
-                        $id_nguoi_dung = "";
+                        $id_nguoi_dung = NULL;
                     }
+                    echo "Đây là id người dùng". $id_nguoi_dung;
                     $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
                     include './vnpay_php/vnpay_create_payment.php';
