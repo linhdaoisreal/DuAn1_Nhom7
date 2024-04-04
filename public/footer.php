@@ -1,5 +1,5 @@
 <!-- FOOTER -->
-<footer class="bg-zinc-100 w-full>
+<footer class="bg-zinc-100 w-full">
     <div class="px-10 pt-4">
         <!-- Thông tin footer -->
         <div class="grid grid-cols-2 md:grid-cols-6">
