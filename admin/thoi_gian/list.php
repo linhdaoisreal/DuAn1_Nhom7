@@ -10,6 +10,7 @@
                     <th></th>
                     <th>Mã Thời Gian</th>
                     <th>Số Ngày Đêm</th>
+                    <th>Trạng Thái</th>
                     <th>Thao Tác</th>
 
                 </tr>
@@ -17,7 +18,7 @@
                 <?php
                     foreach($listThoiGian as $thoi_gian){
                         extract($thoi_gian);
-                        $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
+                        $thongbaoxoa = "'" . "Sau khi xoá mục thờI gian này sẽ ẩn khỏi trang web cảu bạn? Bạn có chắc chắn muốn xoá không?" . "'";
                         $suaThoiGian="index.php?act=sua_thoi_gian&id_thoi_gian=".$id_thoi_gian;
                         $xoaThoiGian="index.php?act=xoa_thoi_gian&id_thoi_gian=".$id_thoi_gian;
                         echo'
@@ -25,7 +26,20 @@
                         <td><input type="checkbox" name="" id=""></td>
                         <td>'.$id_thoi_gian.'</td>
                         <td>'.$so_ngay_dem.'</td>
-                        <td><a href="'.$suaThoiGian.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="'.$xoaThoiGian.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
+                        <td>';
+                        if ($trang_thai == 1) {
+                            echo 'Đã ẩn';
+                        }elseif($trang_thai == 0){
+                            echo 'Đang hiển thị';
+                        }
+                        echo'</td> 
+                        <td>
+                            <a href="'.$suaThoiGian.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> 
+                            <a href="'.$xoaThoiGian.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a>
+                            <div class="cursor-pointer">
+                                <a class="text-sky-500" href="index.php?act=khoiphucThoiGian&id_thoi_gian='.$id_thoi_gian.'">Khôi Phục Trạng Thái</a>
+                            </div>
+                        </td>                      
                                     
                     </tr>
                     ';

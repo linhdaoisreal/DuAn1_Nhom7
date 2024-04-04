@@ -10,28 +10,41 @@
                     <th></th>
                     <th>Mã miền</th>
                     <th>Tên miền</th>
+                    <th>Trạng thái</th>
                     <th>Thao tác</th>
                 </tr>
 
                 <?php
-foreach($list_danhmuc_mien as $danhmuc_mien){
-    extract($danhmuc_mien);
-    $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
-    $suaMien="index.php?act=suaMien&id_mien=".$id_mien;
-    $xoaMien="index.php?act=xoaMien&id_mien=".$id_mien;
-    echo'
-<tr>
-    <td><input type="checkbox" name="" id=""></td>
-    <td>'.$id_mien.'</td>
-    <td>'.$ten_mien.'</td>  
-    <td><a href="'.$suaMien.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="'.$xoaMien.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
-                
-</tr>
+                    foreach($list_danhmuc_mien as $danhmuc_mien){
+                        extract($danhmuc_mien);
+                        $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
+                        $suaMien="index.php?act=suaMien&id_mien=".$id_mien;
+                        $xoaMien="index.php?act=xoaMien&id_mien=".$id_mien;
+                        echo'
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>'.$id_mien.'</td>
+                        <td>'.$ten_mien.'</td>
+                        <td>';
+                        if ($trang_thai == 1) {
+                            echo 'Đã ẩn';
+                        }elseif($trang_thai == 0){
+                            echo 'Đang hiển thị';
+                        }
+                        echo'</td>
+                        <td>
+                            <a href="'.$suaMien.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> 
+                            <a href="'.$xoaMien.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a>
+                            <div class="cursor-pointer">
+                                <a class="text-sky-500" href="index.php?act=khoiPhucMien&id_mien='.$id_mien.'">Khôi Phục Trạng Thái</a>
+                            </div>
+                        </td>                      
+                                    
+                    </tr>
 
-    ';
-}
-
-?>
+                        ';
+                    }
+                ?>
 
             </table>
         </div>

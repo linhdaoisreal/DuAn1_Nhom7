@@ -10,28 +10,40 @@
                     <th></th>
                     <th>Mã mùa</th>
                     <th>Tên mùa</th>
+                    <th>Trạng Thái</th>
                     <th>Thao tác</th>
                 </tr>
 
                 <?php
-foreach($list_danhmuc_mua as $danhmuc_mua){
-    extract($danhmuc_mua);
-    $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
-    $suaMua="index.php?act=suaMua&id_mua=".$id_mua;
-    $xoaMua="index.php?act=xoaMua&id_mua=".$id_mua;
-    echo'
-<tr>
-    <td><input type="checkbox" name="" id=""></td>
-    <td>'.$id_mua.'</td>
-    <td>'.$ten_mua.'</td>  
-    <td><a href="'.$suaMua.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> <a href="'.$xoaMua.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
-                
-</tr>
+                    foreach($list_danhmuc_mua as $danhmuc_mua){
+                        extract($danhmuc_mua);
+                        $thongbaoxoa = "'" . "Sau khi xoá danh mục này sẽ ẩn khỏi trang web cảu bạn? Bạn có chắc chắn muốn xoá không?" . "'";
+                        $suaMua="index.php?act=suaMua&id_mua=".$id_mua;
+                        $xoaMua="index.php?act=xoaMua&id_mua=".$id_mua;
+                        echo'
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>'.$id_mua.'</td>
+                        <td>'.$ten_mua.'</td>
+                        <td>';
+                        if ($trang_thai == 1) {
+                            echo 'Đã ẩn';
+                        }elseif($trang_thai == 0){
+                            echo 'Đang hiển thị';
+                        }
+                        echo'</td> 
+                        <td>
+                            <a href="'.$suaMua.'"><i class="fa-solid fa-pen-to-square m-2"></i></a> 
+                            <a href="'.$xoaMua.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a>
+                            <div class="cursor-pointer">
+                                <a class="text-sky-500" href="index.php?act=khoiPhucMua&id_mua='.$id_mua.'">Khôi Phục Trạng Thái</a>
+                            </div>
+                        </td>                               
+                    </tr>
 
-    ';
-}
-
-?>
+                        ';
+                    }
+                ?>
 
             </table>
         </div>

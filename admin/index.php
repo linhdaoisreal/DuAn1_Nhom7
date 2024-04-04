@@ -63,6 +63,15 @@ if (isset($_GET['act'])) {
             if (isset($_GET['id_mua']) && ($_GET['id_mua'] > 0)) {
                 // delete_tuor_theo_IDMua($_GET['id_mua']);
                 delete_danhmuc_mua($_GET['id_mua']);
+                move_tuor_theoMua_To_Uncategorize($_GET['id_mua']);
+            }
+            $list_danhmuc_mua = all_danhmuc_mua();
+            include_once ("danhmuc_mua/list.php");
+            break;
+
+        case 'khoiPhucMua':
+            if (isset($_GET['id_mua']) && ($_GET['id_mua'] > 0)) {
+                khoiphuc_danhmucmua($_GET['id_mua']);
             }
             $list_danhmuc_mua = all_danhmuc_mua();
             include_once ("danhmuc_mua/list.php");
@@ -111,6 +120,15 @@ if (isset($_GET['act'])) {
         case 'xoaMien';
             if (isset($_GET['id_mien']) && ($_GET['id_mien'] > 0)) {
                 delete_danhmuc_mien($_GET['id_mien']);
+                move_tuor_theoMien_To_Uncategorize($_GET['id_mien']);
+            }
+            $list_danhmuc_mien = all_danhmuc_mien();
+            include_once ("danhmuc_mien/list.php");
+            break;
+
+        case 'khoiPhucMien':
+            if (isset($_GET['id_mien']) && ($_GET['id_mien'] > 0)) {
+                khoiphuc_danhmucmien($_GET['id_mien']);
             }
             $list_danhmuc_mien = all_danhmuc_mien();
             include_once ("danhmuc_mien/list.php");
@@ -146,8 +164,20 @@ if (isset($_GET['act'])) {
                 if (move_uploaded_file($_FILES["hinh_anh_mau"]["tmp_name"], $target_file)) {
                 } else {
                 }
-                add_new_tour($ten_tuor, $gia, $tong_quan, $hanh_trinh, $so_luong, $dia_diem, $phuong_tien, $xuat_phat, 
-                $id_mien, $id_mua, $id_thoi_gian, $hinh_anh_mau);
+                add_new_tour(
+                    $ten_tuor,
+                    $gia,
+                    $tong_quan,
+                    $hanh_trinh,
+                    $so_luong,
+                    $dia_diem,
+                    $phuong_tien,
+                    $xuat_phat,
+                    $id_mien,
+                    $id_mua,
+                    $id_thoi_gian,
+                    $hinh_anh_mau
+                );
                 $thongbao = "Thêm thành công";
             }
             include_once "Tour/add.php";
@@ -197,7 +227,7 @@ if (isset($_GET['act'])) {
                     $id_mua,
                     $id_thoi_gian,
                     $xuat_phat,
-                    $id_tuor, 
+                    $id_tuor,
                     $hinh_anh_mau
                 );
                 $thongbao = "Cập nhật thành công";
@@ -435,7 +465,14 @@ if (isset($_GET['act'])) {
             $listThoiGian = all_thoi_gian();
             include "thoi_gian/list.php";
             break;
-
+        
+        case 'khoiphucThoiGian':
+            if (isset($_GET['id_thoi_gian']) && ($_GET['id_thoi_gian'] > 0)) {
+                set_trang_thai_thoi_gian($_GET['id_thoi_gian']);
+            }
+            $listThoiGian = all_thoi_gian();
+            include "thoi_gian/list.php";
+            break;
 
 
 
