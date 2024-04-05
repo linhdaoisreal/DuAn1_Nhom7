@@ -29,32 +29,41 @@
             <div class="grid-rows-1 md:grid-cols-1 backdrop-blur-sm ">
                 <div class="flex items-center h-screen justify-evenly w-full text-white">
 
-                    <form action="index.php?act=quenmk" class="leading-9 space-y-4" method="post">
-                        <h2 class="text-center font-bold text-3xl mb-7">Quên mật khẩu</h2>
+                    <form action="index.php?act=nhap_otp" class="leading-9 space-y-4" method="post">
+                        <h2 class="text-center font-bold text-3xl mb-7">Nhập mã OTP</h2>
+                        <!-- Countdown Timer -->
+                        <div class="mt-4 text-center">                         
+                            <p class="text-xl font-semibold text-orange-400 border-2 p-2
+                             rounded-xl border-orange-400" id="countdown">1:00</p>                          
+                        </div>
+
+                        <!-- Thông báo khi hết thời gian -->
+                        <div id="end-time" class="hidden mt-4 text-center text-red-500 font-semibold">Mã OTP đã hết hạn. Vui lòng yêu cầu mã mới.</div>
                        
                         <!-- Email -->
                         <div class="">
-                            <label class="font-semibold">Email</label>
+                            <label class="font-semibold">OTP</label>
                             <div class="inline">
-                                <span class=""><i class="fa-solid fa-envelope"></i></span>
+                                <span class=""><i class="fa-solid fa-asterisk text-sm"></i> <i class="fa-solid fa-asterisk text-sm"></i> <i class="fa-solid fa-asterisk text-sm"></i></span>
                                 <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="email" name="email" id="emailInput" value="<?php if(isset($email)==true) echo $email?>">
+                                    type="text" name="otp" id="otpCheck" value="<?php if(isset($random_pass)==true)?>">
                             </div>
                         </div>
 
 
-                        <!-- Đăng nhập submit -->
+                        <!-- OTP submit -->
                         <div class="">                         
-                            <input type="submit" id="submitButton" name="guiemail" value="Gửi yêu cầu" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg hover:border-cyan-800 cursor-pointer">
+                            <input type="submit" id="submitButton" name="xac_nhan" value="Xác nhận"
+                             class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg hover:border-cyan-800 cursor-pointer">
                         </div>
 
-                        <!-- Validate -->
-                        <script>
+                         <!-- Validate -->
+                         <script>
                              document.getElementById("submitButton").addEventListener("click", function(event) {
-                                var emailInput = document.getElementById("emailInput").value;
-                                if (!emailInput || emailInput.trim() === "") {
-                                    event.preventDefault(); // Ngăn chặn việc submit nếu email không hợp lệ
-                                    alert("Vui lòng nhâp Email!");
+                                var otpCheck = document.getElementById("otpCheck").value;
+                                if (!otpCheck || otpCheck.trim() === "") {
+                                    event.preventDefault(); // Ngăn chặn việc submit nếu otp không hợp lệ
+                                    alert("Vui lòng nhập mã OTP!");
                                 }
                             });
                         </script>
@@ -74,7 +83,7 @@
                         </div>
                         
                         <!-- Thông báo -->
-                        <?php if (isset($thongbao) && !empty($thongbao)): ?>
+                        <?php if (isset($thongbao) && !empty($thongbao)): ?>                        
                         <div class="text-orange-500 font-semibold text-lg"><?php echo $thongbao; ?></div>
                         <?php endif; ?>
                     </form>
@@ -82,4 +91,29 @@
             </div>
         </div>
     </div>
+
+     <!-- Đếm ngược -->
+     <script>
+            var timeLeft = 60;
+                function startTimer(){
+                    var countdownTimer = setInterval(function() {
+                    var minutes = Math.floor(timeLeft / 60);
+                    var seconds = timeLeft % 60;
+
+                    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                    document.getElementById('countdown').innerHTML = minutes + ':' + seconds;
+
+                        if (timeLeft <= 0) {
+                            clearInterval(countdownTimer);
+                             document.getElementById('countdown').innerHTML = '0:00';
+                             document.getElementById('end-time').classList.remove('hidden');
+                            document.getElementById('submitButton').disabled = true; // Vô hiệu hóa nút khi hết thời gian
+                        } else {
+                            timeLeft -= 1;
+                        }
+                }, 1000);
+            }
+            startTimer();
+    </script>
 </main>

@@ -29,36 +29,45 @@
             <div class="grid-rows-1 md:grid-cols-1 backdrop-blur-sm ">
                 <div class="flex items-center h-screen justify-evenly w-full text-white">
 
-                    <form action="index.php?act=quenmk" class="leading-9 space-y-4" method="post">
-                        <h2 class="text-center font-bold text-3xl mb-7">Quên mật khẩu</h2>
+                    <form action="index.php?act=mat_khau_moi" class="leading-9 space-y-4" method="post" id="formChangePassword">
+                        <h2 class="text-center font-bold text-3xl mb-7">Đổi mật khẩu mới</h2>
                        
-                        <!-- Email -->
+                        <!-- Mật khẩu mới -->
                         <div class="">
-                            <label class="font-semibold">Email</label>
+                            <label class="font-semibold">Mật khẩu mới</label>
                             <div class="inline">
-                                <span class=""><i class="fa-solid fa-envelope"></i></span>
+                                <span class=""><i class="fa-solid fa-lock"></i></span>
                                 <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
-                                    type="email" name="email" id="emailInput" value="<?php if(isset($email)==true) echo $email?>">
+                                    type="password" name="new_pass" id="new_pass">
                             </div>
                         </div>
 
-
-                        <!-- Đăng nhập submit -->
-                        <div class="">                         
-                            <input type="submit" id="submitButton" name="guiemail" value="Gửi yêu cầu" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg hover:border-cyan-800 cursor-pointer">
+                        <!-- Nhập lại -->
+                        <div class="">
+                            <label class="font-semibold">Nhập lại mật khẩu mới</label>
+                            <div class="inline">
+                                <span class=""><i class="fa-solid fa-lock"></i></span>
+                                <input class="outline-none border-b-4 border-white rounded-sm bg-transparent w-full"
+                                    type="password" name="new_pass_confirm" id="new_pass_confirm">
+                            </div>
                         </div>
 
-                        <!-- Validate -->
                         <script>
-                             document.getElementById("submitButton").addEventListener("click", function(event) {
-                                var emailInput = document.getElementById("emailInput").value;
-                                if (!emailInput || emailInput.trim() === "") {
-                                    event.preventDefault(); // Ngăn chặn việc submit nếu email không hợp lệ
-                                    alert("Vui lòng nhâp Email!");
+                            document.getElementById("formChangePassword").addEventListener("submit", function(event) {
+                                var newPassword = document.getElementById("new_pass").value;
+                                var confirmPassword = document.getElementById("new_pass_confirm").value;
+
+                                if (newPassword.trim() === "" || confirmPassword.trim() === "") {
+                                    event.preventDefault(); // Ngăn chặn việc submit nếu một trong hai trường mật khẩu trống
+                                    alert("Vui lòng điền đầy đủ!");
                                 }
                             });
                         </script>
 
+                        <!-- OTP submit -->
+                        <div class="">                         
+                            <input type="submit" id="submitButton" name="doi_mk_moi" value="Xác nhận" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg hover:border-cyan-800 cursor-pointer">
+                        </div>                    
 
                         <!-- Không có tài khoản -->
                         <div class="">
@@ -74,7 +83,7 @@
                         </div>
                         
                         <!-- Thông báo -->
-                        <?php if (isset($thongbao) && !empty($thongbao)): ?>
+                        <?php if (isset($thongbao) && !empty($thongbao)): ?>                        
                         <div class="text-orange-500 font-semibold text-lg"><?php echo $thongbao; ?></div>
                         <?php endif; ?>
                     </form>

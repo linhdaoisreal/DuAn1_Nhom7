@@ -379,17 +379,26 @@ if (isset ($_GET['act'])) {
                         $mail->setFrom('cuongdph44957@fpt.edu.vn', 'Admin Cuongneee' ); 
                         $mail->addAddress($email); 
                         $mail->isHTML(true);  // Set email format to HTML
-                        $mail->Subject = 'Gửi lại mật khẩu';
-                        $noidungthu = "<p style='font-size: 16px;'>Chúng tôi từ phía quản trị từ website <strong style='color: orange;'>SMILESVE TRAVEL</strong>,
-                        nhận thấy rằng bạn đã quên mật khẩu tài khoản của mình, chúng tôi sẽ cấp lại mật khẩu mới cho bạn.
-                        <br>
-                        Mật khẩu mới của bạn là: <strong>{$random_pass}</strong>
-                        <br>
-                        Hãy sử dụng mật khẩu mới mà cúng tôi cung cấp này và quay trở lại trang đăng nhập để có thể đăng nhập vào
-                        tài khoản của mình.
-                        <br><br>
-                        Đội ngũ quản trị <strong style='color: orange;'>SMILESVE TRAVEL</strong> xin cảm ơn!
-                        </p>"; 
+                        $mail->Subject = 'Thông báo: Mã OTP để khôi phục mật khẩu tài khoản của bạn';
+                        $noidungthu = "<p style='font-size: 16px;'>
+                        Kính gửi quý khách hàng,<br><br>
+                        
+                        Chúng tôi, đội ngũ quản trị của <strong style='color: orange;'>SMILESVE TRAVEL</strong>, nhận thấy rằng bạn đã quên mật khẩu tài khoản của mình. Để giúp bạn khôi phục mật khẩu, chúng tôi đã tạo ra một mã OTP (One-Time Password) duy nhất.<br><br>
+                        
+                        Mã OTP của bạn để khôi phục mật khẩu là: <strong>{$random_pass}</strong><br><br>
+                        
+                        Vui lòng sử dụng mã này để thiết lập mật khẩu mới cho tài khoản của bạn. Xin lưu ý rằng mã OTP này chỉ có hiệu lực trong một khoảng thời gian ngắn và chỉ dùng được một lần. Vì vậy, chúng tôi khuyến khích bạn hoàn tất quá trình khôi phục mật khẩu ngay lập tức.<br><br>
+                        
+                        Lưu ý: Đừng chia sẻ mã OTP này với bất kỳ ai khác vì nó là thông tin riêng tư của bạn và có thể dẫn đến việc xâm nhập trái phép vào tài khoản của bạn.<br><br>
+                        
+                        Nếu bạn không thực hiện yêu cầu này, vui lòng liên hệ với chúng tôi ngay lập tức để chúng tôi có thể hỗ trợ bạn.<br><br>
+                        
+                        Chân thành cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.<br><br>
+                        
+                        Trân trọng,<br>
+                        Đội ngũ quản trị <br><strong style='color: orange;'>SMILESVE TRAVEL</strong>
+                        </p>";
+        
                        
                         $mail->Body = $noidungthu;
                         $mail->smtpConnect( array(
@@ -400,6 +409,9 @@ if (isset ($_GET['act'])) {
                             )
                         ));
                         $mail->send();
+                        $_SESSION['email']=$email;
+                        $_SESSION['otp']= $random_pass;
+                        header('Location:index.php?act=nhap_otp');
                        
                     } catch (Exception $e) {
                         echo 'Error: ', $mail->ErrorInfo;
@@ -411,6 +423,36 @@ if (isset ($_GET['act'])) {
                 }      
             }
             include "public/dangki_dangnhap/quenmk.php";
+            break;
+
+
+        // Nhập OTP
+        case 'nhap_otp':
+            if(isset($_POST['xac_nhan'])){
+            if($_POST['otp'] != $_SESSION['otp']){
+                $thongbao="Mã OTP không đúng!";              
+            }else{
+                header('Location:index.php?act=mat_khau_moi');
+            }
+        }
+           
+            include "public/dangki_dangnhap/otp.php";
+            break;
+
+
+        // Mật khẩu mới
+        case 'mat_khau_moi':
+            if(isset($_POST['doi_mk_moi'])){
+                $new_pass = isset($_POST['new_pass']) ? $_POST['new_pass'] : '';
+                $new_pass_confirm = isset($_POST['new_pass_confirm']) ? $_POST['new_pass_confirm'] : '';
+                if($new_pass !== $new_pass_confirm){
+                    $thongbao="Không trùng khớp! Vui lòng nhập lại";
+                }else{
+                    $change = change_pass($new_pass);
+                    header('Location:index.php?act=dang_nhap');
+                }
+            }
+            include "public/dangki_dangnhap/mat_khau_moi.php";
             break;
 
         // Đổi mật khẩu
