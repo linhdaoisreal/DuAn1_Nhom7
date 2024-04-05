@@ -55,6 +55,8 @@
                                     if($trang_thai == 1){
                                         echo'Tuor chưa đến ngày khởi hành';
                                     }elseif($trang_thai == 2){
+                                        echo'Đã đặt cọc và Tuor chưa đến ngày khởi hành';
+                                    }elseif($trang_thai == 3){
                                         echo'Tuor đã khởi hành';
                                     }
                                     echo'</span></h1>

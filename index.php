@@ -117,18 +117,21 @@ if (isset ($_GET['act'])) {
             // Lấy tổng giá tiền của 1 tour
             $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
             $tong_gia = $_POST['tong_gia'];
-            $dat_coc = $_POST['dat_coc'];
             $check_gia = $tong_gia;
-
-                      
+            
+            
+        
                 if(isset($_POST['payUrl'])){ 
-                    if(isset($dat_coc) && $dat_coc != ""){
-                        $check_gia = $dat_coc*$tong_gia;
-                        $mang_dat_coc = [$check_gia,$dat_coc];
-                        unset($_SESSION['dat_coc']);
-                        $_SESSION['dat_coc'][]=$mang_dat_coc;
-                    }else{
-                        unset($_SESSION['dat_coc']);
+                    if(isset($_POST['dat_coc'])){
+                        $dat_coc = $_POST['dat_coc'];
+                        if(isset($dat_coc) && $dat_coc != ""){
+                            $check_gia = $dat_coc*$tong_gia;
+                            $mang_dat_coc = [$check_gia,$dat_coc];
+                            unset($_SESSION['dat_coc']);
+                            $_SESSION['dat_coc'][]=$mang_dat_coc;
+                        }else{
+                            unset($_SESSION['dat_coc']);
+                        }
                     }
                     $id_tuor = $_POST['id_tuor'];
                     $ho_va_ten = $_POST['ho_va_ten'];
@@ -201,13 +204,16 @@ if (isset ($_GET['act'])) {
 
                 //VNPAY 
                 }elseif(isset($_POST['redirect'])){
-                    if(isset($dat_coc) && $dat_coc != ""){
-                        $check_gia = $dat_coc*$tong_gia;
-                        $mang_dat_coc = [$check_gia,$dat_coc];
-                        unset($_SESSION['dat_coc']);
-                        $_SESSION['dat_coc'][]=$mang_dat_coc;
-                    }else{
-                        unset($_SESSION['dat_coc']);
+                    if(isset($_POST['dat_coc'])){
+                        $dat_coc = $_POST['dat_coc'];
+                        if(isset($dat_coc) && $dat_coc != ""){
+                            $check_gia = $dat_coc*$tong_gia;
+                            $mang_dat_coc = [$check_gia,$dat_coc];
+                            unset($_SESSION['dat_coc']);
+                            $_SESSION['dat_coc'][]=$mang_dat_coc;
+                        }else{
+                            unset($_SESSION['dat_coc']);
+                        }
                     }
                     $id_tuor = $_POST['id_tuor'];
                     $ho_va_ten = $_POST['ho_va_ten'];

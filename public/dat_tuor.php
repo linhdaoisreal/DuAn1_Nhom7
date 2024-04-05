@@ -6,7 +6,8 @@ if (is_array($load_one_tour)) {
 ?>
 <!-- ĐẶT TUOR -->
 <section>
-    <form id="form_dat_tuor" action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
+    <form id="form_dat_tuor" action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post"
+        class="grid grid-cols-12 mx-12 my-8 gap-6">
         <?php if (isset($_SESSION['ho_ten'])) {
             $user = $_SESSION['ho_ten'] ?>
             <div class="col-span-12 md:col-span-8">
@@ -18,10 +19,12 @@ if (is_array($load_one_tour)) {
                     <div class="col-span-8 md:col-span-4">
                         <div>
                             <div class="flex">
-                                <h3 class="text-orange-400 font-semibold">Tên người dùng </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Tên người dùng </h3><span class="text-red-500">
+                                    *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'
+                            <input id="ten" type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'
                                 value=" <?= $user['ho_ten'] ?>">
+                            <span id="ten_error"></span>
                         </div>
 
                         <div>
@@ -52,7 +55,8 @@ if (is_array($load_one_tour)) {
 
                         <div>
                             <div class="flex">
-                                <h3 class="text-orange-400 font-semibold">Số điện thoại </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Số điện thoại </h3><span class="text-red-500">
+                                    *</span>
                             </div>
                             <input type="text" class="w-full border border-orange-400 rounded-md my-2"
                                 value=" <?= $user['so_dien_thoai'] ?>" name="sdt">
@@ -60,7 +64,8 @@ if (is_array($load_one_tour)) {
 
                         <div>
                             <h3 class="text-orange-400 font-semibold">Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="tinh_thanh_pho">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2"
+                                name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
@@ -121,7 +126,8 @@ if (is_array($load_one_tour)) {
 
                         <div>
                             <h3>Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="tinh_thanh_pho">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2"
+                                name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
@@ -188,42 +194,48 @@ if (is_array($load_one_tour)) {
                         <p>Tổng cộng</p>
                     </div>
                     <div>
-                        <p><?php 
-                            $gia_nguoi_lon = $_SESSION['dat_tuor'][0][1] * $gia;
-                            echo($gia_nguoi_lon);
-                        ?> đ</p>
-                        <p><?php 
-                            $gia_tre_em = $_SESSION['dat_tuor'][0][2] * ($gia-($gia*5/100));
-                            echo($gia_tre_em);
-                        ?> đ</p>
-                        <p>0 đ</p>
                         <p>
-                            <input type="hidden" value="<?= $thanh_tien = $gia_nguoi_lon + $gia_tre_em?>" name='tong_gia'> 
-                            <?php echo($thanh_tien) ?> đ
+                            <?php
+                            $gia_nguoi_lon = $_SESSION['dat_tuor'][0][1] * $gia;
+                            echo ($gia_nguoi_lon);
+                            ?> đ
                         </p>
                         <p>
-                            <input type="hidden" value="<?= $tong_nguoi =  $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2]?>" name='tong_nguoi'>
+                            <?php
+                            $gia_tre_em = $_SESSION['dat_tuor'][0][2] * ($gia - ($gia * 5 / 100));
+                            echo ($gia_tre_em);
+                            ?> đ
+                        </p>
+                        <p>0 đ</p>
+                        <p>
+                            <input type="hidden" value="<?= $thanh_tien = $gia_nguoi_lon + $gia_tre_em ?>" name='tong_gia'>
+                            <?php echo ($thanh_tien) ?> đ
+                        </p>
+                        <p>
+                            <input type="hidden"
+                                value="<?= $tong_nguoi = $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2] ?>"
+                                name='tong_nguoi'>
                         </p>
 
                         <p>
                             <input type="hidden" value="<?= $id_tuor ?>" name='id_tuor'>
                         </p>
-                       
+
                     </div>
                 </div>
 
-                
+
 
                 <div class="flex flex-col mx-auto item-center justify-center py-8 leading-loose">
-                        <?php
-                            date_default_timezone_set('Asia/Ho_Chi_Minh'); 
-                            $ngay_local = date('d-m-Y'); 
-                            $calculate_ngay_local = strtotime($ngay_local);
-                            $ngay_chuyen_doi = date('d-m-Y', strtotime($_SESSION['dat_tuor'][0][0]));
-                            $calculate_ngay_chuyen_doi = strtotime($ngay_chuyen_doi);
-                            $calculate_day_gap = round(($calculate_ngay_chuyen_doi - $calculate_ngay_local)/(60*60*24));
-                            if($calculate_day_gap >= 21){
-                                echo'
+                    <?php
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                    $ngay_local = date('d-m-Y');
+                    $calculate_ngay_local = strtotime($ngay_local);
+                    $ngay_chuyen_doi = date('d-m-Y', strtotime($_SESSION['dat_tuor'][0][0]));
+                    $calculate_ngay_chuyen_doi = strtotime($ngay_chuyen_doi);
+                    $calculate_day_gap = round(($calculate_ngay_chuyen_doi - $calculate_ngay_local) / (60 * 60 * 24));
+                    if ($calculate_day_gap >= 21) {
+                        echo '
                                 <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
                                     <button class="font-semibold" type="submit" onclick="confirmBooking()" name="payUrl">Thanh toán với Momo</button>
                                 </div>
@@ -234,8 +246,8 @@ if (is_array($load_one_tour)) {
                                     <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
                                 </div>
                                 ';
-                            }else{
-                                echo'
+                    } else {
+                        echo '
                                 <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
                                     <button class="font-semibold" type="submit" name="payUrl">Thanh toán với Momo</button>
                                 </div>
@@ -246,13 +258,13 @@ if (is_array($load_one_tour)) {
                                     <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
                                 </div>
                                 ';
-                            }
-                        ?>
-                        
+                    }
+                    ?>
+
                 </div>
             <?php } ?>
 
-        
+
         </div>
     </form>
 
@@ -273,5 +285,17 @@ if (is_array($load_one_tour)) {
                 // Xử lý logic khi người dùng không muốn giảm giá
             }
         }
+
+        document.querySelector('form').addEventListener('submit', function (event) {
+            var tenMuaInput = document.getElementById('ten_mien');
+            var tenMuaError = document.getElementById('ten_mien_error');
+
+            if (tenMuaInput.value.trim() === '') {
+                tenMuaError.textContent = "Không để trống tên miền";
+                event.preventDefault(); // Ngăn chặn gửi form
+            } else {
+                tenMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
+            }
+        });
     </script>
 </section>
