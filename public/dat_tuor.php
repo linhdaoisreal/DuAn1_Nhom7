@@ -6,7 +6,7 @@ if (is_array($load_one_tour)) {
 ?>
 <!-- ĐẶT TUOR -->
 <section>
-    <form action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
+    <form id="form_dat_tuor" action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
         <?php if (isset($_SESSION['ho_ten'])) {
             $user = $_SESSION['ho_ten'] ?>
             <div class="col-span-12 md:col-span-8">
@@ -215,17 +215,40 @@ if (is_array($load_one_tour)) {
                 
 
                 <div class="flex flex-col mx-auto item-center justify-center py-8 leading-loose">
-                    <!-- <input type="submit" value="ĐẶT TOUR" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
-                        text-white hover:scale-110 transition cursor-pointer"> -->
-                        <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="payUrl">Thanh toán với Momo</button>
-                        </div>
-                        <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="redirect">Thanh toán với VNPAY</button>
-                        </div>
-                        <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
-                        </div>
+                        <?php
+                            date_default_timezone_set('Asia/Ho_Chi_Minh'); 
+                            $ngay_local = date('d-m-Y'); 
+                            $calculate_ngay_local = strtotime($ngay_local);
+                            $ngay_chuyen_doi = date('d-m-Y', strtotime($_SESSION['dat_tuor'][0][0]));
+                            $calculate_ngay_chuyen_doi = strtotime($ngay_chuyen_doi);
+                            $calculate_day_gap = round(($calculate_ngay_chuyen_doi - $calculate_ngay_local)/(60*60*24));
+                            if($calculate_day_gap >= 21){
+                                echo'
+                                <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                                    <button class="font-semibold" type="submit" onclick="confirmBooking()" name="payUrl">Thanh toán với Momo</button>
+                                </div>
+                                <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                                    <button class="font-semibold" type="submit" onclick="confirmBooking()" name="redirect">Thanh toán với VNPAY</button>
+                                </div>
+                                <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                                    <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
+                                </div>
+                                ';
+                            }else{
+                                echo'
+                                <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                                    <button class="font-semibold" type="submit" name="payUrl">Thanh toán với Momo</button>
+                                </div>
+                                <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                                    <button class="font-semibold" type="submit" name="redirect">Thanh toán với VNPAY</button>
+                                </div>
+                                <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
+                                    <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
+                                </div>
+                                ';
+                            }
+                        ?>
+                        
                 </div>
             <?php } ?>
 
@@ -233,5 +256,22 @@ if (is_array($load_one_tour)) {
         </div>
     </form>
 
-   
+    <script>
+        function confirmBooking() {
+            var confirmDiscount = confirm("Ngày xuất phát bạn chọn còn cách khá xa. Bạn có muốn đặt cọc 50% giá trị không? (Chọn OK: Để đặt cọc Cancel: Để thanh toán đầy đủ)");
+            if (confirmDiscount) {
+                // Tạo phần tử input
+                var dat_coc_Input = document.createElement("input");
+                dat_coc_Input.type = "hidden";
+                dat_coc_Input.name = "dat_coc";
+                dat_coc_Input.value = 0.5;
+
+                // Lấy form và thêm phần tử input vào form
+                var form = document.querySelector("#form_dat_tuor");
+                form.appendChild(dat_coc_Input);
+            } else {
+                // Xử lý logic khi người dùng không muốn giảm giá
+            }
+        }
+    </script>
 </section>

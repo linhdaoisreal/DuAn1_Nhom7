@@ -130,7 +130,7 @@ if(is_array($loadOneDH)){
                         <p>Giá người lớn</p>
                         <p>Giá trẻ em</p>
                         <p>Phụ phí</p>
-                        <p>Tổng cộng</p>
+                        <p>Thanh toán</p>
                     </div>
                     <div>
                         <p><?php 
@@ -144,7 +144,13 @@ if(is_array($loadOneDH)){
                         <p>0</p>
                         <p>
                             <input type="hidden" value="<?php $thanh_tien = $gia_nguoi_lon + $gia_tre_em?>" name='tong_gia'>
-                            <?php echo($thanh_tien) ?>
+                            <?php 
+                                if(isset($_SESSION['dat_coc'])){
+                                    echo $_SESSION['dat_coc'][0][0];
+                                }else{
+                                    echo $thanh_tien;
+                                }
+                            ?>
                         </p>
                     </div>
                 </div>
