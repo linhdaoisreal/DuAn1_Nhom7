@@ -90,7 +90,8 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'>
+                            <input id="ten" type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'>
+                            <span id="ten_error"></span>
                         </div>
 
                         <div>
@@ -104,7 +105,7 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Mã bưu chính </h3>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="ma_buu_chinh">
+                            <input type="number" class="w-full border border-orange-400 rounded-md my-2" name="ma_buu_chinh">
                         </div>
                     </div>
 
@@ -114,14 +115,14 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Email </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="email">
+                            <input type="email" class="w-full border border-orange-400 rounded-md my-2" name="email">
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="sdt">
+                            <input type="number" class="w-full border border-orange-400 rounded-md my-2" name="sdt">
                         </div>
 
                         <div>
@@ -224,7 +225,19 @@ if (is_array($load_one_tour)) {
                     </div>
                 </div>
 
+                <script>
+                    document.querySelector('form').addEventListener('submit', function (event) {
+                        var tenInput = document.getElementById('ten');
+                        var tenError = document.getElementById('ten_error');
 
+                        if (tenInput.value.trim() === '') {
+                            tenError.textContent = "Không để trống Họ và tên";
+                            event.preventDefault(); // Ngăn chặn gửi form
+                        } else {
+                            tenError.textContent = ""; // Xóa thông báo lỗi nếu có
+                        }
+                    });
+                </script>
 
                 <div class="flex flex-col mx-auto item-center justify-center py-8 leading-loose">
                     <?php
@@ -266,36 +279,26 @@ if (is_array($load_one_tour)) {
 
 
         </div>
+        
+        <script>
+            function confirmBooking() {
+                var confirmDiscount = confirm("Ngày xuất phát bạn chọn còn cách khá xa. Bạn có muốn đặt cọc 50% giá trị không? (Chọn OK: Để đặt cọc Cancel: Để thanh toán đầy đủ)");
+                if (confirmDiscount) {
+                    // Tạo phần tử input
+                    var dat_coc_Input = document.createElement("input");
+                    dat_coc_Input.type = "hidden";
+                    dat_coc_Input.name = "dat_coc";
+                    dat_coc_Input.value = 0.5;
+
+                    // Lấy form và thêm phần tử input vào form
+                    var form = document.querySelector("#form_dat_tuor");
+                    form.appendChild(dat_coc_Input);
+                } else {
+                    // Xử lý logic khi người dùng không muốn giảm giá
+                }
+            }
+        </script>
     </form>
 
-    <script>
-        function confirmBooking() {
-            var confirmDiscount = confirm("Ngày xuất phát bạn chọn còn cách khá xa. Bạn có muốn đặt cọc 50% giá trị không? (Chọn OK: Để đặt cọc Cancel: Để thanh toán đầy đủ)");
-            if (confirmDiscount) {
-                // Tạo phần tử input
-                var dat_coc_Input = document.createElement("input");
-                dat_coc_Input.type = "hidden";
-                dat_coc_Input.name = "dat_coc";
-                dat_coc_Input.value = 0.5;
-
-                // Lấy form và thêm phần tử input vào form
-                var form = document.querySelector("#form_dat_tuor");
-                form.appendChild(dat_coc_Input);
-            } else {
-                // Xử lý logic khi người dùng không muốn giảm giá
-            }
-        }
-
-        document.querySelector('form').addEventListener('submit', function (event) {
-            var tenMuaInput = document.getElementById('ten_mien');
-            var tenMuaError = document.getElementById('ten_mien_error');
-
-            if (tenMuaInput.value.trim() === '') {
-                tenMuaError.textContent = "Không để trống tên miền";
-                event.preventDefault(); // Ngăn chặn gửi form
-            } else {
-                tenMuaError.textContent = ""; // Xóa thông báo lỗi nếu có
-            }
-        });
-    </script>
+    
 </section>

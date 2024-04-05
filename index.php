@@ -119,8 +119,6 @@ if (isset ($_GET['act'])) {
             $tong_gia = $_POST['tong_gia'];
             $check_gia = $tong_gia;
             
-            
-        
                 if(isset($_POST['payUrl'])){ 
                     if(isset($_POST['dat_coc'])){
                         $dat_coc = $_POST['dat_coc'];
