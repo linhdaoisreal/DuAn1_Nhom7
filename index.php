@@ -377,6 +377,9 @@ if (isset ($_GET['act'])) {
                             )
                         ));
                         $mail->send();
+                        $_SESSION['email']=$email;
+                        $_SESSION['otp']= $random_pass;
+                        header('Location:index.php?act=nhap_otp');
                        
                     } catch (Exception $e) {
                         echo 'Error: ', $mail->ErrorInfo;
@@ -388,6 +391,37 @@ if (isset ($_GET['act'])) {
                 }      
             }
             include "public/dangki_dangnhap/quenmk.php";
+            break;
+
+
+        // Nhập OTP
+        case 'nhap_otp':
+            if(isset($_POST['xac_nhan'])){
+            if($_POST['otp'] != $_SESSION['otp']){
+                $thongbao="Mã OTP không đúng!";
+               
+            }else{
+                header('Location:index.php?act=mat_khau_moi');
+            }
+        }
+           
+            include "public/dangki_dangnhap/otp.php";
+            break;
+
+
+        // Mật khẩu mới
+        case 'mat_khau_moi':
+            if(isset($_POST['doi_mk_moi'])){
+                $new_pass = isset($_POST['new_pass']) ? $_POST['new_pass'] : '';
+                $new_pass_confirm = isset($_POST['new_pass_confirm']) ? $_POST['new_pass_confirm'] : '';
+                if($new_pass !== $new_pass_confirm){
+                    $thongbao="Không trùng khớp! Vui lòng nhập lại";
+                }else{
+                    $change = change_pass($new_pass);
+                    header('Location:index.php?act=dang_nhap');
+                }
+            }
+            include "public/dangki_dangnhap/mat_khau_moi.php";
             break;
 
         // Đổi mật khẩu

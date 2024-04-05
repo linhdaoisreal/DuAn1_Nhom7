@@ -46,6 +46,13 @@ function pass_moi($random_pass,$email){
     pdo_execute($sql);
 }
 
+// Đổi mật khẩu khi quên
+function change_pass($new_pass){
+    $sql = "UPDATE nguoi_dung SET mat_khau='$new_pass'";
+    $tk = pdo_query_one($sql);
+    return $tk;
+}
+
 // Đổi mật khẩu
 function check_mat_khau($id_nguoi_dung, $mat_khau){
     $sql = "SELECT * FROM nguoi_dung WHERE id_nguoi_dung='$id_nguoi_dung' AND mat_khau='$mat_khau'";
