@@ -98,7 +98,7 @@
                 function startTimer(){
                     var countdownTimer = setInterval(function() {
                     var minutes = Math.floor(timeLeft / 60);
-                     var seconds = timeLeft % 60;
+                    var seconds = timeLeft % 60;
 
                     seconds = seconds < 10 ? '0' + seconds : seconds;
 

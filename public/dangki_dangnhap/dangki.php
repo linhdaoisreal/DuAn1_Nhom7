@@ -65,7 +65,7 @@
 
                         <!-- Đăng ký submit -->
                         <div>
-                            <input type="submit" name="dangky" value="Đăng ký" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
+                            <input type="submit" name="dangky" value="Đăng ký" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg hover:border-cyan-800 cursor-pointer">
                         </div>
 
                         <!--Có tài khoản -->

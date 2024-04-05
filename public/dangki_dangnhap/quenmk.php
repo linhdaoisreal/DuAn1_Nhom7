@@ -45,7 +45,7 @@
 
                         <!-- Đăng nhập submit -->
                         <div class="">                         
-                            <input type="submit" id="submitButton" name="guiemail" value="Gửi yêu cầu" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
+                            <input type="submit" id="submitButton" name="guiemail" value="Gửi yêu cầu" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg hover:border-cyan-800 cursor-pointer">
                         </div>
 
                         <!-- Validate -->

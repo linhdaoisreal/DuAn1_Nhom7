@@ -61,7 +61,7 @@
                         <!-- Đăng nhập submit -->
                         <div class="">
                            
-                            <input type="submit" name="dangnhap" value="Đăng nhập" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg">
+                            <input type="submit" name="dangnhap" value="Đăng nhập" class="mt-8 hover:bg-cyan-800 w-80 border-2 h-12 rounded-lg hover:border-cyan-800 cursor-pointer">
                         </div>
 
                         <!-- Không có tài khoản -->
