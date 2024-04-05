@@ -44,7 +44,7 @@ if (is_array($load_one_tour)) {
                 <!-- Tiêu dề -->
                 <div class="py-3">
                     <h1 class="text-[1.7rem] font-semibold ">
-                        Tuor
+                        Tour
                         <?= $ten_tuor ?>
                     </h1>
                 </div>

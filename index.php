@@ -420,12 +420,13 @@ if (isset ($_GET['act'])) {
         // Mật khẩu mới
         case 'mat_khau_moi':
             if(isset($_POST['doi_mk_moi'])){
+                $email=isset($_SESSION['email'][0]);
                 $new_pass = isset($_POST['new_pass']) ? $_POST['new_pass'] : '';
                 $new_pass_confirm = isset($_POST['new_pass_confirm']) ? $_POST['new_pass_confirm'] : '';
                 if($new_pass !== $new_pass_confirm){
                     $thongbao="Không trùng khớp! Vui lòng nhập lại";
                 }else{
-                    $change = change_pass($new_pass);
+                    $change = change_pass($new_pass,$email);
                     header('Location:index.php?act=dang_nhap');
                 }
             }

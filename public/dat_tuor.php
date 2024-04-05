@@ -1,4 +1,7 @@
 <?php
+// Khai báo một biến kiểm tra
+$isValidForm = false;
+
 if (is_array($load_one_tour)) {
     extract($load_one_tour);
     $hinhAnh = $img_path . $hinh_anh_mau;
@@ -6,7 +9,7 @@ if (is_array($load_one_tour)) {
 ?>
 <!-- ĐẶT TUOR -->
 <section>
-    <form action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
+    <form action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6" onsubmit="return validateForm()" id="form-pay">
         <?php if (isset($_SESSION['ho_ten'])) {
             $user = $_SESSION['ho_ten'] ?>
             <div class="col-span-12 md:col-span-8">
@@ -22,6 +25,7 @@ if (is_array($load_one_tour)) {
                             </div>
                             <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'
                                 value=" <?= $user['ho_ten'] ?>">
+                                
                         </div>
 
                         <div>
@@ -30,6 +34,7 @@ if (is_array($load_one_tour)) {
                             </div>
                             <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="address"
                                 value=" <?= $user['dia_chi'] ?>" name="diachi">
+                               
                         </div>
 
                         <div>
@@ -48,6 +53,7 @@ if (is_array($load_one_tour)) {
                             </div>
                             <input type="text" class="w-full border border-orange-400 rounded-md my-2"
                                 value=" <?= $user['email'] ?>" name="email">
+                               
                         </div>
 
                         <div>
@@ -56,6 +62,7 @@ if (is_array($load_one_tour)) {
                             </div>
                             <input type="text" class="w-full border border-orange-400 rounded-md my-2"
                                 value=" <?= $user['so_dien_thoai'] ?>" name="sdt">
+                               
                         </div>
 
                         <div>
@@ -72,6 +79,7 @@ if (is_array($load_one_tour)) {
                 </div>
             </div>
 
+            
         <?php } else { ?>
             <!-- đặt hàng không cần đăng nhập -->
             <div class="col-span-12 md:col-span-8">
@@ -85,14 +93,16 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'>
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten' id="ho_va_ten">
+                            <div id="hoVaTenError" class="error"></div>
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Địa chỉ </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="address">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="address" id="address">
+                            <div id="addressError" class="error"></div>
                         </div>
 
                         <div>
@@ -109,14 +119,16 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Email </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="email">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="email" id="email">
+                            <div id="addressError" class="error"></div>
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="sdt">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="sdt" id="sdt">
+                            <div id="sdtError" class="error"></div>
                         </div>
 
                         <div>
@@ -218,20 +230,22 @@ if (is_array($load_one_tour)) {
                     <!-- <input type="submit" value="ĐẶT TOUR" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
                         text-white hover:scale-110 transition cursor-pointer"> -->
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="payUrl">Thanh toán với Momo</button>
+                            <button class="font-semibold" type="submit" name="payUrl" onclick="validateAndSubmit()">Thanh toán với Momo</button>
                         </div>
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="redirect">Thanh toán với VNPAY</button>
+                            <button class="font-semibold" type="submit" name="redirect" onclick="validateAndSubmit()">Thanh toán với VNPAY</button>
                         </div>
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
+                            <button class="font-semibold" type="submit" name="visa" onclick="validateAndSubmit()">Thanh toán với VISA</button>
                         </div>
                 </div>
             <?php } ?>
 
         
         </div>
+     
+    
     </form>
 
-   
 </section>
+        
