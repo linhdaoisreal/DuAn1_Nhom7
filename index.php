@@ -63,7 +63,6 @@ if (isset ($_GET['act'])) {
                 $loadAnhTuor = all_hinh_anh($id_tuor);
                 $load_snd=load_so_ngay_dem($id_tuor);
                 $load_one_tour = load_one_tour($id_tuor);
-                
                 $trunggian_ngay_xuat_phat_tuor = trunggian_ngay_xuat_phat_tuor($id_tuor);
             }
             include "public/chitiet_tuor.php";
@@ -95,9 +94,15 @@ if (isset ($_GET['act'])) {
         case 'show_don_hang':
             if( isset($_GET['id_don_hang'])){
                 $id_tuor = $_GET['id_tuor'];
-                $trang_thai=1;
                 $id_don_hang=$_GET['id_don_hang'];
-                update_don_hang($id_don_hang,$trang_thai);
+                if(isset($_SESSION['dat_coc'])){
+                    $trang_thai=2;
+                    update_don_hang($id_don_hang,$trang_thai);
+                }else{
+                    $trang_thai=1;
+                    update_don_hang($id_don_hang,$trang_thai);
+                }
+                
                 $loadOneDH = load_mot_don_hang($id_don_hang);
 
                 $load_snd=load_so_ngay_dem($id_tuor);
@@ -110,10 +115,22 @@ if (isset ($_GET['act'])) {
             // Thanh toán Momo
         case 'check_out_online':
             // Lấy tổng giá tiền của 1 tour
-
+            $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
             $tong_gia = $_POST['tong_gia'];
-                      
+            $check_gia = $tong_gia;
+            
                 if(isset($_POST['payUrl'])){ 
+                    if(isset($_POST['dat_coc'])){
+                        $dat_coc = $_POST['dat_coc'];
+                        if(isset($dat_coc) && $dat_coc != ""){
+                            $check_gia = $dat_coc*$tong_gia;
+                            $mang_dat_coc = [$check_gia,$dat_coc];
+                            unset($_SESSION['dat_coc']);
+                            $_SESSION['dat_coc'][]=$mang_dat_coc;
+                        }else{
+                            unset($_SESSION['dat_coc']);
+                        }
+                    }
                     $id_tuor = $_POST['id_tuor'];
                     $ho_va_ten = $_POST['ho_va_ten'];
                     $dia_chi = $_POST['address'];
@@ -140,7 +157,7 @@ if (isset ($_GET['act'])) {
                     $accessKey = 'klm05TvNBzhg7h7j';
                     $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
                     $orderInfo = "Thanh toán qua MoMo";
-                        $amount = $tong_gia;
+                        $amount = $check_gia;
                         $orderId = rand(1,99999);
                         $redirectUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
                         $ipnUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
@@ -185,7 +202,17 @@ if (isset ($_GET['act'])) {
 
                 //VNPAY 
                 }elseif(isset($_POST['redirect'])){
-                    // echo 'vnpay';
+                    if(isset($_POST['dat_coc'])){
+                        $dat_coc = $_POST['dat_coc'];
+                        if(isset($dat_coc) && $dat_coc != ""){
+                            $check_gia = $dat_coc*$tong_gia;
+                            $mang_dat_coc = [$check_gia,$dat_coc];
+                            unset($_SESSION['dat_coc']);
+                            $_SESSION['dat_coc'][]=$mang_dat_coc;
+                        }else{
+                            unset($_SESSION['dat_coc']);
+                        }
+                    }
                     $id_tuor = $_POST['id_tuor'];
                     $ho_va_ten = $_POST['ho_va_ten'];
                     $dia_chi = $_POST['address'];
@@ -204,7 +231,7 @@ if (isset ($_GET['act'])) {
                         $id_nguoi_dung = NULL;
                     }
                     echo "Đây là id người dùng". $id_nguoi_dung;
-                    $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
+                    
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
                     include './vnpay_php/vnpay_create_payment.php';
                     // vui lòng tham khảo thêm tại code demo

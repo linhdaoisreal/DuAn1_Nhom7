@@ -133,11 +133,20 @@ if (is_array($load_one_tour)) {
                             <div class="ml-4">
                                 <select name="ngay_khoi_hanh" id="" class="border-b-2 border-orange-400">
                                     <?php
+                                    date_default_timezone_set('Asia/Ho_Chi_Minh'); 
+                                    $ngay_local = date('d-m-Y'); 
+                                    $calculate_ngay_local = strtotime($ngay_local);
                                     foreach ($trunggian_ngay_xuat_phat_tuor as $checkTG) {
                                         extract($checkTG);
-                                        echo '
-                                                <option value="' . $ngay . '">' . $ngay . '</option>
-                                            ';
+                                        $ngay_chuyen_doi = date('d-m-Y', strtotime($ngay));
+                                        $calculate_ngay_chuyen_doi = strtotime($ngay_chuyen_doi);
+                                        $calculate_day_gap = round(($calculate_ngay_chuyen_doi - $calculate_ngay_local)/(60*60*24));
+                                        if($calculate_day_gap > 3){
+                                            echo '<option value="' . $ngay_chuyen_doi . '">' . $ngay_chuyen_doi . '</option>';
+                                        }else{
+                                            echo '<option class="hidden" value="' . $ngay_chuyen_doi . '">' . $ngay_chuyen_doi . '</option>';
+                                        }
+                                        
                                     }
                                     ?>
                                 </select>

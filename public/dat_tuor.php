@@ -1,6 +1,5 @@
 <?php
-// Khai báo một biến kiểm tra
-$isValidForm = false;
+
 
 if (is_array($load_one_tour)) {
     extract($load_one_tour);
@@ -9,7 +8,7 @@ if (is_array($load_one_tour)) {
 ?>
 <!-- ĐẶT TUOR -->
 <section>
-    <form action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6" onsubmit="return validateForm()" id="form-pay">
+    <form id="form_dat_tuor" action="index.php?act=check_out_online&id_tuor=<?= $id_tuor ?>" method="post" class="grid grid-cols-12 mx-12 my-8 gap-6">
         <?php if (isset($_SESSION['ho_ten'])) {
             $user = $_SESSION['ho_ten'] ?>
             <div class="col-span-12 md:col-span-8">
@@ -21,11 +20,11 @@ if (is_array($load_one_tour)) {
                     <div class="col-span-8 md:col-span-4">
                         <div>
                             <div class="flex">
-                                <h3 class="text-orange-400 font-semibold">Tên người dùng </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Tên người dùng </h3><span class="text-red-500">
+                                    *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'
+                            <input id="ten" type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'
                                 value=" <?= $user['ho_ten'] ?>">
-                                
                         </div>
 
                         <div>
@@ -58,7 +57,8 @@ if (is_array($load_one_tour)) {
 
                         <div>
                             <div class="flex">
-                                <h3 class="text-orange-400 font-semibold">Số điện thoại </h3><span class="text-red-500"> *</span>
+                                <h3 class="text-orange-400 font-semibold">Số điện thoại </h3><span class="text-red-500">
+                                    *</span>
                             </div>
                             <input type="text" class="w-full border border-orange-400 rounded-md my-2"
                                 value=" <?= $user['so_dien_thoai'] ?>" name="sdt">
@@ -67,7 +67,8 @@ if (is_array($load_one_tour)) {
 
                         <div>
                             <h3 class="text-orange-400 font-semibold">Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="tinh_thanh_pho">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2"
+                                name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
@@ -93,8 +94,7 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten' id="ho_va_ten">
-                            <div id="hoVaTenError" class="error"></div>
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'>
                         </div>
 
                         <div>
@@ -109,7 +109,7 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Mã bưu chính </h3>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="ma_buu_chinh">
+                            <input type="number" class="w-full border border-orange-400 rounded-md my-2" name="ma_buu_chinh">
                         </div>
                     </div>
 
@@ -119,21 +119,20 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Email </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="email" id="email">
-                            <div id="addressError" class="error"></div>
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="email">
                         </div>
 
                         <div>
                             <div class="flex">
                                 <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="sdt" id="sdt">
-                            <div id="sdtError" class="error"></div>
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="sdt">
                         </div>
 
                         <div>
                             <h3>Tỉnh/Thành Phố</h3>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="tinh_thanh_pho">
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2"
+                                name="tinh_thanh_pho">
                         </div>
                     </div>
                 </div>
@@ -200,52 +199,69 @@ if (is_array($load_one_tour)) {
                         <p>Tổng cộng</p>
                     </div>
                     <div>
-                        <p><?php 
-                            $gia_nguoi_lon = $_SESSION['dat_tuor'][0][1] * $gia;
-                            echo($gia_nguoi_lon);
-                        ?> đ</p>
-                        <p><?php 
-                            $gia_tre_em = $_SESSION['dat_tuor'][0][2] * ($gia-($gia*5/100));
-                            echo($gia_tre_em);
-                        ?> đ</p>
-                        <p>0 đ</p>
                         <p>
-                            <input type="hidden" value="<?= $thanh_tien = $gia_nguoi_lon + $gia_tre_em?>" name='tong_gia'> 
-                            <?php echo($thanh_tien) ?> đ
+                            <?php
+                            $gia_nguoi_lon = $_SESSION['dat_tuor'][0][1] * $gia;
+                            echo ($gia_nguoi_lon);
+                            ?> đ
                         </p>
                         <p>
-                            <input type="hidden" value="<?= $tong_nguoi =  $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2]?>" name='tong_nguoi'>
+                            <?php
+                            $gia_tre_em = $_SESSION['dat_tuor'][0][2] * ($gia - ($gia * 5 / 100));
+                            echo ($gia_tre_em);
+                            ?> đ
+                        </p>
+                        <p>0 đ</p>
+                        <p>
+                            <input type="hidden" value="<?= $thanh_tien = $gia_nguoi_lon + $gia_tre_em ?>" name='tong_gia'>
+                            <?php echo ($thanh_tien) ?> đ
+                        </p>
+                        <p>
+                            <input type="hidden"
+                                value="<?= $tong_nguoi = $_SESSION['dat_tuor'][0][1] + $_SESSION['dat_tuor'][0][2] ?>"
+                                name='tong_nguoi'>
                         </p>
 
                         <p>
                             <input type="hidden" value="<?= $id_tuor ?>" name='id_tuor'>
                         </p>
-                       
+
                     </div>
                 </div>
 
-                
+                <script>
+                    document.querySelector('form').addEventListener('submit', function (event) {
+                        var tenInput = document.getElementById('ten');
+                        var tenError = document.getElementById('ten_error');
+
+                        if (tenInput.value.trim() === '') {
+                            tenError.textContent = "Không để trống Họ và tên";
+                            event.preventDefault(); // Ngăn chặn gửi form
+                        } else {
+                            tenError.textContent = ""; // Xóa thông báo lỗi nếu có
+                        }
+                    });
+                </script>
 
                 <div class="flex flex-col mx-auto item-center justify-center py-8 leading-loose">
                     <!-- <input type="submit" value="ĐẶT TOUR" name="dat" class="bg-orange-500 w-[55%] h-12 text-xl text-center flex item-center justify-center rounded-lg 
                         text-white hover:scale-110 transition cursor-pointer"> -->
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="payUrl" onclick="validateAndSubmit()">Thanh toán với Momo</button>
+                            <button class="font-semibold" type="submit" name="payUrl">Thanh toán với Momo</button>
                         </div>
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="redirect" onclick="validateAndSubmit()">Thanh toán với VNPAY</button>
+                            <button class="font-semibold" type="submit" name="redirect">Thanh toán với VNPAY</button>
                         </div>
                         <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
-                            <button class="font-semibold" type="submit" name="visa" onclick="validateAndSubmit()">Thanh toán với VISA</button>
+                            <button class="font-semibold" type="submit" name="visa">Thanh toán với VISA</button>
                         </div>
                 </div>
             <?php } ?>
 
-        
+
         </div>
-     
-    
     </form>
 
+   
 </section>
         

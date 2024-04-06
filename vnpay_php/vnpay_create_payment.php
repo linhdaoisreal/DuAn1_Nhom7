@@ -28,7 +28,7 @@ $startTime = date("YmdHis");
 $expire = date('YmdHis',strtotime('+5 minutes',strtotime($startTime)));
 
 $vnp_TxnRef = rand(00,99999); //Mã giao dịch thanh toán tham chiếu của merchant
-$vnp_Amount = $tong_gia; // Số tiền thanh toán
+$vnp_Amount = $check_gia; // Số tiền thanh toán
 $vnp_Locale = 'vn'; //Ngôn ngữ chuyển hướng thanh toán
 $vnp_BankCode = 'NCB'; //Mã phương thức thanh toán
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; //IP Khách hàng thanh toán
