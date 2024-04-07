@@ -6,17 +6,17 @@
             <!-- Banner 1 -->
             <div class="h-28 hover:h-[450px] bg-cover bg-no-repeat md:grid-cols-1 md:h-[450px] my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner1.jpg);">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-44 md:py-44">
-                <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
-                    <p class="banner_tittle text-white text-center text-4xl leading-relaxed">XUÂN</p>
-                    <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
-                    <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
-                    transition-all">ĐẶT NGAY</button>
-                    </a>
+                    <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
+                        <p class="banner_tittle text-white text-center text-4xl leading-relaxed">XUÂN</p>
+                        <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
+                        <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
+                        transition-all">ĐẶT NGAY</button>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
             <!-- Banner 2 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner2.png); transition: background-image 1s;">
+            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner2.jpg); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">HẠ</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
@@ -27,7 +27,7 @@
             </div>
 
             <!-- Banner 3 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner3.png); transition: background-image 1s;">
+            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner3.jpg); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">THU</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
@@ -38,7 +38,7 @@
             </div>
 
             <!-- Banner 4 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner4.png); transition: background-image 1s;">
+            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner4.jpg); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">ĐÔNG</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
@@ -125,7 +125,7 @@
                 ?>
                 
                 <!-- <div class="col-span-4 h-56 rounded-lg bg-cover bg-no-repeat flex content-end 
-                transition duration-400 ease-in" style="background-image: url(./src/img/content1.png);">
+                transition duration-400 ease-in" style="background-image: url(./src/img/content1.jpg);">
                     <h2 class="text-white text-2xl font-bold m-3 mt-auto">Phú Quốc</h2>
                 </div>
                 
