@@ -76,8 +76,8 @@ function all_taikhoan(){
 }
 
 // Xóa tài khoản
-function delete_taikhoan($id_nguoi_dung){
-    $sql="DELETE FROM nguoi_dung WHERE id_nguoi_dung=".$id_nguoi_dung;
+function delete_taikhoan($id_nguoi_dung,$trang_thai){
+    $sql="UPDATE nguoi_dung SET trang_thai = '".$trang_thai."' WHERE id_nguoi_dung=".$id_nguoi_dung;
     pdo_execute($sql);
 }
 

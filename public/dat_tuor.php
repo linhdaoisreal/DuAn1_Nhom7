@@ -95,7 +95,7 @@ if (is_array($load_one_tour)) {
                             <div class="flex">
                                 <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                             </div>
-                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'>
+                            <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten' required>
                         </div>
 
                         <div>

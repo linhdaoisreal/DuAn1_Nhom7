@@ -486,8 +486,8 @@ if (isset($_GET['act'])) {
         // Xóa tài khoản người dùng
         case 'xoaTaiKhoan';
             if (isset($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung'] > 0)) {
-                delete_binhluan_theoTK($_GET['id_nguoi_dung']);
-                delete_taikhoan($_GET['id_nguoi_dung']);
+                $trang_thai = 1;
+                delete_taikhoan($_GET['id_nguoi_dung'], $trang_thai);
             }
             $listtaikhoan = all_taikhoan();
             include ("taikhoan/list.php");
@@ -510,6 +510,15 @@ if (isset($_GET['act'])) {
                 $id_nguoi_dung = $_POST['id_nguoi_dung'];
                 update_vai_tro($id_nguoi_dung, $vai_tro);
                 $thongbao = "Cập nhật thành công";
+            }
+            $listtaikhoan = all_taikhoan();
+            include ("taikhoan/list.php");
+            break;
+        
+        case 'khoiPhucTK':
+            if (isset($_GET['id_nguoi_dung']) && ($_GET['id_nguoi_dung'] > 0)) {
+                $trang_thai = 0;
+                delete_taikhoan($_GET['id_nguoi_dung'], $trang_thai);
             }
             $listtaikhoan = all_taikhoan();
             include ("taikhoan/list.php");
