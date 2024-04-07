@@ -147,7 +147,7 @@ if (isset ($_GET['act'])) {
                     if(isset($_SESSION['ho_ten'])){
                         $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
                     }else{
-                        $id_nguoi_dung = "";
+                        $id_nguoi_dung = NULL;
                     }
                     $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);
@@ -299,17 +299,22 @@ if (isset ($_GET['act'])) {
                 $mat_khau = $_POST['mat_khau'];
                 $checkuser = check_user($ho_ten, $mat_khau);
                 if ($checkuser !== false) {
-                    $_SESSION['ho_ten'] = $checkuser;
-                    $thongbao = "Đăng nhập thành công!";
-                    // Kiểm tra nếu vai trò của người dùng là 1 (admin)
-                    if ($checkuser['vai_tro'] == 1) {
-                        // Chuyển hướng người dùng vào trang admin
-                        header("Location: admin/index.php");
-                    } else {
-                        // Nếu không phải admin, chuyển hướng về trang index.php
-                        header("Location: index.php");
+                    if($checkuser['trang_thai'] == 0){
+                        $_SESSION['ho_ten'] = $checkuser;
+                        $thongbao = "Đăng nhập thành công!";
+                        // Kiểm tra nếu vai trò của người dùng là 1 (admin)
+                        if ($checkuser['vai_tro'] == 1) {
+                            // Chuyển hướng người dùng vào trang admin
+                            header("Location: admin/index.php");
+                        } else {
+                            // Nếu không phải admin, chuyển hướng về trang index.php
+                            header("Location: index.php");
+                        }
+                        exit;
+                    }elseif ($checkuser['trang_thai'] == 1){
+                        $thongbao = "Tài khoản của bạn đã bị khoá vui lòng liên hệ với <br>ban quản trị theo số 0364191798 để khôi phục.<br> Xin trân trọng cảm ơn !";
                     }
-                    exit;
+                    
                 } else {
                     $thongbao = "Tài khoản không tồn tại hoặc mật khẩu không đúng!";
                 }
@@ -413,7 +418,13 @@ if (isset ($_GET['act'])) {
                             )
                         ));
                         $mail->send();
-                        $_SESSION['email']=$email;
+                        if(isset($_SESSION['email'])){
+                            unset($_SESSION['email']);
+                            $_SESSION['email']=[$email];
+                        }else{
+                            $_SESSION['email']=[$email];
+                        }
+                        
                         $_SESSION['otp']= $random_pass;
                         header('Location:index.php?act=nhap_otp');
                        
@@ -447,7 +458,10 @@ if (isset ($_GET['act'])) {
         // Mật khẩu mới
         case 'mat_khau_moi':
             if(isset($_POST['doi_mk_moi'])){
-                $email=isset($_SESSION['email'][0]);
+                $email=$_SESSION['email'][0];
+                // echo $email;
+                // var_dump($_SESSION['email']);
+                // die;
                 $new_pass = isset($_POST['new_pass']) ? $_POST['new_pass'] : '';
                 $new_pass_confirm = isset($_POST['new_pass_confirm']) ? $_POST['new_pass_confirm'] : '';
                 if($new_pass !== $new_pass_confirm){

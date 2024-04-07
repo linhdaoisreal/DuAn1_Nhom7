@@ -21,48 +21,46 @@
 
                 </tr>
 
-                <?php
+                <?php          
                 
-                
-foreach($list_don_hang as $don_hang){
-    extract($don_hang);
-        if($trang_thai == 0 ){
-            $trang_thai = 'Tour chưa khởi hành';
-        }else if($trang_thai == 1){
-            $trang_thai = 'Tour đã khởi hành';
-        }else{
-            $trang_thai = 'Tuor đã hủy';
-        }
-    $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
-    $suaMien="index.php?act=sua_trang_thai&id_don_hang=".$id_don_hang;
-    $xoaHang="index.php?act=xoa_don_hang&id_don_hang=".$id_don_hang;
-    echo'
-<tr>
-    <td>'.$id_don_hang.'</td>
-    <td>'.$ho_va_ten.'</td>
-    <td>'.$ten_tuor.'</td>
-    <td>'.$sdt.'</td>
-    <td>'.$dia_chi.'</td>
-    <td>'.$email.'</td>
-    <td>'.$dk_them.'</td>
-    <td>'.$ngay_dat_hang.'</td>  
-    <td>'.$trang_thai.'</td>
+                    foreach($list_don_hang as $don_hang){
+                        extract($don_hang);
+                            if($trang_thai == 0 ){
+                                $trang_thai = 'Chưa thanh toán';
+                            }elseif($trang_thai == 1){
+                                $trang_thai = 'Đã thanh toán, Tuor chưa khởi hành';
+                            }elseif($trang_thai == 2){
+                                $trang_thai = 'Đã đặt cọc, Tuor chưa khởi hành';
+                            }else{
+                                $trang_thai = 'Đã hủy';
+                            }
+                        $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
+                        $suaMien="index.php?act=sua_trang_thai&id_don_hang=".$id_don_hang;
+                        $xoaHang="index.php?act=xoa_don_hang&id_don_hang=".$id_don_hang;
+                        echo'
+                    <tr>
+                        <td>'.$id_don_hang.'</td>
+                        <td>'.$ho_va_ten.'</td>
+                        <td>'.$ten_tuor.'</td>
+                        <td>'.$sdt.'</td>
+                        <td>'.$dia_chi.'</td>
+                        <td>'.$email.'</td>
+                        <td>'.$dk_them.'</td>
+                        <td>'.$ngay_dat_hang.'</td>  
+                        <td>'.$trang_thai.'</td>
 
-    <td>
-        <a href="'.$xoaHang.'" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a       
-    </td>
-    <td>
-        <a href="'.$suaMien.'"><i class="fa-solid fa-pen-to-square m-2"></i></a>   
-    </td>
+                        <td>
+                            <a href="'.$suaMien.'"><i class="fa-solid fa-pen-to-square m-2"></i></a>   
+                        </td>
 
-                
-</tr>
+                                    
+                    </tr>
 
-    ';
+                        ';
 
-}
+                    }
 
-?>
+                ?>
 
             </table>
         </div>

@@ -9,8 +9,8 @@ if (is_array($load_one_tour)) {
     <div>
         <!-- Slide Show -->
 
-        <div class="slider">
-            <div class="list">
+        <div class="slider w-full">
+            <div class="list w-full">
                 <?php
                 foreach ($loadAnhTuor as $anhTuor) {
                     extract($anhTuor);
