@@ -4,7 +4,7 @@
         <div class="grid md:grid-cols-4 w-full flex-col">
 
             <!-- Banner 1 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat md:grid-cols-1 md:h-96 my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner1.png);">
+            <div class="h-28 hover:h-96 bg-cover bg-no-repeat md:grid-cols-1 md:h-96 my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner1.jpg);">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">XUÂN</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
@@ -15,7 +15,7 @@
             </div>
 
             <!-- Banner 2 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner2.png); transition: background-image 1s;">
+            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner2.jpg); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">HẠ</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
@@ -26,7 +26,7 @@
             </div>
 
             <!-- Banner 3 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner3.png); transition: background-image 1s;">
+            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner3.jpg); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">THU</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
@@ -37,7 +37,7 @@
             </div>
 
             <!-- Banner 4 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner4.png); transition: background-image 1s;">
+            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner4.jpg); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">ĐÔNG</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
@@ -63,20 +63,20 @@
             <div class="grid grid-cols-2 gap-6 py-5 md:grid-cols-4 md:gap-10">
                 <!-- Content1 -->
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
-                transition duration-400 ease-in" style="background-image: url(./src/img/content1.png);">
-                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Thanh tịnh tâm hồn tìm về chốn bình yên</h2>
+                transition duration-400 ease-in" style="background-image: url(./src/img/banner5.jpg);">
+                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Tìm đến nơi thanh tịnh tâm hồn</h2>
                 </div>
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
-                transition duration-400 ease-in" style="background-image: url(./src/img/content2.png);">
+                transition duration-400 ease-in" style="background-image: url(./src/img/banner6.jpg);">
                     <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Xây dựng tinh thần đồng đội gắn kết</h2>
                 </div> 
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
-                transition duration-400 ease-in" style="background-image: url(./src/img/content3.png);">
+                transition duration-400 ease-in" style="background-image: url(./src/img/banner7.jpg);">
                     <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Hoà mình với thiên nhiên hùng vĩ</h2>
                 </div>
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
-                transition duration-400 ease-in" style="background-image: url(./src/img/content4.png);">
-                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Giảm giá cực khủng ngại gì đi xa</h2>
+                transition duration-400 ease-in" style="background-image: url(./src/img/banner8.jpg);">
+                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Rất nhiều voucher đang chờ bạn</h2>
                 </div>
             </div>
         </div>

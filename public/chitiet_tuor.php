@@ -17,7 +17,7 @@ if (is_array($load_one_tour)) {
                     $hinhAnh = $img_path . $ten_hinh_anh;
                     echo '
                         <div class="item w-full">
-                            <img class="w-full" src="' . $hinhAnh . '." alt="">
+                            <img class="w-full object-cover" src="' . $hinhAnh . '." alt="">
                         </div>
                         ';
                 }

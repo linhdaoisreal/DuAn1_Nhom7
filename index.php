@@ -387,7 +387,7 @@ if (isset ($_GET['act'])) {
                         $noidungthu = "<p style='font-size: 16px;'>
                         Kính gửi quý khách hàng,<br><br>
                         
-                        Chúng tôi, đội ngũ quản trị của <strong style='color: orange;'>SMILESVE TRAVEL</strong>, nhận thấy rằng bạn đã quên mật khẩu tài khoản của mình. Để giúp bạn khôi phục mật khẩu, chúng tôi đã tạo ra một mã OTP (One-Time Password) duy nhất.<br><br>
+                        Chúng tôi, đội ngũ quản trị của <strong style='color: orange;'>SIMILESVE TRAVEL</strong>, nhận thấy rằng bạn đã quên mật khẩu tài khoản của mình. Để giúp bạn khôi phục mật khẩu, chúng tôi đã tạo ra một mã OTP (One-Time Password) duy nhất.<br><br>
                         
                         Mã OTP của bạn để khôi phục mật khẩu là: <strong>{$random_pass}</strong><br><br>
                         
@@ -400,7 +400,7 @@ if (isset ($_GET['act'])) {
                         Chân thành cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.<br><br>
                         
                         Trân trọng,<br>
-                        Đội ngũ quản trị <br><strong style='color: orange;'>SMILESVE TRAVEL</strong>
+                        Đội ngũ quản trị <br><strong style='color: orange;'>SIMILESVE TRAVEL</strong>
                         </p>";
         
                        
@@ -447,7 +447,7 @@ if (isset ($_GET['act'])) {
         // Mật khẩu mới
         case 'mat_khau_moi':
             if(isset($_POST['doi_mk_moi'])){
-                $email=isset($_SESSION['email'][0]);
+                $email=isset($_SESSION['email'][0][0]);
                 $new_pass = isset($_POST['new_pass']) ? $_POST['new_pass'] : '';
                 $new_pass_confirm = isset($_POST['new_pass_confirm']) ? $_POST['new_pass_confirm'] : '';
                 if($new_pass !== $new_pass_confirm){

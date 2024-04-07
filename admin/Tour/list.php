@@ -7,7 +7,7 @@
         <div class="">
             <table class="w-full border-collapse border-2 border-orange-300">
                 <tr class="text-white bg-orange-300 text-lg">
-                    <th></th>
+                    
                     <th>Mã Tour</th>
                     <th>Tên Tour</th>
                     <th>Hình Ảnh</th>
@@ -31,7 +31,7 @@
                     $listNgayTheoTuor = select_ngay_theo_tuor($id_tuor);                   
                     echo '
                         <tr>
-                            <td><input type="checkbox" name="" id=""></td>
+                           
                             <td>' . $id_tuor . '</td>
                             <td>' . $ten_tuor . '</td>
                             <td><img class="w-24" src="'.$hinhAnh.'" alt=""></td>
