@@ -4,9 +4,8 @@
         <div class="grid md:grid-cols-4 w-full flex-col">
 
             <!-- Banner 1 -->
-            <div class="h-28 hover:h-[450px] bg-cover bg-no-repeat md:grid-cols-1 md:h-[450px] my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner1.jpg);">
+            <div class="h-28 hover:h-[450px] bg-cover bg-no-repeat md:grid-cols-1 md:h-[450px] my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner1.jpg); transition: background-image 1s;">
                 <div class="flex flex-col justify-evenly items-center py-5 hover:py-44 md:py-44">
-                <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">XUÂN</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
@@ -16,8 +15,8 @@
             </div>
 
             <!-- Banner 2 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner2.png); transition: background-image 1s;">
-                <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
+            <div class="h-28 hover:h-[450px] bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-[450px] my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner2.jpg); transition: background-image 1s;">
+                <div class="flex flex-col justify-evenly items-center py-5 hover:py-44 md:py-44">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">HẠ</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
@@ -27,8 +26,8 @@
             </div>
 
             <!-- Banner 3 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner3.png); transition: background-image 1s;">
-                <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
+            <div class="h-28 hover:h-[450px] bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-[450px] my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner3.jpg); transition: background-image 1s;">
+                <div class="flex flex-col justify-evenly items-center py-5 hover:py-44 md:py-44">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">THU</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
@@ -38,8 +37,8 @@
             </div>
 
             <!-- Banner 4 -->
-            <div class="h-28 hover:h-96 bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-96 " style="background-image: url(./src/img/banner4.png); transition: background-image 1s;">
-                <div class="flex flex-col justify-evenly items-center py-5 hover:py-36 md:py-36">
+            <div class="h-28 hover:h-[450px] bg-cover bg-no-repeat transition ease-in-out duration-1000 md:grid-cols-1 md:h-[450px] my-auto transition ease-in-out duration-1000" style="background-image: url(./src/img/banner4.jpg); transition: background-image 1s;">
+                <div class="flex flex-col justify-evenly items-center py-5 hover:py-44 md:py-44">
                     <p class="banner_tittle text-white text-center text-4xl leading-relaxed">ĐÔNG</p>
                     <a href="index.php?act=danhsachtour&id_mien=&id_mua=">
                     <button class="mx-4 text-white font-medium leading-relaxed border border-transparent bg-orange-500 px-10 p-y3 rounded-full hover:bg-transparent hover:border-white
@@ -77,7 +76,7 @@
                 </div>
                 <div class="md:grid-cols-1 rounded-lg h-80 bg-cover bg-no-repeat flex content-end hover:shadow-lg 
                 transition duration-400 ease-in" style="background-image: url(./src/img/banner8.jpg);">
-                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto">Rất nhiều voucher đang chờ bạn</h2>
+                    <h2 class="text-white text-xl md:text-2xl font-bold m-3 mt-auto"></h2>
                 </div>
             </div>
         </div>
