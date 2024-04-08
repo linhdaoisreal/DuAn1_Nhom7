@@ -25,14 +25,14 @@
                     <!-- Giá -->
                     <div class="mt-8 mr-12">
                         <label for="" class="text-lg font-semibold text-orange-300">Giá</label><br>
-                        <input type="number" name="gia" id="gia" class="border-orange-300 w-full border-2 rounded-lg h-9">
+                        <input type="number" min="0" name="gia" id="gia" class="border-orange-300 w-full border-2 rounded-lg h-9">
                         <span id="gia_error" class="text-red-500"></span>
                     </div>
 
                     <!-- Số lượng -->
                     <div class="mt-8 mr-12">
                         <label for="" class="text-lg font-semibold text-orange-300">Số lượng tối đa</label><br>
-                        <input type="number" name="so_luong" id="so_luong"
+                        <input type="number" name="so_luong" id="so_luong" min="1"
                             class="border-orange-300 w-full border-2 rounded-lg h-9">
                         <span id="so_luong_error" class="text-red-500"></span>
                     </div>
