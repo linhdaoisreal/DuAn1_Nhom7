@@ -1,7 +1,6 @@
 <div class="row flex flex-col flex-1 overflow-y-auto">
     <div class="">
-        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm mới mùa trong năm
-        </h1>
+        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm mới hình ảnh </h1>
     </div>
     <!-- Form nhập thêm mùa -->
     <div class="ml-10 mt-8">
