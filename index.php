@@ -118,6 +118,10 @@ if (isset ($_GET['act'])) {
             $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
             $tong_gia = $_POST['tong_gia'];
             $check_gia = $tong_gia;
+            $errHVT = '';
+            $errDC = '';
+            $errEmail = '';
+            $errSDT = '';
             
                 if(isset($_POST['payUrl'])){ 
                     if(isset($_POST['dat_coc'])){
@@ -230,12 +234,34 @@ if (isset ($_GET['act'])) {
                     }else{
                         $id_nguoi_dung = NULL;
                     }
-                    echo "Đây là id người dùng". $id_nguoi_dung;
-                    
+
+                    //validate
+                    // $checkingValidation = true;
+                    // if($ho_va_ten == "" || $dia_chi == "" || $email == "" || $sdt == ""){
+                    //     if(!$ho_va_ten){
+                    //         $checkingValidation = false;
+                    //         $errHVT = "Vui lòng nhập đầy đủ họ và tên";
+                    //     }
+                    //     if(!$dia_chi){
+                    //         $checkingValidation = false;
+                    //         $errDC = "Vui lòng nhập đầy đủ địa chỉ";
+                    //     }
+                    //     if(!$email){
+                    //         $checkingValidation = false;
+                    //         $errEmail = "Vui lòng nhập đầy đủ email";
+                    //     }
+                    //     $SDTlength = strlen($sdt);
+                    //     if(!$sdt && $SDTlength < 10){
+                    //         $checkingValidation = false;
+                    //         $errSDT = "Vui lòng nhập đầy đủ số điện thoại";
+                    //     }
+                    //     include "public/dat_tuor.php";
+                    // }else{
+                    //     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
+                    //     include './vnpay_php/vnpay_create_payment.php';
+                    // }
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
                     include './vnpay_php/vnpay_create_payment.php';
-                    // vui lòng tham khảo thêm tại code demo
-
                 }elseif(isset($_POST['visa'])){
                     echo 'visa';
                 }

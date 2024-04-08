@@ -71,6 +71,11 @@ function delete_tuor_nxp($id_tuor){
     pdo_execute($sql);
 }
 
+function delete_nxp_to_nxp($id_ngay){
+    $sql="DELETE FROM tuor_ngay_xuat_phat WHERE id_ngay=".$id_ngay;
+    pdo_execute($sql);
+}
+
 function select_ngay_theo_tuor($id_tuor){
     $sql = "SELECT id_trunggian_nxp, tuor_ngay_xuat_phat.id_tuor, tuor_ngay_xuat_phat.id_ngay, ngay_xuat_phat.ngay FROM tuor_ngay_xuat_phat 
     JOIN tuor ON tuor.id_tuor = tuor_ngay_xuat_phat.id_tuor 

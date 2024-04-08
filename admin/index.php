@@ -355,6 +355,7 @@ if (isset($_GET['act'])) {
 
         case 'xoaNgayXuatPhat':
             if (isset($_GET['id_ngay']) && ($_GET['id_ngay'] > 0)) {
+                delete_nxp_to_nxp($_GET['id_ngay']);
                 delete_ngay_xuat_phat($_GET['id_ngay']);
             }
             $listNgayXuatPhat = all_ngay_xuat_phat();

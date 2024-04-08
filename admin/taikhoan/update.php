@@ -18,7 +18,10 @@ if (is_array($taikhoan)) {
               <!-- Vai trò -->
             <div class="mt-8">
                 <label for="" class="text-lg font-semibold text-orange-300">Vai trò</label><br>
-                <input type="text" name="vai_tro" id="vai_tro" class="border-orange-300 w-96 border-2 rounded-lg h-9" value=" <?php if (isset($vai_tro) && ($vai_tro != "")) echo $vai_tro ?>">
+                <select name="vai_tro" id="vai_tro" class="border-orange-300 w-96 border-2 rounded-lg h-9">
+                    <option value="0">Người dùng</option>
+                    <option value="1" >ADMIN</option>
+                </select>
                 <span id="vai_tro_error" class="text-red-500"></span>
             </div>
 
