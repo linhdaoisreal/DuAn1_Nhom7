@@ -32,7 +32,12 @@
                     <td>'.$email.'</td>  
                     <td>'.$so_dien_thoai.'</td>  
                     <td>'.$dia_chi.'</td>  
-                    <td>'.$vai_tro.'</td>
+                    <td>'; if($vai_tro == 0){
+                            echo "Người dùng";
+                        }elseif($vai_tro == 1){
+                            echo "ADMIN";
+                        } 
+                    echo'</td>
                     <td>'; if($trang_thai == 0){
                         echo "Tồn tại";
                     }elseif($trang_thai == 1){
