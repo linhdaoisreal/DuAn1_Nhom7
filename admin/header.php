@@ -145,7 +145,7 @@
                     Thời gian
                 </a>
                 <a href="index.php?act=list_tour" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                    Tuor
+                    Tour
                 </a>
                 <a href="index.php?act=list_taikhoan" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Tài khoản

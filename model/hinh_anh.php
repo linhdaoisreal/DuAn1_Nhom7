@@ -23,7 +23,7 @@ function all_hinh_anh($id_tour = 0)
     $sql.=" and id_tour = '".$id_tour."'";
     }
 
-    $sql .= " ORDER BY hinh_anh.id_hinh_anh DESC";
+    $sql .= " ORDER BY hinh_anh.id_hinh_anh DESC LIMIT 8";
     $list_hinh_anh = pdo_query($sql);
     return $list_hinh_anh;
 }
