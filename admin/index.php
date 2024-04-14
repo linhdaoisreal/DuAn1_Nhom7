@@ -17,9 +17,7 @@ include "../model/don_hang.php";
 include "../model/thongke.php";
 
 if(isset($_SESSION['ho_ten'])) {
-   if(isset($_SESSION['vai_tro']) && $_SESSION['ho_ten']['vai_tro']==1){
-    echo $_SESSION['vai_tro'];
-    die;
+   if(isset($_SESSION['ho_ten']['vai_tro']) && $_SESSION['ho_ten']['vai_tro']==1){
     if (isset($_GET['act'])) {
         $act = $_GET['act'];
         switch ($act) {
@@ -633,9 +631,7 @@ if(isset($_SESSION['ho_ten'])) {
     
        
 }else{
-    // header("Location: error.php");
-    // include "error.php";
-   
+    header("Location: error.php");
 }
 
 include "footer.php";

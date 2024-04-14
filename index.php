@@ -329,8 +329,11 @@ if (isset ($_GET['act'])) {
                     if($checkuser['trang_thai'] == 0){
                         $_SESSION['ho_ten'] = $checkuser;
                         $thongbao = "Đăng nhập thành công!";
+                        // var_dump($_SESSION['ho_ten']);
+                        // echo $_SESSION['ho_ten']['vai_tro'];
+                        // die;
                         // Kiểm tra nếu vai trò của người dùng là 1 (admin)
-                        if ($checkuser['ho_ten']['vai_tro'] == 1) {
+                        if ($_SESSION['ho_ten']['vai_tro'] == 1) {
                             // Chuyển hướng người dùng vào trang admin
                             header("Location: admin/index.php");
                         } else {
