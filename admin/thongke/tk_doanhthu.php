@@ -2,7 +2,7 @@
     <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md">Thống kê doanh thu ngày</h3>
 
     <div>
-        <form action="index.php?act=tk_doanhthu" method="post">
+        <form action="index.php?act=tk_doanhthu" method="post" class="flex items-center mx-auto justify-center">
 
             <label for="thang">Ngày:</label>
             <select name="ngay" id="ngay">
@@ -47,7 +47,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
         <body>
 
-            <canvas id="myChart" style="width:100%;max-width:800px" class="flex iteams-center"></canvas>
+            <canvas id="myChart" style="width:100%;max-width:800px" class="flex items-center w-full"></canvas>
             <?php
             $data = array(); // Mảng chứa dữ liệu
 
@@ -73,7 +73,7 @@
             foreach ($doanhthu as $row) {
                 $tong_doanh_thu += $row['doanh_thu'];
             }
-            $tong_doanh_thu = '$' . number_format($tong_doanh_thu, 0, ',', '.');
+            $tong_doanh_thu = number_format($tong_doanh_thu, 0, ',', '.') . 'đ';
             ?>
 
             new Chart("myChart", {
@@ -94,7 +94,7 @@
             }
             });
         </script>
-   <div>
+   <div class="flex items-center mx-auto justify-center">
         <a href="index.php?act=tk_theodm"><input type="button" name="" value="Thống Kê Doanh Thu Theo Danh Mục" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
         <a href="index.php?act=tk_doanhthu_thang"><input type="button" name="" value="Thống Kê Doanh Thu Theo Tháng" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
    </div>

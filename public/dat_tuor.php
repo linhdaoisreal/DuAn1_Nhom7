@@ -1,6 +1,4 @@
 <?php
-
-
 if (is_array($load_one_tour)) {
     extract($load_one_tour);
     $hinhAnh = $img_path . $hinh_anh_mau;
@@ -122,7 +120,13 @@ if (is_array($load_one_tour)) {
                             <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                         </div>
                         <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten'>
-                        <p><?php $errHVT?></p>
+                        <div class="mt-8">
+                            <?php if (!empty($errHVT)): ?>
+                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                                <?php echo $errHVT; ?>
+                            </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
 
                     <div>
@@ -138,7 +142,6 @@ if (is_array($load_one_tour)) {
                             </div>
                             <?php endif; ?>
                         </div>
-                        <div id="addressError" class="error"></div>
                     </div>
 
                     <div>

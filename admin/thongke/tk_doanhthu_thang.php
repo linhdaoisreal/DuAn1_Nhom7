@@ -1,7 +1,7 @@
 <div class="row flex flex-col flex-1 overflow-y-auto">
     <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md">Thống kê doanh thu tháng</h3>
 
-    <form action="index.php?act=tk_doanhthu_thang" method="post">
+    <form action="index.php?act=tk_doanhthu_thang" method="post" class="flex items-center mx-auto justify-center">
 
         <label for="thang">Tháng:</label>
         <select name="thang" id="thang">
@@ -61,7 +61,7 @@
         foreach ($doanh_thu_thang as $row) {
             $tong_doanh_thu += $row['doanh_thu_thang'];
         }
-        $tong_doanh_thu = '$' . number_format($tong_doanh_thu, 0, ',', '.');
+        $tong_doanh_thu = number_format($tong_doanh_thu, 0, ',', '.') . 'đ';
         ?>
 
         new Chart("myChart", {
@@ -82,9 +82,9 @@
         }
         });
     </script>
-    <div>
-    <a href="index.php?act=tk_doanhthu"><input type="button" name="" value="Thống Kê Doanh Thu Theo Ngày" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
-    <a href="index.php?act=tk_theodm"><input type="button" name="" value="Thống Kê Doanh Thu Theo Danh Mục" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
+    <div class="flex items-center mx-auto justify-center">
+        <a href="index.php?act=tk_doanhthu"><input type="button" name="" value="Thống Kê Doanh Thu Theo Ngày" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
+        <a href="index.php?act=tk_theodm"><input type="button" name="" value="Thống Kê Doanh Thu Theo Danh Mục" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
     </div>
    
 </div>

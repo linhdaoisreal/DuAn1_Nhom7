@@ -56,7 +56,9 @@
             WHERE 
                     YEAR(don_hang.ngay_dat_hang) = $nam
                 AND MONTH(don_hang.ngay_dat_hang) = $thang
-                AND DAY(don_hang.ngay_dat_hang) = $ngay";
+                AND DAY(don_hang.ngay_dat_hang) = $ngay 
+            GROUP BY 
+                tuor.id_tuor, tuor.ten_tuor";
    
         $doanhthu = pdo_query($sql);
         return $doanhthu;
@@ -74,7 +76,9 @@
                 don_hang  ON tuor.id_tuor = don_hang.id_tuor
             WHERE 
                     YEAR(don_hang.ngay_dat_hang) = $nam
-                AND MONTH(don_hang.ngay_dat_hang) = $thang";
+                AND MONTH(don_hang.ngay_dat_hang) = $thang 
+            GROUP BY 
+                tuor.id_tuor, tuor.ten_tuor";
    
         $doanh_thu_thang = pdo_query($sql);
         return $doanh_thu_thang;

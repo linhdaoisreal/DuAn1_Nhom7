@@ -3,7 +3,7 @@
         <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md">Thống Kê Doanh Thu Theo Danh Mục
         </h1>
     </div>
-    <div class="flex iteams-center">
+    <div class="flex items-center justify-center">
         <div id="tk_mien" style="width:100%; max-width:600px; height:500px;"></div><!-- thống kê danh mục mùa -->
         <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div><!-- thống kê theo danh mục miền -->
     </div>
@@ -72,9 +72,9 @@
             chart.draw(data, options);
         }
     </script>
-        <div>
-        <a href="index.php?act=tk_doanhthu"><input type="button" name="" value="Thống Kê Doanh Thu Theo Ngày" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
-        <a href="index.php?act=tk_doanhthu_thang"><input type="button" name="" value="Thống Kê Doanh Thu Theo Tháng" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
+        <div class="flex items-center mx-auto justify-center">
+            <a href="index.php?act=tk_doanhthu"><input type="button" name="" value="Thống Kê Doanh Thu Theo Ngày" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
+            <a href="index.php?act=tk_doanhthu_thang"><input type="button" name="" value="Thống Kê Doanh Thu Theo Tháng" class="bg-orange-300 h-8 w-80 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
         </div>
          
 </div>

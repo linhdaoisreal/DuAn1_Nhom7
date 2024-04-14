@@ -146,7 +146,7 @@ if (isset ($_GET['act'])) {
                     $tong_gia = $_POST['tong_gia'];
                     $tong_nguoi = $_POST['tong_nguoi'];
                     date_default_timezone_set('Asia/Ho_Chi_Minh');
-                    $ngay_dat_hang = date("H:i:s d/m/Y"); // Thay đổi định dạng ngày
+                    $ngay_dat_hang = date("Y-m-d"); // Thay đổi định dạng ngày
                     $trang_thai = 0;
                     if(isset($_SESSION['ho_ten'])){
                         $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
@@ -227,7 +227,7 @@ if (isset ($_GET['act'])) {
                     $dk_them = $_POST['dk_them'];
                     $tong_nguoi = $_POST['tong_nguoi'];
                     date_default_timezone_set('Asia/Ho_Chi_Minh');
-                    $ngay_dat_hang = date("H:i:s d/m/Y"); // Thay đổi định dạng ngày
+                    $ngay_dat_hang = date("Y-m-d"); // Thay đổi định dạng ngày
                     $trang_thai = 0;
                     if(isset($_SESSION['ho_ten'])){
                         $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
