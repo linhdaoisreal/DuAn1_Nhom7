@@ -37,6 +37,8 @@
                         $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
                         $suaMien="index.php?act=sua_trang_thai&id_don_hang=".$id_don_hang;
                         $xoaHang="index.php?act=xoa_don_hang&id_don_hang=".$id_don_hang;
+                        $ngayDatHang = $ngay_dat_hang;
+                        $ngayDatHangFormatted = date('d-m-Y', strtotime($ngayDatHang));
                         echo'
                     <tr>
                         <td>'.$id_don_hang.'</td>
@@ -46,7 +48,7 @@
                         <td>'.$dia_chi.'</td>
                         <td>'.$email.'</td>
                         <td>'.$dk_them.'</td>
-                        <td>'.$ngay_dat_hang.'</td>  
+                        <td>'.$ngayDatHangFormatted.'</td>  
                         <td>'.$trang_thai.'</td>
 
                         <td>
