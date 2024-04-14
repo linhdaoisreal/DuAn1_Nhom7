@@ -324,12 +324,13 @@ if (isset ($_GET['act'])) {
                 $ho_ten = $_POST['ho_ten'];
                 $mat_khau = $_POST['mat_khau'];
                 $checkuser = check_user($ho_ten, $mat_khau);
+                
                 if ($checkuser !== false) {
                     if($checkuser['trang_thai'] == 0){
                         $_SESSION['ho_ten'] = $checkuser;
                         $thongbao = "Đăng nhập thành công!";
                         // Kiểm tra nếu vai trò của người dùng là 1 (admin)
-                        if ($checkuser['vai_tro'] == 1) {
+                        if ($checkuser['ho_ten']['vai_tro'] == 1) {
                             // Chuyển hướng người dùng vào trang admin
                             header("Location: admin/index.php");
                         } else {

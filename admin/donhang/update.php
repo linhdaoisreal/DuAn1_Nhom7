@@ -19,11 +19,11 @@ if (is_array($don_hang)) {
             <div class="mt-8">
                 <label for="" class="text-lg font-semibold text-orange-300">Trạng Thái</label><br>
                 <select name="trang_thai" id="ma_thoi_gian" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                       <option value="0">Tuor chưa thanh toán</option>
-                       <option value="1">Đã thanh toán, Tuor đã khởi hành</option>
-                       <option value="2">Đã đặt cọc, Tuor chưa khởi hành</option>
+                       <option value="0">Tour chưa thanh toán</option>
+                       <option value="1">Đã thanh toán, Tour đã khởi hành</option>
+                       <option value="2">Đã đặt cọc, Tour chưa khởi hành</option>
                        <option value="3">Đã khởi hành</option>
-                       <option value="4">Tuor đã hủy</option>
+                       <option value="4">Tour đã hủy</option>
                 </select>
                 <span id="ten_mien_error" class="text-red-500"></span>
             </div>

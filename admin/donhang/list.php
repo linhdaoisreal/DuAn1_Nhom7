@@ -28,9 +28,9 @@
                             if($trang_thai == 0 ){
                                 $trang_thai = 'Chưa thanh toán';
                             }elseif($trang_thai == 1){
-                                $trang_thai = 'Đã thanh toán, Tuor chưa khởi hành';
+                                $trang_thai = 'Đã thanh toán, Tour chưa khởi hành';
                             }elseif($trang_thai == 2){
-                                $trang_thai = 'Đã đặt cọc, Tuor chưa khởi hành';
+                                $trang_thai = 'Đã đặt cọc, Tour chưa khởi hành';
                             }else{
                                 $trang_thai = 'Đã hủy';
                             }
