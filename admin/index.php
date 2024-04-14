@@ -14,6 +14,7 @@ include "../model/thoi_gian.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/don_hang.php";
+include "../model/thongke.php";
 
 
 if (isset($_GET['act'])) {
@@ -582,6 +583,42 @@ if (isset($_GET['act'])) {
             $list_don_hang = all_don_hang();
             include ("donhang/list.php");
             break;
+            // thống kê theo danh mục
+        case 'tk_theodm';
+            $tk_dm_mien = tk_dm_mien();
+            $tk_dm_mua = tk_dm_mua();
+
+            include("thongke/tk_theodm.php");
+            break;
+            // thống kê doanh thu theo tour
+        case 'tk_doanhthu';
+            $ngay = date('d');
+            $thang = date('m'); // Lấy tháng hiện tại
+            $nam = date('Y'); // Lấy năm hiện tại
+
+            if (isset($_POST['ngay']) && isset($_POST['thang']) && isset($_POST['nam'])) {
+                $ngay = $_POST['ngay'];
+                $thang = $_POST['thang'];
+                $nam = $_POST['nam'];
+            }
+            $doanhthu = loadAll_doanhthu($ngay, $thang, $nam);
+        include("thongke/tk_doanhthu.php");
+        break;
+            //thống kê doanh thu theo tháng
+        case 'tk_doanhthu_thang';
+            $thang = date('m'); // Lấy tháng hiện tại
+            $nam = date('Y'); // Lấy năm hiện tại
+
+            if (isset($_POST['thang']) && isset($_POST['nam'])) {
+                $thang = $_POST['thang'];
+                $nam = $_POST['nam'];
+            }
+            $doanh_thu_thang = loadAll_doanh_thu_thang($thang, $nam);
+        include("thongke/tk_doanhthu_thang.php");
+        break;
+
+        
+        
 
         default:
             # code...

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../src/style.css">
     <link rel="stylesheet" href="../src/box.css">
     <link rel="stylesheet" href="../fontawesome-free/css/all.min.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Similesve Travel - Trang chủ</title>
     <style>
@@ -145,7 +146,7 @@
                     Thời gian
                 </a>
                 <a href="index.php?act=list_tour" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
-                    Tour
+                    Tuor
                 </a>
                 <a href="index.php?act=list_taikhoan" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Tài khoản
@@ -159,7 +160,7 @@
                 <a href="index.php?act=list_don_hang" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Đơn hàng
                 </a>
-                <a href="#" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                <a href="index.php?act=tk_theodm" class="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
                     Thống kê
                 </a>
             </nav>
