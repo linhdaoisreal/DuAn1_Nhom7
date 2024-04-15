@@ -60,6 +60,7 @@ if (isset ($_GET['act'])) {
         case 'chitiet_tuor':
             if(isset($_GET['id_tuor']) && $_GET['id_tuor'] > 0){
                 $id_tuor = $_GET['id_tuor'];
+                
                 $loadAnhTuor = all_hinh_anh($id_tuor);
                 $load_snd=load_so_ngay_dem($id_tuor);
                 $load_one_tour = load_one_tour($id_tuor);
@@ -75,6 +76,12 @@ if (isset ($_GET['act'])) {
                 $so_tre_em = $_POST['so_tre_em'];
                 $mang_dat_tuor = [$ngay_khoi_hanh,$so_nguoi_lon,$so_tre_em,$ngay_khoi_hanh];
                 $id_tuor = $_GET['id_tuor'];
+                if(isset($_SESSION['check_tt'])){
+                    unset($_SESSION['check_tt']);
+                    $_SESSION['check_tt'][] = $id_tuor;
+                }else{
+                    $_SESSION['check_tt'][] = $id_tuor;
+                }
 
                 if(!isset($_SESSION['dat_tuor']) ){
                     $_SESSION['dat_tuor'][]=$mang_dat_tuor; 
@@ -114,46 +121,67 @@ if (isset ($_GET['act'])) {
 
             // Thanh toán Momo
         case 'check_out_online':
+            if(isset($_POST['dat_coc'])){
+                $dat_coc = $_POST['dat_coc'];
+                if(isset($dat_coc) && $dat_coc != ""){
+                    $check_gia = $dat_coc*$tong_gia;
+                    $mang_dat_coc = [$check_gia,$dat_coc];
+                    unset($_SESSION['dat_coc']);
+                    $_SESSION['dat_coc'][]=$mang_dat_coc;
+                }else{
+                    unset($_SESSION['dat_coc']);
+                }
+            }
+            $id_tuor = $_SESSION['check_tt'][0];
+            $ho_va_ten = $_POST['ho_va_ten'];
+            $dia_chi = $_POST['address'];
+            $email = $_POST['email'];
+            $sdt = $_POST['sdt'];
+            $ma_buu_chinh = $_POST['ma_buu_chinh'];
+            $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
+            $dk_them = $_POST['dk_them'];
+            $tong_nguoi = $_POST['tong_nguoi'];
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $ngay_dat_hang = date("Y-m-d"); // Thay đổi định dạng ngày
+            $trang_thai = 0;
+            if(isset($_SESSION['ho_ten'])){
+                $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
+            }else{
+                $id_nguoi_dung = NULL;
+            }
             // Lấy tổng giá tiền của 1 tour
             $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
             $tong_gia = $_POST['tong_gia'];
-            $check_gia = $tong_gia;
+            $_SESSION['check_tt'][] = array(
+                'id_tuor' => $id_tuor,
+                'tong_gia' => $tong_gia
+            );
+
+            $check = true;
             $errHVT = '';
             $errDC = '';
             $errEmail = '';
             $errSDT = '';
-            
+
+            if(!$ho_va_ten){
+                $errHVT = "Vui lòng nhập tên người đặt";
+                $check = false;
+            }
+            if(!$dia_chi){
+                $errDC = "Vui lòng nhập địa chỉ người đặt";
+                $check = false;
+            }
+            if(!$email){
+                $errEmail = "Vui lòng nhập Email người đặt";
+                $check = false;
+            }
+            if(!$sdt){
+                $errSDT = "Vui lòng nhập số điện thoại người đặt";
+                $check = false;
+            }
+            if($check){
                 if(isset($_POST['payUrl'])){ 
-                    if(isset($_POST['dat_coc'])){
-                        $dat_coc = $_POST['dat_coc'];
-                        if(isset($dat_coc) && $dat_coc != ""){
-                            $check_gia = $dat_coc*$tong_gia;
-                            $mang_dat_coc = [$check_gia,$dat_coc];
-                            unset($_SESSION['dat_coc']);
-                            $_SESSION['dat_coc'][]=$mang_dat_coc;
-                        }else{
-                            unset($_SESSION['dat_coc']);
-                        }
-                    }
-                    $id_tuor = $_POST['id_tuor'];
-                    $ho_va_ten = $_POST['ho_va_ten'];
-                    $dia_chi = $_POST['address'];
-                    $email = $_POST['email'];
-                    $sdt = $_POST['sdt'];
-                    $ma_buu_chinh = $_POST['ma_buu_chinh'];
-                    $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
-                    $dk_them = $_POST['dk_them'];
-                    $tong_gia = $_POST['tong_gia'];
-                    $tong_nguoi = $_POST['tong_nguoi'];
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
-                    $ngay_dat_hang = date("Y-m-d"); // Thay đổi định dạng ngày
-                    $trang_thai = 0;
-                    if(isset($_SESSION['ho_ten'])){
-                        $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
-                    }else{
-                        $id_nguoi_dung = NULL;
-                    }
-                    $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
+                    
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);
                     $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
@@ -161,7 +189,7 @@ if (isset ($_GET['act'])) {
                     $accessKey = 'klm05TvNBzhg7h7j';
                     $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
                     $orderInfo = "Thanh toán qua MoMo";
-                        $amount = $check_gia;
+                        $amount = $tong_gia;
                         $orderId = rand(1,99999);
                         $redirectUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
                         $ipnUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
@@ -206,66 +234,18 @@ if (isset ($_GET['act'])) {
 
                 //VNPAY 
                 }elseif(isset($_POST['redirect'])){
-                    if(isset($_POST['dat_coc'])){
-                        $dat_coc = $_POST['dat_coc'];
-                        if(isset($dat_coc) && $dat_coc != ""){
-                            $check_gia = $dat_coc*$tong_gia;
-                            $mang_dat_coc = [$check_gia,$dat_coc];
-                            unset($_SESSION['dat_coc']);
-                            $_SESSION['dat_coc'][]=$mang_dat_coc;
-                        }else{
-                            unset($_SESSION['dat_coc']);
-                        }
-                    }
-                    $id_tuor = $_POST['id_tuor'];
-                    $ho_va_ten = $_POST['ho_va_ten'];
-                    $dia_chi = $_POST['address'];
-                    $email = $_POST['email'];
-                    $sdt = $_POST['sdt'];
-                    $ma_buu_chinh = $_POST['ma_buu_chinh'];
-                    $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
-                    $dk_them = $_POST['dk_them'];
-                    $tong_nguoi = $_POST['tong_nguoi'];
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
-                    $ngay_dat_hang = date("Y-m-d"); // Thay đổi định dạng ngày
-                    $trang_thai = 0;
-                    if(isset($_SESSION['ho_ten'])){
-                        $id_nguoi_dung = $_SESSION['ho_ten']['id_nguoi_dung'];
-                    }else{
-                        $id_nguoi_dung = NULL;
-                    }
+                    
 
-                    //validate
-                    // $checkingValidation = true;
-                    // if($ho_va_ten == "" || $dia_chi == "" || $email == "" || $sdt == ""){
-                    //     if(!$ho_va_ten){
-                    //         $checkingValidation = false;
-                    //         $errHVT = "Vui lòng nhập đầy đủ họ và tên";
-                    //     }
-                    //     if(!$dia_chi){
-                    //         $checkingValidation = false;
-                    //         $errDC = "Vui lòng nhập đầy đủ địa chỉ";
-                    //     }
-                    //     if(!$email){
-                    //         $checkingValidation = false;
-                    //         $errEmail = "Vui lòng nhập đầy đủ email";
-                    //     }
-                    //     $SDTlength = strlen($sdt);
-                    //     if(!$sdt && $SDTlength < 10){
-                    //         $checkingValidation = false;
-                    //         $errSDT = "Vui lòng nhập đầy đủ số điện thoại";
-                    //     }
-                    //     include "public/dat_tuor.php";
-                    // }else{
-                    //     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
-                    //     include './vnpay_php/vnpay_create_payment.php';
-                    // }
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
                     include './vnpay_php/vnpay_create_payment.php';
                 }elseif(isset($_POST['visa'])){
                     echo 'visa';
                 }
-         
+            }else{
+                $load_snd=load_so_ngay_dem($id_tuor);
+                $load_one_tour = load_one_tour($id_tuor);
+                include "public/dat_tuor.php";
+            }
                        
             break;
 

@@ -131,7 +131,8 @@ if (is_array($load_one_tour)) {
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Ngày Khởi Hành: </h3>
                             <div class="ml-4">
-                                <select name="ngay_khoi_hanh" id="" class="border-b-2 border-orange-400">
+                                <select name="ngay_khoi_hanh" id="" class="border-b-2 border-orange-400" required>
+                                    <option value="">--/--/----</option>
                                     <?php
                                     date_default_timezone_set('Asia/Ho_Chi_Minh'); 
                                     $ngay_local = date('d-m-Y'); 

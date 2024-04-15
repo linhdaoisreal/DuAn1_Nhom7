@@ -23,10 +23,10 @@ if (is_array($load_one_tour)) {
                                 *</span>
                         </div>
                         <input id="ten" type="text" class="w-full border border-orange-400 rounded-md my-2"
-                            name='ho_va_ten' value=" <?= $user['ho_ten'] ?>" required>
-                        <div class="mt-8">
+                            name='ho_va_ten' value=" <?= $user['ho_ten'] ?>" >
+                        <div class="">
                             <?php if (!empty($errHVT)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errHVT; ?>
                             </div>
                             <?php endif; ?>
@@ -38,10 +38,10 @@ if (is_array($load_one_tour)) {
                             <h3 class="text-orange-400 font-semibold">Địa chỉ </h3><span class="text-red-500"> *</span>
                         </div>
                         <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="address"
-                            value=" <?= $user['dia_chi'] ?>" name="diachi" required>
-                        <div class="mt-8">
+                            value=" <?= $user['dia_chi'] ?>" name="diachi" >
+                        <div class="">
                             <?php if (!empty($errDC)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errDC; ?>
                             </div>
                             <?php endif; ?>
@@ -64,10 +64,10 @@ if (is_array($load_one_tour)) {
                             <h3 class="text-orange-400 font-semibold">Email </h3><span class="text-red-500"> *</span>
                         </div>
                         <input type="email" class="w-full border border-orange-400 rounded-md my-2"
-                            value=" <?= $user['email'] ?>" name="email" required>
-                        <div class="mt-8">
+                            value=" <?= $user['email'] ?>" name="email" >
+                        <div class="">
                             <?php if (!empty($errEmail)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errEmail; ?>
                             </div>
                             <?php endif; ?>
@@ -80,10 +80,10 @@ if (is_array($load_one_tour)) {
                                 *</span>
                         </div>
                         <input type="number" class="w-full border border-orange-400 rounded-md my-2"
-                            value=" <?= $user['so_dien_thoai'] ?>" name="sdt" maxlength="10" required>
-                        <div class="mt-8">
+                            value=" <?= $user['so_dien_thoai'] ?>" name="sdt" maxlength="10" >
+                        <div class="">
                             <?php if (!empty($errSDT)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errSDT; ?>
                             </div>
                             <?php endif; ?>
@@ -119,10 +119,10 @@ if (is_array($load_one_tour)) {
                         <div class="flex">
                             <h3>Tên người dùng</h3><span class="text-red-500"> *</span>
                         </div>
-                        <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten' required>
-                        <div class="mt-8">
+                        <input type="text" class="w-full border border-orange-400 rounded-md my-2" name='ho_va_ten' >
+                        <div class="">
                             <?php if (!empty($errHVT)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errHVT; ?>
                             </div>
                             <?php endif; ?>
@@ -134,10 +134,10 @@ if (is_array($load_one_tour)) {
                             <h3>Địa chỉ </h3><span class="text-red-500"> *</span>
                         </div>
                         <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="address"
-                            id="address" require>
-                        <div class="mt-8">
+                            id="address" >
+                        <div class="">
                             <?php if (!empty($errDC)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errDC; ?>
                             </div>
                             <?php endif; ?>
@@ -159,10 +159,10 @@ if (is_array($load_one_tour)) {
                         <div class="flex">
                             <h3>Email </h3><span class="text-red-500"> *</span>
                         </div>
-                        <input type="email" class="w-full border border-orange-400 rounded-md my-2" name="email" required>
-                        <div class="mt-8">
+                        <input type="email" class="w-full border border-orange-400 rounded-md my-2" name="email" >
+                        <div class="">
                             <?php if (!empty($errEmail)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errEmail; ?>
                             </div>
                             <?php endif; ?>
@@ -173,10 +173,10 @@ if (is_array($load_one_tour)) {
                         <div class="flex">
                             <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
                         </div>
-                        <input type="number" class="w-full border border-orange-400 rounded-md my-2" name="sdt" maxlength="10" required>
-                        <div class="mt-8">
+                        <input type="number" class="w-full border border-orange-400 rounded-md my-2" name="sdt" maxlength="10" >
+                        <div class="">
                             <?php if (!empty($errSDT)): ?>
-                            <div class="bg-green-500 text-white text-center py-2 text-xl rounded-md">
+                            <div class="text-red-500 pb-2 text-sm">
                                 <?php echo $errSDT; ?>
                             </div>
                             <?php endif; ?>

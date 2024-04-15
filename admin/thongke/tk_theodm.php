@@ -1,6 +1,6 @@
 <div class="row flex flex-col flex-1 overflow-y-auto">
     <div class="">
-        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md">Thống Kê Doanh Thu Theo Danh Mục
+        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md">Thống Kê Doanh Danh Mục Được Đặt 
         </h1>
     </div>
     <div class="flex items-center justify-center">

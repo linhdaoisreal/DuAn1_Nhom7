@@ -47,7 +47,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
         <body>
 
-            <canvas id="myChart" style="width:100%;max-width:800px" class="flex items-center w-full"></canvas>
+            <canvas id="myChart" style="max-width:85%" class="flex items-center mx-auto justify-center"></canvas>
             <?php
             $data = array(); // Mảng chứa dữ liệu
 

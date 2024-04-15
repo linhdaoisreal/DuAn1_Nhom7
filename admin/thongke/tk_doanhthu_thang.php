@@ -34,7 +34,7 @@
         <body>
 
         <div class="">
-            <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
+            <canvas id="myChart" style="max-width:85%" class="flex items-center mx-auto justify-center"></canvas>
         </div>
         <?php
         $data = array(); // Mảng chứa dữ liệu
