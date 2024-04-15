@@ -15,18 +15,21 @@ if (is_array($taikhoan)) {
                 <input type="text" name="ho_ten" class="border-orange-300 w-96 border-2 rounded-lg h-9" value=" <?=$ho_ten?>">
             </div>
 
-              <!-- Vai trò -->
+            <!-- Vai trò -->
             <div class="mt-8">
                 <label for="" class="text-lg font-semibold text-orange-300">Vai trò</label><br>
                 <select name="vai_tro" id="vai_tro" class="border-orange-300 w-96 border-2 rounded-lg h-9">
-                    <option value="0">Người dùng</option>
-                    <option value="1" >ADMIN</option>
+                    <option value="0" <?php if ($vai_tro == 0) echo 'selected'; ?>>Người dùng</option>
+                    <option value="1" <?php if ($vai_tro == 1) echo 'selected'; ?>>ADMIN</option>
                 </select>
                 <span id="vai_tro_error" class="text-red-500"></span>
             </div>
 
              <!-- Script JavaScript -->
              <script>
+                var vai_tro = <?php echo $vai_tro; ?>; 
+                document.getElementById("vai_tro").value = vai_tro;
+
                 document.querySelector('form').addEventListener('submit', function(event) {
                     var tenMienInput = document.getElementById('vai_tro');
                     var tenMienError = document.getElementById('vai_tro_error');
