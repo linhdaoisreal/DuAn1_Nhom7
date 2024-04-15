@@ -119,7 +119,7 @@ if (is_array($load_one_tour)) {
                         <div class="flex">
                             <i class="fa-regular fa-clock text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Thời Gian: </h3>
-                            <p class="ml-4">
+                            <p class="ml-4 text-gray-500">
                                 <?php if (is_array($load_snd)) {
                                     extract($load_snd);
                                 }
@@ -131,8 +131,8 @@ if (is_array($load_one_tour)) {
                             <i class="fa-regular fa-calendar-days text-xl text-sky-500 pr-1"></i>
                             <h3 class="text-[1.1rem] text-sky-500">Ngày Khởi Hành: </h3>
                             <div class="ml-4">
-                                <select name="ngay_khoi_hanh" id="" class="border-b-2 border-orange-400" required>
-                                    <option value="">--/--/----</option>
+                                <select name="ngay_khoi_hanh" id="" class="border-b-2 border-orange-400 text-slate-800" required>
+                                    <option value="" class="text-gray-500">--/--/----</option>
                                     <?php
                                     date_default_timezone_set('Asia/Ho_Chi_Minh'); 
                                     $ngay_local = date('d-m-Y'); 
@@ -159,7 +159,7 @@ if (is_array($load_one_tour)) {
                             <h3 class="text-[1.1rem] text-sky-500">Số người lớn: </h3>
                             <div class="ml-4">
                                 <input type="number" id="so_nguoi_lon" min="1" value="1" name="so_nguoi_lon"
-                                 class="border-b-2 border-orange-400">
+                                 class="border-b-2 border-orange-400 text-slate-800">
                             </div>
                         </div>
 
@@ -168,7 +168,7 @@ if (is_array($load_one_tour)) {
                             <h3 class="text-[1.1rem] text-sky-500">Số trẻ em: </h3>
                             <div class="ml-4">
                                 <input type="number" id="so_tre_em" min="0" value="0" name="so_tre_em"
-                                 class="border-b-2 border-orange-400">
+                                 class="border-b-2 border-orange-400 text-slate-800">
                             </div>
                         </div>
                     </div>

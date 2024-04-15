@@ -5,7 +5,7 @@ if (is_array($load_one_tour)) {
 ?>
 <div class="row flex flex-col flex-1 overflow-y-auto">
     <div class="">
-        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm mới Biến thể Ngày xuất phát</h1>
+        <h1 class="text-center text-3xl bg-orange-300 text-white my-0.5 mt-3.5 rounded-md h-11">Thêm Ngày xuất phát cho Tuor</h1>
     </div>
     <!-- Form nhập thêm mùa -->
     <div class="ml-10 mt-8">
@@ -14,7 +14,7 @@ if (is_array($load_one_tour)) {
             <!-- ID tour -->
             <div class="mt-8">
                 <label for="" class="text-lg font-semibold text-orange-300">Mã tour</label><br>
-                <select name="id_tuor" id="id_tuor" class="border-orange-300 w-96 border-2 rounded-lg h-9">
+                <select name="id_tuor" id="id_tuor" class="border-orange-300 w-96 border-2 rounded-lg h-9" >
                     <option value="">-None-</option>
                     <?php
                         foreach ($tuor as $checkTuor) {

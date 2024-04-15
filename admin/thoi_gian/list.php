@@ -4,6 +4,14 @@
     </div>
     <!-- Form nhập mã hàng -->
     <div class="ml-2 mt-2">
+        <!-- Hành động -->
+        <div class="inline-block py-2">
+            <input type="button" name="" value="Chọn tất cả" class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
+            <input type="reset" name="" value="Bỏ chọn tất cả" class="bg-orange-300 h-8 w-32 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
+            <input type="button" name="" value="Xóa các mục đã chọn" class="bg-orange-300 h-8 w-40 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
+            <a href="index.php?act=add_thoi_gian"><input type="button" name="" value="Nhập thêm" class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
+        </div>
+        
         <div class="">
             <table class="w-full border-collapse border-2 border-orange-300">
                 <tr class="text-white bg-orange-300 text-lg">
@@ -50,14 +58,7 @@
             </table>
         </div>
 
-        <!-- Hành động -->
-        <div class="inline-block py-2">
-            <input type="button" name="" value="Chọn tất cả" class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
-            <input type="reset" name="" value="Bỏ chọn tất cả" class="bg-orange-300 h-8 w-32 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
-            <input type="button" name="" value="Xóa các mục đã chọn" class="bg-orange-300 h-8 w-40 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2">
-            <a href="index.php?act=add_thoi_gian"><input type="button" name="" value="Nhập thêm" class="bg-orange-300 h-8 w-24 text-white rounded-lg hover:bg-cyan-600 cursor-pointer m-2"></a>
-
-        </div>
+        
     </div>
 </div>
 <style>

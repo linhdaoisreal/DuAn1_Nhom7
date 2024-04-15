@@ -121,6 +121,8 @@ if (isset ($_GET['act'])) {
 
             // Thanh toán Momo
         case 'check_out_online':
+            $tong_gia = $_POST['tong_gia'];
+
             if(isset($_POST['dat_coc'])){
                 $dat_coc = $_POST['dat_coc'];
                 if(isset($dat_coc) && $dat_coc != ""){
@@ -131,6 +133,8 @@ if (isset ($_GET['act'])) {
                 }else{
                     unset($_SESSION['dat_coc']);
                 }
+            }else{
+                $check_gia = $tong_gia;
             }
             $id_tuor = $_SESSION['check_tt'][0];
             $ho_va_ten = trim($_POST['ho_va_ten']);
@@ -151,7 +155,7 @@ if (isset ($_GET['act'])) {
             }
             // Lấy tổng giá tiền của 1 tour
             $ngay_khoi_hanh = $_SESSION['dat_tuor'][0][3];
-            $tong_gia = $_POST['tong_gia'];
+
             $_SESSION['check_tt'][] = array(
                 'id_tuor' => $id_tuor,
                 'tong_gia' => $tong_gia
@@ -189,7 +193,7 @@ if (isset ($_GET['act'])) {
                     $accessKey = 'klm05TvNBzhg7h7j';
                     $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
                     $orderInfo = "Thanh toán qua MoMo";
-                        $amount = $tong_gia;
+                        $amount = $check_gia;
                         $orderId = rand(1,99999);
                         $redirectUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
                         $ipnUrl = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
