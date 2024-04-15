@@ -30,7 +30,7 @@
                     <td>'.$id_nguoi_dung.'</td>
                     <td>'.$ho_ten.'</td>
                     <td>'.$email.'</td>  
-                    <td>'.$so_dien_thoai.'</td>  
+                    <td>0'.$so_dien_thoai.'</td>  
                     <td>'.$dia_chi.'</td>  
                     <td>'; if($vai_tro == 0){
                             echo "Người dùng";

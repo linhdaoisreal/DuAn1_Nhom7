@@ -44,7 +44,7 @@
                         <td>'.$id_don_hang.'</td>
                         <td>'.$ho_va_ten.'</td>
                         <td>'.$ten_tuor.'</td>
-                        <td>'.$sdt.'</td>
+                        <td>0'.$sdt.'</td>
                         <td>'.$dia_chi.'</td>
                         <td>'.$email.'</td>
                         <td>'.$dk_them.'</td>
@@ -53,11 +53,8 @@
 
                         <td>
                             <a href="'.$suaMien.'"><i class="fa-solid fa-pen-to-square m-2"></i></a>   
-                        </td>
-
-                                    
+                        </td>       
                     </tr>
-
                         ';
 
                     }

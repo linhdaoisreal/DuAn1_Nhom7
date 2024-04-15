@@ -141,13 +141,11 @@ function load_tuor_theo_danhmuc($id_mua, $id_mien)
     return $load_tuor_theo_danhmuc;
 }
 
-
-
 function trunggian_ngay_xuat_phat_tuor($id_tuor){
     $sql = "SELECT tuor.id_tuor, ngay_xuat_phat.id_ngay, ngay FROM tuor 
     JOIN tuor_ngay_xuat_phat ON tuor_ngay_xuat_phat.id_tuor = tuor.id_tuor 
-    JOIN ngay_xuat_phat ON tuor_ngay_xuat_phat.id_ngay = ngay_xuat_phat.id_ngay
-    WHERE tuor.id_tuor = ".$id_tuor;
+    JOIN ngay_xuat_phat ON tuor_ngay_xuat_phat.id_ngay = ngay_xuat_phat.id_ngay 
+    WHERE tuor.id_tuor = ".$id_tuor." ORDER BY ngay ASC";
     $trunggian_ngay_xuat_phat_tuor = pdo_query($sql);
     return $trunggian_ngay_xuat_phat_tuor;
 }
