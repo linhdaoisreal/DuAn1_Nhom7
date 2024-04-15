@@ -10,6 +10,7 @@ if (is_array($load_one_tour)) {
         class="grid grid-cols-12 mx-12 my-8 gap-6">
         <?php if (isset($_SESSION['ho_ten'])) {
             $user = $_SESSION['ho_ten'] ?>
+            
         <div class="col-span-12 md:col-span-8">
             <h1 class="text-3xl font-semibold mb-6">Booking Submission</h1>
             <hr class="text-gray-500">
@@ -64,7 +65,7 @@ if (is_array($load_one_tour)) {
                             <h3 class="text-orange-400 font-semibold">Email </h3><span class="text-red-500"> *</span>
                         </div>
                         <input type="email" class="w-full border border-orange-400 rounded-md my-2"
-                            value=" <?= $user['email'] ?>" name="email" >
+                            value= "  <?=$user['email'] ?>" name="email" >
                         <div class="">
                             <?php if (!empty($errEmail)): ?>
                             <div class="text-red-500 pb-2 text-sm">
@@ -79,8 +80,8 @@ if (is_array($load_one_tour)) {
                             <h3 class="text-orange-400 font-semibold">Số điện thoại </h3><span class="text-red-500">
                                 *</span>
                         </div>
-                        <input type="number" class="w-full border border-orange-400 rounded-md my-2"
-                            value=" <?= $user['so_dien_thoai'] ?>" name="sdt" maxlength="10" >
+                        <input type="text" class="w-full border border-orange-400 rounded-md my-2" name="so_dien_thoai"
+                            value=" <?= 0?><?= $user['so_dien_thoai'] ?>" maxlength="10">
                         <div class="">
                             <?php if (!empty($errSDT)): ?>
                             <div class="text-red-500 pb-2 text-sm">

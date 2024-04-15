@@ -140,7 +140,7 @@ if (isset ($_GET['act'])) {
             $ho_va_ten = trim($_POST['ho_va_ten']);
             $dia_chi = trim($_POST['address']);
             $email = trim($_POST['email']);
-            $sdt = trim($_POST['sdt']);
+            $sdt = trim($_POST['so_dien_thoai']);
             $ma_buu_chinh = trim($_POST['ma_buu_chinh']);
             $tinh_thanh_pho = trim($_POST['tinh_thanh_pho']);
             $dk_them = trim($_POST['dk_them']);
