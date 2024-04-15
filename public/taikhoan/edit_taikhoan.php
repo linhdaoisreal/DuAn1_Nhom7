@@ -15,7 +15,7 @@
                 <form action="index.php?act=edit_taikhoan" method="post" enctype="multipart/form-data">
                     <div class="flex mb-10">
                         <div class="mr-10">
-                            <img style="width:120px;height:120px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt="" class="object-cover"><br>
+                            <img style="width:140px;height:140px;border-radius:50%" src="./gallery/<?= $anh_dai_dien?>" alt="" class="object-cover"><br>
                             <input type="file" name="anh_dai_dien">
                         </div>
                         <div>
@@ -34,7 +34,7 @@
                     <div class="flex">
                         <div class="mt-5 mr-10">
                             <label for="" class="block text-base text-orange-400 mb-2">Số điện thoại</label>
-                            <input type="text" name="so_dien_thoai" value="<?=$so_dien_thoai ?>"
+                            <input type="text" name="so_dien_thoai" value="<?=0?><?=$so_dien_thoai ?>"
                                 class="border-2 border-orange-400 rounded-xl w-80 px-3 py-2 focus:outline-none">
                         </div>
                         <div class="mt-5">
