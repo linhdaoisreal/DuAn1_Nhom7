@@ -7,7 +7,7 @@ function insert_ngay_xuat_phat($ngay){
 
 // Danh sách ngày xuất phát
 function all_ngay_xuat_phat(){
-    $sql="SELECT * FROM ngay_xuat_phat ORDER BY id_ngay desc";
+    $sql="SELECT * FROM ngay_xuat_phat ORDER BY ngay ASC";
     $listNgayXuatPhat=pdo_query($sql);
     return $listNgayXuatPhat;
 }

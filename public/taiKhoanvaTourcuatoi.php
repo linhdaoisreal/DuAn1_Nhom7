@@ -28,7 +28,7 @@
                             class="font-normal"><?= $ho_ten ?></span></p>
                     <p class="font-medium text-lg text-cyan-900">Email: <span class="font-normal"><?= $email ?></span></p>
                     <p class="font-medium text-lg text-cyan-900">Số điện thoại: <span
-                            class="font-normal"><?= $so_dien_thoai ?></span></p>
+                            class="font-normal">0<?= $so_dien_thoai ?></span></p>
                     <p class="font-medium text-lg text-cyan-900">Địa chỉ: <span class="font-normal"><?= $dia_chi ?></span></p>
                 </div>
 
@@ -50,8 +50,8 @@
                         $hinhAnh = $img_path . $hinh_anh_mau;
                         echo '
                             <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
-                                    <div class="w-24 h-auto">
-                                        <img class="" src="' . $hinhAnh . '" alt="">
+                                    <div class="w-24 h-auto my-auto">
+                                        <img class="my-auto rounded-lg" src="' . $hinhAnh . '" alt="">
                                     </div>
                                     <div class="my-auto text-sm md:text-base">
                                         <h1 class="font-semibold">Tour ' . $ten_tuor . ' </h1>

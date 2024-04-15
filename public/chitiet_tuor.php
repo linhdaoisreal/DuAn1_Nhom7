@@ -17,7 +17,7 @@ if (is_array($load_one_tour)) {
                     $hinhAnh = $img_path . $ten_hinh_anh;
                     echo '
                         <div class="item w-full">
-                            <img class="w-full object-cover" src="' . $hinhAnh . '." alt="">
+                            <img class="" src="' . $hinhAnh . '." alt="">
                         </div>
                         ';
                 }
@@ -92,7 +92,7 @@ if (is_array($load_one_tour)) {
                         </div>
 
                         <div class="flex">
-                            <i class="fa-solid fa-location-dot text-xl text-sky-500 pr-1"></i>
+                            <i class="fa-solid fa-people-group text-xl text-sky-500 pr-1"></i>
                             <input type="hidden" id="so_luong_toi_da" value="<?= $so_luong ?>">
                             <h3 class="text-[1.1rem] text-sky-500">Số Lượng Tối Đa: </h3>
                             <p class="ml-4 text-gray-500">
@@ -102,9 +102,9 @@ if (is_array($load_one_tour)) {
 
                         <div class="flex">
                             <i class="fa-solid fa-location-dot text-xl text-sky-500 pr-1"></i>
-                            <h3 class="text-[1.1rem] text-sky-500">Địa Điểm: </h3>
+                            <h3 class="text-[1.1rem] text-sky-500">Xuất phát: </h3>
                             <p class="ml-4 text-gray-500">
-                                <?= $dia_diem ?>
+                                <?= $xuat_phat ?>
                             </p>
                         </div>
 
@@ -142,7 +142,7 @@ if (is_array($load_one_tour)) {
                                         $ngay_chuyen_doi = date('d-m-Y', strtotime($ngay));
                                         $calculate_ngay_chuyen_doi = strtotime($ngay_chuyen_doi);
                                         $calculate_day_gap = round(($calculate_ngay_chuyen_doi - $calculate_ngay_local)/(60*60*24));
-                                        if($calculate_day_gap > 3){
+                                        if($calculate_day_gap > 1){
                                             echo '<option value="' . $ngay_chuyen_doi . '">' . $ngay_chuyen_doi . '</option>';
                                         }else{
                                             echo '<option class="hidden" value="' . $ngay_chuyen_doi . '">' . $ngay_chuyen_doi . '</option>';

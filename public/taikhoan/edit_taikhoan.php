@@ -34,7 +34,7 @@
                     <div class="flex">
                         <div class="mt-5 mr-10">
                             <label for="" class="block text-base text-orange-400 mb-2">Số điện thoại</label>
-                            <input type="text" name="so_dien_thoai" value="<?=0?><?=$so_dien_thoai ?>"
+                            <input type="text" name="so_dien_thoai" value="<?=0?><?=$so_dien_thoai ?>" maxlength="10"
                                 class="border-2 border-orange-400 rounded-xl w-80 px-3 py-2 focus:outline-none">
                         </div>
                         <div class="mt-5">

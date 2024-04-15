@@ -32,11 +32,12 @@
                     $thongbaoxoa = "'" . "Bạn chắc chắn muốn xóa không?" . "'";
                     $suaNgayXuatPhat = "index.php?act=suaNgayXuatPhat&id_ngay=" . $id_ngay;
                     $xoaNgayXuatPhat = "index.php?act=xoaNgayXuatPhat&id_ngay=" . $id_ngay;
+                    $ngay_chuyen_doi = date('d-m-Y', strtotime($ngay));
                     echo '
                     <tr>
                         <td><input type="checkbox" name="" id=""></td>
                         <td>' . $id_ngay . '</td>
-                        <td>' . $ngay . '</td>  
+                        <td>' . $ngay_chuyen_doi . '</td>  
                         <td><a href="' . $suaNgayXuatPhat . '"><i class="fa-solid fa-pen-to-square m-2"></i></a> 
                         <a href="' . $xoaNgayXuatPhat . '" onclick="return confirm(' . $thongbaoxoa . ');"><i class="fa-solid fa-trash m-4"></i></a></td>                      
                                     
