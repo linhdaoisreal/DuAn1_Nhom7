@@ -133,13 +133,13 @@ if (isset ($_GET['act'])) {
                 }
             }
             $id_tuor = $_SESSION['check_tt'][0];
-            $ho_va_ten = $_POST['ho_va_ten'];
-            $dia_chi = $_POST['address'];
-            $email = $_POST['email'];
-            $sdt = $_POST['sdt'];
-            $ma_buu_chinh = $_POST['ma_buu_chinh'];
-            $tinh_thanh_pho = $_POST['tinh_thanh_pho'];
-            $dk_them = $_POST['dk_them'];
+            $ho_va_ten = trim($_POST['ho_va_ten']);
+            $dia_chi = trim($_POST['address']);
+            $email = trim($_POST['email']);
+            $sdt = trim($_POST['sdt']);
+            $ma_buu_chinh = trim($_POST['ma_buu_chinh']);
+            $tinh_thanh_pho = trim($_POST['tinh_thanh_pho']);
+            $dk_them = trim($_POST['dk_them']);
             $tong_nguoi = $_POST['tong_nguoi'];
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $ngay_dat_hang = date("Y-m-d"); // Thay đổi định dạng ngày

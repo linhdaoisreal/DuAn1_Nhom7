@@ -52,7 +52,7 @@ if (is_array($load_one_tour)) {
                         <div class="flex">
                             <h3 class="text-orange-400 font-semibold">Mã bưu chính </h3>
                         </div>
-                        <input type="number" maxlength="5" class="w-full border border-orange-400 rounded-md my-2"
+                        <input type="number" maxlength="5" min="1" class="w-full border border-orange-400 rounded-md my-2"
                             name="ma_buu_chinh">
                     </div>
                 </div>
