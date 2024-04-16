@@ -275,12 +275,13 @@
 
 /* Slide Show */
 .slider {
-    width: 100%;
+    width: 1240px;
+    max-width: 100%;
     height: 400px;
     margin: auto;
     position: relative;
     overflow: hidden;
-    
+    /* Ẩn ảnh ngoài màn hình mà kh cần js */
 }
 
 .list {
@@ -289,17 +290,17 @@
     left: 0px;
     height: 100%;
     display: flex;
+    
     width: max-content;
     transition: 1s;
 }
 
 .list img {
-    width: 100%;
-    max-width: 100%;
-    height: 400px;
+    width: 1240px;
+   max-width: 100%;
+    height: 100%;
     margin: 0px auto;
     object-fit: cover;
-    border-radius: 5px;
 }
 
 .buttons {

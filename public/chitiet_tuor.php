@@ -9,15 +9,15 @@ if (is_array($load_one_tour)) {
     <div>
         <!-- Slide Show -->
 
-        <div class="slider w-full">
-            <div class="list w-full">
+        <div class="slider">
+            <div class="list">
                 <?php
                 foreach ($loadAnhTuor as $anhTuor) {
                     extract($anhTuor);
                     $hinhAnh = $img_path . $ten_hinh_anh;
                     echo '
-                        <div class="item w-full">
-                            <img class="" src="' . $hinhAnh . '." alt="">
+                        <div class="item">
+                            <img class="w-full object-cover" src="' . $hinhAnh . '." alt="">
                         </div>
                         ';
                 }
