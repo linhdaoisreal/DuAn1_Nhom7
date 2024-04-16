@@ -13,7 +13,7 @@
                     <th>Số Điện Thoại</th>
                     <th>Địa Chỉ</th>
                     <th>Email</th>
-                    <th>Ghi Chú Thêm</th>
+                    <th>Ngày xuất phát</th>
                     <th>Ngày Đặt Hàng</th>
                     <th>Trang Thái</th>
                     <th></th>
@@ -47,7 +47,7 @@
                         <td>0'.$sdt.'</td>
                         <td>'.$dia_chi.'</td>
                         <td>'.$email.'</td>
-                        <td>'.$dk_them.'</td>
+                        <td>'.$ngay_khoi_hanh.'</td>
                         <td>'.$ngayDatHangFormatted.'</td>  
                         <td>'.$trang_thai.'</td>
 

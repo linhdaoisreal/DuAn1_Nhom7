@@ -174,7 +174,7 @@ if (is_array($load_one_tour)) {
                         <div class="flex">
                             <h3>Số điện thoại </h3><span class="text-red-500"> *</span>
                         </div>
-                        <input type="number" class="w-full border border-orange-400 rounded-md my-2" name="sdt" maxlength="10" >
+                        <input type="number" class="w-full border border-orange-400 rounded-md my-2" name="so_dien_thoai" maxlength="10" >
                         <div class="">
                             <?php if (!empty($errSDT)): ?>
                             <div class="text-red-500 pb-2 text-sm">
@@ -306,7 +306,7 @@ if (is_array($load_one_tour)) {
                     $ngay_chuyen_doi = date('d-m-Y', strtotime($_SESSION['dat_tuor'][0][0]));
                     $calculate_ngay_chuyen_doi = strtotime($ngay_chuyen_doi);
                     $calculate_day_gap = round(($calculate_ngay_chuyen_doi - $calculate_ngay_local) / (60 * 60 * 24));
-                    if ($calculate_day_gap >= 21) {
+                    if ($calculate_day_gap >= 14) {
                         echo '
                                 <div class="flex item-center justify-center border border-orange-500 text-sky-500 py-2 my-2 mx-8 rounded-lg hover:border-sky-500 hover:text-orange-500 hover:text-lg transition-all">
                                     <button class="font-semibold" type="submit" onclick="confirmBooking()" name="payUrl">Thanh toán với Momo</button>
