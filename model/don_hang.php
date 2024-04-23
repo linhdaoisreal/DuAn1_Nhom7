@@ -43,7 +43,7 @@ function delete_don_hang_theoTour($id_tuor){
 }
 
 function load_DH_theo_IDNguoiDung($id_nguoi_dung){
-    $sql = "SELECT id_don_hang, ho_va_ten, tong_gia, tong_nguoi, trang_thai, tuor.hinh_anh_mau, ten_tuor, don_hang.ngay_khoi_hanh
+    $sql = "SELECT id_don_hang, ho_va_ten, tong_gia, tong_nguoi, trang_thai, tuor.hinh_anh_mau, ten_tuor, don_hang.ngay_khoi_hanh, don_hang.id_tuor 
     FROM don_hang JOIN tuor ON tuor.id_tuor = don_hang.id_tuor 
     WHERE id_nguoi_dung=".$id_nguoi_dung;
     $loadDH=pdo_query($sql);
@@ -51,7 +51,7 @@ function load_DH_theo_IDNguoiDung($id_nguoi_dung){
 }
 
 function load_DH_theo_TimkiemID($id_don_hang){
-    $sql = "SELECT id_don_hang, ho_va_ten, tong_gia, tong_nguoi, trang_thai, tuor.hinh_anh_mau, ten_tuor, don_hang.ngay_khoi_hanh
+    $sql = "SELECT id_don_hang, ho_va_ten, tong_gia, tong_nguoi, trang_thai, tuor.hinh_anh_mau, ten_tuor, don_hang.ngay_khoi_hanh, don_hang.id_tuor 
     FROM don_hang JOIN tuor ON tuor.id_tuor = don_hang.id_tuor 
     WHERE id_don_hang=".$id_don_hang;
     $loadDH=pdo_query($sql);

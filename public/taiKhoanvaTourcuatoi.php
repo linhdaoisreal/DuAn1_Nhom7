@@ -51,7 +51,9 @@
                         echo '
                             <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
                                     <div class="w-24 h-auto my-auto">
-                                        <img class="my-auto rounded-lg" src="' . $hinhAnh . '" alt="">
+                                        <a href="index.php?act=show_don_hang&id_tuor='.$id_tuor.'&id_don_hang='.$id_don_hang.'">
+                                            <img class="my-auto rounded-lg" src="' . $hinhAnh . '" alt="">
+                                        </a>
                                     </div>
                                     <div class="my-auto text-sm md:text-base">
                                         <h1 class="font-semibold">Tour ' . $ten_tuor . ' </h1>
@@ -83,10 +85,13 @@
                         foreach ($loadTKDH as $checkTKDH) {
                             extract($checkTKDH);
                             $hinhAnh = $img_path . $hinh_anh_mau;
+                            // var_dump($checkTKDH);
                             echo '
                                 <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
-                                    <div class="w-24 h-auto">
-                                        <img class="" src="' . $hinhAnh . '" alt="">
+                                    <div class="w-24 h-auto my-auto">
+                                        <a href="index.php?act=show_don_hang&id_tuor='.$id_tuor.'&id_don_hang='.$id_don_hang.'">
+                                            <img class="my-auto rounded-lg" src="' . $hinhAnh . '" alt="">
+                                        </a>
                                     </div>
                                     <div class="my-auto text-sm md:text-base">
                                         <h1 class="font-semibold">Tour ' . $ten_tuor . ' </h1>
@@ -112,7 +117,6 @@
                 }
 
                 ?>
-
 
             </div>
         </div>
