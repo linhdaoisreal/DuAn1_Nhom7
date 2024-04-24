@@ -51,7 +51,7 @@
                         echo '
                             <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
                                     <div class="w-24 h-auto my-auto">
-                                        <a href="index.php?act=show_don_hang&id_tuor='.$id_tuor.'&id_don_hang='.$id_don_hang.'">
+                                        <a href="index.php?act=check_don_hang&id_tuor='.$id_tuor.'&id_don_hang='.$id_don_hang.'">
                                             <img class="my-auto rounded-lg" src="' . $hinhAnh . '" alt="">
                                         </a>
                                     </div>
@@ -89,7 +89,7 @@
                             echo '
                                 <div class="w-full my-3 border rounded-lg flex px-4 grid-cols-2 gap-4">
                                     <div class="w-24 h-auto my-auto">
-                                        <a href="index.php?act=show_don_hang&id_tuor='.$id_tuor.'&id_don_hang='.$id_don_hang.'">
+                                        <a href="index.php?act=check_don_hang&id_tuor='.$id_tuor.'&id_don_hang='.$id_don_hang.'">
                                             <img class="my-auto rounded-lg" src="' . $hinhAnh . '" alt="">
                                         </a>
                                     </div>
