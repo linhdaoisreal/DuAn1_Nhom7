@@ -242,8 +242,16 @@ if (isset ($_GET['act'])) {
 
                     $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
                     include './vnpay_php/vnpay_create_payment.php';
+
+                // VISA
                 }elseif(isset($_POST['visa'])){
-                    echo 'visa';
+                    
+                    include "public/visa.php";
+                    if(isset($_POST['submit'])){
+                        $id_don_hang= insert_don_hang($ho_va_ten,$dia_chi,$email,$sdt,$ma_buu_chinh,$tinh_thanh_pho,$dk_them,$tong_gia,$ngay_dat_hang,$tong_nguoi,$id_tuor,$trang_thai,$id_nguoi_dung,$ngay_khoi_hanh);    
+                        $visaURL = "http://localhost/DuAn1_Nhom7/index.php?act=show_don_hang&id_tuor=".$id_tuor."&id_don_hang=".$id_don_hang;
+                    }
+            
                 }
             }else{
                 $load_snd=load_so_ngay_dem($id_tuor);
