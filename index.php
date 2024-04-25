@@ -117,7 +117,19 @@ if (isset ($_GET['act'])) {
             }
             include "public/don_hang.php";
             break;
+        
+        case 'check_don_hang':
+            if( isset($_GET['id_don_hang'])){
+                $id_tuor = $_GET['id_tuor'];
+                $id_don_hang=$_GET['id_don_hang'];
+                
+                $loadOneDH = load_mot_don_hang($id_don_hang);
 
+                $load_snd=load_so_ngay_dem($id_tuor);
+                $load_one_tour = load_one_tour($id_tuor);
+            }
+            include "public/don_hang.php";
+            break;
 
             // Thanh toán Momo
         case 'check_out_online':
