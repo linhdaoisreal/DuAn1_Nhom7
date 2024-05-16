@@ -6,6 +6,8 @@
 -- Generation Time: May 16, 2024 at 02:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
+-- SỬ DỤNG DB NÀY NHƯ PHIÊN BẢN HOÀN THIỆN
+-- THIS DB IS FINAL FORM FOR THIS PROJECT
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
